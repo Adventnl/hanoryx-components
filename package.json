@@ -7,18 +7,52 @@
   "sideEffects": [
     "*.css"
   ],
+  "exports": {
+    ".": "./src/index.js",
+    "./styles": "./src/styles/hanoryx.css",
+    "./core": "./src/core/index.js",
+    "./kit": "./src/kit/index.js",
+    "./fx": "./src/fx/index.js",
+    "./ui": "./src/ui/index.js",
+    "./reveal": "./src/reveal/index.js",
+    "./scenes": "./src/scenes/index.js",
+    "./page": "./src/page/index.js",
+    "./shell": "./src/shell/index.js",
+    "./signatures": "./src/signatures/index.js",
+    "./closers": "./src/closers/index.js",
+    "./stage": "./src/stage/index.js",
+    "./specimens": "./src/specimens/index.js",
+    "./specimens/*": "./src/specimens/*/index.js",
+    "./content/*": "./src/content/*.js",
+    "./shell/*": "./src/shell/*.js",
+    "./manifest": "./docs/generated/manifest.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "docs",
+    "bin",
+    "llms.txt",
+    "llms-full.txt",
+    "AGENTS.md"
+  ],
+  "bin": {
+    "hanoryx": "./bin/hanoryx.mjs"
+  },
   "scripts": {
     "dev": "vite --config site/vite.config.js",
     "build": "npm run docs:generate && vite build --config site/vite.config.js",
     "preview": "vite preview --config site/vite.config.js",
     "lint": "eslint .",
     "docs:generate": "node scripts/generate-manifest.mjs",
-    "docs:sizing": "node scripts/measure-sizing.mjs",
+    "docs:sizing": "node scripts/qa/render-all.mjs && node scripts/generate-manifest.mjs && node scripts/generate-sizes-doc.mjs",
     "check": "node scripts/check.mjs",
-    "hx": "node bin/hanoryx.mjs"
-  },
-  "bin": {
-    "hanoryx": "./bin/hanoryx.mjs"
+    "hx": "node bin/hanoryx.mjs",
+    "docs:sizes": "node scripts/generate-sizes-doc.mjs",
+    "docs:tokens": "node scripts/generate-tokens-doc.mjs",
+    "barrels": "node scripts/generate-barrels.mjs",
+    "qa:compare": "node scripts/qa/compare-specimens.mjs",
+    "qa:render": "node scripts/qa/render-all.mjs"
   },
   "peerDependencies": {
     "@gsap/react": "^2.1.2",
@@ -46,6 +80,7 @@
     "gsap": "^3.15.0",
     "lenis": "^1.3.23",
     "lucide-react": "^1.20.0",
+    "marked": "^18.1.1",
     "motion": "^12.40.0",
     "playwright-core": "^1.61.0",
     "react": "^19.2.6",

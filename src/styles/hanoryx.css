@@ -1,0 +1,14 @@
+/* hanoryx-components — the global stylesheet. Import once, at the app root:
+
+     import 'hanoryx-components/styles';
+
+   Order matters: tokens first, then the reset and base, type, layout, motion
+   helpers, effects and the foreground toolkit's global rules. Component styles
+   are CSS Modules and load with the components. */
+@import './tokens.css';
+@import './globals.css';
+@import './typography.css';
+@import './layout.css';
+@import './animation.css';
+@import './effects.css';
+@import './fx.css';

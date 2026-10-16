@@ -10,6 +10,11 @@ export const company = {
   status: 'Live',
 };
 
+/** Replace the identity the navbar, footer and menus show: configureCompany({ name, shortName, division, email, status }). */
+export function configureCompany(next = {}) {
+  Object.assign(company, next);
+}
+
 /* The operating doctrine — short, declarative, restrained. */
 export const operatingPrinciples = [
   { id: 'p-01', index: '01', title: 'Controlled complexity', body: 'Depth is engineered, never improvised. Systems hold weight without leaking it to the surface.' },

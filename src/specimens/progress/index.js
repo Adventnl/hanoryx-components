@@ -1,6 +1,6 @@
 /* ============================================================
    28 · PROGRESS — bars, rings and vessels that fill.
-   Most specimens are pure CSS: one registered number, --v (0 to 1), is run by a
+   Most specimens are pure CSS: one registered number, --prog-v (0 to 1), is run by a
    keyframe animation and every bar, ring and counter below reads it, so they
    all fill in step with their own clock. The ones that answer to you are the
    sliders, the uploads and the buttons. The still side is a ring and three bars

@@ -1,0 +1,123 @@
+const page = {
+  key: 'systems/operational-management',
+  title: 'Operational Management',
+  accent: '#ff3333',
+  aliases: ['scheduling', 'coordination', 'roles', 'records', 'operating layer'],
+  hero: {
+    scene: 'workflow-river',
+    intensity: 'hero',
+    eyebrow: 'Systems / SYS.01',
+    title: 'Operational management platforms.',
+    intro: 'Structured operating layers for scheduling, communication, records and multi-role coordination.',
+    code: 'SYS.01',
+    status: 'DESIGN AREA',
+    actions: [
+      { label: 'All systems', to: '/systems', variant: 'outline' },
+      { label: 'Musebase', to: '/work/musebase' },
+    ],
+  },
+  blocks: [
+    {
+      type: 'signature',
+      kind: 'opsFlow',
+      anchor: 'flow',
+      railLabel: 'Life of a request',
+      scene: 'architectural-grid',
+      minHeight: 760,
+      eyebrow: 'Life of a request',
+      title: 'How an operation moves.',
+      intro: 'Choose a kind of request and send it. Watch the stages light, the request fill in and the record write itself.',
+      stages: [
+        { id: 'intake', title: 'Intake', body: 'The request arrives with its role, context and intent attached.', glyph: 'node', field: { k: 'ROLE', v: 'Attached' } },
+        { id: 'schedule', title: 'Schedule', body: 'Time, resource and dependency constraints are resolved.', glyph: 'calendar', field: { k: 'TIME', v: 'Resolved' } },
+        { id: 'coordinate', title: 'Coordinate', body: 'Everyone affected sees the current state in their own view.', glyph: 'people', field: { k: 'SHARED', v: 'Everyone affected' } },
+        { id: 'record', title: 'Record', body: 'The action is written to the structured record for later control.', glyph: 'database', field: { k: 'RECORD', v: 'Written' } },
+      ],
+      kinds: [
+        {
+          id: 'time',
+          label: 'Change a time',
+          lines: [
+            'Request received — who is asking, and why, is attached.',
+            'Availability checked; the clash is found and a new slot is resolved.',
+            'Each person affected is told, in the view that suits their role.',
+            'The change is written to the record, with who and when.',
+          ],
+        },
+        {
+          id: 'question',
+          label: 'Ask a question',
+          lines: [
+            'Question received — it is tied to the thing it is about.',
+            'The right person is found from the schedule and the roles.',
+            'The answer lives next to the question, visible to those it concerns.',
+            'Question and answer are written to the record together.',
+          ],
+        },
+        {
+          id: 'file',
+          label: 'Share a file',
+          lines: [
+            'File received — its owner and purpose are attached.',
+            'It is attached to the right time and place in the plan.',
+            'Only the roles that need it can see it.',
+            'The share is written to the record, so it can be traced.',
+          ],
+        },
+      ],
+      note: 'An illustration of a way of working. It is not a recording of any real system.',
+    },
+    {
+      type: 'split',
+      anchor: 'capability',
+      railLabel: 'Capability',
+      scene: 'permission-orbit',
+      eyebrow: 'Capability',
+      code: 'OPS.01',
+      title: 'Coordination, held under control.',
+      body: [
+        'An operational management platform turns scattered scheduling, communication and record-keeping into one predictable surface.',
+        'Roles, permissions and workflow state are modelled from the start, so complexity is engineered rather than improvised.',
+      ],
+      asideLabel: 'MODULES',
+      asideCode: 'OPS.MAP',
+      points: [
+        { k: 'SCHED', v: 'Scheduling logic' },
+        { k: 'COMMS', v: 'Communication surfaces' },
+        { k: 'RECORDS', v: 'Structured records' },
+        { k: 'ROLES', v: 'Permission model' },
+        { k: 'FLOW', v: 'Workflow orchestration' },
+      ],
+    },
+    {
+      type: 'cards',
+      variant: 'grid',
+      anchor: 'surfaces',
+      railLabel: 'Control surfaces',
+      scene: 'musebase-coordination',
+      eyebrow: 'Surfaces',
+      title: 'Control surfaces.',
+      items: [
+        { code: 'CS.01', title: 'Scheduling matrix', body: 'A dense view of time, resource and dependency in one grid.', glyph: 'calendar' },
+        { code: 'CS.02', title: 'Communication layer', body: 'Role-scoped messaging tied to operational state.', glyph: 'people' },
+        { code: 'CS.03', title: 'Records & permissions', body: 'A queryable record under role-based access.', glyph: 'key' },
+      ],
+    },
+    {
+      type: 'closer',
+      kind: 'bottleneck',
+      anchor: 'slowest',
+      scene: 'build-pipeline',
+      tag: 'End of operational management',
+      minHeight: 660,
+      title: 'Find the slowest step.',
+      lede: 'Five steps, each with people and minutes per item. The slowest is marked, and adding a person anywhere else changes nothing. An invented operation, to show the shape.',
+      onward: [
+        { label: 'Musebase', to: '/work/musebase' },
+        { label: 'System lifecycle', to: '/systems/lifecycle' },
+      ],
+    },
+  ],
+};
+
+export default page;

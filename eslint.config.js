@@ -25,7 +25,7 @@ export default defineConfig([
   },
   {
     // Specimens and the stage helpers export data (items, shared helpers) beside components.
-    files: ['src/specimens/**/*.{js,jsx}', 'src/stage/**/*.{js,jsx}'],
+    files: ['src/specimens/**/*.{js,jsx}', 'src/stage/**/*.{js,jsx}', 'site/src/preview/**/*.{js,jsx}', 'site/src/recipes/**/*.{js,jsx}'],
     rules: { 'react-refresh/only-export-components': 'off' },
   },
 ])

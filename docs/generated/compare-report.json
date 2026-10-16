@@ -1,0 +1,208 @@
+{
+ "same": 0,
+ "diff": 0,
+ "missing": 0,
+ "families": 50,
+ "bad": [
+  {
+   "slug": "switchboard",
+   "error": "page.goto: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:5199/#/a/specimens/switchboard\", waiting until \"load\"\u001b[22m\n"
+  },
+  {
+   "slug": "dials",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "faders",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "keypads",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "fields",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "gauges",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "charts",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "matrices",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "figures",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "graphs",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "kinetic",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "tickers",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "markup",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "glyphs",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "editorial",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "tilt",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "glow",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "fold",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "bento",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "passes",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "tabs",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "docks",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "menus",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "steps",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "waypoints",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "loaders",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "toasts",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "progress",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "skeletons",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "signals",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "popovers",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "sheets",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "cursors",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "wipes",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "lenses",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "cockpit",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "studio",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "terminal",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "stamps",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "archive",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "beams",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "patterns",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "drift",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "waves",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "morphs",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "handset",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "boards",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "feeds",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "checkout",
+   "error": "page.goto: Target page, context or browser has been closed"
+  },
+  {
+   "slug": "heroes",
+   "error": "page.goto: Target page, context or browser has been closed"
+  }
+ ]
+}

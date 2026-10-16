@@ -4,5 +4,6 @@ export { AudioContextRef, useAudio } from './audio-context';
 export { AudioProvider } from './AudioProvider';
 export { ExperienceContext, useExperience } from './experience-context';
 export { ExperienceProvider } from './ExperienceProvider';
+export { HanoryxProvider } from './HanoryxProvider';
 export { LenisContext, useLenis } from './lenis-context';
 export { LenisProvider } from './LenisProvider';

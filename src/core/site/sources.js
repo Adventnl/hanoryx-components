@@ -14,9 +14,19 @@
        loadSearchDocuments: () => fetch('/searchDocuments.json').then((r) => r.json()),
      });
 
+   The same call can replace what the navbar, footer and menus show:
+
+       configureSite({
+         company: { name: 'Acme', shortName: 'Acme', division: 'Acme Labs', email: 'hi@acme.test', status: 'Live' },
+         navigation: { navGroups, pageRouteKeys, footerColumns, footerLegalRow, siteSections, redirects },
+       });
+
    Anything left unregistered degrades quietly: pages resolve to null (the 404),
    catalogue-backed controls show their retry state, and search covers the menu.
    ============================================================ */
+
+import { applyNavigation } from '../../content/routeConfig';
+import { configureCompany } from '../../content/company';
 
 const missing = (what) => () => Promise.reject(new Error(`No ${what} registered. Call configureSite({ ${what} }).`));
 
@@ -27,9 +37,11 @@ const sources = {
   loadSearchDocuments: missing('loadSearchDocuments'),
 };
 
-/** Register any of: loadPage(key), warmPage(pathname), loadPageCatalog(), loadSearchDocuments(). */
+/** Register any of: loadPage(key), warmPage(pathname), loadPageCatalog(), loadSearchDocuments(), company, navigation. */
 export function configureSite(partial = {}) {
   Object.keys(partial).forEach((k) => {
+    if (k === 'company') { configureCompany(partial.company); return; }
+    if (k === 'navigation') { applyNavigation(partial.navigation); return; }
     if (!(k in sources)) throw new Error(`configureSite: unknown source "${k}"`);
     if (typeof partial[k] === 'function') sources[k] = partial[k];
   });

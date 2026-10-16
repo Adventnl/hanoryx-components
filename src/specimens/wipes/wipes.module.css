@@ -1,15 +1,15 @@
 /* 34 · WIPES — two panels and forty-two rules for replacing one with the other. */
 
-@property --c { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
-@property --s { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
-@property --d { syntax: '<percentage>'; inherits: false; initial-value: 50%; }
-@property --a { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
-@property --r { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
-@property --c1 { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
-@property --c2 { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
-@property --c3 { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
-@property --c4 { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
-@property --c5 { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+@property --wipe-c { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+@property --wipe-s { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+@property --wipe-d { syntax: '<percentage>'; inherits: false; initial-value: 50%; }
+@property --wipe-a { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+@property --wipe-r { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+@property --wipe-c1 { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+@property --wipe-c2 { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+@property --wipe-c3 { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+@property --wipe-c4 { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+@property --wipe-c5 { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
 @keyframes sweep { from { left: -2%; } to { left: 102%; } }
 
 /* ---- the still side ---- */
@@ -27,8 +27,8 @@
 .wipe { position: relative; display: block; width: 11.5rem; height: 6.6rem; padding: 0; overflow: hidden; border: 1px solid var(--c-white-20); border-radius: 6px; background: #000; cursor: pointer; text-align: left; }
 .a, .b { position: absolute; inset: 0; display: grid; place-items: center; }
 .a { background: #14151a; }
-.b { background: linear-gradient(135deg, #ff3333, #7d1010); transition: clip-path 0.9s var(--ease-in-out), transform 0.9s var(--ease-in-out), opacity 0.9s var(--ease-in-out), filter 0.9s var(--ease-in-out), --c 0.9s var(--ease-in-out), --s 0.9s var(--ease-in-out), --a 0.9s var(--ease-in-out), --r 0.9s var(--ease-in-out), --c1 0.6s var(--ease-in-out) 0s, --c2 0.6s var(--ease-in-out) 0.12s, --c3 0.6s var(--ease-in-out) 0.24s, --c4 0.6s var(--ease-in-out) 0.36s, --c5 0.6s var(--ease-in-out) 0.48s; }
-.a { transition: clip-path 0.9s var(--ease-in-out), transform 0.9s var(--ease-in-out), opacity 0.9s var(--ease-in-out), filter 0.9s var(--ease-in-out), --d 0.9s var(--ease-in-out); }
+.b { background: linear-gradient(135deg, #ff3333, #7d1010); transition: clip-path 0.9s var(--ease-in-out), transform 0.9s var(--ease-in-out), opacity 0.9s var(--ease-in-out), filter 0.9s var(--ease-in-out), --wipe-c 0.9s var(--ease-in-out), --wipe-s 0.9s var(--ease-in-out), --wipe-a 0.9s var(--ease-in-out), --wipe-r 0.9s var(--ease-in-out), --wipe-c1 0.6s var(--ease-in-out) 0s, --wipe-c2 0.6s var(--ease-in-out) 0.12s, --wipe-c3 0.6s var(--ease-in-out) 0.24s, --wipe-c4 0.6s var(--ease-in-out) 0.36s, --wipe-c5 0.6s var(--ease-in-out) 0.48s; }
+.a { transition: clip-path 0.9s var(--ease-in-out), transform 0.9s var(--ease-in-out), opacity 0.9s var(--ease-in-out), filter 0.9s var(--ease-in-out), --wipe-d 0.9s var(--ease-in-out); }
 .a b, .b b { font: 300 2.4rem var(--font-serif); color: #fff; }
 .wipe:focus-visible { outline: 1px solid var(--c-red); outline-offset: 3px; }
 
@@ -52,31 +52,31 @@
 .star[data-b='true'] .b { clip-path: polygon(50.0% -180.0%, 104.1% -24.4%, 268.7% -21.1%, 137.5% 78.4%, 185.2% 236.1%, 50.0% 142.0%, -85.2% 236.1%, -37.5% 78.4%, -168.7% -21.1%, -4.1% -24.4%); }
 
 /* 11 / 12 / 17 blinds and slats */
-.blindsH .b { --c: 0%; mask: repeating-linear-gradient(to bottom, #000 0, #000 var(--c), transparent var(--c), transparent 20%); }
-.blindsH[data-b='true'] .b { --c: 20%; }
-.blindsV .b { --c: 0%; mask: repeating-linear-gradient(to right, #000 0, #000 var(--c), transparent var(--c), transparent 20%); }
-.blindsV[data-b='true'] .b { --c: 20%; }
-.slats .b { --c: 0%; mask: repeating-linear-gradient(to bottom, #000 0, #000 var(--c), transparent var(--c), transparent 8%); }
-.slats[data-b='true'] .b { --c: 8%; }
+.blindsH .b { --wipe-c: 0%; mask: repeating-linear-gradient(to bottom, #000 0, #000 var(--wipe-c), transparent var(--wipe-c), transparent 20%); }
+.blindsH[data-b='true'] .b { --wipe-c: 20%; }
+.blindsV .b { --wipe-c: 0%; mask: repeating-linear-gradient(to right, #000 0, #000 var(--wipe-c), transparent var(--wipe-c), transparent 20%); }
+.blindsV[data-b='true'] .b { --wipe-c: 20%; }
+.slats .b { --wipe-c: 0%; mask: repeating-linear-gradient(to bottom, #000 0, #000 var(--wipe-c), transparent var(--wipe-c), transparent 8%); }
+.slats[data-b='true'] .b { --wipe-c: 8%; }
 
 /* 13 pixel checker / 36 stepped pixels */
-.checker .b, .pixel .b { --s: 0%; mask: linear-gradient(90deg, transparent calc(50% - var(--s) / 2), #000 calc(50% - var(--s) / 2) calc(50% + var(--s) / 2), transparent 0) 0 0 / 1.6rem 1.6rem, linear-gradient(transparent calc(50% - var(--s) / 2), #000 calc(50% - var(--s) / 2) calc(50% + var(--s) / 2), transparent 0) 0 0 / 1.6rem 1.6rem; mask-composite: intersect; -webkit-mask-composite: source-in; }
-.checker[data-b='true'] .b, .pixel[data-b='true'] .b { --s: 102%; }
+.checker .b, .pixel .b { --wipe-s: 0%; mask: linear-gradient(90deg, transparent calc(50% - var(--wipe-s) / 2), #000 calc(50% - var(--wipe-s) / 2) calc(50% + var(--wipe-s) / 2), transparent 0) 0 0 / 1.6rem 1.6rem, linear-gradient(transparent calc(50% - var(--wipe-s) / 2), #000 calc(50% - var(--wipe-s) / 2) calc(50% + var(--wipe-s) / 2), transparent 0) 0 0 / 1.6rem 1.6rem; mask-composite: intersect; -webkit-mask-composite: source-in; }
+.checker[data-b='true'] .b, .pixel[data-b='true'] .b { --wipe-s: 102%; }
 .pixel .b { transition-timing-function: steps(6, end); }
 
 /* 14–16 curtains and doors */
 .curtain .b { clip-path: inset(0 50% 0 50%); } .curtain[data-b='true'] .b { clip-path: inset(0); }
 .shutter .b { clip-path: inset(50% 0 50% 0); } .shutter[data-b='true'] .b { clip-path: inset(0); }
-.barn .a { z-index: 2; --d: 50%; mask: linear-gradient(90deg, #000 var(--d), transparent var(--d) calc(100% - var(--d)), #000 calc(100% - var(--d))); }
-.barn[data-b='true'] .a { --d: 0%; }
+.barn .a { z-index: 2; --wipe-d: 50%; mask: linear-gradient(90deg, #000 var(--wipe-d), transparent var(--wipe-d) calc(100% - var(--wipe-d)), #000 calc(100% - var(--wipe-d))); }
+.barn[data-b='true'] .a { --wipe-d: 0%; }
 
 /* 18–20 sweeps */
-.clock .b { --a: 0deg; mask: conic-gradient(#000 var(--a), transparent 0); }
-.clock[data-b='true'] .b { --a: 361deg; }
-.radial .b { --a: 0deg; mask: conic-gradient(from 180deg, #000 var(--a), transparent 0); }
-.radial[data-b='true'] .b { --a: 361deg; }
-.fan .b { --a: 0deg; mask: conic-gradient(from -90deg at 50% 100%, #000 var(--a), transparent 0); }
-.fan[data-b='true'] .b { --a: 182deg; }
+.clock .b { --wipe-a: 0deg; mask: conic-gradient(#000 var(--wipe-a), transparent 0); }
+.clock[data-b='true'] .b { --wipe-a: 361deg; }
+.radial .b { --wipe-a: 0deg; mask: conic-gradient(from 180deg, #000 var(--wipe-a), transparent 0); }
+.radial[data-b='true'] .b { --wipe-a: 361deg; }
+.fan .b { --wipe-a: 0deg; mask: conic-gradient(from -90deg at 50% 100%, #000 var(--wipe-a), transparent 0); }
+.fan[data-b='true'] .b { --wipe-a: 182deg; }
 
 /* 21 / 22 edges */
 .zigzag .b { clip-path: polygon(0 0, -6% 0%, -14% 10%, -6% 20%, -14% 30%, -6% 40%, -14% 50%, -6% 60%, -14% 70%, -6% 80%, -14% 90%, -6% 100%, 0 100%); }
@@ -85,8 +85,8 @@
 .wave[data-b='true'] .b { clip-path: polygon(0 0, 112.0% 0%, 119.0% 6.25%, 112.0% 12.5%, 105.0% 18.75%, 112.0% 25%, 119.0% 31.25%, 112.0% 37.5%, 105.0% 43.75%, 112.0% 50%, 119.0% 56.25%, 112.0% 62.5%, 105.0% 68.75%, 112.0% 75%, 119.0% 81.25%, 112.0% 87.5%, 105.0% 93.75%, 112.0% 100%, 0 100%); }
 
 /* 23 ink bleed */
-.ink .b { --r: 0%; mask: radial-gradient(circle at 30% 60%, #000 var(--r), transparent calc(var(--r) + 22%)), radial-gradient(circle at 70% 36%, #000 var(--r), transparent calc(var(--r) + 22%)); mask-composite: add; -webkit-mask-composite: source-over; }
-.ink[data-b='true'] .b { --r: 90%; }
+.ink .b { --wipe-r: 0%; mask: radial-gradient(circle at 30% 60%, #000 var(--wipe-r), transparent calc(var(--wipe-r) + 22%)), radial-gradient(circle at 70% 36%, #000 var(--wipe-r), transparent calc(var(--wipe-r) + 22%)); mask-composite: add; -webkit-mask-composite: source-over; }
+.ink[data-b='true'] .b { --wipe-r: 90%; }
 
 /* 24–26 slides */
 .push .a, .push .b { transition-duration: 0.8s; }
@@ -125,10 +125,10 @@
 .scan[data-b='true']::after { opacity: 1; animation: sweep 0.9s var(--ease-in-out) forwards; }
 
 /* 37 / 38 staggers */
-.colStagger .b { --c1: 0%; --c2: 0%; --c3: 0%; --c4: 0%; --c5: 0%; mask: linear-gradient(to bottom, #000 var(--c1), transparent 0) 0 0 / 20% 100% no-repeat, linear-gradient(to bottom, #000 var(--c2), transparent 0) 25% 0 / 20% 100% no-repeat, linear-gradient(to bottom, #000 var(--c3), transparent 0) 50% 0 / 20% 100% no-repeat, linear-gradient(to bottom, #000 var(--c4), transparent 0) 75% 0 / 20% 100% no-repeat, linear-gradient(to bottom, #000 var(--c5), transparent 0) 100% 0 / 20% 100% no-repeat; }
-.colStagger[data-b='true'] .b { --c1: 101%; --c2: 101%; --c3: 101%; --c4: 101%; --c5: 101%; }
-.rowStagger .b { --c1: 0%; --c2: 0%; --c3: 0%; --c4: 0%; --c5: 0%; mask: linear-gradient(to right, #000 var(--c1), transparent 0) 0 0 / 100% 20% no-repeat, linear-gradient(to right, #000 var(--c2), transparent 0) 0 25% / 100% 20% no-repeat, linear-gradient(to right, #000 var(--c3), transparent 0) 0 50% / 100% 20% no-repeat, linear-gradient(to right, #000 var(--c4), transparent 0) 0 75% / 100% 20% no-repeat, linear-gradient(to right, #000 var(--c5), transparent 0) 0 100% / 100% 20% no-repeat; }
-.rowStagger[data-b='true'] .b { --c1: 101%; --c2: 101%; --c3: 101%; --c4: 101%; --c5: 101%; }
+.colStagger .b { --wipe-c1: 0%; --wipe-c2: 0%; --wipe-c3: 0%; --wipe-c4: 0%; --wipe-c5: 0%; mask: linear-gradient(to bottom, #000 var(--wipe-c1), transparent 0) 0 0 / 20% 100% no-repeat, linear-gradient(to bottom, #000 var(--wipe-c2), transparent 0) 25% 0 / 20% 100% no-repeat, linear-gradient(to bottom, #000 var(--wipe-c3), transparent 0) 50% 0 / 20% 100% no-repeat, linear-gradient(to bottom, #000 var(--wipe-c4), transparent 0) 75% 0 / 20% 100% no-repeat, linear-gradient(to bottom, #000 var(--wipe-c5), transparent 0) 100% 0 / 20% 100% no-repeat; }
+.colStagger[data-b='true'] .b { --wipe-c1: 101%; --wipe-c2: 101%; --wipe-c3: 101%; --wipe-c4: 101%; --wipe-c5: 101%; }
+.rowStagger .b { --wipe-c1: 0%; --wipe-c2: 0%; --wipe-c3: 0%; --wipe-c4: 0%; --wipe-c5: 0%; mask: linear-gradient(to right, #000 var(--wipe-c1), transparent 0) 0 0 / 100% 20% no-repeat, linear-gradient(to right, #000 var(--wipe-c2), transparent 0) 0 25% / 100% 20% no-repeat, linear-gradient(to right, #000 var(--wipe-c3), transparent 0) 0 50% / 100% 20% no-repeat, linear-gradient(to right, #000 var(--wipe-c4), transparent 0) 0 75% / 100% 20% no-repeat, linear-gradient(to right, #000 var(--wipe-c5), transparent 0) 0 100% / 100% 20% no-repeat; }
+.rowStagger[data-b='true'] .b { --wipe-c1: 101%; --wipe-c2: 101%; --wipe-c3: 101%; --wipe-c4: 101%; --wipe-c5: 101%; }
 
 /* 39 drag / 40 scrub */
 .dragw .b, .scrubw .b { transition: none; clip-path: inset(0 calc((1 - var(--v)) * 100%) 0 0); }

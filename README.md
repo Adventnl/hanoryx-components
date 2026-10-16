@@ -1,1 +1,94 @@
 # hanoryx-components
+
+The Hanoryx Systems interface, taken out of the website and organised as a library — so a site like [hanoryx-web](https://github.com/Adventnl/hanoryx-web) can be built **without writing a single new component**.
+
+Deep black surfaces, white type, one restrained red. Every piece is React 19 + CSS Modules, published as source, keyboard-operable, reduced-motion-aware and documented for people **and LLMs**: what it is, its props, and — measured, not guessed — how big it is.
+
+| | |
+| --- | --- |
+| **2,604** catalogued pieces | interface kit (62) · foreground toolkit (18) · site UI (6) · page (27) · shell (25) · reveal (38) · scenes (69) · signatures (90) · closers (86) · **specimens (2,091 in 50 families)** · stage (12) · core (80) |
+| **Docs site** | `npm run dev` — every piece live, with props, a width switcher, measured sizes and search |
+| **For LLMs** | [`AGENTS.md`](AGENTS.md) · [`llms.txt`](llms.txt) · [`docs/sizing.md`](docs/sizing.md) · `npm run hx -- component <Name>` |
+
+## Quick start
+
+```bash
+npm install
+npm run dev                          # the docs site → http://127.0.0.1:5199
+npm run hx -- search toggle          # find a component from the terminal
+npm run hx -- component DataTable --dense
+```
+
+Use it in an app — see [Getting started](docs/getting-started.md):
+
+```jsx
+import { BrowserRouter } from 'react-router-dom';
+import { HanoryxProvider, Grid, Stat, TextField } from 'hanoryx-components';
+import 'hanoryx-components/styles';
+
+<BrowserRouter>
+  <HanoryxProvider smoothScroll={false}>
+    <section className="section"><div className="container">
+      <Grid min="14rem"><Stat label="Open orders" value="128" /><TextField label="Search" /></Grid>
+    </div></section>
+  </HanoryxProvider>
+</BrowserRouter>
+```
+
+## What is in it
+
+```
+src/
+  styles/      tokens + the global sheet                       hanoryx-components/styles
+  core/        hooks · providers · motion engine · utilities   hanoryx-components/core
+  kit/         61 accessible components, six families          hanoryx-components/kit
+  fx/          foreground toolkit: tilt, spotlight, odometer…  hanoryx-components/fx
+  ui/          the site's own button, pill, panel, header      hanoryx-components/ui
+  page/        hero, 20 page blocks, the page template         hanoryx-components/page
+  shell/       navbar, footer, search, shortcuts, cursor…      hanoryx-components/shell
+  reveal/      33 entrance profiles + kinetic text            hanoryx-components/reveal
+  scenes/      Canvas host + 67 background scenes             hanoryx-components/scenes
+  signatures/  page-specific interactive compositions         hanoryx-components/signatures
+  closers/     page endings                                   hanoryx-components/closers
+  specimens/   2,091 stand-alone pieces, one file each        hanoryx-components/specimens/<family>
+  stage/       the scroll stages that present specimens       hanoryx-components/stage
+```
+
+### Specimens
+
+The site's `/showcase` — fifty pages of interface components for their own sake — is here as **2,091 individually importable components**, grouped in 50 families and ten chapters (Controls, Data, Type, Cards, Navigation, Feedback, Overlays, Objects, Ground, Patterns):
+
+```jsx
+import { Rocker, GuardCover } from 'hanoryx-components/specimens/switchboard';
+import { Dials } from 'hanoryx-components/specimens';     // namespace: <Dials.JogWheel />
+```
+
+Each family folder has one file per specimen, the family's stylesheet, a `shared.jsx` for helpers more than one specimen uses, and an `index.js` that lists them in page order (`items`) with the `Visual` that the scroll stages draw.
+
+## Sizing, ratios, padding
+
+The thing that breaks LLM-built pages is size. So:
+
+- [`docs/sizing.md`](docs/sizing.md) — the page frame, spacing and type scales (in pixels, at four widths), radii, ratios, breakpoints, and the four ways a component answers to its parent: **fill · capped · intrinsic · fixed**.
+- [`docs/sizes.md`](docs/sizes.md) — **measured**: every kit, fx, ui, page, composition and specimen component rendered in parents 360 / 768 / 1200 px wide in a real browser (`npm run docs:sizing`); width, height, ratio, padding, radius and smallest control.
+- [`docs/layout-recipes.md`](docs/layout-recipes.md) — six live page skeletons.
+- [`docs/tokens.md`](docs/tokens.md) — every token, generated.
+
+## Where it came from
+
+Everything here was extracted from `hanoryx-web` by script (imports rewritten, specimens split by AST), then verified: the whole tree lints clean, builds, and every entry renders in headless Chromium at three widths with no console errors. [`docs/porting-map.md`](docs/porting-map.md) lists where each area came from. Two assets were deliberately **not** copied: the intro music track (its origin is an open question in the source repo) and the Musebase logo. Register your own with `configureAssets`.
+
+`astryx` was the reference for how to organise and document a component library; nothing in it was copied.
+
+## Scripts
+
+| | |
+| --- | --- |
+| `npm run dev` · `build` · `preview` | the docs site |
+| `npm run lint` | ESLint |
+| `npm run docs:generate` | rebuild `docs/generated/manifest.json`, `llms.txt`, `llms-full.txt`, `docs/COMPONENTS.md` |
+| `npm run docs:sizing` | render and measure everything (site must be running) |
+| `npm run check` | lint + barrels + manifest + imports |
+| `npm run hx -- …` | the `hanoryx` CLI |
+
+See [`AGENTS.md`](AGENTS.md) for the rules for changing the library.

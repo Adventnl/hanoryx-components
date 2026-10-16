@@ -1,0 +1,654 @@
+{
+ "split": {
+  "page": "contact",
+  "props": {
+   "type": "split",
+   "anchor": "helps",
+   "railLabel": "What helps",
+   "scene": "topographic-lines",
+   "eyebrow": "What helps",
+   "code": "CMP.HELP",
+   "title": "A few lines are enough.",
+   "body": [
+    "The most useful message says who the system is for, what it has to hold, and where the current approach hurts. It does not need to be formal or complete.",
+    "If you are not sure which type fits, pick the closest. The conversation can find its own shape."
+   ],
+   "asideLabel": "USEFUL TO SAY",
+   "asideCode": "CMP.NOTES",
+   "points": [
+    {
+     "k": "PEOPLE",
+     "v": "Who will use it"
+    },
+    {
+     "k": "RECORDS",
+     "v": "What it has to hold"
+    },
+    {
+     "k": "PAIN",
+     "v": "Where it hurts today"
+    },
+    {
+     "k": "TIMING",
+     "v": "When it matters"
+    }
+   ]
+  }
+ },
+ "cards": {
+  "page": "systems/operational-management",
+  "props": {
+   "type": "cards",
+   "variant": "grid",
+   "anchor": "surfaces",
+   "railLabel": "Control surfaces",
+   "scene": "musebase-coordination",
+   "eyebrow": "Surfaces",
+   "title": "Control surfaces.",
+   "items": [
+    {
+     "code": "CS.01",
+     "title": "Scheduling matrix",
+     "body": "A dense view of time, resource and dependency in one grid.",
+     "glyph": "calendar"
+    },
+    {
+     "code": "CS.02",
+     "title": "Communication layer",
+     "body": "Role-scoped messaging tied to operational state.",
+     "glyph": "people"
+    },
+    {
+     "code": "CS.03",
+     "title": "Records & permissions",
+     "body": "A queryable record under role-based access.",
+     "glyph": "key"
+    }
+   ]
+  }
+ },
+ "modules": {
+  "page": "work/customer-product",
+  "props": {
+   "type": "modules",
+   "anchor": "limits",
+   "railLabel": "What is withheld",
+   "scene": "privacy-quiet-grid",
+   "eyebrow": "What this page does not show",
+   "title": "Described, not displayed.",
+   "intro": "A supporting study is told at the level of the idea.",
+   "rows": [
+    {
+     "k": "NAME",
+     "v": "Withheld by design."
+    },
+    {
+     "k": "SCREENSHOTS",
+     "v": "Not shown. The storyboard above is abstract."
+    },
+    {
+     "k": "FIGURES",
+     "v": "None claimed."
+    }
+   ]
+  }
+ },
+ "manifesto": {
+  "page": "company/how-we-work",
+  "props": {
+   "type": "manifesto",
+   "anchor": "habits",
+   "railLabel": "Four habits",
+   "scene": "vector-compass",
+   "eyebrow": "Four habits",
+   "lines": [
+    "Say it *plainly*.",
+    "Show it running.",
+    "Write down why.",
+    "Leave it easier to change."
+   ],
+   "marquee": [
+    "FRAME",
+    "SHAPE",
+    "BUILD",
+    "HAND OVER",
+    "RUN"
+   ]
+  }
+ },
+ "faq": {
+  "page": "north/blocks",
+  "props": {
+   "type": "faq",
+   "anchor": "faq",
+   "railLabel": "Questions",
+   "scene": "privacy-quiet-grid",
+   "eyebrow": "Block · faq",
+   "title": "Questions about blocks.",
+   "openFirst": true,
+   "items": [
+    {
+     "q": "Can a block hold another block?",
+     "a": [
+      "No. Blocks sit one after another. A signature block can host a richer composition of its own, but blocks do not nest."
+     ]
+    },
+    {
+     "q": "What ends a page?",
+     "a": [
+      "A closer. Every page except the contact page and the site map finishes with its own composition, and no two pages share one. None of them is a call to action."
+     ]
+    },
+    {
+     "q": "What is a signature?",
+     "a": [
+      "A composition that belongs to one page: a find bar for a long document, a tool, a demonstration. It is loaded when the page needs it, and it holds its height while it loads so that nothing jumps."
+     ]
+    },
+    {
+     "q": "How do I add a new kind of block?",
+     "a": [
+      "Write a component in the blocks folder, add one line to the block list so the loader knows its type, and add it to the catalogue on this page. If it brings keys that are not prose, add them to the search engine’s skip list."
+     ]
+    },
+    {
+     "q": "Is the text in the component or in the data?",
+     "a": [
+      "In the data. A component decides how things look and move; the words belong to the page."
+     ]
+    }
+   ]
+  }
+ },
+ "stats": {
+  "page": "home",
+  "props": {
+   "type": "stats",
+   "anchor": "figures",
+   "railLabel": "At a glance",
+   "eyebrow": "At a glance",
+   "title": "What is on this site.",
+   "items": [
+    {
+     "value": 2,
+     "label": "Primary projects",
+     "note": "Musebase · YK Engine"
+    },
+    {
+     "value": 4,
+     "label": "Case studies",
+     "note": "2 primary · 2 supporting"
+    },
+    {
+     "value": 7,
+     "label": "System areas",
+     "note": "Where we build"
+    },
+    {
+     "value": 6,
+     "label": "Principles",
+     "note": "How we decide"
+    }
+   ]
+  }
+ },
+ "process": {
+  "page": "work/internal-crm",
+  "props": {
+   "type": "process",
+   "anchor": "concerns",
+   "railLabel": "Four concerns",
+   "scene": "dependency-graph",
+   "eyebrow": "What the design has to answer",
+   "title": "Four concerns of a very large set.",
+   "intro": "Design concerns, stated as questions. They are not measured results.",
+   "steps": [
+    {
+     "step": "01",
+     "title": "Find",
+     "body": "How does a person reach one record among millions?"
+    },
+    {
+     "step": "02",
+     "title": "Orient",
+     "body": "How do they stay oriented while moving through the set?"
+    },
+    {
+     "step": "03",
+     "title": "Act",
+     "body": "How do they act on many records without losing the thread?"
+    },
+    {
+     "step": "04",
+     "title": "Trust",
+     "body": "How does the interface show what is current and what is not?"
+    }
+   ]
+  }
+ },
+ "checklist": {
+  "page": "north/blocks",
+  "props": {
+   "type": "checklist",
+   "anchor": "checklist",
+   "railLabel": "Checklist",
+   "scene": "architectural-grid",
+   "eyebrow": "Block · checklist",
+   "title": "Before you add a block.",
+   "intro": "Tick as you go. Nothing is stored; the ticks are gone when you leave.",
+   "done": "Ready to add.",
+   "items": [
+    {
+     "label": "The type is one the loader knows",
+     "hint": "A misspelled type draws nothing, and nothing says so."
+    },
+    {
+     "label": "The words are in the data, not the component"
+    },
+    {
+     "label": "A text block uses a calm scene",
+     "hint": "The scene-balance check rejects the busy ones."
+    },
+    {
+     "label": "It works from the keyboard"
+    },
+    {
+     "label": "It reads well under reduced motion"
+    },
+    {
+     "label": "Any new non-prose key is on the search skip list",
+     "hint": "Otherwise the search will index it as if it were a sentence."
+    }
+   ]
+  }
+ },
+ "table": {
+  "page": "north/blocks",
+  "props": {
+   "type": "table",
+   "anchor": "catalogue",
+   "railLabel": "The catalogue",
+   "scene": "architectural-grid",
+   "eyebrow": "The catalogue",
+   "title": "20 kinds of block.",
+   "intro": "Sort by any column. The last column is the data a block takes; everything a reader sees is in it.",
+   "caption": "Every kind of page block, what it is and the data it takes",
+   "head": [
+    "Block",
+    "What it is",
+    "It takes"
+   ],
+   "rows": [
+    [
+     "split",
+     "A heading and prose on one side, a short list of labelled points on the other",
+     "eyebrow, title, body[], points[{ k, v }]"
+    ],
+    [
+     "cards",
+     "A grid, rail or bento of cards, each with a glyph that redraws, linking to a page",
+     "items[{ code, title, body, to, tags, status }], variant"
+    ],
+    [
+     "process",
+     "Numbered steps on a rail that fills as you scroll",
+     "steps[{ step, title, body }]"
+    ],
+    [
+     "modules",
+     "Columns that lens, or a ledger of rows that decode",
+     "groups[{ label, items[] }] or rows[{ k, v }]"
+    ],
+    [
+     "stats",
+     "Large figures, only of things the site can stand behind",
+     "items[{ value, suffix, label }]"
+    ],
+    [
+     "manifesto",
+     "A statement that lights word by word as you scroll, with a marquee",
+     "lines[], marquee[]"
+    ],
+    [
+     "signature",
+     "A composition that belongs to one page, loaded when it is needed",
+     "kind, and whatever that composition takes"
+    ],
+    [
+     "closer",
+     "The last block of a page: a composition that plays the page out",
+     "kind, tag, title, lede, onward[]"
+    ],
+    [
+     "callout",
+     "One remark set apart from the text: a note, a tip, a warning",
+     "tone, heading, body[], list[]"
+    ],
+    [
+     "table",
+     "Records in rows and columns, sortable if you ask",
+     "caption, head[], rows[[]], sortable"
+    ],
+    [
+     "timeline",
+     "Things in the order they happen, down a line",
+     "items[{ when, title, body, done }]"
+    ],
+    [
+     "faq",
+     "Questions and answers, each a disclosure",
+     "items[{ q, a[] }], openFirst"
+    ],
+    [
+     "compare",
+     "Two or three ways of looking at a choice, side by side",
+     "columns[{ label, title, tone, items[] }], verdict"
+    ],
+    [
+     "snippet",
+     "A piece of code or data with a file name and a copy button",
+     "code, language, filename, lines, notes[]"
+    ],
+    [
+     "tabs",
+     "Several short views of one subject, one at a time",
+     "tabs[{ id, label, body[], list[] }]"
+    ],
+    [
+     "quote",
+     "A pull quote with its source",
+     "quote, cite, context"
+    ],
+    [
+     "checklist",
+     "A list to tick through, held in the page only",
+     "items[{ label, hint }], done"
+    ],
+    [
+     "facts",
+     "A fact sheet: labels and their values",
+     "items[{ term, detail }], stacked"
+    ],
+    [
+     "links",
+     "Where to go next: cards that each hold one link",
+     "items[{ title, body, to, label }]"
+    ],
+    [
+     "numbers",
+     "A row of figures with how they moved, and a line if there is a series",
+     "items[{ label, value, unit, change, series[] }], note"
+    ]
+   ],
+   "sortable": true,
+   "note": "The first eight were built for this site and each has a motion identity of its own. The last twelve are made from the interface kit, take only data, and are meant to be used again."
+  }
+ },
+ "callout": {
+  "page": "north/blocks",
+  "props": {
+   "type": "callout",
+   "anchor": "callout",
+   "railLabel": "Callout",
+   "scene": "topographic-lines",
+   "eyebrow": "Block · callout",
+   "title": "A callout is for one thing.",
+   "tone": "note",
+   "heading": "Use it sparingly",
+   "body": [
+    "Use a callout for the single remark a reader must not miss: an honest limit, an open question, a warning. If every paragraph is a callout, none of them is read.",
+    "The kind of remark is written out as a word as well as shown by colour and icon, so it never depends on colour alone."
+   ]
+  }
+ },
+ "timeline": {
+  "page": "north/blocks",
+  "props": {
+   "type": "timeline",
+   "anchor": "timeline",
+   "railLabel": "Timeline",
+   "scene": "timeline-pulse",
+   "eyebrow": "Block · timeline",
+   "title": "How a block gets onto a page.",
+   "intro": "In order, with no dates, because the order is what matters.",
+   "items": [
+    {
+     "when": "First",
+     "title": "Write the data",
+     "body": "Add an object to the page’s list of blocks in its data file. Everything the reader will see is in it.",
+     "done": true
+    },
+    {
+     "when": "Then",
+     "title": "Give it a type",
+     "body": "The type names the block. The page loader looks the type up and draws it.",
+     "done": true
+    },
+    {
+     "when": "Then",
+     "title": "Choose a scene",
+     "body": "A Canvas scene is drawn behind the block. Blocks that carry text use the calmest scenes.",
+     "done": true
+    },
+    {
+     "when": "Last",
+     "title": "Check it",
+     "body": "Run the page-ending, smoke, contrast and accessibility checks. A block is not finished until they pass."
+    }
+   ]
+  }
+ },
+ "compare": {
+  "page": "north/blocks",
+  "props": {
+   "type": "compare",
+   "anchor": "compare",
+   "railLabel": "Compare",
+   "scene": "architectural-grid",
+   "eyebrow": "Block · compare",
+   "title": "A generic block, or a signature?",
+   "columns": [
+    {
+     "label": "Generic block",
+     "title": "Start here",
+     "tone": "yes",
+     "items": [
+      "The content is text, records or links",
+      "A standard layout does the job",
+      "The kit already has the component",
+      "Someone else could use the same block tomorrow"
+     ]
+    },
+    {
+     "label": "Signature",
+     "title": "When the page is the interaction",
+     "items": [
+      "The point of the page is something you do",
+      "The data has a shape no other page shares",
+      "The layout is part of the idea",
+      "It would not make sense anywhere else"
+     ]
+    }
+   ],
+   "verdict": "Start with a generic block. Reach for a signature when the page’s point is something a reader does and not something a reader reads."
+  }
+ },
+ "snippet": {
+  "page": "north/blocks",
+  "props": {
+   "type": "snippet",
+   "anchor": "snippet",
+   "railLabel": "Snippet",
+   "scene": "topographic-lines",
+   "eyebrow": "Block · snippet",
+   "title": "A block is a few lines of data.",
+   "intro": "This is the callout above, as it is written in the page’s data file.",
+   "filename": "north-blocks.js",
+   "language": "js",
+   "code": "{\n  type: 'callout',\n  anchor: 'callout',\n  scene: 'topographic-lines',\n  eyebrow: 'Block · callout',\n  title: 'A callout is for one thing.',\n  tone: 'note',\n  heading: 'Use it sparingly',\n  body: ['Use a callout for the single remark a reader must not miss.'],\n}",
+   "notes": [
+    "Every key is plain data. There is no markup in it.",
+    "Change the text and the page changes. Change the type and the same text is laid out differently."
+   ]
+  }
+ },
+ "tabs": {
+  "page": "north/blocks",
+  "props": {
+   "type": "tabs",
+   "anchor": "tabs",
+   "railLabel": "Tabs",
+   "scene": "privacy-quiet-grid",
+   "eyebrow": "Block · tabs",
+   "title": "What every block shares.",
+   "label": "What every block shares",
+   "tabs": [
+    {
+     "id": "scene",
+     "label": "Scene",
+     "body": [
+      "Every block can name a Canvas scene and how intense it should be. The scene is drawn behind the block and pauses off screen.",
+      "Blocks that carry a lot of text use the calmest scenes, and a measurement script keeps them calm."
+     ]
+    },
+    {
+     "id": "anchor",
+     "label": "Anchor",
+     "body": [
+      "An anchor gives a block an address on its page, so a link can point at it. A rail label puts it on the side rail that follows the reader down the page."
+     ]
+    },
+    {
+     "id": "motion",
+     "label": "Motion",
+     "body": [
+      "Each block reveals itself as it enters the screen. Under reduced motion it is simply there, and the animated backgrounds hold a single frame."
+     ]
+    }
+   ]
+  }
+ },
+ "quote": {
+  "page": "north/blocks",
+  "props": {
+   "type": "quote",
+   "anchor": "quote",
+   "railLabel": "Quote",
+   "scene": "wave-interference",
+   "eyebrow": "Block · quote",
+   "quote": "Movement carries meaning — state, direction, hierarchy. Nothing moves to decorate.",
+   "cite": "Hanoryx Systems · Principle 03, Motion with purpose",
+   "context": "A quote block is for words someone really said and agreed to have quoted. This site uses it for its own principles, never for testimonials."
+  }
+ },
+ "facts": {
+  "page": "north/blocks",
+  "props": {
+   "type": "facts",
+   "anchor": "facts",
+   "railLabel": "Facts",
+   "scene": "topographic-lines",
+   "eyebrow": "Block · facts",
+   "title": "The keys every block reads.",
+   "items": [
+    {
+     "term": "type",
+     "detail": "Which block to draw."
+    },
+    {
+     "term": "anchor",
+     "detail": "An address on the page, so a link can point at the block."
+    },
+    {
+     "term": "railLabel",
+     "detail": "The name the side rail shows for this block."
+    },
+    {
+     "term": "scene",
+     "detail": "The Canvas scene drawn behind it."
+    },
+    {
+     "term": "intensity",
+     "detail": "How strongly the scene is drawn: low, medium or hero."
+    },
+    {
+     "term": "eyebrow, title, intro",
+     "detail": "The small label, the heading and the lead sentence at the head of the block."
+    }
+   ]
+  }
+ },
+ "links": {
+  "page": "north/blocks",
+  "props": {
+   "type": "links",
+   "anchor": "links",
+   "railLabel": "Links",
+   "scene": "network-constellation",
+   "eyebrow": "Block · links",
+   "title": "Where the blocks are at work.",
+   "items": [
+    {
+     "title": "The interface components",
+     "body": "The 61 components every one of these blocks is built from, each with a live example.",
+     "to": "/north/components",
+     "label": "Open the gallery"
+    },
+    {
+     "title": "Downloads",
+     "body": "Uses a faq block to answer what can and cannot be done with the templates.",
+     "to": "/resources/downloads",
+     "label": "Read the questions"
+    },
+    {
+     "title": "Security disclosure",
+     "body": "Uses a checklist block to go through before you send a report.",
+     "to": "/trust/disclosure",
+     "label": "Go through the list"
+    },
+    {
+     "title": "Contact",
+     "body": "Uses a faq block for the questions people have before they write.",
+     "to": "/contact",
+     "label": "See the questions"
+    },
+    {
+     "title": "Accessible by default",
+     "body": "Uses a checklist block for a few minutes of hand-checking any page.",
+     "to": "/north/accessibility",
+     "label": "Run the check"
+    }
+   ]
+  }
+ },
+ "numbers": {
+  "page": "north/blocks",
+  "props": {
+   "type": "numbers",
+   "anchor": "numbers",
+   "railLabel": "Numbers",
+   "scene": "status-pulse-grid",
+   "eyebrow": "Block · numbers",
+   "title": "The block system, counted.",
+   "items": [
+    {
+     "label": "Pages",
+     "value": 86
+    },
+    {
+     "label": "Kinds of block",
+     "value": 20
+    },
+    {
+     "label": "Interface components",
+     "value": 61
+    },
+    {
+     "label": "Legal documents",
+     "value": 10
+    }
+   ],
+   "note": "Counts of what is on the site, worked out from its own data when the page is built. They are not measurements of anything."
+  }
+ }
+}

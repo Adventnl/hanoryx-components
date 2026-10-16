@@ -1,7 +1,7 @@
 /* 33 · CURSORS — every specimen is an area publishing --x and --y (0 to 1); CSS makes the effect. */
 
-@property --px { syntax: '<integer>'; inherits: true; initial-value: 0; }
-@property --py { syntax: '<integer>'; inherits: true; initial-value: 0; }
+@property --cur-px { syntax: '<integer>'; inherits: true; initial-value: 0; }
+@property --cur-py { syntax: '<integer>'; inherits: true; initial-value: 0; }
 @keyframes ripple { from { transform: translate(-50%, -50%) scale(0.2); opacity: 1; } to { transform: translate(-50%, -50%) scale(5); opacity: 0; } }
 @keyframes stamp { from { transform: translate(-50%, -50%) rotate(var(--r)) scale(2.4); opacity: 0; } }
 @keyframes drift { 0% { left: 14%; top: 26%; } 33% { left: 78%; top: 38%; } 66% { left: 44%; top: 78%; } 100% { left: 14%; top: 26%; } }
@@ -52,8 +52,8 @@
 .cross b { left: calc(var(--x) * 100%); top: calc(var(--y) * 100%); width: 0.9rem; height: 0.9rem; margin: -0.45rem; border: 1px solid var(--c-red); border-radius: 50%; }
 
 /* 10 readout */
-.read { --px: calc(var(--x) * 100); --py: calc(var(--y) * 100); }
-.read output { position: absolute; left: 0.6rem; bottom: 0.5rem; counter-reset: cx var(--px) cy var(--py); font: 500 0.52rem var(--font-mono); letter-spacing: 0.1em; color: var(--c-white-65); }
+.read { --cur-px: calc(var(--x) * 100); --cur-py: calc(var(--y) * 100); }
+.read output { position: absolute; left: 0.6rem; bottom: 0.5rem; counter-reset: cx var(--cur-px) cy var(--cur-py); font: 500 0.52rem var(--font-mono); letter-spacing: 0.1em; color: var(--c-white-65); }
 .read output::before { content: 'x ' counter(cx) '  y ' counter(cy); }
 
 /* 11 glowing grid */

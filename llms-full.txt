@@ -1,0 +1,2625 @@
+# hanoryx-components — full catalogue
+
+## Interface kit
+
+### Checkbox (kit/inputs)
+import { Checkbox } from 'hanoryx-components/kit';
+A checkbox with room for a hint. It is a real input — the square is drawn beside it — and it supports the indeterminate “some of them” state of a parent box.
+props: label, hint, checked, defaultChecked, onChange, indeterminate=false, disabled, className, ...rest
+
+### Combobox (kit/inputs)
+import { Combobox } from 'hanoryx-components/kit';
+An editable combobox: type to filter, move through the matches with the arrow keys, choose with Enter. Focus stays in the input; the highlighted option is named with aria-activedescendant.
+props: label, hint, error, required, options=[], value, defaultValue='', onChange, onSelect, placeholder='Type to search…', emptyText="Nothing matches.", className, disabled
+
+### Field (kit/inputs)
+import { Field } from 'hanoryx-components/kit';
+The label, hint and error that every field shares, wired up so a screen reader hears them. The control you put inside it receives its id, aria-describedby and aria-invalid.
+props: label, hint, error, required=false, id, className, labelExtra, children
+
+### FileDrop (kit/inputs)
+import { FileDrop } from 'hanoryx-components/kit';
+A drop zone that is also a file button: drag files onto it, or press it and choose. It lists what was picked and uploads nothing itself.
+props: label='Choose files', hint='or drop them here', accept, multiple=true, onFiles, className
+
+### NumberField (kit/inputs)
+import { NumberField } from 'hanoryx-components/kit';
+A number with a minus and a plus either side. The value is clamped to its range when you leave the field, never while you are typing.
+props: label, hint, error, required, value, defaultValue=null, onChange, min=-Infinity, max=Infinity, step=1, suffix, className, disabled
+
+### PasswordField (kit/inputs)
+import { PasswordField } from 'hanoryx-components/kit';
+A password field with a show/hide toggle and a rough strength meter. Everything happens in the page; nothing is sent anywhere.
+props: label="Password", hint, error, required, value, defaultValue='', onChange, meter=true, className, disabled
+
+### RadioGroup (kit/inputs)
+import { RadioGroup } from 'hanoryx-components/kit';
+A group of real radio buttons under a legend: the arrow keys move and choose, Tab leaves the group, and a screen reader says “2 of 4”.
+props: legend, options=[], value, defaultValue, onChange, name, row=false, className, disabled
+
+### RangeField (kit/inputs)
+import { RangeField } from 'hanoryx-components/kit';
+A slider: the native range input, with its value written beside the label and a text version (“240 ms”) for assistive technology.
+props: label, hint, value, defaultValue=0, onChange, min=0, max=100, step=1, format=String, marks, className, disabled
+
+### SearchField (kit/inputs)
+import { SearchField } from 'hanoryx-components/kit';
+A search box with a clear button and, when you give it a count, a result count that is read out as it changes.
+props: label='Search', hint, value, defaultValue='', onChange, count, noun="results", placeholder="Search…", className, disabled
+
+### Segmented (kit/inputs)
+import { Segmented } from 'hanoryx-components/kit';
+A short row of exclusive choices drawn as one control, with an ink that glides to the chosen one. Radio buttons underneath.
+props: label, options=[], value, defaultValue, onChange, name, className
+
+### SelectField (kit/inputs)
+import { SelectField } from 'hanoryx-components/kit';
+A native select, styled. Native on purpose: the platform’s own keyboard handling, its picker on a phone and its screen-reader behaviour come for free.
+props: label, hint, error, required, options=[], value, defaultValue='', onChange, placeholder, className, disabled
+
+### Switch (kit/inputs)
+import { Switch } from 'hanoryx-components/kit';
+An on/off switch for a setting that takes effect at once. A button with role switch, so Space and Enter flip it and a screen reader says “on” or “off”.
+props: label, checked, defaultChecked=false, onChange, disabled, showState=true, className, ...rest
+
+### TagInput (kit/inputs)
+import { TagInput } from 'hanoryx-components/kit';
+Type a word, press Enter or a comma and it becomes a tag. Each tag has its own remove button, and adding or removing is announced.
+props: label, hint, value, defaultValue=[], onChange, max=8, placeholder="Add a tag…", className, disabled
+
+### TextArea (kit/inputs)
+import { TextArea } from 'hanoryx-components/kit';
+A multi-line field that counts. Going over the limit turns the count red and marks the field invalid; it never cuts off what you typed.
+props: label, hint, error, required, maxLength, value, defaultValue='', onChange, rows=4, className, disabled, ...rest
+
+### TextField (kit/inputs)
+import { TextField } from 'hanoryx-components/kit';
+A single-line text field with a label, hint and error, and an optional prefix and suffix inside the border for a currency, a unit or an @.
+props: label, hint, error, required, prefix, suffix, className, disabled, type="text", ...input
+
+### Breadcrumbs (kit/navigation)
+import { Breadcrumbs } from 'hanoryx-components/kit';
+Where you are, as a trail back up. The last item is the current page and is not a link.
+props: items=[], label="Breadcrumb", className
+
+### DropdownMenu (kit/navigation)
+import { DropdownMenu } from 'hanoryx-components/kit';
+A button that opens a menu of actions — not a navigation; use links for that. The ARIA menu-button pattern, with typeahead.
+props: label, items=[], align="start", className
+
+### OnThisPage (kit/navigation)
+import { OnThisPage } from 'hanoryx-components/kit';
+An “on this page” list that follows the reader: the entry for the section nearest the top is marked, and pressing one scrolls there and moves focus to it.
+props: items=[], label="On this page", className
+
+### Pagination (kit/navigation)
+import { Pagination } from 'hanoryx-components/kit';
+Page buttons with the first, the last and the neighbours of the current one, “…” for what is skipped, and previous and next that stop at the ends.
+props: page, defaultPage=1, pages=1, onChange, siblings=1, label='Pagination', className
+
+### SideNav (kit/navigation)
+import { SideNav } from 'hanoryx-components/kit';
+A vertical navigation in groups that fold. A folded group is out of the tab order and the reading order, not only out of sight.
+props: groups=[], current, label="Section navigation", className
+
+### Stepper (kit/navigation)
+import { Stepper } from 'hanoryx-components/kit';
+The steps of something with an order, and which one you are on. Done steps show a tick, the current one is aria-current, and each state is written out for a screen reader.
+props: steps=[], current=0, label='Progress', className
+
+### Tabs (kit/navigation)
+import { Tabs } from 'hanoryx-components/kit';
+Tabs that change a panel of content, as the ARIA pattern asks: one tab stop for the list, arrow keys move between tabs and show the panel at once.
+props: tabs=[], value, defaultValue, onChange, label, className
+
+### Toolbar (kit/navigation)
+import { Toolbar } from 'hanoryx-components/kit';
+A row of tool buttons that is one tab stop; the arrow keys move between the tools. A tool can be a toggle, with aria-pressed.
+props: label, items=[], className
+
+### Alert (kit/feedback)
+import { Alert } from 'hanoryx-components/kit';
+A message in the flow of the page. Information and success speak politely; warnings and errors interrupt. The tone is never carried by colour alone.
+props: tone="info", title, children, onDismiss, className
+
+### Banner (kit/feedback)
+import { Banner } from 'hanoryx-components/kit';
+A notice that runs the width of its container, for something about the whole page or site rather than one field. It may carry one action and may be dismissed.
+props: title, children, action, dismissible=true, className
+
+### EmptyState (kit/feedback)
+import { EmptyState } from 'hanoryx-components/kit';
+What a list or a page says when there is nothing in it: why it is empty, and the one thing to do next. An empty state with no way forward is a dead end.
+props: icon=Inbox, title, children, action, className
+
+### Meter (kit/feedback)
+import { Meter } from 'hanoryx-components/kit';
+A gauge for a quantity inside a known range. The colour changes in the low and high zones and the zone is also written out for anyone who cannot see the colour.
+props: label, value, min=0, max=100, low, high, cells=20, unit='', className
+
+### ProgressBar (kit/feedback)
+import { ProgressBar } from 'hanoryx-components/kit';
+How far along something is. With a value it announces its percentage; without one it is indeterminate and says it is working.
+props: label, value, max=100, hideValue=false, className
+
+### Skeleton (kit/feedback)
+import { Skeleton } from 'hanoryx-components/kit';
+The shape of content that has not arrived yet, holding its space so nothing jumps when it does. Decorative: hidden from assistive technology.
+props: width='100%', height='1rem', lines, className
+
+### Spinner (kit/feedback)
+import { Spinner } from 'hanoryx-components/kit';
+A small “working on it” ring. It is a status message first — the label is announced — and a picture second. It stops turning for visitors who ask for less motion.
+props: label="Loading", size="1.6rem", hideLabel=false, className
+
+### StatusDot (kit/feedback)
+import { StatusDot } from 'hanoryx-components/kit';
+A coloured dot with its state spelled out beside it, so the colour is never the only signal. A live one can breathe.
+props: state="idle", label=state word, pulse=false, className
+
+### ToastProvider (kit/feedback)
+import { ToastProvider } from 'hanoryx-components/kit';
+Brief messages in a corner that leave by themselves. Announced politely, never take focus, pause while the pointer or keyboard is on them, and can always be dismissed.
+props: children, max=4, title, body, tone="info", duration=5000, max (provider)=4
+
+### Avatar (kit/data)
+import { Avatar } from 'hanoryx-components/kit';
+A person, a team or a system as its initials in a circle or square. No photographs, on purpose: initials need no consent, load instantly and cannot be the wrong face.
+props: name, size="2.4rem", shape='circle', tone, className, names, max (group)
+
+### AvatarGroup (kit/data)
+import { AvatarGroup } from 'hanoryx-components/kit';
+Avatars stacked as one group, with a "+N" for the ones that do not fit.
+props: names=[], max=4, size, className
+
+### Badge (kit/data)
+import { Badge } from 'hanoryx-components/kit';
+A short label for the state or kind of a thing: New, Beta, Deprecated. The word carries the meaning; the tone only reinforces it.
+props: children, tone="neutral", dot=false, className
+
+### BarList (kit/data)
+import { BarList } from 'hanoryx-components/kit';
+Bars you can read as a list: each row has its label, a bar and the figure, so the values are text first and a picture second. The largest is picked out in red.
+props: items=[], max=largest value, unit="", label, className
+
+### Chip (kit/data)
+import { Chip } from 'hanoryx-components/kit';
+A compact pill that can be plain information, a toggle (give it onClick; selected says whether it is on) and/or removable (give it onRemove).
+props: children, selected, onClick, onRemove, className
+
+### CodeBlock (kit/data)
+import { CodeBlock } from 'hanoryx-components/kit';
+A block of code with an optional file name, light colouring and a copy button. The colour is a nicety: every token is also plain text, so copying gives exactly what you see.
+props: code, language="js", filename, lines=false, className
+
+### DataTable (kit/data)
+import { DataTable } from 'hanoryx-components/kit';
+A table you can sort and select from. A sortable column’s header is a button and the th carries aria-sort. It scrolls sideways inside a focusable region on a narrow screen.
+props: caption, columns=[], rows=[], rowKey='id', selectable=false, onSelect, maxHeight, emptyText='No rows.', className
+
+### DescriptionList (kit/data)
+import { DescriptionList } from 'hanoryx-components/kit';
+Terms and what they mean, or labels and their values — the right element for a fact sheet. A real dl, so a screen reader pairs each term with its detail.
+props: items=[], stacked=false, className
+
+### Sparkline (kit/data)
+import { Sparkline } from 'hanoryx-components/kit';
+A tiny line chart with no axes, for “which way is it going”. It is an image with a text description — range, first and last value — so the shape is never the only way to learn it.
+props: data=[], label, width=180, height=44, unit='', className
+
+### Stat (kit/data)
+import { Stat } from 'hanoryx-components/kit';
+One number, large, with its label above and, if you have it, how it moved. The change is written as words for a screen reader; the arrow and colour are decoration.
+props: label, value, unit, change, changeLabel, note, className
+
+### Timeline (kit/data)
+import { Timeline } from 'hanoryx-components/kit';
+Things in the order they happen, down a line. It is an ordered list, so the order is announced. This site’s own timeline is told in undated phases — pass words, not dates, unless you have them.
+props: items=[], className
+
+### Tree (kit/data)
+import { Tree } from 'hanoryx-components/kit';
+An expandable tree — files, categories, an outline — following the ARIA tree-view pattern: one tab stop, arrow keys through what is visible.
+props: nodes=[], label, onSelect, defaultOpen=[], className
+
+### ConfirmDialog (kit/overlays)
+import { ConfirmDialog } from 'hanoryx-components/kit';
+“Are you sure?” done properly: the title says what will happen, the buttons say what they do, and for something that cannot be undone the safe choice has focus.
+props: open, title, children, confirmLabel='Confirm', cancelLabel='Cancel', danger=false, onConfirm, onCancel
+
+### Dialog (kit/overlays)
+import { Dialog } from 'hanoryx-components/kit';
+A modal dialog: it takes over the screen until it is dealt with. Focus moves in and is trapped, Escape and the backdrop close it, the page behind stops scrolling and focus returns to what opened it.
+props: open, onClose, title, children, footer, width="32rem", side, dismissible=true, className
+
+### Drawer (kit/overlays)
+import { Drawer } from 'hanoryx-components/kit';
+A dialog that slides in from an edge and runs the full height — for a filter panel or a record’s detail, where the page behind still gives context.
+props: side="right", width="26rem", ...props, ...dialog
+
+### HoverCard (kit/overlays)
+import { HoverCard } from 'hanoryx-components/kit';
+A preview card for a link: hover or focus the link and a little more about where it goes appears, and stays while the pointer is on it. It must only ever add.
+props: title, body, children, delay=280, className
+
+### Popover (kit/overlays)
+import { Popover } from 'hanoryx-components/kit';
+A panel that opens under a button and holds anything — text, a small form, a few links. It is not modal: focus stays where it is and Tab moves on into the panel.
+props: label, title, children, align='start', placement='bottom', className
+
+### Tooltip (kit/overlays)
+import { Tooltip } from 'hanoryx-components/kit';
+A short description that appears beside a control on hover or keyboard focus, after a beat so it does not flicker. It adds detail; it never replaces a label.
+props: text, children, placement="top", delay=350, className
+
+### AspectRatio (kit/content)
+import { AspectRatio } from 'hanoryx-components/kit';
+Reserves a box of a fixed shape and fills it with its child, so an image, a video or a chart has its room before it loads and nothing below it jumps.
+props: ratio="16 / 9", children, className
+
+### Callout (kit/content)
+import { Callout } from 'hanoryx-components/kit';
+A remark set apart from the text around it: a note, a tip, a warning. The kind is written out as a word as well as shown by colour and icon.
+props: tone="note", title=tone word, children, className
+
+### Card (kit/content)
+import { Card } from 'hanoryx-components/kit';
+A surface that groups related content, in four variants. The title is a heading whose level you choose, so the card fits the outline of the page it is on.
+props: eyebrow, title, as="h3", children, footer, variant="raised", interactive=false, className
+
+### Center (kit/content)
+import { Center } from 'hanoryx-components/kit';
+A capped column, centred in its parent — for a form, a card or a short passage. Fills the parent on a phone, stops at `max` on a desktop. New in this library.
+props: as='div', max='36rem', align, className, children, style, ...rest
+
+### Cluster (kit/content)
+import { Cluster } from 'hanoryx-components/kit';
+Children in a row that wraps when it runs out of room — buttons, tags, links.
+props: children, gap=3, align='center', justify='flex-start', as='div', className
+
+### Container (kit/content)
+import { Container } from 'hanoryx-components/kit';
+The page width: centred, 1360 px max (gutters included), with a fluid 20–80 px gutter. size="text" narrows it to a 760 px reading column. New in this library — the same as the global `.container` class.
+props: as='div', size='default', className, children, ...rest
+
+### Disclosure (kit/content)
+import { Disclosure } from 'hanoryx-components/kit';
+One section that opens and closes — a question and its answer, a “more detail”. The closed body is out of the tab order and the reading order, not only out of sight.
+props: title, children, open, defaultOpen=false, onChange, as="h3", className
+
+### Divider (kit/content)
+import { Divider } from 'hanoryx-components/kit';
+A line between things. Without a label it is a plain thematic break; with one it reads as a section break (“or”, “Later”) and is a separator, not a heading.
+props: children, className
+
+### Figure (kit/content)
+import { Figure } from 'hanoryx-components/kit';
+Something visual with a caption. The caption belongs to the figure, so a screen reader reads the two together.
+props: children, caption, className
+
+### Grid (kit/content)
+import { Grid } from 'hanoryx-components/kit';
+Children in as many equal columns as fit, none narrower than a minimum. There is no breakpoint to maintain: on a phone the minimum is wider than the screen, so you get one column.
+props: children, min="15rem", gap=4, as='div', className
+
+### Heading (kit/content)
+import { Heading } from 'hanoryx-components/kit';
+A heading in the serif voice. `level` is the HTML element (for the outline); `size` is how it looks, from the type scale — display, hero, h1–h4. New in this library.
+props: level=2, size, as, className, children, ...rest
+
+### Prose (kit/content)
+import { Prose } from 'hanoryx-components/kit';
+A reading column. Wrap plain HTML — headings, paragraphs, lists, links, code, quotes — and it is typeset for reading: about 68 characters wide, generous leading, serif headings.
+props: children, as="div", className
+
+### Quote (kit/content)
+import { Quote } from 'hanoryx-components/kit';
+A pull quote with its source: a real blockquote inside a figure, the attribution as the caption. Only put words here that someone really said.
+props: children, cite, className
+
+### Section (kit/content)
+import { Section } from 'hanoryx-components/kit';
+A page block's outer shell: the vertical rhythm between blocks (80–176 px, or 48–96 px with size="sm"). New in this library — the same as the global `.section` class.
+props: as='section', size='md', className, children, ...rest
+
+### Stack (kit/content)
+import { Stack } from 'hanoryx-components/kit';
+Children in a column with an even gap taken from the spacing tokens.
+props: children, gap=4, as="div", className
+
+### Text (kit/content)
+import { Text } from 'hanoryx-components/kit';
+Text in one of the three voices: body, lead, small, caption, or the mono uppercase label. Tone is an opacity of white (strong, default, dim) or red. New in this library.
+props: variant='body', tone='default', measure=false, as, className, children, ...rest
+
+### VisuallyHidden (kit/content)
+import { VisuallyHidden } from 'hanoryx-components/kit';
+Text for assistive technology that is not drawn: the “Close” on an icon-only button, the “(current page)” after a link. It stays in the reading order and out of the layout.
+props: children, as="span"
+
+## Foreground toolkit
+
+### Accordion
+import { Accordion } from 'hanoryx-components/fx';
+A disclosure list with real height animation: index, title and a mono code per row; the code scrambles on hover or focus, the plus turns, the body opens with eased height.
+props: items, single=true, defaultOpen=null, numbered=true, className
+
+### ArrowLink
+import { ArrowLink } from 'hanoryx-components/fx';
+An inline call to action: an underline draws left→right on hover and the arrow glides out of its corner. Becomes a router Link (`to`), an external link (`href`) or a button.
+props: to, href, children, className, tone='default', ...rest
+
+### CompareSlider
+import { CompareSlider } from 'hanoryx-components/fx';
+Before / after comparison. Drag the handle (mouse, touch, pen), press the track to glide there, or use ← → Home End on the handle.
+props: before, after, beforeLabel='Before', afterLabel='After', initial=50, value, onChange, label='Comparison', className, ...rest
+
+### DragRail
+import { DragRail } from 'hanoryx-components/fx';
+A horizontal rail of cards. Touch scrolls natively with snap; with a mouse you can grab and fling it. The rail is a named, keyboard-scrollable region.
+props: children, label='Scrollable list', className
+
+### GlideTabs
+import { GlideTabs } from 'hanoryx-components/fx';
+A segmented control / tab list whose selection ink glides between tabs. Full tablist keyboard model; pass `panels={false}` when it only changes a nearby demo (then it is announced as a radio group).
+props: tabs, value, onChange, label, idPrefix='tabs', variant='pill', panels=true, className, ...rest
+
+### Glyph
+import { Glyph } from 'hanoryx-components/fx';
+A drawn SVG glyph from a set of 27 line glyphs (orbit, layers, flow, grid, shield, chart, terminal…) that draws itself in. `play` replays the draw-in; hover any ancestor with `.glyph-host` to redraw.
+props: name, size=40, className, playKey=0, title, ...rest
+
+### HoverIndex
+import { HoverIndex } from 'hanoryx-components/fx';
+A typographic index: big rows that a floating preview card follows the cursor across. On touch or keyboard every row shows its own detail line, so nothing hides behind hover.
+props: items, className
+
+### KeyCap
+import { KeyCap } from 'hanoryx-components/fx';
+A visible keyboard key. `pressed` gives it the depressed, lit state.
+props: children, pressed=false, className, ...rest
+
+### Odometer
+import { Odometer } from 'hanoryx-components/fx';
+A number that rolls into place, each digit on its own wheel with a stagger. Starts at 0 and settles when it scrolls into view.
+props: value, decimals=0, prefix='', suffix='', className
+
+### ProgressRing
+import { ProgressRing } from 'hanoryx-components/fx';
+A ring gauge. `value` is 0..1; the stroke eases to it with a CSS transition, so ticking a checkbox sweeps the ring instead of jumping.
+props: value=0, size=96, stroke=3, label, children, className, ...rest
+
+### ProximityText
+import { ProximityText } from 'hanoryx-components/fx';
+Text that reacts to the pointer: each unit lifts, swells and warms toward red as the cursor comes near. Touch and reduced motion get plain text.
+props: text, as='span', by='word', radius=220, className, unitClassName, ...rest
+
+### RichText
+import { RichText } from 'hanoryx-components/fx';
+Inline markup for copy that lives in plain data files: `**bold**`, `` `code` `` and `{{defined term}}`. A term with an entry in `terms` becomes a focusable word whose definition appears on hover or focus.
+props: text, terms, highlight
+
+### ScrambleText
+import { ScrambleText } from 'hanoryx-components/fx';
+Text that decodes from noise into its final form, left to right. Shows the final text at once under reduced motion.
+props: text, as='span', trigger=0, auto=false, duration=720, className, ...rest
+
+### ScrollRail
+import { ScrollRail } from 'hanoryx-components/fx';
+A quiet progress rail for long pages: one tick per section; the current one stretches and lights; hover or focus names it; click glides there.
+props: sections
+
+### ScrollWords
+import { ScrollWords } from 'hanoryx-components/fx';
+A passage that lights up word by word as you scroll through it — reading pace becomes scroll pace. One ScrollTrigger writes a single `--p` onto the element.
+props: text, as='p', className, startAt=0.86, endAt=0.42, ...rest
+
+### SpotlightCard
+import { SpotlightCard } from 'hanoryx-components/fx';
+A card whose 1 px border and surface are lit by the pointer: a radial light travels the border while a faint glow pools under the cursor. Becomes a link with `to` or `href`.
+props: to, href, tone='red', className, innerClassName, children, ...rest
+
+### TiltSurface
+import { TiltSurface } from 'hanoryx-components/fx';
+A surface that leans toward the pointer, with a specular highlight that follows it. Driven by CSS variables (no React state); touch and reduced motion get a still surface. Children may use `data-depth="n"` to drift against the tilt.
+props: as='div', tilt=7, glare=true, className, style, children, ...rest
+
+### VelocityMarquee
+import { VelocityMarquee } from 'hanoryx-components/fx';
+A marquee that reads the page’s scroll. It drifts on its own, speeds up and leans with scroll velocity, and slows under the pointer. Reduced motion shows the first set, still.
+props: items, speed=46, direction=1, className, itemClassName
+
+## Site UI
+
+### Button
+import { Button } from 'hanoryx-components/ui';
+The primary interactive control. It becomes a router `Link` with `to`, an `<a>` with `href` (external links open safely in a new tab) and a `<button>` otherwise. Magnetic pull toward the pointer by default.
+props: to, href, variant='primary', size='md', icon, magnetic=true, className, children, ...rest
+
+### CatalogError
+import { CatalogError } from 'hanoryx-components/ui';
+The "could not load" state for catalogue-backed controls, with a retry action. Announced as an alert.
+props: retry, subject='page list'
+
+### DataPanel
+import { DataPanel } from 'hanoryx-components/ui';
+The glass data panel — the base surface for cards and modules: optional corner brackets, a mono code/label strip, a hover scan-line, and an optional link.
+props: code, label, brackets=true, interactive=false, tone='default', to, href, className, children, ...rest
+
+### GlitchLine
+import { GlitchLine } from 'hanoryx-components/ui';
+A thin animated divider — a hairline with a slow travelling highlight and a rare red glitch tick. Decorative; frozen under reduced motion.
+props: tone='default', className, ...rest
+
+### Pill
+import { Pill } from 'hanoryx-components/ui';
+A small mono tag or status chip. `dot` adds a live indicator; `icon` a leading icon.
+props: children, variant='default', dot=false, icon, className, ...rest
+
+### SectionHeader
+import { SectionHeader } from 'hanoryx-components/ui';
+Eyebrow + serif title + optional intro, with a staged reveal. The head of nearly every block.
+props: eyebrow, title, intro, code, as='h2', size='h2', align='left', variant='up', reveal=true, className, children
+
+## Page
+
+### PageHero (page/template)
+import { PageHero } from 'hanoryx-components/page';
+The scene-backed full-screen hero: a pointer-reactive headline, an intro, actions and — when `hero.aside` names a signature — an interactive object in the right half.
+props: hero, accent
+
+### HeroTitle (page/template)
+import { HeroTitle } from 'hanoryx-components/page';
+The hero headline: each word rises out of a clipped line (staggered), then the words react to the pointer.
+props: text, as='h1', className, delay=0.1, ...rest
+
+### NotFound (page/template)
+import { NotFound } from 'hanoryx-components/page';
+"Signal lost": the 404 echoes the address that was asked for and lists the real pages nearest to it, ranked by spelling from the navigation directory.
+
+### PageBlock (page/template)
+import { PageBlock } from 'hanoryx-components/page';
+The block dispatcher: draws one block from `{ type, … }`. Built-in types render directly; the data-first kinds are lazy chunks.
+props: block, accent
+
+### PageTemplate (page/template)
+import { PageTemplate } from 'hanoryx-components/page';
+Renders a whole page from a data object: a scene-backed hero, then each block in order, plus a scroll rail for blocks that declare `anchor` + `railLabel`. Sets the document title and wraps the page in a transition.
+props: data
+
+### TemplatePage (page/template)
+import { TemplatePage } from 'hanoryx-components/page';
+A route element for a data-driven page: loads the page by key through the registered `loadPage` source (its own code-split chunk), suspends on the route fallback, and shows the 404 when there is no data.
+props: routeKey
+
+### CalloutBlock (page/blocks)
+import { CalloutBlock } from 'hanoryx-components/page';
+One remark set apart from the text: a note, a tip, a warning.
+props: block, accent
+
+### CardsBlock (page/blocks)
+import { CardsBlock } from 'hanoryx-components/page';
+A grid, rail or bento of cards, each with a glyph that redraws, linking to a page.
+props: block, accent
+
+### ChecklistBlock (page/blocks)
+import { ChecklistBlock } from 'hanoryx-components/page';
+A list to tick through, held in the page only.
+props: block, accent
+
+### CloserBlock (page/blocks)
+import { CloserBlock } from 'hanoryx-components/page';
+The last block of a page: a composition that plays the page out.
+props: block, accent
+
+### CompareBlock (page/blocks)
+import { CompareBlock } from 'hanoryx-components/page';
+Two or three ways of looking at a choice, side by side.
+props: block, accent
+
+### FactsBlock (page/blocks)
+import { FactsBlock } from 'hanoryx-components/page';
+A fact sheet: labels and their values.
+props: block, accent
+
+### FaqBlock (page/blocks)
+import { FaqBlock } from 'hanoryx-components/page';
+Questions and answers, each a disclosure.
+props: block, accent
+
+### LinksBlock (page/blocks)
+import { LinksBlock } from 'hanoryx-components/page';
+Where to go next: cards that each hold one link.
+props: block, accent
+
+### ManifestoBlock (page/blocks)
+import { ManifestoBlock } from 'hanoryx-components/page';
+A statement that lights word by word as you scroll, with a marquee.
+props: block, accent
+
+### ModulesBlock (page/blocks)
+import { ModulesBlock } from 'hanoryx-components/page';
+Columns that lens, or a ledger of rows that decode.
+props: block, accent
+
+### NumbersBlock (page/blocks)
+import { NumbersBlock } from 'hanoryx-components/page';
+A row of figures with how they moved, and a line if there is a series.
+props: block, accent
+
+### ProcessBlock (page/blocks)
+import { ProcessBlock } from 'hanoryx-components/page';
+Numbered steps on a rail that fills as you scroll.
+props: block, accent
+
+### QuoteBlock (page/blocks)
+import { QuoteBlock } from 'hanoryx-components/page';
+A pull quote with its source.
+props: block, accent
+
+### Shell (page/blocks)
+import { Shell } from 'hanoryx-components/page';
+Section wrapper: each block owns its own scene background + container, and an optional anchor id the ScrollRail can jump to.
+props: block, accent, className, children
+
+### SignatureBlock (page/blocks)
+import { SignatureBlock } from 'hanoryx-components/page';
+A composition that belongs to one page, loaded when it is needed.
+props: block, accent
+
+### SnippetBlock (page/blocks)
+import { SnippetBlock } from 'hanoryx-components/page';
+A piece of code or data with a file name and a copy button.
+props: block, accent
+
+### SplitBlock (page/blocks)
+import { SplitBlock } from 'hanoryx-components/page';
+A heading and prose on one side, a short list of labelled points on the other.
+props: block, accent
+
+### StatsBlock (page/blocks)
+import { StatsBlock } from 'hanoryx-components/page';
+Large figures, only of things the site can stand behind.
+props: block, accent
+
+### TableBlock (page/blocks)
+import { TableBlock } from 'hanoryx-components/page';
+Records in rows and columns, sortable if you ask.
+props: block, accent
+
+### TabsBlock (page/blocks)
+import { TabsBlock } from 'hanoryx-components/page';
+Several short views of one subject, one at a time.
+props: block, accent
+
+### TimelineBlock (page/blocks)
+import { TimelineBlock } from 'hanoryx-components/page';
+Things in the order they happen, down a line.
+props: block, accent
+
+## Shell
+
+### AudioSignalButton (shell/audio)
+import { AudioSignalButton } from 'hanoryx-components/shell';
+Compact audio control for the navbar: a live frequency visualizer + state readout.
+props: className
+
+### AudioVisualizer (shell/audio)
+import { AudioVisualizer } from 'hanoryx-components/shell';
+Canvas frequency visualizer. Reacts to real audio when playing; idles subtly when paused. Size via CSS.
+props: bars=16, className
+
+### HanoryxCursor (shell/cursor)
+import { HanoryxCursor } from 'hanoryx-components/shell';
+The designed precision cursor: a tight core dot tracks the pointer while a reticle follows with a little lag, and grows over elements marked `data-cursor`. Fine pointers only; off under reduced motion.
+
+### BootSequence (shell/effects)
+import { BootSequence } from 'hanoryx-components/shell';
+The cinematic intro: brand and a START control, a HUD calibration with terminal lines, then the lift. Starts the ambient track inside the click when one is configured.
+props: onComplete, onExited
+
+### MagneticButton (shell/effects)
+import { MagneticButton } from 'hanoryx-components/shell';
+Wraps an interactive element with a subtle magnetic pull toward the pointer. Polymorphic via `as` (a `<button>` by default). Off for coarse pointers and reduced motion.
+props: as='button', strength=0.35, radius=90, className, children, ...rest
+
+### NoiseOverlay (shell/effects)
+import { NoiseOverlay } from 'hanoryx-components/shell';
+Fixed, full-viewport film-grain veil built from an inline SVG turbulence filter (no external asset). Pointer-events none, very low opacity.
+props: className
+
+### PerfDebug (shell/effects)
+import { PerfDebug } from 'hanoryx-components/shell';
+Development-only performance HUD. Shows live FPS, active rAF subscribers (≈ running scenes/loops), and the current quality tier. Reads values on a 500ms interval and writes them straight to the DOM — no per-frame React state.
+
+### ScanlineOverlay (shell/effects)
+import { ScanlineOverlay } from 'hanoryx-components/shell';
+Fixed, full-viewport CRT scanline veil. Extremely subtle, static and pointer-events none.
+props: className
+
+### SynthesisCanvas (shell/experience)
+import { SynthesisCanvas } from 'hanoryx-components/shell';
+SynthesisCanvas — the heavy, procedural half of the cinematic. A single canvas drives every particle/ring/grid layer for all eleven phases.
+props: accent='#ff3333', quality='high', initialTime=0, className
+
+### SystemSynthesisOverlay (shell/experience)
+import { SystemSynthesisOverlay } from 'hanoryx-components/shell';
+SystemSynthesisOverlay — the full-screen takeover. NOT a page, NOT a player.
+props: onClose
+
+### Footer (shell/layout)
+import { Footer } from 'hanoryx-components/shell';
+The site footer — a directory of the whole site, not a second navigation bar: six columns of grouped links, live section counts, the status and the legal row. Collapses to disclosures on a phone.
+
+### PageTransition (shell/layout)
+import { PageTransition } from 'hanoryx-components/shell';
+Wraps a page so routes fade and slide between each other, at a dim level — never fully dark. Transform and opacity only. Pairs with `AnimatePresence mode="wait"` around the routes.
+props: children, className
+
+### RouteAnnouncer (shell/layout)
+import { RouteAnnouncer } from 'hanoryx-components/shell';
+Tells assistive technology that a new page has opened: waits for the title to settle, says it in a polite status region, and moves focus to `main`.
+
+### RouteFallback (shell/layout)
+import { RouteFallback } from 'hanoryx-components/shell';
+The loading state while a route chunk streams in: a pulsing telemetry line, quiet and short-lived. Use as the `Suspense` fallback of your routes.
+
+### SiteShell (shell/layout)
+import { SiteShell } from 'hanoryx-components/shell';
+The frame around every page: skip link, navbar, mobile menu, footer, search, shortcuts, cursor, film-grain and scanline veils, route transitions and the boot intro. Wrap the routes in it once.
+props: children
+
+### AdvancedNavbar (shell/navigation)
+import { AdvancedNavbar } from 'hanoryx-components/shell';
+The primary navigation: a hover-intent controller and a wide full-screen-width menu (categories on the left, pages across the right). Reads its groups from the navigation config.
+props: menuOpen, onToggleMenu, revealed=true
+
+### MegaPanel (shell/navigation)
+import { MegaPanel } from 'hanoryx-components/shell';
+The presence wrapper: the sheet stays mounted while a group is open, so moving from one group to the next swaps its contents instead of replaying the drop.
+props: group, ...rest
+
+### MobileNav (shell/navigation)
+import { MobileNav } from 'hanoryx-components/shell';
+The full-screen phone menu: expandable route groups, the audio control and the status. Opened by the navbar burger.
+props: open, onClose
+
+### NodeMap (shell/navigation)
+import { NodeMap } from 'hanoryx-components/shell';
+The site's orbit diagram, kept as a small aside in the wide menu: a drawn ring with one node per page of the open category, a selector arc that swings to the page being pointed at, and the group's code at the core.
+props: count, hot, code
+
+### ScrollProgress (shell/navigation)
+import { ScrollProgress } from 'hanoryx-components/shell';
+A hairline at the top edge that fills with page scroll progress.
+
+### CommandPalette (shell/search)
+import { CommandPalette } from 'hanoryx-components/shell';
+Command palette and site search: a portal overlay anchored near the top, section chips, highlighted body-text excerpts and full keyboard handling. Opens with Ctrl/⌘ K or `/`.
+props: enabled=true
+
+### BlueprintLayer (shell/shortcuts)
+import { BlueprintLayer } from 'hanoryx-components/shell';
+Blueprint mode. `html.blueprint` outlines every marked part of the page (see styles/fx.css);
+props: active
+
+### GlobalKeys (shell/shortcuts)
+import { GlobalKeys } from 'hanoryx-components/shell';
+Site-wide single-key shortcuts that belong to no one page: `?` opens the shortcuts panel and `B` switches blueprint mode. Switchable off for WCAG 2.1.4 (`html[data-keys="off"]`).
+props: enabled
+
+### ShortcutsOverlay (shell/shortcuts)
+import { ShortcutsOverlay } from 'hanoryx-components/shell';
+The "?" panel: a short list of the keys that do something here.
+props: open, onClose
+
+### TransitionOverlay (shell/transitions)
+import { TransitionOverlay } from 'hanoryx-components/shell';
+The route "current": navigating does not cover the screen — a thin red line travels the viewport with the destination written at its end. Skipped under reduced motion.
+
+## Reveal & kinetic type
+
+### Reveal
+import { Reveal } from 'hanoryx-components/reveal';
+Reveal — animate a single element into view with a named profile. <Reveal profile="slideLeft" as="p">…</Reveal> Honours reduced motion (static).
+props: profile='fadeUp', as='div', delay=0, amount=0.3, once=true, className, children, style, ...rest
+
+### RevealGroup
+import { RevealGroup } from 'hanoryx-components/reveal';
+RevealGroup — staggers its children, each entering with the same per-item profile. Like Reveal, this does not re-render on scroll: the container and item variants are stable so the staggered entrance plays once.
+props: profile='fadeUp', as='div', itemAs='div', stagger=0.08, delayChildren=0.05, amount=0.2, once=true, className, itemClassName, children, ...rest
+
+### KineticText
+import { KineticText } from 'hanoryx-components/reveal';
+Split-text reveal. Each character (or word) rises out of a clipped line with a staggered cadence — the signature "kinetic" headline motion. Pure CSS spans, no paid SplitText plugin.
+props: text='', as='span', by='char', stagger, duration=0.9, immediate=false, delay=0, start='top 88%', className, ...rest
+
+### fadeUp (reveal/profiles)
+<Reveal profile="fadeUp">…</Reveal>
+Entrance profile "fadeUp" for <Reveal profile="fadeUp">.
+
+### slideLeft (reveal/profiles)
+<Reveal profile="slideLeft">…</Reveal>
+Entrance profile "slideLeft" for <Reveal profile="slideLeft">.
+
+### slideRight (reveal/profiles)
+<Reveal profile="slideRight">…</Reveal>
+Entrance profile "slideRight" for <Reveal profile="slideRight">.
+
+### skewIn (reveal/profiles)
+<Reveal profile="skewIn">…</Reveal>
+Entrance profile "skewIn" for <Reveal profile="skewIn">.
+
+### settleDown (reveal/profiles)
+<Reveal profile="settleDown">…</Reveal>
+Entrance profile "settleDown" for <Reveal profile="settleDown">.
+
+### scanX (reveal/profiles)
+<Reveal profile="scanX">…</Reveal>
+Entrance profile "scanX" for <Reveal profile="scanX">.
+
+### scanXReverse (reveal/profiles)
+<Reveal profile="scanXReverse">…</Reveal>
+Entrance profile "scanXReverse" for <Reveal profile="scanXReverse">.
+
+### maskUp (reveal/profiles)
+<Reveal profile="maskUp">…</Reveal>
+Entrance profile "maskUp" for <Reveal profile="maskUp">.
+
+### maskDown (reveal/profiles)
+<Reveal profile="maskDown">…</Reveal>
+Entrance profile "maskDown" for <Reveal profile="maskDown">.
+
+### curtainSplit (reveal/profiles)
+<Reveal profile="curtainSplit">…</Reveal>
+Entrance profile "curtainSplit" for <Reveal profile="curtainSplit">.
+
+### depthRise (reveal/profiles)
+<Reveal profile="depthRise">…</Reveal>
+Entrance profile "depthRise" for <Reveal profile="depthRise">.
+
+### zoomThrough (reveal/profiles)
+<Reveal profile="zoomThrough">…</Reveal>
+Entrance profile "zoomThrough" for <Reveal profile="zoomThrough">.
+
+### splitY (reveal/profiles)
+<Reveal profile="splitY">…</Reveal>
+Entrance profile "splitY" for <Reveal profile="splitY">.
+
+### unfoldX (reveal/profiles)
+<Reveal profile="unfoldX">…</Reveal>
+Entrance profile "unfoldX" for <Reveal profile="unfoldX">.
+
+### radialPop (reveal/profiles)
+<Reveal profile="radialPop">…</Reveal>
+Entrance profile "radialPop" for <Reveal profile="radialPop">.
+
+### chipPop (reveal/profiles)
+<Reveal profile="chipPop">…</Reveal>
+Entrance profile "chipPop" for <Reveal profile="chipPop">.
+
+### moduleSnap (reveal/profiles)
+<Reveal profile="moduleSnap">…</Reveal>
+Entrance profile "moduleSnap" for <Reveal profile="moduleSnap">.
+
+### orbitalCard (reveal/profiles)
+<Reveal profile="orbitalCard">…</Reveal>
+Entrance profile "orbitalCard" for <Reveal profile="orbitalCard">.
+
+### riseRotate (reveal/profiles)
+<Reveal profile="riseRotate">…</Reveal>
+Entrance profile "riseRotate" for <Reveal profile="riseRotate">.
+
+### flipIn (reveal/profiles)
+<Reveal profile="flipIn">…</Reveal>
+Entrance profile "flipIn" for <Reveal profile="flipIn">.
+
+### terminalOpen (reveal/profiles)
+<Reveal profile="terminalOpen">…</Reveal>
+Entrance profile "terminalOpen" for <Reveal profile="terminalOpen">.
+
+### glassMaterialize (reveal/profiles)
+<Reveal profile="glassMaterialize">…</Reveal>
+Entrance profile "glassMaterialize" for <Reveal profile="glassMaterialize">.
+
+### dataMaterialize (reveal/profiles)
+<Reveal profile="dataMaterialize">…</Reveal>
+Entrance profile "dataMaterialize" for <Reveal profile="dataMaterialize">.
+
+### realityAssemble (reveal/profiles)
+<Reveal profile="realityAssemble">…</Reveal>
+Entrance profile "realityAssemble" for <Reveal profile="realityAssemble">.
+
+### blurFocus (reveal/profiles)
+<Reveal profile="blurFocus">…</Reveal>
+Entrance profile "blurFocus" for <Reveal profile="blurFocus">.
+
+### diagonalSlice (reveal/profiles)
+<Reveal profile="diagonalSlice">…</Reveal>
+Entrance profile "diagonalSlice" for <Reveal profile="diagonalSlice">.
+
+### redactedUnlock (reveal/profiles)
+<Reveal profile="redactedUnlock">…</Reveal>
+Entrance profile "redactedUnlock" for <Reveal profile="redactedUnlock">.
+
+### nodeSequence (reveal/profiles)
+<Reveal profile="nodeSequence">…</Reveal>
+Entrance profile "nodeSequence" for <Reveal profile="nodeSequence">.
+
+### stepActivate (reveal/profiles)
+<Reveal profile="stepActivate">…</Reveal>
+Entrance profile "stepActivate" for <Reveal profile="stepActivate">.
+
+### countRise (reveal/profiles)
+<Reveal profile="countRise">…</Reveal>
+Entrance profile "countRise" for <Reveal profile="countRise">.
+
+### bracketIn (reveal/profiles)
+<Reveal profile="bracketIn">…</Reveal>
+Entrance profile "bracketIn" for <Reveal profile="bracketIn">.
+
+### depthStackRise (reveal/profiles)
+<Reveal profile="depthStackRise">…</Reveal>
+Entrance profile "depthStackRise" for <Reveal profile="depthStackRise">.
+
+### hexCellForm (reveal/profiles)
+<Reveal profile="hexCellForm">…</Reveal>
+Entrance profile "hexCellForm" for <Reveal profile="hexCellForm">.
+
+### hidden (reveal/profiles)
+<Reveal profile="hidden">…</Reveal>
+Entrance profile "hidden" for <Reveal profile="hidden">.
+
+### show (reveal/profiles)
+<Reveal profile="show">…</Reveal>
+Entrance profile "show" for <Reveal profile="show">.
+
+## Scenes
+
+### SceneCanvas (scenes/host)
+import { SceneCanvas } from 'hanoryx-components/scenes';
+Renders a single registered scene onto a canvas. - the scene library is loaded on demand (code-split) via ensureScenes() - each scene registers with the SCENE BUDGET: only the few most-visible scenes animate at once;
+props: scene, sceneData, cost='medium', density=1, accent='#ff3333', still=false, className
+
+### SectionScene (scenes/host)
+import { SectionScene } from 'hanoryx-components/scenes';
+Wraps a section with its own animated scene behind the content. This is how the site avoids one global background: every block declares its own `scene` + `intensity`. The canvas paints behind; content sits above with a stacking context.
+props: scene, sceneData, intensity='medium', accent='#ff3333', density=1, fade=true, as='section', className, contentClassName, children, ...rest
+
+### architectural-grid (scenes/base)
+<SceneCanvas scene="architectural-grid" />
+Technical blueprint surface: major + minor grid, measuring ticks, corner crosshair marks and dimension dashes, with a slow vertical drift and a single red crosshair node tracing the grid like a CAD cursor.
+
+### blackout-silhouette (scenes/base)
+<SceneCanvas scene="blackout-silhouette" />
+A hidden silhouette under redaction. Faint hatched black regions conceal an abstract geometric form; a vertical scan line sweeps across and briefly reveals the red edge contours where it passes, then re-conceals.
+
+### circuit-trace (scenes/base)
+<SceneCanvas scene="circuit-trace" />
+PCB-like traces with pulses travelling along right-angle paths.
+
+### command-terminal (scenes/base)
+<SceneCanvas scene="command-terminal" />
+A terminal readout — monospace log lines scan in sequence, a caret blinks on the active line, and a faint highlight bar sweeps down the column. One red WARN line. Static strings, low-alpha white; mysterious technical mood.
+
+### concentric-gate (scenes/base)
+<SceneCanvas scene="concentric-gate" />
+Concentric gate rings that draw open in staggered arcs — portal / hero core.
+
+### data-rain (scenes/base)
+<SceneCanvas scene="data-rain" />
+Restrained vertical data columns — measured, not a Matrix spam wall.
+
+### flow-field (scenes/base)
+<SceneCanvas scene="flow-field" />
+Optimized particle flow field with pointer displacement. Trails via a low alpha fill over the (near-black) section. Density scales with quality.
+
+### glass-prism (scenes/base)
+<SceneCanvas scene="glass-prism" />
+Angular translucent glass panels — rotated quads with faint white gradient fills and crisp edges, drifting and parallaxing as layered glass.
+
+### glyph-field (scenes/base)
+<SceneCanvas scene="glyph-field" />
+A sparse grid of abstract glyphs — small geometric marks (+, circles, brackets, short bars) that breathe in and out and occasionally swap form, like an unknown symbol language slowly writing itself.
+
+### heatmap-grid (scenes/base)
+<SceneCanvas scene="heatmap-grid" />
+Operational heatmap: a grid of cells whose intensity pulses as a sum of slow sine waves over position + time. Bright cells take a faint red tint, dim cells stay barely-there white.
+
+### hex-lattice (scenes/base)
+<SceneCanvas scene="hex-lattice" />
+Hexagon lattice with a travelling scan that lights nodes as it passes.
+
+### isometric-module (scenes/base)
+<SceneCanvas scene="isometric-module" />
+Isometric cubes drifting through depth — faint white volumes that bob and parallax. One cube is edge-lit in the accent red. 2:1 iso projection.
+
+### liquid-metal (scenes/base)
+<SceneCanvas scene="liquid-metal" />
+Soft elliptical blobs drifting and breathing — a calm metallic sheen. Large radial-gradient ellipses overlap with very low alpha; no hard edges.
+
+### magnetic-particles (scenes/base)
+<SceneCanvas scene="magnetic-particles" />
+Particles drifting in a slow ambient field, magnetically drawn toward the pointer when active — pulled in, brightened, then easing back when released.
+
+### network-constellation (scenes/base)
+<SceneCanvas scene="network-constellation" />
+Connected graph with light physics drift — a constellation / service map. Connections use a spatial cap (nearest by distance) to stay cheap.
+
+### orbital-node (scenes/base)
+<SceneCanvas scene="orbital-node" />
+Concentric orbits of nodes circling a core — multi-role / system map feel.
+
+### polar-radar (scenes/base)
+<SceneCanvas scene="polar-radar" />
+Rotating radar sweep with concentric rings and bearing ticks.
+
+### architecture-layer (scenes/presets)
+<SceneCanvas scene="architecture-layer" />
+ARCHITECTURE LAYER — a system blueprint of 4-5 stacked slab layers drawn in a slight isometric skew, joined by vertical connectors; a red data pulse rises through the stack, briefly lighting each layer it passes.
+
+### audio-signal-wall (scenes/presets)
+<SceneCanvas scene="audio-signal-wall" />
+AUDIO SIGNAL WALL — full-width spectrum visualizer. Reacts to live audio via the shared audio bridge; falls back to a procedural idle signal when nothing is playing. A faint baseline grid + a mirrored reflection give it depth.
+
+### build-pipeline (scenes/presets)
+<SceneCanvas scene="build-pipeline" />
+BUILD PIPELINE — 5 stage gates chained left to right; a build token advances gate by gate, each cleared stage fills with a check-tick pulse, and an occasional parallel branch forks below. A CI/build shape language.
+
+### client-portal-gate (scenes/presets)
+<SceneCanvas scene="client-portal-gate" />
+CLIENT PORTAL GATE — two concentric iris rings of arc blades that rhythmically open (gaps widen) then re-seal like an aperture, a rotating radial scan beam sweeps the field, and a locked diamond core glyph blinks red on each seal.
+
+### commerce-pipeline (scenes/presets)
+<SceneCanvas scene="commerce-pipeline" />
+COMMERCE PIPELINE — horizontal lanes carry small order tokens left to right through vertical stage gates; a soft scan band sweeps across, and the rare flagged order glows red. A logistics/order-flow shape language, no grid.
+
+### compass-vector (scenes/presets)
+<SceneCanvas scene="compass-vector" />
+Canvas scene "compass-vector".
+
+### contact-transmission (scenes/presets)
+<SceneCanvas scene="contact-transmission" />
+CONTACT TRANSMISSION — concentric ping rings emit outward from a source point at timed intervals over faint carrier waves, with a few drifting signal motes.
+
+### dashboard-tiles (scenes/presets)
+<SceneCanvas scene="dashboard-tiles" />
+DASHBOARD TILES — a bento grid of varied-size panels, each running a tiny live widget (sparkline, mini bars, blinking dot, gauge arc, ticker), while a single red focus highlight glides from tile to tile like a roving control cursor.
+
+### data-interface-wave (scenes/presets)
+<SceneCanvas scene="data-interface-wave" />
+Canvas scene "data-interface-wave".
+
+### data-stream-ribbons (scenes/presets)
+<SceneCanvas scene="data-stream-ribbons" />
+DATA STREAM RIBBONS — several bright thin straight diagonal ribbons of flowing dashes carrying data in transit; bright packet glints ride each stream over a faint baseline grid. Straight diagonal dash flow, not braided curves.
+
+### dependency-graph (scenes/presets)
+<SceneCanvas scene="dependency-graph" />
+DEPENDENCY GRAPH — modules in left-to-right layers wired by directed edges (a build DAG); a build wave sweeps left to right, compiling each layer: edges fill and node cores ignite in order.
+
+### error-signal-lost (scenes/presets)
+<SceneCanvas scene="error-signal-lost" />
+ERROR / SIGNAL LOST (404) — a near-flat heartbeat trace that twitches, glitches and drops out into a dead flatline, intermittent horizontal static bands tear across the screen, and a faint radar sweep hunts the void but finds nothing.
+
+### glyph-compiler (scenes/presets)
+<SceneCanvas scene="glyph-compiler" />
+GLYPH COMPILER — scattered mono glyphs drift in space, then snap into neat left-aligned rows (compiling), hold as clean labels, then dissolve back to scatter. A red caret/scan rides the row that is currently resolving.
+
+### heatmap-control (scenes/presets)
+<SceneCanvas scene="heatmap-control" />
+HEATMAP CONTROL — a dashboard heatmap: a tight grid of cells lit by several smooth gaussian "activity" blobs drifting across the field; warmth fades cell to cell, and only the hottest cells latch a sparse red accent outline.
+
+### hex-tunnel (scenes/presets)
+<SceneCanvas scene="hex-tunnel" />
+HEX TUNNEL — concentric hexagons surge outward from a vanishing point toward the viewer, each ring slightly counter-rotated and fading with depth; one pulsing red ring rides the loop. Built ring-by-ring (not a flat lattice).
+
+### home-core (scenes/presets)
+<SceneCanvas scene="home-core" />
+HOME CORE — the cinematic hero composite: a faint scrolling grid, a central arc/gate system that breathes, and a sparse particle field drifting over it. Pointer nudges the core. The most layered scene in the library.
+
+### interface-lab-shape (scenes/presets)
+<SceneCanvas scene="interface-lab-shape" />
+INTERFACE LAB SHAPE — abstract UI "component" specimens (toolbars, cards, toggles) as rounded-rect outlines with corner brackets that snap to a grid and periodically resize / rearrange between layout takes.
+
+### isometric-infra (scenes/presets)
+<SceneCanvas scene="isometric-infra" />
+ISOMETRIC INFRA — a blueprint isometric module field where lit modules sweep across in travelling diagonal clusters; a few of the brightest modules extrude tall vertical "data columns" that pulse upward. Faint base lattice, sparse red.
+
+### liquid-glass-operational (scenes/presets)
+<SceneCanvas scene="liquid-glass-operational" />
+LIQUID GLASS OPERATIONAL — large rounded translucent glass capsules drifting and overlapping, with soft white rim highlights, a faint inner sheen and thin refraction lines bending through each body. Calm, premium, operational.
+
+### magnetic-vector (scenes/presets)
+<SceneCanvas scene="magnetic-vector" />
+Canvas scene "magnetic-vector".
+
+### motion-curve-field (scenes/presets)
+<SceneCanvas scene="motion-curve-field" />
+Canvas scene "motion-curve-field".
+
+### musebase-coordination (scenes/presets)
+<SceneCanvas scene="musebase-coordination" />
+MUSEBASE COORDINATION — a central core with four module clusters (scheduling, communication, records, payment) orbiting on a wide ring;
+
+### node-compression (scenes/presets)
+<SceneCanvas scene="node-compression" />
+NODE COMPRESSION — scattered nodes breathe inward to a centred ordered ring lattice then disperse; connector lines thicken and brighten at peak compression, red core.
+
+### orbital-command (scenes/presets)
+<SceneCanvas scene="orbital-command" />
+ORBITAL COMMAND — a single command ring of evenly spaced route nodes with short packets routing along inter-node chords and a pulsing accent core.
+
+### permission-orbit (scenes/presets)
+<SceneCanvas scene="permission-orbit" />
+PERMISSION ORBIT — role/permission nodes orbit a central lock core on three concentric rings, each rotating at its own rate; a thin radial connector to a node blinks red as the node sweeps past the vertical "grant" axis.
+
+### polar-status (scenes/presets)
+<SceneCanvas scene="polar-status" />
+POLAR STATUS — a single instrument dial: a radial tick gauge with a red arc that fills to a slowly drifting setpoint, satellite readout dots on an outer ring, and a thin sweeping indicator needle. Pointer nudges the setpoint.
+
+### privacy-quiet-grid (scenes/presets)
+<SceneCanvas scene="privacy-quiet-grid" />
+PRIVACY QUIET GRID — a calm legal-page grid: a slow faint line grid, an occasional soft scan band drifting through long pauses, and a few slow-drifting tick marks that tick faintly red at their dwell points.
+
+### radar-cutaway (scenes/presets)
+<SceneCanvas scene="radar-cutaway" />
+RADAR CUTAWAY — a quarter radar anchored to the bottom-left corner: range rings and bearing spokes clipped to a 90deg wedge, a sweeping arm that paints contacts red as it crosses them, with blips that bloom then fade behind the sweep.
+
+### radial-audio-core (scenes/presets)
+<SceneCanvas scene="radial-audio-core" />
+RADIAL AUDIO CORE — a centred radial spectrum. drawRadialBars fans out from a white core ring, driven by live audio.bands (idle procedural when silent). Loud beats spawn outward-expanding pulse rings;
+
+### redacted-timeline-branch (scenes/presets)
+<SceneCanvas scene="redacted-timeline-branch" />
+REDACTED TIMELINE BRANCH — a horizontal timeline spine with ticking time markers;
+
+### research-blackout (scenes/presets)
+<SceneCanvas scene="research-blackout" />
+RESEARCH BLACKOUT — rows of redacted/blacked-out bars over a dark field; a slow horizontal scan band sweeps across, momentarily exposing bars it passes, while rare cells flicker a partial red reveal. Mostly dark and ominous.
+
+### scheduling-grid (scenes/presets)
+<SceneCanvas scene="scheduling-grid" />
+SCHEDULING GRID — an abstract week planner: vertical lanes split by horizontal time rows, booking blocks of varying length fade in and out across the lanes, and a vertical "now" line sweeps left->right lighting blocks it crosses;
+
+### secure-boundary (scenes/presets)
+<SceneCanvas scene="secure-boundary" />
+SECURE BOUNDARY — a central protected zone ringed by a slowly rotating dashed perimeter with a single accent gate aperture; access nodes drift in from outside and either thread the gate into the core or deflect off the wall.
+
+### signal-spectrum-field (scenes/presets)
+<SceneCanvas scene="signal-spectrum-field" />
+Canvas scene "signal-spectrum-field".
+
+### split-prism (scenes/presets)
+<SceneCanvas scene="split-prism" />
+SPLIT PRISM — the field sliced by several parallel diagonal seams whose offsets drift; each pane carries a faint distinct texture (fine lines / dot lattice / blank), and a bright edge highlight runs along the seams.
+
+### status-pulse-grid (scenes/presets)
+<SceneCanvas scene="status-pulse-grid" />
+STATUS PULSE GRID — a system monitor matrix of square status tiles; diagonal activation waves sweep across, lighting tiles as they pass; most tiles sit dim, a sparse few latch to a red "alert" state. Pointer drags a local hot zone.
+
+### tooling-console (scenes/presets)
+<SceneCanvas scene="tooling-console" />
+TOOLING CONSOLE — a faint terminal: a prompt with a blinking caret, left-aligned mono glyph lines that type in char-by-char, and a command-palette box that slides in from the right then retracts, its top entry highlighted red.
+
+### topology-pulse (scenes/presets)
+<SceneCanvas scene="topology-pulse" />
+TOPOLOGY PULSE — horizontal topographic contour lines crossed by a bright radial pulse ring that expands from a slowly drifting emitter, lifting nearby contours.
+
+### transaction-wave (scenes/presets)
+<SceneCanvas scene="transaction-wave" />
+TRANSACTION WAVE — a commerce throughput ticker: transaction spikes erupt upward from a baseline at varying heights, a slow cumulative line climbs across, faint value gridlines behind. Markets/throughput shape language, no full grid.
+
+### trigger-action-pulse (scenes/presets)
+<SceneCanvas scene="trigger-action-pulse" />
+TRIGGER ACTION PULSE — trigger nodes on the left fire pulses along rule-lines (some branching) to action nodes on the right, which flash red on arrival; a cause-and-effect automation rhythm.
+
+### unknown-silhouette (scenes/presets)
+<SceneCanvas scene="unknown-silhouette" />
+UNKNOWN SILHOUETTE — a large blacked-out irregular polygon mass sits centre, breathing slowly with a faint rim and rare red edge leaks; a sparse corner-bracket scanning frame and a column of redacted readout ticks surround it.
+
+### workflow-river (scenes/presets)
+<SceneCanvas scene="workflow-river" />
+WORKFLOW RIVER — many near-parallel curved streamlines drifting left-to-right like a braided river, with directional flow particles riding the exact curves at varying per-lane speed; sparse red marks the leading current.
+
+### redaction-matrix (scenes/base)
+<SceneCanvas scene="redaction-matrix" />
+A field of black metadata bars with a scan line that briefly "decrypts" the bars it passes over — classified / redacted mood.
+
+### signal-wave (scenes/base)
+<SceneCanvas scene="signal-wave" />
+Oscilloscope signal — a centered horizontal waveform of summed sines that scrolls continuously over a faint grid, flanked by two fainter secondary waves, with a red leading dot tracing the main trace.
+
+### spline-ribbon (scenes/base)
+<SceneCanvas scene="spline-ribbon" />
+Flowing bezier ribbons drifting across the field — a data stream.
+
+### timeline-pulse (scenes/base)
+<SceneCanvas scene="timeline-pulse" />
+A horizontal baseline through evenly spaced nodes. A bright red pulse sweeps left-to-right repeatedly, igniting each node as it passes. Faint vertical ticks drop beneath every node; the line itself is faint white.
+
+### topographic-lines (scenes/base)
+<SceneCanvas scene="topographic-lines" />
+Flowing contour / topology lines that breathe like terrain.
+
+### vector-compass (scenes/base)
+<SceneCanvas scene="vector-compass" />
+Vector direction field: a fixed grid of short arrow segments whose angles track flowAngle(x,y,t) and rotate smoothly, like compasses leaning into an invisible current. Faint white, sparse red. Cells are static;
+
+### voronoi-cell (scenes/base)
+<SceneCanvas scene="voronoi-cell" />
+Computational cell field — jittered sites drift and connect to their 2–3 nearest neighbours, approximating Voronoi cell walls without the cost of a full diagram. A few accent sites pulse red.
+
+### wave-interference (scenes/base)
+<SceneCanvas scene="wave-interference" />
+Layered sine-wave interference field — calm, signal-like horizontal bands.
+
+## Signatures
+
+### AccordionList
+import { AccordionList } from 'hanoryx-components/signatures';
+A titled list of disclosures (eased height, a scrambling code on hover, a plus that turns). Plain-text bodies are wrapped in a paragraph here so page data stays plain JSON.
+props: eyebrow, title, intro, items, defaultOpen, single=true, variant='left', note, marker='list.accordion'
+
+### ArchitectureExplorer
+import { ArchitectureExplorer } from 'hanoryx-components/signatures';
+The four layers of this website as a row. Pick one to see what feeds it, what it produces and where the code lives (shown as plain paths).
+props: eyebrow, title, intro, layers, note
+
+### AreasExplorer
+import { AreasExplorer } from 'hanoryx-components/signatures';
+Areas of work as a row of strips. The strip you point at (or focus, or tap) opens while its neighbours fold to a vertical label; on a phone the same set becomes a stack that opens downward.
+props: eyebrow, title, intro, areas, note
+
+### ArticleArt
+import { ArticleArt } from 'hanoryx-components/signatures';
+The hero object of a guide: its drawing, large. It draws itself in once, and again whenever you point at it.
+props: art, caption
+
+### ArticleArtShape
+import { ArticleArtShape } from 'hanoryx-components/signatures';
+
+props: art, className
+
+### AuditLog
+import { AuditLog } from 'hanoryx-components/signatures';
+An audit trail is judged by the questions it can answer. Choose which fields a log records; the questions people actually ask light up as answerable — or go dark, with the missing field named.
+props: eyebrow, title, intro, fields=[], questions=[], note
+
+### BasketAside
+import { BasketAside } from 'hanoryx-components/signatures';
+Hero object for the customer-product page: six abstract tiles. Tap one to "add" it — it lifts, takes a tick, and the basket count rolls up. A tiny taste of the experience; the tiles are shapes, not products.
+props: caption
+
+### BoundaryMembrane
+import { BoundaryMembrane } from 'hanoryx-components/signatures';
+The line between inside and outside. Twelve records sit behind a membrane; choose a role and the records that role may reach cross to the outside while the rest stay where they are.
+props: eyebrow, title, intro, records, roles, note
+
+### BoundaryReview
+import { BoundaryReview } from 'hanoryx-components/signatures';
+A review aid. Work through the questions for a system you are building; the ring and each group's bar fill as you answer. It does not assess any real system and stores nothing — ticks live in this page only.
+props: eyebrow, title, intro, groups, note
+
+### BrandBoard
+import { BrandBoard } from 'hanoryx-components/signatures';
+The brand as the site actually uses it, in five panels: the mark and the room it needs, the colours (click to copy;
+props: eyebrow, title, intro, mark, colours=[], faces=[], curves=[], voice=[]
+
+### BugCatcher
+import { BugCatcher } from 'hanoryx-components/signatures';
+Which kind of check catches which kind of problem? Switch checks on and off and watch what slips through. The grid is a judgement, not a measurement: it records what experience says each kind of check is good at.
+props: eyebrow, title, intro, checks=[], problems=[], note
+
+### CapabilityMatrix
+import { CapabilityMatrix } from 'hanoryx-components/signatures';
+What an operational system is usually made of, and which kind of system tends to need what. A reference, drawn as a grid: a judgement from experience, not a statement about any one project.
+props: eyebrow, title, intro, areas=[], capabilities=[], note
+
+### CaseDeck
+import { CaseDeck } from 'hanoryx-components/signatures';
+Hero object for the Work page: the four case studies as a deck of files. At rest they sit stacked with a slight fan; hover the deck and the cards spread out one by one, and the card under the pointer lifts. Each is a real link.
+
+### ChronologyScrubber
+import { ChronologyScrubber } from 'hanoryx-components/signatures';
+The company chronology as something you move through. Drag the playhead (or press ← → Home End on it, or click a stop or a row) and the stage beneath glides from phase to phase; "Play through" walks the whole sequence.
+props: eyebrow, title, intro, phases, note
+
+### ChronologyStrip
+import { ChronologyStrip } from 'hanoryx-components/signatures';
+A compact, horizontal preview of the company chronology. A line draws as the strip scrolls into view and the phase nodes light in turn (--p, one ScrollTrigger, CSS derives each node's state); the last node is the live one.
+props: eyebrow, title, intro, phases, linkLabel
+
+### ClaimsLedger
+import { ClaimsLedger } from 'hanoryx-components/signatures';
+The trust centre's ledger: three columns — what the site does, what it does not claim, and what is still open — each row a disclosure that says how you can check it for yourself and links to the page that proves it.
+props: eyebrow, title, intro, columns=[]
+
+### ClauseFinder
+import { ClauseFinder } from 'hanoryx-components/signatures';
+Plain-language clauses you can filter. Type to narrow, pick a topic, open a clause. The one-line gist sits under every title so the list can be read without opening anything.
+props: eyebrow, title, intro, topics, clauses, note
+
+### ComponentBench
+import { ComponentBench } from 'hanoryx-components/signatures';
+A bench for the site's own small components. Pick a specimen, change its props, and see the real component respond — then hover it, tab to it, press it.
+props: eyebrow, title, intro, specimens, note
+
+### ComponentGallery
+import { ComponentGallery } from 'hanoryx-components/signatures';
+A family of interface components, each shown live. Pick one from the list (or arrive with its name in the address);
+props: eyebrow, title, intro, items=[], note
+
+### ConsoleComposer
+import { ConsoleComposer } from 'hanoryx-components/signatures';
+Compose an internal platform. Switch modules on and off and the console re-flows around them (shared layout animation).
+props: eyebrow, title, intro, modules, roles, note
+
+### ContactStudio
+import { ContactStudio } from 'hanoryx-components/signatures';
+The contact page's one composition. Choose what the message is about, write it (a starter line can be dropped in for you), watch the envelope fill in, then either open it in your own mail app or copy the address.
+props: eyebrow, title, intro, types, email, note
+
+### ContractDiff
+import { ContractDiff } from 'hanoryx-components/signatures';
+
+props: eyebrow, title, intro, consumers=[], note
+
+### ContrastChecker
+import { ContrastChecker } from 'hanoryx-components/signatures';
+Two colours in, the WCAG contrast ratio out, with a verdict for each kind of thing that has to be read, and the nearest passing colour when it falls short. Runs entirely in the page; nothing is sent anywhere.
+props: eyebrow, title, intro, note, start={ fg: '#9a9ea6', bg: '#0a0b0d' }
+
+### CoordinationLab
+import { CoordinationLab } from 'hanoryx-components/signatures';
+Musebase foreground: three interactions about one idea. 1. PLACE — drag blocks across lanes and time; overlapping blocks flag, and "Resolve" glides them apart. 2. COMPARE — the same set scattered vs coordinated, with a slider. 3.
+props: eyebrow, title, intro, roles, notes
+
+### CronExplainer
+import { CronExplainer } from 'hanoryx-components/signatures';
+Paste a schedule, read it in plain English, and see the next times it will run — in your own time zone or in UTC. It explains; it runs nothing.
+props: eyebrow, title, intro, note
+
+### DataJourney
+import { DataJourney } from 'hanoryx-components/signatures';
+"What leaves your browser?" Choose something you might do on this site and the diagram shows which connections are made — and which are not. Every statement here describes what the site's own code does;
+props: eyebrow, title, intro, actions, dests, note
+
+### DataSlab
+import { DataSlab } from 'hanoryx-components/signatures';
+
+props: eyebrow, title, intro, sizes, caption, questions
+
+### DecisionRecord
+import { DecisionRecord } from 'hanoryx-components/signatures';
+A decision record builder. Fill in what was decided and why; the Markdown appears beside it, ready to commit next to the code. It starts with an invented example so you can see the shape — clear it and write your own.
+props: eyebrow, title, intro, note
+
+### DocumentReader
+import { DocumentReader } from 'hanoryx-components/signatures';
+A long-form document reader — for legal text, policies, handbooks and articles.
+props: eyebrow, title, intro, variant='legal', version, summaryLabel='In plain words', summary=[], meta=[], sections=[], terms, note, endLabel='End of document'
+
+### DotField
+import { DotField } from 'hanoryx-components/signatures';
+Hero object for the internal-CRM page: a dense field of ~750 dots — the feeling of a very large set, not a claim about one. A soft lens follows the pointer and pulls the dots near it into focus (bigger, brighter, red at the core);
+props: caption
+
+### DownloadShelf
+import { DownloadShelf } from 'hanoryx-components/signatures';
+Twelve documents assembled in the browser. The page-list download reads a generated catalog of page titles; the other files use data already loaded.
+props: eyebrow, title, intro, note
+
+### EasingStudio
+import { EasingStudio } from 'hanoryx-components/signatures';
+A cubic-bezier studio. Drag the two control points (or focus one and use the arrow keys; Shift moves further), pick a preset — the handles glide there — and watch the same curve move a ball, scale a block and fade a bar.
+props: eyebrow, title, intro, presets, note
+
+### EngineAnatomy
+import { EngineAnatomy } from 'hanoryx-components/signatures';
+How the engine is organised, as an interactive blueprint. Pick a part on the left; the matching block on the diagram lights and the panel explains it. The only external link on the whole site lives here — to the YK Engine repository.
+props: eyebrow, title, intro, parts, repoUrl, repoLabel
+
+### EngineAside
+import { EngineAside } from 'hanoryx-components/signatures';
+Hero object for YK Engine: a framed miniature viewport that leans toward the pointer. Decoration drawn to evoke an engine viewport — not engine output.
+props: caption
+
+### EngineEditor
+import { EngineEditor } from 'hanoryx-components/signatures';
+
+props: eyebrow, title, intro, caption
+
+### EnginePipeline
+import { EnginePipeline } from 'hanoryx-components/signatures';
+A left-to-right flow of stages. Pick one (click, tap, or ← →) and a token glides along the line to it — the line fills behind it — while the panel below cross-slides to that stage's description.
+props: eyebrow, title, intro, stages
+
+### ExperienceStoryboard
+import { ExperienceStoryboard } from 'hanoryx-components/signatures';
+A storyboard of the shopping and transaction experience, from first look to confirmation. Five abstract frames, each with one small interaction; a scrubber and ← → move through them, and Play walks the whole journey.
+props: eyebrow, title, intro, stages, caption
+
+### FaqDesk
+import { FaqDesk } from 'hanoryx-components/signatures';
+Questions and answers with a desk of categories on the left and a search field above the list. Type to narrow, pick a category, open a question; each answer can point at the page that answers it properly.
+props: eyebrow, title, intro, cats=[], faqs=[]
+
+### FrameBudget
+import { FrameBudget } from 'hanoryx-components/signatures';
+The frame budget, measured rather than described. Choose how many boxes to animate and which property moves them; press Run and the page really animates them for a couple of seconds while counting the frames it manages.
+props: eyebrow, title, intro, note
+
+### GateWalk
+import { GateWalk } from 'hanoryx-components/signatures';
+"Each stage gates the next." Walk a system from intent to release: the runner can only pass a gate once everything that gate asks has been ticked. Passing a gate glides the runner to the next stage; the last one releases.
+props: eyebrow, title, intro, stages, doneTitle, doneBody, note
+
+### GlossaryBrowser
+import { GlossaryBrowser } from 'hanoryx-components/signatures';
+Every term the site uses, in plain language: search, filter by area, jump by letter, copy a link to one term. The same list explains the words that are underlined in the guides.
+props: eyebrow, title, intro, note
+
+### HandoverPack
+import { HandoverPack } from 'hanoryx-components/signatures';
+
+props: eyebrow, title, intro, items=[], note
+
+### HiringPath
+import { HiringPath } from 'hanoryx-components/signatures';
+What a conversation about working at North looks like, stage by stage, from either side of the table. Pick a stage on the path; flip between "you" and "us" to read what each side does. No roles are open, and no timings are given.
+props: eyebrow, title, intro, stages=[], note
+
+### IdempotencyDemo
+import { IdempotencyDemo } from 'hanoryx-components/signatures';
+A payment request whose answer gets lost on the way back. With no idempotency key the client retries and the customer is charged twice; with one, the server recognises the retry and replays its first answer.
+props: eyebrow, title, intro, amount=20, note
+
+### IdentityCard
+import { IdentityCard } from 'hanoryx-components/signatures';
+Hero object for the Company page: a card that leans toward the pointer and turns over on click / Enter / Space. Front: the mark and status. Back: the company and its development team, each one a link.
+props: back, hint
+
+### InsightLibrary
+import { InsightLibrary } from 'hanoryx-components/signatures';
+The guides, as a library: filter by area, search, sort by length, and see at a glance which ones have something to play with. Titles, summaries and reading times are read from the guides themselves.
+props: eyebrow, title, intro, articles=[]
+
+### IntegrationAtlas
+import { IntegrationAtlas } from 'hanoryx-components/signatures';
+Six ways to connect two systems, and two of them at a time. Choose any two and every row compares them. The entries are general reference, written for this site, not a statement about any particular integration.
+props: eyebrow, title, intro, patterns=[], note
+
+### KeyboardMap
+import { KeyboardMap } from 'hanoryx-components/signatures';
+A keyboard you can press — or tap. Each key that does something on this site is drawn as a keycap; press the real key (or tap the cap) and it lights and says what it does here.
+props: eyebrow, title, intro, keys, rows, hint, note
+
+### KitIndex
+import { KitIndex } from 'hanoryx-components/signatures';
+The front door of the interface kit: every component, found by name or by what it is for. With nothing typed it shows the six families (each with its count and a few of its components);
+props: eyebrow, title, intro, note
+
+### LayerStack
+import { LayerStack } from 'hanoryx-components/signatures';
+An exploded view of a layered system. Three plates start stacked and part as you scroll through the section (one ScrollTrigger writes --p, CSS does the rest); hover or focus a plate to lift it clear and read what it holds.
+props: eyebrow, title, intro, layers, note
+
+### LegalCentre
+import { LegalCentre } from 'hanoryx-components/signatures';
+Every legal document in one place. The title, section count and reading time of each card are read from the document itself, and the bar along the bottom is its shape: one segment per section, as wide as the section is long.
+props: eyebrow, title, intro, docs=[]
+
+### LicenceTable
+import { LicenceTable } from 'hanoryx-components/signatures';
+Every library and typeface the site is built with, its version and its licence, as published by the packages themselves. Filter, search, sort — and see at a glance which licences make up the whole.
+props: eyebrow, title, intro, note
+
+### LifecycleLine
+import { LifecycleLine } from 'hanoryx-components/signatures';
+A system's life as five stages, with an illustrative shape of the effort each asks for. Slide along it to see where you are and what the stage is mostly about.
+props: eyebrow, title, intro, stages=[], note
+
+### LiveBudget
+import { LiveBudget } from 'hanoryx-components/signatures';
+Live numbers from THIS page on THIS device: frames per second, how many background scenes are actually running (against the cap), how many animation loops are subscribed and the current quality tier.
+props: framed=false
+
+### LiveStatus
+import { LiveStatus } from 'hanoryx-components/signatures';
+Not a status page for the company — a status page for YOUR visit.
+props: eyebrow, title, intro, note
+
+### LogoPlate
+import { LogoPlate } from 'hanoryx-components/signatures';
+Hero object for the Musebase page: the real mark, set on a light plate like a physical card, in front of two more plates (the mark itself is a stack of planes).
+props: caption
+
+### MiniEngine
+import { MiniEngine } from 'hanoryx-components/signatures';
+A miniature 2D scene — rectangles and discs drifting in a grid, one of them "selected" with a gizmo that hops between them. It is decoration drawn to evoke an engine viewport; it does not run YK Engine.
+props: count=9, className, ...rest
+
+### NeedsFinder
+import { NeedsFinder } from 'hanoryx-components/signatures';
+"What are you trying to do?" — pick a need and the matching system area is lit in the strip below and explained in the panel, with a link. A small playful route through the section, built as a real radio group (↑ ↓ ← → move and choose;
+props: eyebrow, title, intro, needs, areas
+
+### NorthCompass
+import { NorthCompass } from 'hanoryx-components/signatures';
+Hero object for the development page: a compass whose four points are the four pillars of the team's work.
+props: pillars, caption
+
+### OpsFlow
+import { OpsFlow } from 'hanoryx-components/signatures';
+"The life of a request." Choose a kind of request and send it: a token glides through four stages, the request card fills in field by field and an append-only record writes a line at each stage.
+props: eyebrow, title, intro, stages, kinds, note
+
+### OrbitNav
+import { OrbitNav } from 'hanoryx-components/signatures';
+An orbit-shaped site navigator. Four routes circle a brand core; the whole object leans toward the pointer; hovering or focusing a node freezes the orbit and the core reads out where it leads. Touch simply taps through.
+
+### OrderPath
+import { OrderPath } from 'hanoryx-components/signatures';
+An order as a state machine. Pick a scenario and run it: a token walks the path through the states (it can double back, or stop at a terminal state), each state explains itself, and a small ledger says whether anything settled.
+props: eyebrow, title, intro, nodes, edges, scenarios, note
+
+### PageOutline
+import { PageOutline } from 'hanoryx-components/signatures';
+A screen reader's-eye view of the page you are reading: its title and language, its headings as an outline, its landmarks, how many places the Tab key stops, and a few things that go wrong. Click a heading to go there.
+props: eyebrow, title, intro, note
+
+### PermissionMatrix
+import { PermissionMatrix } from 'hanoryx-components/signatures';
+Roles against actions. Toggle what a role may do, switch between "roles only" and "roles plus scope" (own records, own team), then act as a person and see the decision — and the rule that made it.
+props: eyebrow, title, intro, roles=[], actions=[], note
+
+### PressKit
+import { PressKit } from 'hanoryx-components/signatures';
+Everything someone writing about the company needs to get it right: the company in three lengths (each one copies in a press), a fact sheet where every line copies, and the mark in the files the site itself uses.
+props: eyebrow, title, intro, boilerplates=[], facts=[], assets=[], rules=[]
+
+### PrincipleStack
+import { PrincipleStack } from 'hanoryx-components/signatures';
+Principles as a deck of cards that stack as you scroll: each card sticks just below the last, so the next one slides over it like a card laid on a pile (pure CSS `position: sticky`).
+props: eyebrow, title, intro, principles
+
+### ProjectRhythm
+import { ProjectRhythm } from 'hanoryx-components/signatures';
+How a piece of work moves, as a stepper you can walk (or let walk itself). Each phase says what it produces, what gets decided in it, who is in the room, and the one question that has to be answered before moving on.
+props: eyebrow, title, intro, phases=[], note
+
+### ReadinessCheck
+import { ReadinessCheck } from 'hanoryx-components/signatures';
+Twenty questions to ask before something goes live, in five groups. Answer Yes, Partly, No or Not applicable; the gaps come back as a list to act on, which can be copied or downloaded. Nothing is kept once you leave.
+props: eyebrow, title, intro, note
+
+### ReleaseNotes
+import { ReleaseNotes } from 'hanoryx-components/signatures';
+The site's history, told in chapters, newest first. The site is not versioned and nothing on it is derived from repository dates, so the chapters carry no dates: they are in the order things happened. Filter by what kind of change.
+props: eyebrow, title, intro, note
+
+### ResearchBench
+import { ResearchBench } from 'hanoryx-components/signatures';
+A small bench of three working studies from this very site. They are live: the numbers in the first are read from this page on this device, the second answers your system's motion setting, the third is a real keyboard row.
+props: eyebrow, title, intro, experiments, note
+
+### ResourceDesk
+import { ResourceDesk } from 'hanoryx-components/signatures';
+The four shelves of the resource centre, each with a live count read from the data behind it and a small peek at what is on it.
+props: eyebrow, title, intro, note
+
+### RuleChain
+import { RuleChain } from 'hanoryx-components/signatures';
+A rule you can assemble and run. Choose a trigger, a condition and an action, decide whether the condition holds, then run it: a pulse travels WHEN → IF → THEN → LOG and the record appends a line for every run — including the runs where…
+props: eyebrow, title, intro, triggers, conditions, actions, note
+
+### RunbookWalk
+import { RunbookWalk } from 'hanoryx-components/signatures';
+The same incident, two runbooks. One explains the system; the other starts from the symptom.
+props: eyebrow, title, intro, incident, versions=[], note
+
+### SceneLab
+import { SceneLab } from 'hanoryx-components/signatures';
+A viewer for the site's own Canvas scenes. Choose a study from the list (or with ↑ ↓), change its density, and flip "Still frame" to see the single frame a visitor with reduced motion gets.
+props: eyebrow, title, intro, experiments, note
+
+### ServiceMap
+import { ServiceMap } from 'hanoryx-components/signatures';
+Every service your browser may be asked to contact for this site, one at a time: what it receives, when, whether you can avoid it, and what you would see if you did.
+props: eyebrow, title, intro, services=[], note
+
+### SiteDirectory
+import { SiteDirectory } from 'hanoryx-components/signatures';
+A directory of every page on the site, built from the same page data that renders them. Type to filter (title, path and the page's opening line), or press "Take me somewhere" to land on a page at random.
+props: eyebrow, title, intro
+
+### SplitFlap
+import { SplitFlap } from 'hanoryx-components/signatures';
+A departure board for the careers hero. Two fixed rows state the facts — nothing is listed, introductions are welcome — and a third row flips through the areas of work. Click the third row to flip to the next area yourself.
+props: rows, cycle, caption
+
+### StackMap
+import { StackMap } from 'hanoryx-components/signatures';
+The site's stack as slabs, top to bottom: what the visitor touches down to what builds it. Versions and licences are read from the same data as the licences page, so they cannot disagree with it.
+props: eyebrow, title, intro, layers=[], note
+
+### StorageInspector
+import { StorageInspector } from 'hanoryx-components/signatures';
+A live look at what this site has stored in YOUR browser, read straight from cookies, local storage and session storage — not a description of them. Items with the site's own prefix are explained;
+props: eyebrow, title, intro, known, note
+
+### SurfaceCompare
+import { SurfaceCompare } from 'hanoryx-components/signatures';
+
+props: eyebrow, title, intro, groups, note
+
+### SystemIndex
+import { SystemIndex } from 'hanoryx-components/signatures';
+A typographic index of the system areas: large rows, a red rule that follows the pointer from row to row, and a floating preview card that trails the cursor (fine pointers only — on touch every row simply shows its own detail).
+props: eyebrow, title, intro, items
+
+### SystemMap
+import { SystemMap } from 'hanoryx-components/signatures';
+
+props: nodes, links, core, caption
+
+### TensionDials
+import { TensionDials } from 'hanoryx-components/signatures';
+
+props: dials, caption
+
+### TokenInspector
+import { TokenInspector } from 'hanoryx-components/signatures';
+The design tokens, read from the stylesheet this page is wearing. Search them, group them, see what each one is, copy it as var(--name). Nothing here is typed in by hand: change a token in the CSS and this page changes with it.
+props: eyebrow, title, intro, note
+
+### ToolBench
+import { ToolBench } from 'hanoryx-components/signatures';
+The five browser tools, each with what it does and what it never does. Every one runs in the page: no account, no upload, nothing kept.
+props: eyebrow, title, intro, note
+
+### ToolchainMap
+import { ToolchainMap } from 'hanoryx-components/signatures';
+The site's own toolchain as a row of switches. Every stage guards against a kind of problem; switch one off and the ring drops and the problem it would have caught is listed as "could slip through".
+props: eyebrow, title, intro, stages, note
+
+### TriggerCompare
+import { TriggerCompare } from 'hanoryx-components/signatures';
+Three triggers, one burst of work. Slide the size of the burst, the number of workers and the cron interval, and compare how long the average job waits and how big the backlog gets.
+props: eyebrow, title, intro, note
+
+### TypeScaleTool
+import { TypeScaleTool } from 'hanoryx-components/signatures';
+A type scale: one base size multiplied again and again by one ratio, so the sizes belong together. Set the base and the ratio, see each step set in type, and copy the sizes as CSS custom properties.
+props: eyebrow, title, intro, note
+
+### ViewShift
+import { ViewShift } from 'hanoryx-components/signatures';
+
+props: eyebrow, title, intro, records, states, views, note
+
+### WorkPortals
+import { WorkPortals } from 'hanoryx-components/signatures';
+Selected work, composed as portals. Two primary projects sit side by side as big panels; hover or focus one and it widens while the other gives way (flex-grow eases, nothing jumps), its art moves (plates fan out;
+props: eyebrow, title, intro, supportingLabel
+
+## Closers
+
+### AltTextLab
+import { AltTextLab } from 'hanoryx-components/closers';
+Write the alt text for four pictures, each a different problem: a chart, an ornament, an icon in a button, an illustration. Press Check for a short review against common rules, then see one way each could be written.
+props: tag, title, lede, onward
+
+### AskDeck
+import { AskDeck } from 'hanoryx-components/closers';
+Questions a candidate is welcome to ask, on cards. Turn one to see why it is a good question to ask — and what a good answer would sound like.
+props: tag, title, lede, cards=[], onward
+
+### AskTheSite
+import { AskTheSite } from 'hanoryx-components/closers';
+Ask the whole site a question. It searches every page's title and text with the same engine as ⌘K and lays the best answers out here, with the sentence that matched. If the answer is not on the site, it says so.
+props: tag, title, lede, examples=[], onward
+
+### AutomationMath
+import { AutomationMath } from 'hanoryx-components/closers';
+Is it worth automating? Put in how long a job takes, how often it happens, what it costs to build and what it costs to keep running; the page says when it pays for itself, if it ever does. Your numbers; the arithmetic only.
+props: tag, title, lede, onward
+
+### BlockPicker
+import { BlockPicker } from 'hanoryx-components/closers';
+“Which block?” Say what you are trying to show and the page names the block that suits it, with the data that makes it, why it fits, and what people usually reach for instead.
+props: tag, title, lede, intents=[], onward
+
+### Bottleneck
+import { Bottleneck } from 'hanoryx-components/closers';
+An operation moves at the pace of its slowest step. Five steps, each with people and minutes per item: the slowest is marked, and adding a person anywhere else changes nothing. An invented operation, to show the shape.
+props: tag, title, lede, onward
+
+### BundleBuilder
+import { BundleBuilder } from 'hanoryx-components/closers';
+Choose several of the downloadable documents and have them joined into one Markdown file with a contents list — built here, in the page, when you press the button. A pack for a new project, a new teammate, or a handover.
+props: tag, title, lede, presets=[], onward
+
+### CaseExam
+import { CaseExam } from 'hanoryx-components/closers';
+Six questions to put to any case study, put to this site's own. For each of the four, the page says plainly what is answered, what is only partly answered and what is not said at all. A way of showing the limits instead of hiding them.
+props: tag, title, lede, questions=[], cases=[], onward
+
+### ChannelCount
+import { ChannelCount } from 'hanoryx-components/closers';
+Why coordination gets harder faster than the team grows. Everyone telling everyone needs a channel for every pair of people: the count grows with the square of the headcount. One shared picture needs one per person. The arithmetic, drawn.
+props: tag, title, lede, onward
+
+### ChaosWheel
+import { ChaosWheel } from 'hanoryx-components/closers';
+Break it on purpose. Spin for a way things go wrong, read what should happen and how to rehearse it, and mark the ones you have tried. A wheel because the failure you rehearse is usually the one you thought of; this picks another.
+props: tag, title, lede, scenarios=[], onward
+
+### CheatSheet
+import { CheatSheet } from 'hanoryx-components/closers';
+One printable page that holds what the five tools turn on: the thresholds, the ratios, the field ranges, the groups, the headings. Print it, or copy it as plain text.
+props: tag, title, lede, onward
+
+### CheckSheet
+import { CheckSheet } from 'hanoryx-components/closers';
+A checklist to take away: tick things off and a ring fills; copy the whole thing as Markdown (ticks included) or print it. Used by several pages with their own list — each ending is registered under its own name.
+props: tag, title, lede, sheetTitle, items=[], groups, onward
+
+### ClampMaker
+import { ClampMaker } from 'hanoryx-components/closers';
+Fluid type without media queries: a font size that grows smoothly between two viewport widths and stops at both ends. Set the four numbers; the one line of CSS comes out, and a slider stands in for the browser window.
+props: tag, title, lede, onward
+
+### CloserFrame
+import { CloserFrame } from 'hanoryx-components/closers';
+The common skeleton of a page ending. Each ending is its own composition (see closers/registry.js);
+props: tag, title, lede, onward, align='left', className, children
+
+### DataShape
+import { DataShape } from 'hanoryx-components/closers';
+“Show this data.” Pick the shape your data has and the page shows the component that suits it, drawn with sample data, with the reason — and the common wrong choice and why it fails.
+props: tag, title, lede, shapes=[], onward
+
+### DeprecationNotice
+import { DeprecationNotice } from 'hanoryx-components/closers';
+Write the notice before you break anything. Say what is going, what replaces it and how long people have; out come the announcement and the two response headers (Deprecation and Sunset) that let tools notice on their own.
+props: tag, title, lede, onward
+
+### DoneBuilder
+import { DoneBuilder } from 'hanoryx-components/closers';
+Write a definition of done. Choose what must be true before work counts as finished; the list becomes a card you can print or paste. It nudges you toward a short list, because a long one is a list nobody checks.
+props: tag, title, lede, groups=[], start=[], onward
+
+### DstTrap
+import { DstTrap } from 'hanoryx-components/closers';
+Daylight-saving time, as it bites a schedule. Choose a zone and a time of day; the page finds the day or days this year when the clocks change in that zone and says what happens to your time on each: skipped, repeated, or fine.
+props: tag, title, lede, onward
+
+### EasePick
+import { EasePick } from 'hanoryx-components/closers';
+The same menu opening, four times, each on a different easing. Pick the one that feels right, then see what the rule of thumb says — and why.
+props: tag, title, lede, options=[], answer, why, onward
+
+### EndCredits
+import { EndCredits } from 'hanoryx-components/closers';
+Roll credits for the company: not people, but the disciplines, the work and the parts it is made from. It scrolls only while it is on screen, slows to a stop under the pointer, and is a plain list under reduced motion.
+props: tag, title, lede, credits=[], onward
+
+### ExposureDesk
+import { ExposureDesk } from 'hanoryx-components/closers';
+Design what a customer portal shows. Each field of an order says what the usual rule is; switch fields on and off and the preview changes, with a warning for anything that should never leave the building. An invented order.
+props: tag, title, lede, fields=[], onward
+
+### FairLine
+import { FairLine } from 'hanoryx-components/closers';
+Eight things a visitor might do. Call each one fine or not fine; the answer is revealed with the policy's reasoning, and a running tally shows how your reading compares.
+props: tag, title, lede, cases=[], onward
+
+### FinePrint
+import { FinePrint } from 'hanoryx-components/closers';
+The disclaimers in genuinely tiny type, with a lens that follows the pointer and reads the line under it at a size you can read.
+props: tag, title, lede, lines=[], onward
+
+### FitRadar
+import { FitRadar } from 'hanoryx-components/closers';
+Set how much each area of the work draws you, and a radar fills in. The area you lean towards most is named. Nothing is stored or sent — it is a mirror, not a form.
+props: tag, title, lede, axes=[], onward
+
+### FixedStep
+import { FixedStep } from 'hanoryx-components/closers';
+Why a game engine does not simply use the time since the last frame. The same ball is dropped three ways: with a tiny step (the answer), with a fixed step that catches up however slowly frames arrive, and with whatever time the frame took.
+props: tag, title, lede, onward
+
+### FlashDeck
+import { FlashDeck } from 'hanoryx-components/closers';
+Flashcards from the glossary. Read the term, say what it means, turn the card, and mark whether you had it. At the end, the ones still to learn are listed with a way to read more. Nothing is saved.
+props: tag, title, lede, onward
+
+### FocusTrap
+import { FocusTrap } from 'hanoryx-components/closers';
+“Try to escape the dialog.” Open it and press Tab, Shift+Tab and Escape: a log beside it writes down where focus goes — in, round and round inside, and back to the button that opened it. The dialog is the kit’s own.
+props: tag, title, lede, rules=[], onward
+
+### FormBuilder
+import { FormBuilder } from 'hanoryx-components/closers';
+Choose the fields a form needs and the page builds it from the kit's own components, checks it when you send it (focus goes to the first problem, and a summary is announced), and writes the JSX out so you can take it with you.
+props: tag, title, lede, fields=[], onward
+
+### FrameTape
+import { FrameTape } from 'hanoryx-components/closers';
+A strip-chart recorder for this page. Every frame the browser draws is one column on the tape — tall and red when it took long — and three counters tick from the same measurements. Purely live: nothing is kept or sent.
+props: tag, title, lede, onward
+
+### FunnelMath
+import { FunnelMath } from 'hanoryx-components/closers';
+Every step between a first look and a confirmed purchase takes some people away. Set how many carry on at each step (your numbers, invented here) and watch the product of them; then take a step away and see what it is worth.
+props: tag, title, lede, steps=[], onward
+
+### GateRun
+import { GateRun } from 'hanoryx-components/closers';
+A request walks the gates one at a time and stops at the first that says no. Pick a scenario, send it, and watch where it is turned back — and which question it failed. The gates are the page's own four review areas.
+props: tag, title, lede, gates=[], scenarios=[], onward
+
+### HistoryBar
+import { HistoryBar } from 'hanoryx-components/closers';
+The whole history of the site as one chart: a row for each chapter, a bar as long as the number of notes in it, cut into what was added, changed and fixed. The shapes differ as well as the shades, so it reads without colour.
+props: tag, title, lede, onward
+
+### Horizon
+import { Horizon } from 'hanoryx-components/closers';
+The company's phases as strata under a horizon: the oldest lies deepest, the newest sits just beneath the surface, and above the line is the part that has not been told yet. Hover or focus a layer to read it.
+props: tag, title, lede, phases=[], onward
+
+### HostScan
+import { HostScan } from 'hanoryx-components/closers';
+"Where has this tab been?" — read from the browser's own list of requests, grouped by host, each one matched against the hosts this site says it uses.
+props: tag, title, lede, expected={}, onward
+
+### HypothesisCard
+import { HypothesisCard } from 'hanoryx-components/closers';
+A small card for a small experiment. A good hypothesis can be wrong, says what would show it, and says when to stop. Fill the five lines; the page flags the usual weaknesses, and the card can be taken away.
+props: tag, title, lede, onward
+
+### IntegrationSheet
+import { IntegrationSheet } from 'hanoryx-components/closers';
+The agreement that decides whether an integration survives its first bad day. Choose what is sent, when, what happens when it fails and who owns it; out comes a one-page contract to put in front of both teams.
+props: tag, title, lede, onward
+
+### KitPicker
+import { KitPicker } from 'hanoryx-components/closers';
+“Which component?” — answer what you are trying to do, then narrow it, and the page names the one or two components that fit, with the reason, and links to each in its gallery.
+props: tag, title, lede, goals=[], onward
+
+### LastItem
+import { LastItem } from 'hanoryx-components/closers';
+The classic race: two people press Buy on the last item at once. Step through three ways of handling it and see which ones sell the item twice.
+props: tag, title, lede, onward
+
+### LaunchTimeline
+import { LaunchTimeline } from 'hanoryx-components/closers';
+The two weeks around a launch, as a track you walk along: what to do at each stop, with the items you can tick and a ring that fills. Arrow keys move between stops. Nothing is saved.
+props: tag, title, lede, stops=[], onward
+
+### LayerSort
+import { LayerSort } from 'hanoryx-components/closers';
+Where does it belong? Eight small responsibilities, four layers. Put each in the layer you would give it, then check against the reasoning. There is rarely one possible answer; the point is to say why.
+props: tag, title, lede, layers=[], items=[], onward
+
+### LeastPrivilege
+import { LeastPrivilege } from 'hanoryx-components/closers';
+Slide how much an account may do and watch the blast radius — what a stolen password or a slip of the mouse could reach — grow with it. The job needs the first three. Everything past that is risk that buys nothing.
+props: tag, title, lede, job, powers=[], needed=3, onward
+
+### LifetimeRuler
+import { LifetimeRuler } from 'hanoryx-components/closers';
+A ruler of moments. Slide the marker (or use the arrow keys) and each item shows whether it is still alive at that moment — so "how long is it kept?" is answered by watching things go out.
+props: tag, title, lede, stops=[], items=[], onward
+
+### Lineage
+import { Lineage } from 'hanoryx-components/closers';
+“Where did this number come from?” Press the figure and follow it down, hop by hop, to the system that produced it, seeing what must be recorded at each hop for the trail to be walkable. An invented figure, to show the idea.
+props: tag, title, lede, figure, hops=[], onward
+
+### LinkBuilder
+import { LinkBuilder } from 'hanoryx-components/closers';
+Pick a page (and, for the long documents, a section) and a format; the link comes out written the way the linking policy asks: the page's own title as the text, the canonical address as the target.
+props: tag, title, lede, onward
+
+### LogLine
+import { LogLine } from 'hanoryx-components/closers';
+Write one audit entry. Fill in who, what, to what and why; the server's part (time, request, source) is added for you, and the entry comes out as a structured line you can copy. Nothing is stored.
+props: tag, title, lede, onward
+
+### LookupRace
+import { LookupRace } from 'hanoryx-components/closers';
+Finding one row among millions. Three ways, with the number of steps each takes as the table grows, and then the real thing: the page builds half a million rows in your browser and times each method for you.
+props: tag, title, lede, onward
+
+### MarkDesk
+import { MarkDesk } from 'hanoryx-components/closers';
+A desk that answers "may I…?". Pick a use from the list (arrow keys move between them); a verdict is stamped onto the slip with the one line that explains it and, where there is one, the page to read next.
+props: tag, title, lede, cases=[], onward
+
+### MarkMisuse
+import { MarkMisuse } from 'hanoryx-components/closers';
+The mark, used wrongly six ways and rightly once — each tile carrying the one-line reason. The wrong versions are real transforms of the real file.
+props: tag, title, lede, tiles=[], onward
+
+### MotionModes
+import { MotionModes } from 'hanoryx-components/closers';
+One menu opening under three motion policies. The site follows the device's reduced-motion setting, and also offers a calm display setting of its own.
+props: tag, title, lede, onward
+
+### NameStyle
+import { NameStyle } from 'hanoryx-components/closers';
+How to write the name: four quick choices, each answered the moment you make it, and a one-line style summary at the end.
+props: tag, title, lede, questions=[], summary, onward
+
+### NoticeFile
+import { NoticeFile } from 'hanoryx-components/closers';
+The notices page's ending: the whole list as a plain NOTICE file you can read here, copy, or download. Built on the spot from the same data as the table.
+props: tag, title, lede, onward
+
+### OperationBrief
+import { OperationBrief } from 'hanoryx-components/closers';
+Write the brief the first conversation needs, before the conversation. Six short answers become a one-page brief you can keep, share or bring. Nothing is sent anywhere: it stays in the page until you copy or download it.
+props: tag, title, lede, onward
+
+### PageVitals
+import { PageVitals } from 'hanoryx-components/closers';
+The page you are on, weighed: its elements, its requests, its size, its first paint and the frame rate it is managing right now. Every number comes from the browser's own Performance API; nothing is sent anywhere.
+props: tag, title, lede, onward
+
+### PagerCard
+import { PagerCard } from 'hanoryx-components/closers';
+A one-page runbook template, laid out as a card. Read it here, copy it, or download it as Markdown and fill it in for a real service.
+props: tag, title, lede, sections=[], onward
+
+### PairMatrix
+import { PairMatrix } from 'hanoryx-components/closers';
+Check a whole palette at once. Paste colours, and every text-on-background pairing is graded in a grid, so the ones that never work are visible before anyone designs with them.
+props: tag, title, lede, start='#0a0b0d, #f5f5f2, #d92b2b, #9a9ea6, #2b6cb0', onward
+
+### ParcelTrack
+import { ParcelTrack } from 'hanoryx-components/closers';
+A tracking line for a report: four stations, a parcel that travels to the one you choose, and who handles that stage. No timings are promised or implied — only the order things happen in.
+props: tag, title, lede, stages=[], onward
+
+### PipelineMaker
+import { PipelineMaker } from 'hanoryx-components/closers';
+Assemble a checks pipeline: choose the checks, put them in order, and a workflow file comes out, with the same sequence as a local script. The commands are placeholders for your project's own.
+props: tag, title, lede, onward
+
+### PreMortem
+import { PreMortem } from 'hanoryx-components/closers';
+The pre-mortem: imagine a year has passed and the decision turned out badly. What went wrong? Write the reasons, how likely each is, and what you would do about it now. The riskiest come out first, as a table.
+props: tag, title, lede, onward
+
+### PrefsPanel
+import { PrefsPanel } from 'hanoryx-components/closers';
+Display preferences for this view — text size, line spacing, contrast, a calm mode and the single-key shortcuts — that take effect at once and last only until the page is reloaded.
+props: tag, title, lede, onward
+
+### PrepSheet
+import { PrepSheet } from 'hanoryx-components/closers';
+The "before a first conversation" sheet: what is worth having to hand. A take-away list, ticked as you go and copied as Markdown.
+
+### Purge
+import { Purge } from 'hanoryx-components/closers';
+A purge button for the site's own items in your browser. One press runs a short "wipe", removes only the keys that belong to this site, and shows what is left (which should be nothing of ours).
+props: tag, title, lede, onward
+
+### RandomRead
+import { RandomRead } from 'hanoryx-components/closers';
+Can't choose? A reel of the guide titles spins and lands on one. It is a dice with manners: it never lands on the same one twice in a row.
+props: tag, title, lede, keys=[], onward
+
+### ReadingColumn
+import { ReadingColumn } from 'hanoryx-components/closers';
+Set a reading column. Slide the measure (characters per line), the line height and the size, and change the face;
+props: tag, title, lede, heading, paragraphs=[], onward
+
+### ReadingList
+import { ReadingList } from 'hanoryx-components/closers';
+Build a reading list from the pages of this site: tick what to read, or start from a preset; the list comes out as Markdown with the links and an honest estimate of the time, ready to send to someone.
+props: tag, title, lede, presets=[], onward
+
+### ReadmeMaker
+import { ReadmeMaker } from 'hanoryx-components/closers';
+A README that the next person can use. Choose the sections; the skeleton is assembled beside you, with a prompt under every heading saying what belongs there.
+props: tag, title, lede, sections=[], onward
+
+### Receipt
+import { Receipt } from 'hanoryx-components/closers';
+An itemised receipt of what the site holds for this visitor, read live from the browser and "printed" line by line. Copy it as text or print it again.
+props: tag, title, lede, onward
+
+### ReviewDraw
+import { ReviewDraw } from 'hanoryx-components/closers';
+A deck of the principles. Draw one and it turns up with a single question to put to your next design review — the principle as something to ask, not something to admire.
+props: tag, title, lede, cards=[], onward
+
+### RoleLens
+import { RoleLens } from 'hanoryx-components/closers';
+One record, four people. Each role needs a few of the fields and not the rest. Choose a role and the record rearranges itself: what they need is sharp, what they do not is tucked away but never gone. An invented record, for illustration.
+props: tag, title, lede, record=[], roles=[], onward
+
+### ScopeTarget
+import { ScopeTarget } from 'hanoryx-components/closers';
+A target for a vulnerability-reporting scope: the bullseye is what is in scope, the rings outside it are what is not. Hover or focus a ring (or pick it from the list) to read what sits in it.
+props: tag, title, lede, rings=[], onward
+
+### SelfAudit
+import { SelfAudit } from 'hanoryx-components/closers';
+Four checks you run yourself, on this page, in your browser. Each says what it will look at, then what it found — so "trust us" becomes "look".
+props: tag, title, lede, onward
+
+### SigilMaker
+import { SigilMaker } from 'hanoryx-components/closers';
+A figure drawn from a word. The same word always draws the same shape, so it is a signature rather than a random picture. Download it as an SVG.
+props: tag, title, lede, onward
+
+### SizeUp
+import { SizeUp } from 'hanoryx-components/closers';
+How big is it, really? Five questions about a system, each a judgement, and the page says what shape of work that adds up to: a focused tool, a platform or a programme, with what changes at each size.
+props: tag, title, lede, questions=[], bands=[], onward
+
+### SpotTheBug
+import { SpotTheBug } from 'hanoryx-components/closers';
+A review exercise. Read a short piece of code the way a reviewer would, mark the lines you would stop, and press Check. Each real problem comes back with why it matters; lines flagged without cause are named too.
+props: tag, title, lede, lang='javascript', lines=[], onward
+
+### StateSheet
+import { StateSheet } from 'hanoryx-components/closers';
+The seven states every control owns, shown side by side for three controls, and a live row of the real thing underneath. Tab to it, press it, hover it: the states above are what you are feeling.
+props: tag, title, lede, onward
+
+### StatusLedger
+import { StatusLedger } from 'hanoryx-components/closers';
+An honest ledger of where each document stands. The ticks arrive one by one as the ledger scrolls in; the column nobody has ticked yet says so.
+props: tag, title, lede, columns=[], rows=[], note, onward
+
+### SunsetPlan
+import { SunsetPlan } from 'hanoryx-components/closers';
+Plan the end while you are building the start. Choose what applies to the system you are retiring and how much notice people get; out comes an ordered plan counted back from the day it is switched off.
+props: tag, title, lede, groups=[], onward
+
+### SymptomRouter
+import { SymptomRouter } from 'hanoryx-components/closers';
+Start from what is going wrong, not from what the team is called. Choose the symptom closest to yours and the page names the discipline that deals with it, why, and where else to look.
+props: tag, title, lede, symptoms=[], onward
+
+### TakeawayDeck
+import { TakeawayDeck } from 'hanoryx-components/closers';
+The few things worth keeping, as a deck you page through. The top card lifts away to the back; arrow keys work on the deck.
+props: tag, title, lede, cards=[], onward
+
+### TermsCard
+import { TermsCard } from 'hanoryx-components/closers';
+The terms on a single card that turns over: what you can do on one side, what not to lean on on the other. Tilts toward the pointer; the flip is a button, so it works without one.
+props: tag, title, lede, can=[], cant=[], onward
+
+### ToastBench
+import { ToastBench } from 'hanoryx-components/closers';
+Fire the feedback components and watch what each one would announce.
+props: tag, title, lede, presets=[], alerts=[], onward
+
+### TokenPlayground
+import { TokenPlayground } from 'hanoryx-components/closers';
+Change four tokens and watch a small interface follow. The values are set on the preview alone, as custom properties — which is exactly how a real design system restyles everything at once.
+props: tag, title, lede, onward
+
+### TrySite
+import { TrySite } from 'hanoryx-components/closers';
+Five things worth trying on this site, each a real control: they open the actual search, the actual shortcuts panel, the actual blueprint mode, the actual calm setting, and a page chosen at random. A way to end by using it.
+props: tag, title, lede, onward
+
+### WhatIfRemove
+import { WhatIfRemove } from 'hanoryx-components/closers';
+Pull one part out of the stack and see what goes with it. A way of asking how much each dependency really carries. The judgements are ours; the file counts were taken when the page was written.
+props: tag, title, lede, parts=[], onward
+
+### WhichOne
+import { WhichOne } from 'hanoryx-components/closers';
+Three questions, one recommendation. Answer them about the job in front of you and the helper names the trigger that fits — and why the other two don't.
+props: tag, title, lede, questions=[], outcomes={}, onward
+
+### WizardRun
+import { WizardRun } from 'hanoryx-components/closers';
+A four-step flow, walked. The Stepper shows where you are; Next is held back until the step is complete and says why;
+props: tag, title, lede, steps=[], onward
+
+### WorkCompare
+import { WorkCompare } from 'hanoryx-components/closers';
+Put any two of the four side by side. The rows are the things the work pages say; where a row is the same for both it is marked, because what two pieces of work share is as telling as how they differ.
+props: tag, title, lede, shows={}, onward
+
+## Specimens
+
+### Switchboard — Forty ways to flip a state. (40)
+Chapter Controls; stage canvas. Switches, latches and breakers on a canvas the camera flies across.
+Rocker (click), Pill (click), GuardCover (click), SlideLock (drag), TwoKey (click), PullChain (click), KnifeSwitch (click), DIPBank (click), PushLatch (click), Breaker (click), Tumbler (click), Lever (click), Jumper (click), Thumbwheel (click), Rotary3Way (click), KeyLock (click), DoorBolt (click), MercuryTilt (click), LampCheck (click), RadioBank (click), Momentary (hold), Seesaw (click), ReedRelay (drag), RopePull (drag), ArmingSwitch (click), FootPedal (click), FlipBit (click), CamLock (click), Hasp (click), MagneticSnap (click), SegmentMode (click), PulseSwitch (click), DimmerStep (click), Fuse (click), PlugAndSocket (click), DeadMans (hold), Crossbar (click), PatchCable (click), ValveWheel (click), MasterChannel (click)
+
+### Dials — Turn, wind, spin and detent. (40)
+Chapter Controls; stage spiral. Knobs, wheels and rotaries wound out along a spiral.
+DetentKnob (drag), ChickenHead (drag), ConcentricPair (drag), JogWheel (drag), ClickWheel (drag), LEDRing (drag), TuningDial (drag), CombinationDial (drag), PadlockRollers (click), AmpGain (drag), KnurledKnob (drag), ArcSlider (drag), PieMenu (click), NeedleSetter (drag), PanKnob (drag), RotaryPhone (click), CompassBezel (drag), SteeringWheel (drag), CrankHandle (drag), GearPair (click), AlarmHands (drag), ThermostatRing (drag), HeatRing (drag), Stepped6Way (click), Potentiometer (drag), Joystick (drag), Trackball (drag), ScrollWheel (click), ThrottlePair (drag), Roulette (click), DrumPicker (drag), GyroRings (auto), KitchenTimer (drag), Metronome (drag), Sundial (drag), Orbiter (drag), Flywheel (click), Thumbscrew (click), Ratchet (click), Inclinometer (drag)
+
+### Faders — Sliders on a rail that slides. (40)
+Chapter Controls; stage rail. Ranges, scrubbers and tracks on a sideways rail.
+ConsoleFader (drag), DualRange (drag), SteppedSlider (drag), VUFader (drag), Crossfader (drag), LogFrequency (drag), ValueBubble (drag), HeatTrack (drag), BalanceBar (drag), CentreDetent (drag), TapeMeasure (drag), BlockMeter (click), SegmentBar (drag), HistogramRange (drag), Thermometer (drag), RungLadder (click), SlideRule (drag), Zipper (drag), RibbonPull (drag), MagnetSnap (drag), RubberBand (drag), VideoScrub (drag), WaveformScrub (drag), MonthRange (click), PriceRange (type), PitchBend (drag), BlindsPull (drag), SunSlider (drag), PlateLoader (drag), SpeedRuler (drag), AlphaSlider (drag), TintSlider (drag), SizeMarks (drag), TripleThumb (drag), FanSpeed (drag), ChargeSlider (drag), RopeTension (drag), ChapterSeek (drag), EQTrio (drag), LockableSlider (drag)
+
+### Keypads — Keys, triggers and buttons with a feel. (40)
+Chapter Controls; stage columns. Press mechanics in three parallax columns.
+MechanicalKey (press), ChicletKey (click), PianoPair (press), ArcadeButton (press), HoldRing (hold), Trigger (press), CalculatorKeys (click), NumberPad (click), TypewriterKey (press), SpaceBar (press), ChordDetect (hold), RubberDome (click), TouchPad (hover), SoftKeys (click), LiquidFill (hover), OffsetBlock (press), StrokeDraw (hover), MagnetButton (hover), Shimmer (auto), OrbitBorder (auto), RippleKey (click), PulseCTA (auto), AsyncButton (click), DoubleConfirm (click), SplitButton (click), StyleGroup (click), PlayPause (click), LabelSwap (hover), ArrowThrough (hover), UploadRing (click), HeartBurst (click), CountUp (click), UndoRedo (click), Reactions (click), RadialFAB (click), Pager (click), HoldRepeat (hold), ShiftLegends (click), DPad (press), PINPad (click)
+
+### Fields — Inputs, pickers and steppers, reimagined. (40)
+Chapter Controls; stage index. Text, date, code and tag fields beside a live index.
+FloatingLabel (type), UnderlineGrow (type), OneTimeCode (type), PhoneMask (type), CardNumber (type), PasswordMeter (type), TagInput (type), Typeahead (type), SearchSuggest (type), DatePicker (click), TimeDrum (scroll), SwatchInput (click), DropZone (click), AutoGrowArea (type), MentionBox (type), InlineEdit (click), QuantityStepper (click), CurrencyField (type), SelectList (click), MultiSelect (click), RadioCards (click), CheckTree (click), SettingRows (click), SegmentedSize (click), PromptLine (type), DotPin (type), SlugMaker (type), URLField (type), EmailDomain (type), AddressCard (type), FilterChips (click), StarRating (click), SymbolPicker (click), VoiceField (click), FormatBar (click), SecretReveal (click), RotatingPrompt (type), FindReplace (type), StateRows (type), CounterRing (type)
+
+### Gauges — Meters that read the room. (42)
+Chapter Data; stage spiral. Needles, arcs and bars wound out along a spiral.
+SweepDial (click), ArcMeter (auto), TripleRings (hover), Speedometer (hold), Tachometer (click), PeakHold (auto), BatteryCell (click), SignalBars (click), Hourglass (click), Odometer (auto), BulletGauge (hover), WaffleGauge (drag), Seismograph (auto), FuelGauge (click), PressureGauge (hover), Barometer (drag), DropletLevel (auto), ThermalStrip (hover), RadialBars (auto), DotArc (auto), SpiritLevel (drag), Attitude (drag), Altimeter (auto), HeadingTape (auto), Voltmeter (click), StereoLadder (auto), PieTimer (auto), TwinNeedle (hover), PulseTrace (auto), OrbitMeter (auto), SegmentRing (click), RankBars (click), DiskUsage (hover), MeterBridge (auto), WindRose (hover), RadarSweep (auto), TankLevel (click), RiskMeter (click), SonarPing (click), CooldownTile (click), MoonPhase (click), TickSweep (auto)
+
+### Charts — Marks, bars, lines and areas. (42)
+Chapter Data; stage atlas. Forty small charts on one sheet; the camera dives into each.
+ColumnChart (click), ScrubLine (hover), MorphArea (click), StackToggle (click), DonutSlices (hover), PullOutPie (click), Candlesticks (hover), CalendarHeat (hover), BinSlider (drag), ScatterField (hover), BubbleField (auto), SpiderChart (click), Treemap (hover), Sunburst (hover), FunnelSteps (click), Waterfall (auto), BoxAndWhisker (hover), Ridgeline (auto), GanttStrips (hover), LollipopChart (hover), DumbbellDots (hover), SlopeLines (click), FlowBands (hover), ChordRing (hover), BumpLines (click), StepPlot (auto), StreamGraph (auto), HorizonStrip (auto), MosaicColumns (hover), PyramidBars (hover), EasingCurve (drag), ErrorBars (hover), ParallelLines (hover), UnitIcons (hover), SparkTable (hover), ThresholdLine (drag), BrushWindow (drag), BarsAndLine (hover), SpiralPlot (auto), AnnotatedLine (hover), CirclePack (hover), DivergingBars (hover)
+
+### Matrices — Heat, tables and dot grids to pan across. (42)
+Chapter Data; stage atlas. Heat, tables and dot grids on one sheet you fly across.
+HeatMatrix (hover), CorrelationGrid (hover), ConfusionMatrix (click), TimesTable (hover), SortableTable (click), ScrollTable (scroll), DotClock (auto), PixelMarquee (auto), LifeGrid (click), PixelPad (drag), SeatMap (click), BingoCard (click), SudokuPeek (hover), LightsOut (click), TilePuzzle (click), MineField (click), ChessBoard (click), KeyMap (keys), PaperTape (hover), BrailleCells (type), BitGrid (click), HexDump (hover), PriorityMatrix (click), RiskMatrix (hover), TruthTable (click), PlanTable (click), PivotTable (hover), Timetable (click), MonthGrid (click), MiniSheet (type), CellularRows (auto), PascalTriangle (hover), SwatchMatrix (click), WordSearch (click), MemoryFlip (click), NoughtsGrid (click), DropFour (click), FleetGrid (click), TransformGrid (drag), ProductGrid (hover), LampGrid (hover), EqualizerGrid (auto)
+
+### Figures — Numerals that roll, flip and settle. (42)
+Chapter Data; stage slides. Counters and clocks cut in one at a time.
+FlipClock (auto), MileageReel (auto), EasedCount (click), CountdownRing (click), Stopwatch (click), SevenSegment (click), NixieTubes (auto), SlotReels (click), NumberScramble (hover), RomanNumerals (click), BinaryClock (auto), TallyMarks (click), Abacus (click), CurrencyCounter (auto), RollToNumber (click), AnalogClock (auto), WorldClocks (auto), TearOffDay (click), DeltaStat (hover), FractionPie (click), DiceRoll (click), Scoreboard (click), HexClock (auto), NumberLine (drag), BadgeCount (click), FloorDisplay (click), TicketQueue (click), NumberWords (type), BaseSwitch (type), ModClock (click), PrimeSieve (auto), CollatzTrail (click), FibonacciTiles (auto), TimesWheel (drag), PiDigits (auto), UlamSpiral (hover), OutlineDigits (auto), LiquidNumber (auto), BeatCounter (auto), RatioSplit (drag), NotationSwitch (type), PrimeFactors (type)
+
+### Graphs — Nodes, trees and flows that grow. (42)
+Chapter Data; stage spine. Networks that branch from a filling spine.
+SpringGraph (drag), OrgChart (click), FileTree (click), MindMap (hover), DependencyGraph (hover), DecisionTree (click), FlowchartSteps (click), RadialTree (hover), DendrogramCut (drag), RingNetwork (click), HubAndSpoke (auto), PacketRoute (click), TournamentBracket (click), BranchGraph (hover), TransitMap (hover), NeuralLayers (auto), BlockChain (click), LinkedList (click), StackAndQueue (click), HeapTree (click), SearchTree (type), TraversalSteps (click), ShortestPath (click), SpanningTree (click), StateMachine (click), TokenPipeline (auto), FanOut (auto), Trie (type), HuffmanTree (hover), VennSets (hover), MazePath (auto), LinkCurve (drag), ArcDiagram (hover), AdjacencyView (hover), Constellation (hover), SequenceDiagram (click), TreeRings (hover), FractalTree (drag), KochCurve (click), Sierpinski (click), LineageTree (hover), CascadeNodes (click)
+
+### Kinetic — Words that scramble, split and settle. (42)
+Chapter Type; stage canvas. Moving type on a canvas the camera swoops across.
+ScrambleReveal (hover), LetterSplit (hover), WaveText (auto), Typewriter (auto), RollHover (hover), BlurIn (auto), StaggerRise (click), StrokeSwell (hover), MagnetLetters (hover), GradientSweep (auto), OutlineFill (hover), Glitch (auto), NeonFlicker (auto), SpotlightReveal (hover), KerningBreathe (auto), ScatterWords (click), CircleText (auto), WavyPath (auto), StackSlam (click), RingLetters (auto), WordSwap (auto), UnderlineDraw (hover), FlipWords (auto), BounceLetters (hover), StretchWord (drag), FisheyeText (hover), SlantDial (drag), AnagramShuffle (click), PopIn (type), EchoTrail (hover), MirrorRipple (auto), StrokeWrite (auto), CipherCycle (auto), DepthLayers (hover), LiquidWobble (auto), LetterGrid (auto), LetterBurst (click), LetterDrop (click), TrackingIn (auto), ZoomThrough (hover), SliceSlide (hover), KaraokeWords (auto)
+
+### Tickers — Flaps, boards and marquees. (42)
+Chapter Type; stage rows. Mechanical text on belts that slide both ways.
+FlapWord (click), FlapClock (auto), DepartureRow (auto), Letterboard (type), ScoreTicker (click), PageADay (click), PumpPrice (click), FloorIndicator (auto), SegmentClock (auto), LaunchCountdown (auto), PlatformSign (auto), BadgeRoll (click), Marquee (auto), CounterBelts (auto), StockTape (auto), NewsCrawl (auto), LEDScroller (auto), CautionTape (auto), WaveMarquee (auto), PauseChips (hover), HoldToFreeze (press), ScrubTape (drag), ScrollTape (scroll), SparklineTape (auto), GiantBelt (auto), VerticalRoll (auto), HeadlineSwap (auto), ChatScroll (auto), CaptionBar (auto), WordDrum (auto), SlotReel (click), Leaderboard (auto), HeartbeatTape (auto), CinemaBulbs (auto), TubeSign (auto), RadioDial (drag), LineMap (auto), ParcelTracker (click), FlashPrice (auto), TypingTape (auto), ShimmerStatus (auto), StopwatchReel (auto)
+
+### Markup — Highlights, strikes and redactions. (42)
+Chapter Type; stage stack. Annotations that stack like pages in a deck.
+MarkerSweep (hover), DoubleMarker (auto), StrikeDraw (click), Squiggle (auto), HandCircle (click), RoughRule (auto), CornerBrackets (hover), ScribbleOut (click), CalloutArrow (auto), HighlighterDrag (drag), EraserReveal (drag), MarginNote (click), TrackedChanges (click), LineDiff (hover), ProofMarks (auto), PostIt (hover), Footnote (click), Spoiler (click), CodeComment (click), PinnedFigure (click), ReadingRuler (hover), Rewrite (auto), Overtype (click), Whiteout (click), InkBleed (auto), CommentThread (auto), DogEar (hover), Paperclip (click), RuledPaper (auto), FolderTabs (keys), TornEdge (click), PaletteMarker (click), ClearanceDial (drag), BlurLens (hover), TaskStrike (click), TypoSquiggle (click), SelectionStyle (auto), BarRedaction (press), TickMargin (auto), UnderlineStyles (click), FindInText (type), SwapPreview (type)
+
+### Glyphs — Outlines, strokes and letterforms. (42)
+Chapter Type; stage wheel. Letterforms riding a carousel ring.
+StrokeWeight (drag), OutlinePass (auto), PaintOrder (click), DoubleOutline (auto), GradientStroke (auto), StencilCut (auto), Knockout (hover), LongShadow (hover), Extrude (auto), PatternFill (hover), AuroraFill (auto), Halftone (hover), Anatomy (click), MetricsBox (hover), Overshoot (click), GeometricSet (hover), GlyphGrid (hover), AlphabetStrip (drag), Monoline (drag), StressAxis (drag), SerifStyles (click), KerningPair (drag), Tracking (drag), Leading (drag), TypeScale (drag), BaselineGrid (click), HangingPunctuation (click), SkipInk (click), Numerals (click), Ligatures (click), CapsToggle (click), VerticalText (click), LetterCompass (hover), WeightLadder (hover), FamilySwap (click), Ampersand (auto), DropCap (click), ItalicAngle (drag), TypeTester (type), BowlMorph (drag), WordSpacing (drag), CodePoint (auto)
+
+### Editorial — Quotes, captions and footnotes. (42)
+Chapter Type; stage tunnel. Editorial parts met on a fly-through.
+PullQuote (hover), QuoteBar (auto), Epigraph (click), QuoteCarousel (auto), InlineQuote (hover), PullStat (auto), Testimonial (click), QuoteMarks (click), WordReveal (auto), FigureCaption (hover), Cutline (auto), ImageZoom (click), GalleryCaptions (click), Compare (drag), CaptionTyping (auto), CreditTag (hover), FigureNumber (auto), FootnotePopover (click), Sidenote (click), Endnotes (click), CitationChip (hover), GlossaryTerm (hover), ReferenceList (hover), BibliographySort (click), CrossReference (click), Masthead (auto), HeadlineStack (hover), Byline (click), ColumnCount (drag), TableOfContents (click), RunningHead (auto), SectionBreak (auto), JumpLine (hover), ReadingProgress (scroll), TagChips (click), ReadingTime (type), CorrectionNotice (click), UpdatedStamp (auto), ShareRow (click), NewsletterBox (type), CrosswordMini (type), Sparkword (hover)
+
+### Tilt — Cards with depth and weight. (42)
+Chapter Cards; stage tunnel. Parallax and tilt surfaces in a deep column.
+PointerTilt (hover), LayerParallax (hover), Lift (hover), IdleSway (auto), CardFan (hover), PeekCard (hover), MagneticCard (hover), CubeDrag (drag), IsoBlock (hover), DragTilt (drag), PressDown (press), FloatCard (auto), DepthText (hover), FoilCard (hover), GlossSweep (auto), CardFlip (click), StackShuffle (click), HingeCover (click), DoorCard (hover), DrawerCard (click), Wobble (click), CoverFlow (drag), StackAccordion (click), SlabEdge (hover), ElevationSlider (drag), ElevationLadder (hover), GlassSlab (hover), PerspectiveFloor (auto), OrbitCards (auto), Rolodex (auto), TiltedPair (hover), ElasticDrag (drag), HopCard (click), PageCurl (hover), PopUpCard (click), CoinFlip (click), SlabStack (hover), DollyZoom (hover), ShadowCaster (hover), Turntable (auto), FanScan (hover), DealCards (click)
+
+### Glow — Spotlights, beams and borders of light. (42)
+Chapter Cards; stage canvas. Light-led cards on a dark canvas, found by flying across it.
+SpotlightCard (hover), BorderBeam (auto), GradientBorder (auto), SpinBorder (auto), OutlineGlow (hover), InnerGlow (hover), RimLight (hover), FlashlightText (hover), SharedLight (hover), PrismEdge (hover), AuroraCard (auto), PressFlash (press), BreathingGlow (auto), ShineBorder (auto), Meteors (auto), TopBeam (auto), LensFlare (hover), Backlight (hover), BloomText (click), LightSwitch (click), Dimmer (drag), LaserGrid (auto), ScanSweep (auto), XRayLens (hover), HeatTrail (hover), FocusGlow (keys), HaloRings (hover), PulseRadar (auto), Ripple (press), EdgeLight (hover), GlowButton (hover), GlowField (type), GlowToggle (click), GlowBar (auto), GlowLine (auto), DotTrail (hover), MagicCard (hover), MeshGradient (auto), Starfield (auto), Candle (auto), LightLeak (auto), Bokeh (auto)
+
+### Fold — Cards that flip, fold and peel. (42)
+Chapter Cards; stage wheel. Turning, folding cards on a rotating ring.
+FlipOver (hover), FlipUp (hover), DiagonalFlip (click), TwinFlip (hover), FlipDeck (click), FlipTiles (hover), AccordionFold (click), LetterFold (click), TriFold (click), AdventDoors (click), PeelCorner (hover), Envelope (click), NotebookSpread (click), PageTurn (click), Shutters (hover), Blinds (hover), Curtain (click), GarageDoor (click), FoldDown (click), Bellows (drag), HandFan (click), PeelLabel (hover), StickerSheet (click), TearOff (click), FaceRoll (click), SplitOpen (hover), DiagonalFold (click), LayerPeel (hover), ScrollRoll (click), SpiralPad (click), LeafCycle (auto), PageFlipper (auto), WaveFold (auto), TwistRibbon (auto), Pleats (auto), PaperSteps (click), FoldAngle (drag), BookEdge (hover), CardWallet (click), PocketReveal (hover), Perforation (click), Clamshell (click)
+
+### Bento — Tiles that tessellate. (42)
+Chapter Cards; stage atlas. Dashboard tiles on one sheet, dived into one by one.
+StatTile (hover), SparkTile (auto), RingTile (hover), CalendarTile (click), BarTile (hover), DonutTile (auto), GaugeTile (drag), ClockTile (auto), TimerTile (click), ToggleTile (click), ChecklistTile (click), StepsTile (click), PlayerTile (click), ChatTile (auto), BatteryTile (click), SignalTile (click), StorageTile (hover), KnobTile (drag), VolumeTile (drag), NotesTile (type), SwatchTile (click), TagsTile (click), AvatarsTile (hover), PriceTile (auto), MapTile (hover), QuoteTile (click), ImageTile (hover), CodeTile (auto), CommandTile (auto), CardTile (hover), InvoiceTile (click), SearchTile (type), KeysTile (keys), CounterTile (click), RatingTile (hover), LoadBarsTile (auto), BoardTile (click), CountdownTile (auto), WeatherTile (hover), RingsTile (auto), HeatTile (hover), CycleTile (auto)
+
+### Passes — Tickets, receipts and badges. (42)
+Chapter Cards; stage canvas. Perforated passes scattered over a canvas the camera flies across.
+BoardingPass (hover), TearOffStub (drag), ScratchPanel (drag), ThermalPrintout (auto), LanyardBadge (drag), LaserScan (auto), PassportPage (click), TapCard (click), CutHere (auto), RollingCode (auto), PostageStamp (hover), NameSticker (type), SeatChooser (click), ParkingStub (drag), HologramSeal (hover), WaxSeal (click), NumberDispenser (click), LuggageTag (hover), KeyCardSwipe (drag), SplitTheBill (click), RaffleDraw (click), Postmark (auto), HangTag (hover), FortuneSlip (click), TicketRoll (drag), EmbossedCard (hover), VisitorLog (type), Rosette (hover), ConductorPunch (click), ParcelLabel (click), ExpiringPass (auto), StickerPage (click), StubPile (hover), RSVPSlip (click), GateReader (press), DueDateSlip (click), EdgeStyles (click), LaminateSlider (drag), LiftPass (click), Wristband (click), PerforationLens (hover), EntrySlot (click)
+
+### Tabs — Strips, pills and segments that glide. (42)
+Chapter Navigation; stage index. Tab systems beside a live index.
+Underline (click), PillSlide (click), Segmented (click), ManilaTabs (click), SideTabs (click), CountedTabs (click), Closable (click · del), SortableTabs (click), ScrollingTabs (click), IconTabs (click), ChevronSteps (click), InkStretch (click), MagicLine (hover), RollingCount (click), RomanTabs (click), PlanCards (click), StyleToggles (click), GrowingDots (click), AutoAdvance (auto), PanelCrossfade (click), DayDrum (drag), FanOfTabs (click), IndexDividers (click), KnobTabs (click), BottomBar (click), RaisedLabel (click), HistoryTabs (click), GooeyTabs (click), CompassTabs (click), MonthStrip (click), WeekStrip (click), HexTabs (click), LetterRolodex (hover), OverflowMenu (click), TwoLineTabs (click), PagerTabs (click), LampTabs (click), ArrowKeyTabs (keys), OverlappingTabs (click), ZoomTabs (click), HighlightTicker (auto), ColourSwatches (click)
+
+### Docks — Floating bars, rails and toolbars. (42)
+Chapter Navigation; stage canvas. Bars and rails on a canvas the camera flies across.
+MagnifyDock (hover), IconRail (click), GroupedToolbar (click), TypeBar (click), CommandBar (click), DotDock (click), ExpandingRail (click), TransportBar (click), ZoomBar (click), ReactionBar (click), SelectionBubble (click), SpeedDial (click), ArcDock (click), StatusStrip (click), SectionRail (click), RearrangingDock (click), TooltipDock (hover), ToolPalette (click), SlideOutBar (click), SnapDock (click), MiniPlayer (click), CartDock (click), GlowDock (click), SaveSplit (click), SearchDock (click), FilterBar (click), TextSizeBar (click), Ribbon (click), HideOnScroll (click), Island (click), AvatarDock (hover), ScrubBar (drag), ChatDock (click), PagingBar (click), StickyBuyBar (click), SelectionBar (click), RingDock (auto), ShortcutBar (click), JumpList (keys), CornerStack (click), NotchDock (click), EdgeHandle (drag)
+
+### Menus — Dropdowns, radials and command lists. (42)
+Chapter Navigation; stage split. Menu forms around a pinned node map.
+Dropdown (click), SelectMenu (click), ContextMenu (right-click), RadialMenu (click), CommandList (type), MegaMenu (click), NestedSubmenu (hover), WedgeMenu (hover), AccordionMenu (click), KebabMenu (click), BurgerMenu (click), BreadcrumbMenu (click), AccountMenu (click), FlyoutRail (hover), Combobox (type), ChecklistMenu (click), RadioMenu (click), Menubar (click), SlashMenu (type), SymbolGrid (click), QuickDates (click), SortMenu (click), ShareMenu (click), Dropup (click), ShortcutMenu (click), WheelMenu (scroll), RingMenu (click), FanMenu (click), StaggerMenu (click), UnderlineMenu (hover), OverlayMenu (click), TreeMenu (click), RegionMap (click), LanguageMenu (click), HourList (keys), ColourMenu (click), FontMenu (click), DangerMenu (click), ShrinkingHeader (click), ActionSheet (click), MagneticMenu (hover), FooterMenu (click)
+
+### Steps — Steppers, breadcrumbs and pagination. (42)
+Chapter Navigation; stage rail. Sequences along a sideways rail.
+DotStepper (click), NumberedStepper (click), VerticalStepper (click), SegmentProgress (click), IconStepper (click), SlashCrumbs (click), ChevronCrumbs (click), CollapsingCrumbs (click), PillTrail (click), PageNumbers (click), PageOf (click), LoadMore (click), JumpToPage (type), CarouselDots (auto), WizardFooter (click), HorizontalTimeline (click), SetupChecklist (click), CountStepper (click), HoldToSpin (hold), SteppedRange (drag), StepCards (click), Stairs (click), PathFlag (drag), Onboarding (click), GuidedTour (click), Countdown (auto), Ladder (click), SubSteps (click), ChapterList (click), RingSteps (click), PathBar (click), ErrorStep (click), OptionalStep (click), HourDial (click), DateSteps (click), CardStackSteps (click), ZigzagPath (click), BeadString (click), GatedSteps (click), SkipSteps (click), StarSteps (hover), LevelGauge (click)
+
+### Waypoints — Outlines, contents and wayfinding. (42)
+Chapter Navigation; stage atlas. Wayfinding pieces on an atlas you fly across.
+ContentsList (click), OutlineRail (hover), PageThumbnail (drag), BackToTopRing (drag), SectionDots (click), AnchorChips (click), CompassRose (click), Signpost (click), YouAreHere (click), FloorPlan (click), SubwayLine (click), TrailBlazes (click), MileMarkers (drag), RouteTrace (click), ReadingMarks (drag), NumberedSections (click), NextAndPrevious (click), StickyChapter (scroll), ScrollCue (auto), SkipLink (keys), ContentsTree (click), DotIndex (click), GateSigns (click), DeparturesBoard (auto), WaypointRadar (auto), CoordinateGrid (hover), RouteLegs (click), ElevationProfile (hover), BookmarkStrip (click), PageFlags (click), DepthMarker (drag), ZoomLevels (click), TreasureMap (click), LighthouseBeam (auto), SnapDots (scroll), JumpSelect (click), AnnotationPins (hover), LandmarkIndex (click), OrientationCube (click), StationMap (click), Elevator (click), BearingDial (drag)
+
+### Loaders — Forty ways to wait. (42)
+Chapter Feedback; stage spiral. Spinners and waiting states wound out along a spiral.
+RingSpinner (auto), TwinRing (auto), BouncingDots (auto), DotWave (auto), EqualiserBars (auto), RipplePulse (auto), OrbitingDots (auto), ClockHands (auto), SandTimer (auto), ChasingArc (auto), SquareSwap (auto), SpinningCube (auto), FlipLoader (auto), TypingDots (auto), HeartbeatLine (auto), HelixDots (auto), NewtonCradle (auto), MeshingGears (auto), ChargingCell (auto), LoadingWord (auto), LetterWave (auto), DotChase (auto), RollingBar (auto), BouncingBall (auto), Windmill (auto), LittlePlanet (auto), NineGrid (auto), HexSpin (auto), Lemniscate (auto), DotSpiral (auto), InkDrops (auto), RisingLiquid (auto), BurningFuse (auto), ElasticBar (auto), SegmentRingSpin (auto), PlusMorph (auto), Pendulum (auto), TapeReels (auto), DotRace (auto), CountingUp (auto), ButtonLoader (click), PullToRefresh (drag)
+
+### Toasts — Alerts, banners and notices. (42)
+Chapter Feedback; stage stack. Notices that arrive and pile up.
+QuietToast (click), SuccessToast (click), FailureToast (click), WarningBanner (click), InfoBanner (static), UndoToast (click), UploadToast (click), StackedNotices (click), SwipeAway (drag), Snackbar (click), PreferenceBar (click), InlineAlert (click), Callout (click), AnnouncementMarquee (auto), DismissibleBanner (click), TimerRingToast (click), BellShake (click), CornerPop (click), AvatarToast (click), ImageToast (click), ActionToast (click), SystemBar (auto), NotificationPanel (click), FlashMessage (click), ConfettiToast (click), ToastSequence (click), PositionPicker (click), DurationSlider (drag), OfflineBar (click), NetworkPill (click), UpdatePrompt (click), CopyConfirm (click), ErrorSummary (click), FieldHint (type), AutosaveLine (auto), BagToast (click), ReactionPrompt (click), TimedToast (click), HoverToHold (hover), FannedNotices (hover), SaleCountdown (auto), LiveStatusLine (auto)
+
+### Progress — Bars, rings and vessels that fill. (42)
+Chapter Feedback; stage counter. Fills and meters in counter-scrolling columns.
+LinearBar (auto), StripedBar (auto), Hairline (auto), TenSteps (auto), LabelledSteps (auto), RingPercent (auto), HalfRing (auto), DonutRings (auto), Vessel (auto), CellCharge (auto), MercuryColumn (auto), TestTube (auto), DottedFill (auto), PixelFill (auto), TickRing (auto), RangeFill (drag), PlayerScrub (drag), UploadList (static), StackedBar (static), BulletChart (auto), GradientBar (auto), NeonBar (auto), PercentRider (auto), Indeterminate (auto), BufferBar (auto), DrainingBar (auto), SkillBars (static), SpiralTrace (auto), WaveBar (auto), PieFill (auto), LevelMeter (auto), RocketBar (auto), StaircaseFill (auto), HexFill (auto), TwelveDots (auto), MilestoneBar (auto), ArcSteps (auto), DownloadButton (click), RingToCheck (auto), NineBars (auto), SineTrace (auto), OdometerFill (auto)
+
+### Skeletons — Placeholders and empty states. (42)
+Chapter Feedback; stage slides. Waiting shapes cut in one at a time.
+TextLines (auto), CardPlaceholder (auto), ListRow (auto), TableRows (auto), ThreeShimmers (click), ChartPlaceholder (auto), ProfileHeader (auto), PictureFrame (auto), GalleryGrid (auto), ReplyThread (auto), ActionButtons (auto), FormFields (auto), SkeletonToContent (click), LineStagger (auto), BlurUp (click), FetchingDots (auto), NoResults (click), InboxZero (static), EmptyBag (click), LostPage (static), OfflineFeed (static), FirstProject (click), FlatChart (static), EmptyTable (static), SearchSuggestions (type), MembersOnly (static), RetryState (click), SoonCounter (auto), EmptyMonth (static), DropTarget (drop), GhostList (static), LineCount (drag), ShapeLibrary (auto), GaugePlaceholder (auto), MapPlaceholder (auto), VideoPlaceholder (auto), ProductPlaceholder (auto), ChatPlaceholder (auto), AlertPlaceholder (auto), PlanPlaceholder (auto), SidebarPlaceholder (auto), WireframeToggle (click)
+
+### Signals — Lights, pills and health. (42)
+Chapter Feedback; stage splitR. Status lights beside a pinned beacon.
+LEDLamp (click), BlinkingLight (auto), LevelLEDs (drag), TrafficLight (auto), StatusPill (click), ServiceList (static), UptimeStrip (hover), HealthRing (drag), PulseDot (auto), CellBars (click), WiFiArcs (click), ChargeGauge (drag), PresenceDot (click), RotatingBeacon (auto), StateBanner (click), SeverityScale (click), AnnunciatorPanel (click), LampTest (hold), WalkSignal (auto), LockLight (click), RecordLight (auto), LiveBadge (auto), TypingSignal (auto), SyncState (click), LatencyBars (auto), DiskWarning (drag), HeatLadder (drag), RingSwitch (click), MorseLamp (auto), MetronomeLamp (auto), Semaphore (click), RadioMast (auto), PingRing (click), HealthDots (click), StatusChip (hover), IncidentDots (click), StatusGrid (static), AvailabilityRing (drag), AlertThreshold (drag), AlertLevels (click), FaultCode (click), PagerBuzz (click)
+
+### Popovers — Tooltips, hover cards and callouts. (42)
+Chapter Overlays; stage split. Anchored overlays with a pinned reference.
+TopTooltip (hover), SidePicker (click), RichTooltip (hover), HoverCard (hover), ClickPopover (click), ConfirmPopover (click), FollowingTip (hover), SpeechBubble (click), Coachmark (click), ProductHotspots (hover), FootnoteBubble (click), TermTooltip (hover), ColourPopover (click), DatePopover (click), ReactionPopover (click), LinkPreview (hover), EditInPlace (click), SharePopover (click), InfoPopover (click), FieldErrorTip (type), KeyHintTip (hover), DelayedTip (hover), PinnedTip (click), TourPopover (click), ChartTip (hover), AvatarTips (hover), WhyDisabled (hover), TruncatedName (hover), ThumbnailPreview (hover), MapPinPopover (click), CalendarDayTip (hover), DefinitionCard (hover), DropDownNotice (click), AssistantBubble (click), RowActions (hover), NotificationPopover (click), SettingsPopover (click), StepPopover (click), ThemedTip (click), PlacementPicker (click), NestedPopover (click), FlippingPopover (drag)
+
+### Sheets — Drawers, modals and layered panes. (42)
+Chapter Overlays; stage tunnel. Layered panes met on a fly-through.
+BottomSheet (click), SideDrawer (click), NavDrawer (click), CentredModal (click), DiscardDialog (click), FullTakeover (click), PushedPanes (click), SnappingSheet (drag), PeekingSheet (click), DroppingBanner (click), SplitPane (drag), SlideOverDetail (click), CommandModal (click), Lightbox (click), PreferencesSheet (click), ShareSheet (click), TourModal (click), FormModal (click), PickerSheet (click), NestedSheets (click), CardToModal (click), AccordionDrawer (click), MenuOverlay (click), FiltersSheet (click), CornerChat (click), FoldOutPanel (click), CurtainDoors (click), LayeredDeck (click), ParallaxSheets (hover), PileOfPapers (click), MiniWindow (click), TabbedPanes (click), ResizableSheet (drag), BlurredBackdrop (click), SwipeToDismiss (drag), GlassPane (click), RaiseALayer (click), ExpandingPlayer (click), DialogSequence (click), SidePeek (drag), SheetWithUndo (click), LayerStack (click)
+
+### Cursors — Pointers, followers and magnets. (42)
+Chapter Overlays; stage canvas. Pointer effects across a canvas the camera flies over.
+DotCursor (hover), RingFollower (hover), DotAndRing (hover), PulledButton (hover), TrailingDots (hover), CometTail (hover), Spotlight (hover), FlashlightReveal (hover), Crosshair (hover), CoordinateFollower (hover), GlowingGrid (hover), TiltingPlate (hover), PointerLayers (hover), WatchingEyes (hover), Needle (hover), Arrow (hover), GooeyBlob (hover), ClickRipples (click), DotPainter (drag), NamedCaret (hover), SharedCursors (hover), CursorStyles (hover), ViewLabel (hover), RepellingDots (hover), AttractedDots (hover), Strings (hover), ElasticString (hover), Bulge (hover), DifferenceHalo (hover), TurningGear (hover), PointerEdge (hover), ButtonGradient (hover), SlidingUnderline (hover), SpeedMeter (hover), AngleDial (hover), Stamps (click), Zones (hover), TargetPractice (click), FollowingWave (hover), Orbiters (hover), Smear (hover), MirrorCursors (hover)
+
+### Wipes — Curtains, clips and reveals. (42)
+Chapter Overlays; stage slides. Transitions cut in by a moving edge.
+LeftToRight (click), RightToLeft (click), TopDown (click), BottomUp (click), DiagonalEdge (click), IrisOpen (click), CornerIris (click), IrisClose (click), Diamond (click), StarBurst (click), RowBlinds (click), ColumnBlinds (click), PixelChecker (click), TheatreCurtain (click), ShutterDoors (click), BarnDoors (click), SlatTurn (click), ClockSweep (click), RadialWipe (click), FanWipe (click), ZigzagEdge (click), WaveEdge (click), InkSpread (click), Push (click), Cover (click), Uncover (click), ZoomCut (click), CubeTurn (click), TurnOver (click), HingeFold (click), PagePeel (click), Crossfade (click), BlurDissolve (click), GlitchCut (click), ScanLine (click), SteppedPixels (click), ColumnStagger (click), RowStagger (click), DragToWipe (drag), ScrubbedWipe (drag), TextMask (click), ClickReveal (click)
+
+### Lenses — Magnifiers, compare and focus. (42)
+Chapter Overlays; stage rows. Lenses on belts that slide both ways.
+Magnifier (hover), SquareLoupe (hover), ZoomSidePane (hover), BeforeAndAfter (drag), TopAndBottom (drag), ClearPatch (hover), DimmedFocus (hover), DepthOfField (hover), FisheyeBars (hover), LetterLens (hover), Peephole (hover), XRay (hover), InvertingLens (hover), ColourPatch (hover), ZoomSteps (click), ZoomSlider (drag), ViewfinderMap (hover), DiagonalCompare (drag), OnionSkin (drag), DifferenceBlend (click), HoldForBefore (hold), SunFlare (hover), AutofocusBox (auto), CameraFrame (auto), RackFocus (click), Aperture (drag), Binoculars (hover), Keyhole (hover), GuideBand (hover), LineFocus (hover), WordSwell (hover), SoapBubble (hover), GlassLens (hover), PrismSplit (hover), ChromaticEdge (hover), Scope (hover), PixelLoupe (hover), ClickZoom (click), PanWindow (drag), TiltShift (drag), VignetteSlider (drag), FrostedWindow (hover)
+
+### Cockpit — Instruments with presence. (42)
+Chapter Objects; stage wheel. Flight instruments on a rotating ring.
+AirspeedDial (drag), PressureAltimeter (drag), EngineRevs (drag), OilPressure (drag), OilTemperature (drag), ExhaustTemperature (drag), FuelQuantity (drag), ManifoldPressure (drag), ChargeAmmeter (drag), BusVoltage (drag), ClimbRate (drag), GLoadMeter (drag), CabinPressure (drag), HydraulicPressure (drag), OutsideAir (drag), HeadTemperature (drag), ArtificialHorizon (hover), HeadingCard (drag), TurnCoordinator (hover), CourseDeviation (drag), GlidePath (hover), DirectionFinder (auto), RadioTuner (click), SquawkCode (click), FlightClock (auto), PressureSetting (click), ThrottleLever (drag), FlapLever (click), GearLever (click), TrimWheel (drag), SwitchPanel (click), WarningLamps (click), TerrainWarning (click), AutopilotModes (click), SpeedTape (auto), AltitudeTape (auto), HydraulicBars (click), BatteryMaster (click), FuelSelector (click), ControlColumn (hover), RudderPedals (drag), StallWarning (drag)
+
+### Studio — Meters, reels and faders for sound. (42)
+Chapter Objects; stage splitR. Studio gear beside a pinned VU needle.
+VUMeter (click), PeakLEDs (auto), ReelToReel (click), CassetteDeck (click), RecordDeck (click), ChannelFader (drag), PanPot (drag), MuteSoloArm (click), MixerStrip (drag), DJCrossfade (drag), WaveScrub (drag), WaveformZoom (drag), LoopRegion (drag), SpectrumBars (auto), Spectrogram (auto), Oscilloscope (auto), PhaseScope (auto), EQCurve (drag), CompressorCurve (drag), GateLight (drag), LimiterMeter (auto), EnvelopeShaper (drag), LFOShapes (click), WavePicker (click), FilterSweep (drag), ReverbRings (drag), DelayTaps (auto), StepSequencer (click), DrumPads (press), PianoKeys (press), TapTempo (click), BeatPendulum (auto), TunerNeedle (auto), Timecode (auto), LoudnessBar (auto), GainStaging (drag), PatchBay (click), HeadphoneKnob (click), MicRing (auto), RecordArm (click), TransportKeys (click), MarkerTimeline (click)
+
+### Terminal — Code, logs and command-line pieces. (42)
+Chapter Objects; stage index. Console parts with a live index.
+ShellPrompt (auto), TypedCommand (auto), HistoryRecall (click), TabComplete (type), LogTail (auto), LogLevels (click), DiffHunks (click), StackTrace (click), HashProgress (auto), BrailleSpinner (auto), ProcessTable (click), TreeListing (click), ManOptions (hover), ExitCodes (click), CursorShapes (click), PromptThemes (click), GitStatus (click), CommitGraph (click), BlameGutter (hover), EnvVars (click), PipeChain (auto), CoreBars (auto), SpaceHogs (click), PingTrace (auto), BootLog (auto), SplitPanes (click), WindowStrip (click), ModeLine (key), LineNumbers (click), SyntaxTheme (click), GrepFilter (type), ByteDump (hover), KeyCheats (press), AliasExpand (type), HeredocPrompt (type), SecretPrompt (type), ConfirmPrompt (key), RuntimePicker (key), CheckboxList (click), TestDots (auto), BuildSteps (auto), CronFields (click)
+
+### Stamps — Labels, seals, stickers and tape. (42)
+Chapter Objects; stage canvas. Marks pressed onto a canvas, found one by one.
+ApprovedStamp (click), DateStamp (click), PressedSeal (click), RingSeal (auto), FoilPlate (hover), CancelMark (click), AirmailEdge (auto), CornerPeel (click), PeelSheet (click), DieCutSticker (hover), HoloSticker (hover), WashiStrip (click), MaskingLabel (type), TapeCross (click), HazardStrip (auto), PriceTag (auto), BaggageTag (click), NameBadge (type), BarcodeLabel (hover), MosaicCode (click), CourierLabel (click), FragileBand (auto), TicketStub (click), CouponCut (click), DueSlip (click), VisaPage (click), QualityBadge (hover), PrizeRosette (hover), BannerRibbon (hover), CornerFlag (hover), Starburst (auto), PinnedLabel (hover), CrateStencil (hover), RedactionBars (click), ClassifiedMark (click), WornInk (drag), InkPad (click), Thumbprint (click), SignatureDraw (auto), MonogramSeal (click), LabelMaker (type), MarginFlags (click)
+
+### Archive — Files, drawers and index cards. (42)
+Chapter Objects; stage stack. Records filed in a sticky deck.
+IndexCard (click), CardDrawer (click), FileFolder (click), HangingFiles (click), FilingCabinet (click), DrawerStack (click), BoxFile (click), BinderRings (click), CardRotary (click), IndexFan (hover), PaperPile (click), ClipPile (click), DividerTabs (click), ArchiveBox (click), BookSpines (click), CallNumber (type), Microfiche (hover), NegativeStrip (auto), SlideTray (click), RecordSleeve (click), AlbumCorners (click), PhotoShuffle (click), EnvelopeFlap (click), LetterBundle (click), TraySorter (click), LedgerPage (click), LetterTabs (click), YearLabels (click), BatesStamp (auto), EvidenceBag (click), EvidenceTag (type), DocketBoard (click), PocketCard (click), CallSlip (type), RecordSearch (type), RetentionBar (auto), CombinationLock (click), BoxStack (click), AisleMap (click), ScanBed (auto), DrawerPull (click), FolderLift (hover)
+
+### Beams — Lines and traces of light. (42)
+Chapter Ground; stage spine. Light traces running along a spine.
+SignalTrace (auto), BusLines (auto), ChipPads (auto), BranchTrace (auto), ViaHop (auto), FibreStrands (auto), NeonTube (click), LightPipe (auto), GridSweep (auto), Tripwire (click), SweepDish (auto), ScanBar (auto), SunRays (auto), SearchLight (hover), SpotCone (drag), RunningBorder (auto), EdgeShine (hover), LightLeaks (auto), AuroraLines (auto), ShootingStars (auto), CometLoop (auto), OrbitTrace (auto), Lissajous (auto), SinePair (auto), HeartTrace (auto), Plexus (hover), LightRibbon (auto), SpiralBeam (auto), WhiteSplit (hover), LensStreak (click), RunwayLights (auto), RailTicks (auto), LongExposure (auto), LaserHarp (click), BeamSplitter (click), MirrorBounce (drag), FibreBundle (auto), StrobeBars (click), CausticNet (auto), PathDraw (click), SlackCable (drag), PulseRings (click)
+
+### Patterns — Grids, dots and hatching as surfaces. (43)
+Chapter Ground; stage atlas. Surfaces laid out on one sheet.
+DotGrid (still), DotStagger (still), GraphPaper (still), Blueprint (still), IsoLines (still), Hatching (still), CrossHatch (still), WideStripes (still), Zigzag (still), Checker (still), Honeycomb (still), Bricks (still), FishScales (still), BasketWeave (still), PlusField (still), WaveRows (still), RippleFans (still), RingField (still), HalftoneRamp (still), ChainLink (still), ScanLines (still), Pinstripe (still), Tartan (still), PolkaMix (still), LinedSheet (still), Harlequin (still), Registration (still), CornerTicks (still), Stitching (still), Pegboard (still), Triangles (still), DotDensity (drag), HatchAngle (drag), GridSize (drag), DotSpotlight (hover), PatternSwap (click), PatternBlend (drag), PixelMosaic (click), GridSnap (hover), MovingStripes (auto), OpArtRings (auto), CheckerFlip (click), GrainLevel (drag)
+
+### Drift — Particles, stars and rain. (42)
+Chapter Ground; stage spiral. Particle systems wound out along a spiral.
+StarDrift (auto), WarpSpeed (hover), TwinkleSky (auto), GalaxySwirl (auto), MeteorShower (click), OrbitingDust (hover), StarLinks (hover), NebulaPuffs (auto), Rain (auto), WindowRain (click), SplashRain (auto), Snowfall (auto), Blizzard (hover), MistDrift (auto), Lightning (click), Embers (auto), SparkBurst (click), Fireworks (click), Sparkler (hover), Fireflies (auto), PlasmaMotes (hover), Bubbles (auto), BokehDiscs (auto), DustMotes (auto), Pollen (auto), PetalFall (auto), Confetti (click), AshFall (auto), CodeRain (auto), DataStream (auto), Flocking (hover), SwarmChase (hover), Vortex (hover), GravityWells (click), BouncingBalls (click), SpringGrid (hover), IronFilings (hover), FlowField (auto), SmokeWisps (auto), SandStream (auto), Glitter (hover), PondRipples (auto)
+
+### Waves — Ripples, interference and noise. (42)
+Chapter Ground; stage rows. Wave forms on sliding belts.
+SineLine (auto), WaveStack (auto), LayeredSwells (auto), TwoSources (auto), PointerRipples (hover), WaterSurface (click), StandingWave (auto), BeatPattern (auto), PhaseShift (hover), Amplitude (hover), Frequency (hover), HarmonicSum (hover), SawtoothBuild (auto), ValueNoise (auto), NoiseRidges (auto), NoiseCloud (auto), Static (auto), SeaHorizon (auto), RippleBars (auto), DotSwell (auto), DotRipple (auto), MoireLines (auto), SpiralWave (auto), RingPulse (auto), DopplerRings (auto), MachCone (auto), QuakeTrace (auto), TideChart (auto), RopeWave (hover), PendulumWave (auto), WavePacket (auto), ChladniPlate (click), Cymatics (auto), FrequencyDial (hover), Chirp (auto), DampedSpring (click), MeshSurface (auto), ContourBands (auto), BoatWake (auto), PressureWave (auto), SlitTank (click), PhasorTrace (auto)
+
+### Morphs — Shapes that become other shapes. (42)
+Chapter Ground; stage canvas. Shape-changers scattered across a canvas.
+RoundToSquare (click), SideLadder (auto), PointCount (click), GearTeeth (click), PetalCount (auto), WobbleBlob (auto), HeartBeat (click), CrossTurn (click), DiamondCut (click), FlatAndFlower (auto), CornerSlider (drag), BlobRadius (auto), PillToDisc (click), MenuToCross (click), PlayAndPause (click), PlusToMinus (click), CaretFlip (click), SunToMoon (click), EyeAndLid (click), CheckToCross (click), WaveToFlat (click), DataShuffle (click), PointTween (click), Metaballs (hover), GooMenu (click), GooDrops (auto), InkSplit (click), CardToAvatar (click), ButtonToLoader (click), SearchGrow (click), ButtonToPanel (click), SquashSwitch (click), CheckDraw (click), DotsToBar (click), StackToGrid (click), ListToCards (click), NounBlur (auto), PointerLean (hover), PopShapes (click), IrisCut (click), BreathingShape (auto), SideCounter (auto)
+
+### Handset — Mobile screens, onboarding to settings. (42)
+Chapter Patterns; stage split. Phone-screen patterns beside a pinned handset.
+WelcomeSplash (click), IntroSlides (click), PermissionAsk (click), SignInForm (type), SetupSteps (click), CodeEntry (type), FaceIDPrompt (click), AvatarPick (click), InterestChips (click), ReminderOptIn (click), FeedCards (click), StoryRail (click), SearchScreen (type), TabBar (click), PeekSheet (click), PullRefresh (click), SwipeRow (click), SegmentSwitch (click), ShareGrid (click), TopBanner (click), ProductPage (click), ChatThread (type), DialPad (press), MapPin (click), MusicPlayer (click), CameraShutter (click), DayAgenda (click), WalletStack (click), SlideToPay (drag), SettingsList (click), ProfileTop (click), ThemeChoice (click), LanguageList (click), PrivacySwitches (click), StorageBar (click), DeleteGuard (type), SignOutAsk (click), BuildTap (click), EmptyState (click), OfflineRetry (click), LoadToContent (auto), DoneCheck (click)
+
+### Boards — Kanban, calendars and agendas. (42)
+Chapter Patterns; stage atlas. Planning surfaces on one sheet.
+SingleLane (click), ThreeLanes (click), KeyboardMove (key), LaneLimit (click), Swimlanes (click), CardPeek (click), LabelFilter (click), ChecklistRing (click), DueBadges (click), Assignees (click), LaneFold (click), CalendarMonth (click), DayChooser (click), HourSlots (click), OverlapColumns (click), RangePick (click), EventDots (click), YearHeat (click), AgendaList (click), GanttBars (click), TaskLinks (click), AvailabilityGrid (click), ZoneStrip (drag), BookingSlots (click), CountdownCard (auto), RepeatRule (click), MonthAgenda (click), Burndown (click), RoadmapBars (click), UrgencyQuadrants (click), EstimateCards (click), RetroNotes (click), OnCallRota (click), HabitWeek (click), ToDoList (type), FocusBlocks (auto), MilestoneLadder (click), CapacityBars (click), ServiceStatus (click), ReleaseTrain (click), ShiftRoster (click), MeetingPoll (click)
+
+### Feeds — Lists, chats and notification streams. (42)
+Chapter Patterns; stage index. Streams and lists with a live index.
+ContactList (click), LetterGroups (still), HoverActions (hover), ReorderList (click), MultiSelect (click), RowAccordion (click), PageMore (click), SortTable (click), FilterFeed (type), PinToTop (click), UnreadBadges (click), TimelineFeed (still), ActivityLog (still), DensitySwitch (click), EmptyResults (type), BubbleThread (type), TypingBubble (auto), EmojiReactions (click), QuoteReply (click), ReadTicks (click), VoiceNote (click), DayDividers (still), AttachChips (click), ThreadFold (click), ChannelList (click), MentionSuggest (type), EmojiGrid (click), ToastPile (click), AlertGroups (click), BellCounter (click), DigestCard (click), SnoozeChips (click), QuietHours (click), ChannelMatrix (click), LiveTicker (auto), PriorityTabs (click), PresenceList (click), OnlineCount (auto), CommentTree (click), PollResults (click), UnfurlCard (click), NewPostsPill (auto)
+
+### Checkout — Pricing, carts and order flows. (42)
+Chapter Patterns; stage columns. Sample pricing and order parts in parallax columns.
+PriceCards (click), BillingToggle (click), SeatStepper (click), UsageSlider (drag), FeatureTable (still), DifferencesOnly (click), VolumeTiers (click), AddOnBoxes (click), CouponCode (type), CurrencySwitch (click), PriceDrop (click), TrialBar (auto), GuaranteeSeal (click), PricingQuestions (click), CartLines (click), MiniCart (click), FreeShippingBar (click), OrderSummary (click), PromoChip (click), SavedForLater (click), UpsellStrip (click), GiftWrap (click), DeliveryChoice (click), EmptyCart (click), CheckoutSteps (click), AddressForm (type), CardDigits (type), CardBrand (type), ExpiryAndCode (type), PaymentMethods (click), TermsGate (click), PayButton (click), OrderConfirmed (click), ReceiptPrinting (auto), InvoiceRows (click), RefundReason (click), OrderTracker (click), DeliverySlots (click), TipChips (click), BillShare (click), ManagePlan (click), PlanChange (drag)
+
+### Heroes — Opening screens, bands and endings. (42)
+Chapter Patterns; stage canvas. Layouts for opening screens, scattered across a canvas.
+CentredOpening (click), TextAndShape (still), HalfAndHalf (still), FullBleed (still), FilmOpening (click), CardStackHero (click), EmailOpening (type), TwoPaths (click), LogoStrip (hover), StatsBand (auto), MarqueeWords (auto), TypedOpening (auto), WordRotator (auto), ColourMesh (auto), SpotlightOpening (hover), ParallaxOpening (hover), ProductCallouts (click), PhoneOpening (click), BrowserOpening (click), FloatingCards (auto), TabbedOpening (click), SlideOpening (click), AnnouncementBar (click), BadgeOpening (hover), BigNumber (click), OutlineType (hover), ScrollNudge (auto), LaunchClock (auto), SearchOpening (type), WaitlistForm (type), PricingBand (click), QuoteBand (click), ClosingBand (still), FooterCall (still), NewsletterEnding (type), DeadEnd (still), ThankYouEnding (click), ContactEnding (click), ReturnToTop (click), SignOff (auto), ThemeOpening (click), LanguageOpening (click)
+
+## Stage
+
+### Schematic (stage/parts)
+import { Schematic } from 'hanoryx-components/stage';
+
+props: engine, className
+
+### ShowcaseEnding (stage/parts)
+import { ShowcaseEnding } from 'hanoryx-components/stage';
+The page's last screen: the specimens filed by name (each one takes you back to it) and the two pages either side of this one in the showcase.
+props: meta, items, sheet
+
+### ShowcaseIndex (stage/parts)
+import { ShowcaseIndex } from 'hanoryx-components/stage';
+/showcase — the index of the showcase. An opening screen with a mosaic of every page; then the pages by chapter beside a pinned dial that turns to the chapter being read; then every stage, each with the pages that use it.
+
+### ShowcaseIntro (stage/parts)
+import { ShowcaseIntro } from 'hanoryx-components/stage';
+The opening screen of a showcase page: a Canvas scene behind the page's name, what it holds (how many specimens, how it moves, how they are framed), a small diagram of the stage, and a way to see every specimen at once.
+props: meta, no, count, sheet, onToggleSheet
+
+### ShowcasePage (stage/parts)
+import { ShowcasePage } from 'hanoryx-components/stage';
+
+
+### Sim (stage/parts)
+import { Sim } from 'hanoryx-components/stage';
+---- the engine ---------------------------------------------------------------- Sim owns a canvas and a loop. `setup(S)` builds the state once (it is kept in S.st); `tick(S, dt)` advances and draws one frame.
+props: label, setup, tick, mode
+
+### Specimen (stage/parts)
+import { Specimen } from 'hanoryx-components/stage';
+A specimen: one component on show. The frame (its look is the page's `frame`, set on the stage as data-frame) carries a code, the name and how to use it (click, drag, hover, type, auto…).
+props: no, i, name, mode, slug, inert=false, children
+
+### Ico (stage/parts)
+import { Ico } from 'hanoryx-components/stage';
+
+props: n, className=''
+
+### CanvasStage (stage/stages)
+import { CanvasStage } from 'hanoryx-components/stage';
+CANVAS STAGES — the page is a sheet, not a column. The specimens sit on a big flat plane and the scroll flies a camera between them (camera.js): it rests on one, pulls back until the way to the next is in view, swings across — left, right,…
+props: kind, meta, no, Visual, items
+
+### Stage (stage/stages)
+import { Stage } from 'hanoryx-components/stage';
+Picks the engine for a page: its own, unless the screen or the visitor asks for the plain one (or the sheet was asked for).
+props: meta, no, Visual, items, view
+
+### Hud (stage/stages)
+import { Hud } from 'hanoryx-components/stage';
+The readout that sits under the pinned visual: where you are in the page.
+props: no, items, active
+
+### Visual (stage/stages)
+import { Visual } from 'hanoryx-components/stage';
+The visual gets a box it can size itself in: it draws in container units (cqw / cqh / cqmin), so the same piece fits a half screen or a phone band.
+props: Visual
+
+## Core
+
+### useAudioAnalyzer (core/hooks)
+import { useAudioAnalyzer } from 'hanoryx-components/core';
+Drives a small canvas visualizer from real frequency data. Only runs the shared rAF loop while audio is playing; draws a single static frame when paused (no perpetual loop). DPR-capped, cleaned up on unmount.
+
+### useCopy (core/hooks)
+import { useCopy } from 'hanoryx-components/core';
+Copy-to-clipboard with a short "copied" state for the button label.
+
+### useDocumentTitle (core/hooks)
+import { useDocumentTitle } from 'hanoryx-components/core';
+Sets the document title for a page (external sync — not React state). Pass the page label; the base brand is appended automatically.
+
+### useElementInView (core/hooks)
+import { useElementInView } from 'hanoryx-components/core';
+IntersectionObserver wrapper for cheap "is this on screen" reveals.
+
+### useMediaQuery (core/hooks)
+import { useMediaQuery } from 'hanoryx-components/core';
+Subscribes to a CSS media query without effect-driven state (so it is safe under the React 19 lint rules and never causes a cascading render).
+
+### useFinePointer (core/hooks)
+import { useFinePointer } from 'hanoryx-components/core';
+True for a mouse / trackpad (hover-capable, precise). Touch gets simpler, tap-first behaviour.
+
+### useOnScreen (core/hooks)
+import { useOnScreen } from 'hanoryx-components/core';
+Tracks whether an element is on screen. Unlike useElementInView (one-shot reveals) this keeps toggling, so loops, canvases and infinite animations can pause the moment they scroll away. State is only set from the observer callback.
+
+### usePageCatalog (core/hooks)
+import { usePageCatalog } from 'hanoryx-components/core';
+Loads shared page metadata only while a catalog-backed control is mounted.
+
+### usePointerField (core/hooks)
+import { usePointerField } from 'hanoryx-components/core';
+Writes the pointer's position INSIDE an element to CSS variables, so any descendant can respond with pure CSS (transforms, gradients, parallax).
+
+### usePrefersReducedMotion (core/hooks)
+import { usePrefersReducedMotion } from 'hanoryx-components/core';
+Reactively tracks the user's reduced-motion preference. Components use this to gate or simplify expensive animation.
+
+### useProximity (core/hooks)
+import { useProximity } from 'hanoryx-components/core';
+Pointer-proximity engine. Finds every `[data-prox]` unit inside `ref` and keeps a CSS variable --k (0..1) on each: 1 under the cursor, easing to 0 at `radius` px (smoothstep falloff).
+
+### AnimationProvider (core/providers)
+import { AnimationProvider } from 'hanoryx-components/core';
+Top-level animation environment. Registers GSAP plugins, sets global defaults, and keeps ScrollTrigger measurements honest across viewport changes and font loading.
+props: children
+
+### AudioProvider (core/providers)
+import { AudioProvider } from 'hanoryx-components/core';
+Owns the ambient <audio> element and a single Web Audio graph (MediaElementSource -> AnalyserNode -> destination). The graph is built lazily on the first user gesture (autoplay-safe) and reused for the session.
+props: children, src
+
+### ExperienceProvider (core/providers)
+import { ExperienceProvider } from 'hanoryx-components/core';
+ExperienceProvider — owns the full-screen System Synthesis takeover. Opening it pauses every page scene, stops Lenis, locks scroll, and hides the nav/cursor (via the `synthesis-active` document class).
+props: children
+
+### HanoryxProvider (core/providers)
+import { HanoryxProvider } from 'hanoryx-components/core';
+Everything a Hanoryx page expects above it, in the order the site mounts it: animation environment (GSAP plugins) -> audio -> smooth scroll -> experience (the full-screen synthesis takeover).
+props: children, smoothScroll=true, audio=true, experience=true, audioSrc
+
+### LenisProvider (core/providers)
+import { LenisProvider } from 'hanoryx-components/core';
+Smooth, "river-like" scrolling via Lenis, wired into the GSAP ticker so ScrollTrigger and Lenis share one clock. Disabled entirely under reduced-motion (native scroll takes over).
+props: children
+
+### useAudio (core/providers)
+import { useAudio } from 'hanoryx-components/core';
+
+
+### useExperience (core/providers)
+import { useExperience } from 'hanoryx-components/core';
+
+
+### useLenis (core/providers)
+import { useLenis } from 'hanoryx-components/core';
+
+
+### setAudioActive (core/motion)
+import { setAudioActive } from 'hanoryx-components/core';
+AUDIO BRIDGE — a single shared snapshot of the live audio spectrum that any canvas scene can read without subscribing to the React audio context.
+
+### writeAudioBytes (core/motion)
+import { writeAudioBytes } from 'hanoryx-components/core';
+Fold raw analyser bytes (any length) into BANDS normalised values.
+
+### getAudio (core/motion)
+import { getAudio } from 'hanoryx-components/core';
+Stable reference — scenes read fields each frame.
+
+### clamp (core/motion)
+import { clamp } from 'hanoryx-components/core';
+
+
+### lerp (core/motion)
+import { lerp } from 'hanoryx-components/core';
+
+
+### mapRange (core/motion)
+import { mapRange } from 'hanoryx-components/core';
+
+
+### easeInOutCubic (core/motion)
+import { easeInOutCubic } from 'hanoryx-components/core';
+
+
+### easeOutCubic (core/motion)
+import { easeOutCubic } from 'hanoryx-components/core';
+
+
+### easeInOutSine (core/motion)
+import { easeInOutSine } from 'hanoryx-components/core';
+
+
+### pseudoNoise (core/motion)
+import { pseudoNoise } from 'hanoryx-components/core';
+Cheap, allocation-free 2D value noise (good enough for organic drift).
+
+### flowAngle (core/motion)
+import { flowAngle } from 'hanoryx-components/core';
+Smooth flow angle from a position + time — the backbone of flow fields.
+
+### getMotionState (core/motion)
+import { getMotionState } from 'hanoryx-components/core';
+
+
+### maxDpr (core/motion)
+import { maxDpr } from 'hanoryx-components/core';
+
+
+### resolveQuality (core/motion)
+import { resolveQuality } from 'hanoryx-components/core';
+Resolve the quality a scene should run at, given its declared cost. cost: 'low' | 'medium' | 'high' | 'hero' -> 'static' | 'low' | 'medium' | 'high'
+
+### maxActiveScenes (core/motion)
+import { maxActiveScenes } from 'hanoryx-components/core';
+How many background canvases may ANIMATE at once. Everything else holds a static frame. This is the primary defence against "every page lags": no matter how many scenes a page declares, only the most-visible few run.
+
+### sceneFrameInterval (core/motion)
+import { sceneFrameInterval } from 'hanoryx-components/core';
+Target frame interval (ms) for background scenes — backgrounds run at ~30fps regardless of a 60/120Hz display; halves/quarters draw work, invisibly.
+
+### initPointer (core/motion)
+import { initPointer } from 'hanoryx-components/core';
+
+
+### getPointer (core/motion)
+import { getPointer } from 'hanoryx-components/core';
+
+
+### subscribe (core/motion)
+import { subscribe } from 'hanoryx-components/core';
+RAF SCHEDULER — one requestAnimationFrame loop for the whole app. Scenes and loops subscribe with a callback (time, delta).
+
+### getFps (core/motion)
+import { getFps } from 'hanoryx-components/core';
+
+
+### getSubscriberCount (core/motion)
+import { getSubscriberCount } from 'hanoryx-components/core';
+
+
+### setScenesPaused (core/motion)
+import { setScenesPaused } from 'hanoryx-components/core';
+Pause/resume ALL background scenes at once (overlay/route-transition takeover).
+
+### registerScene (core/motion)
+import { registerScene } from 'hanoryx-components/core';
+Register a scene controller. @param {{ratio:number, running:boolean, run:(on:boolean)=>void}} ctrl @returns {() => void} unregister
+
+### reportVisibility (core/motion)
+import { reportVisibility } from 'hanoryx-components/core';
+Report a controller's new visibility ratio (0..1) and re-rank.
+
+### activeSceneCount (core/motion)
+import { activeSceneCount } from 'hanoryx-components/core';
+
+
+### white (core/motion)
+import { white } from 'hanoryx-components/core';
+Canvas-side colour palette mirroring the CSS tokens. Canvas can't read CSS variables cheaply per frame, so scenes use these helpers.
+
+### red (core/motion)
+import { red } from 'hanoryx-components/core';
+
+
+### accentFn (core/motion)
+import { accentFn } from 'hanoryx-components/core';
+Parse a #rrggbb accent into an rgba() helper so scenes honour per-section accents while defaulting to the system red.
+
+### registerScene (core/motion)
+import { registerScene } from 'hanoryx-components/core';
+SCENE REGISTRY — name -> scene factory. A scene factory has the shape:
+
+### getScene (core/motion)
+import { getScene } from 'hanoryx-components/core';
+
+
+### listScenes (core/motion)
+import { listScenes } from 'hanoryx-components/core';
+
+
+### initPerformanceMode (core/performance)
+import { initPerformanceMode } from 'hanoryx-components/core';
+PERFORMANCE MODE — the fast-scroll governor.
+
+### getPerformanceMode (core/performance)
+import { getPerformanceMode } from 'hanoryx-components/core';
+
+
+### subscribePerformanceMode (core/performance)
+import { subscribePerformanceMode } from 'hanoryx-components/core';
+Subscribe to mode changes. Returns an unsubscribe fn.
+
+### initViewportDirector (core/performance)
+import { initViewportDirector } from 'hanoryx-components/core';
+VIEWPORT DIRECTOR — stable, correct viewport sizing.
+
+### configureAssets (core/utils)
+import { configureAssets } from 'hanoryx-components/core';
+
+
+### copyText (core/utils)
+import { copyText } from 'hanoryx-components/core';
+Copy text to the clipboard. Uses the async Clipboard API where the browser allows it, and a hidden textarea where it does not (older browsers, or a page that is not a secure context). Resolves to whether it worked.
+
+### downloadText (core/utils)
+import { downloadText } from 'hanoryx-components/core';
+Save text as a file the visitor downloads. Nothing leaves the browser: the file is built in memory and handed to a temporary link.
+
+### parseHex (core/utils)
+import { parseHex } from 'hanoryx-components/core';
+'#abc', 'abc', '#aabbcc' -> [r, g, b], or null when it is not a hex colour.
+
+### toHex (core/utils)
+import { toHex } from 'hanoryx-components/core';
+
+
+### contrastRatio (core/utils)
+import { contrastRatio } from 'hanoryx-components/core';
+The WCAG contrast ratio of two colours, from 1 (identical) to 21 (black on white).
+
+### nearestPassing (core/utils)
+import { nearestPassing } from 'hanoryx-components/core';
+The closest colour to `fg` (changing only its lightness) that reaches `target` against `bg`, looking both darker and lighter. Returns { darker, lighter }, either of which may be null.
+
+### parseCron (core/utils)
+import { parseCron } from 'hanoryx-components/core';
+Parse an expression. Returns { ok: true, text, fields, sets, star } or { ok: false, error }.
+
+### expand (core/utils)
+import { expand } from 'hanoryx-components/core';
+The values a field expands to, written for a person.
+
+### describe (core/utils)
+import { describe } from 'hanoryx-components/core';
+One sentence that says when it runs.
+
+### warnings (core/utils)
+import { warnings } from 'hanoryx-components/core';
+Things worth knowing about this particular schedule.
+
+### nextRuns (core/utils)
+import { nextRuns } from 'hanoryx-components/core';
+The next `count` run times (as epoch milliseconds) after `fromMs`, in the local zone or in UTC.
+
+### readFootprint (core/utils)
+import { readFootprint } from 'hanoryx-components/core';
+
+
+### isOwnKey (core/utils)
+import { isOwnKey } from 'hanoryx-components/core';
+
+
+### clearOwnStorage (core/utils)
+import { clearOwnStorage } from 'hanoryx-components/core';
+Remove only the site's own items. Returns how many were removed.
+
+### fx (core/utils)
+import { fx } from 'hanoryx-components/core';
+Marks a foreground detail so it can be inventoried and (in blueprint mode) labelled. `fx('home.orbit')` spreads `data-fx="home.orbit"` onto an element. It has no runtime cost beyond the attribute.
+
+### lockScroll (core/utils)
+import { lockScroll } from 'hanoryx-components/core';
+
+
+### offsetLabel (core/utils)
+import { offsetLabel } from 'hanoryx-components/core';
+
+
+### changesIn (core/utils)
+import { changesIn } from 'hanoryx-components/core';
+Every clock change a zone makes in a year, found by watching the offset day by day. Each result: { at, before, after, y, m, d } where y/m/d is the local date of the change.
+
+### effectOn (core/utils)
+import { effectOn } from 'hanoryx-components/core';
+What `HH:MM` does on the local day of a clock change: 0 = it never happens, 1 = once, 2 = twice.
+
+### loadPageCatalog (core/site)
+import { loadPageCatalog } from 'hanoryx-components/core';
+Lightweight title, intro and reading metadata for every page, from the registered source.
+
+### configureSite (core/site)
+import { configureSite } from 'hanoryx-components/core';
+Register any of: loadPage(key), warmPage(pathname), loadPageCatalog(), loadSearchDocuments(), company, navigation.
+
+### loadPage (core/site)
+import { loadPage } from 'hanoryx-components/core';
+
+
+### warmPage (core/site)
+import { warmPage } from 'hanoryx-components/core';
+
+
+### fetchPageCatalog (core/site)
+import { fetchPageCatalog } from 'hanoryx-components/core';
+
+
+### fetchSearchDocuments (core/site)
+import { fetchSearchDocuments } from 'hanoryx-components/core';
+

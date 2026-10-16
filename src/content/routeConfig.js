@@ -473,10 +473,33 @@ export const siteSections = [
 /* Everything the menus and the footer link to, flat and de-duplicated: what the
    404 page ranks by spelling to suggest the nearest real pages. Derived, so a
    page added to the menu or the footer is suggested without a third list. */
-export const directory = (() => {
+export const directory = [];
+const rebuildDirectory = () => {
   const seen = new Map();
   const add = (group, label, to) => { if (!seen.has(to)) seen.set(to, { group, label, to }); };
   navGroups.forEach((g) => g.children.forEach((c) => add(g.label, c.label === 'Overview' ? g.label : c.label, c.to)));
   footerColumns.forEach((col) => col.groups.forEach((gr) => gr.links.forEach((l) => add(col.title, l.label, l.to))));
-  return [...seen.values()];
-})();
+  directory.splice(0, directory.length, ...seen.values());
+};
+rebuildDirectory();
+
+/* ---- making it yours -------------------------------------------------------
+   The navbar, the mobile menu, the footer and the 404 page read the lists above.
+   An app replaces them once, before it renders, and every reader sees the new
+   values (the arrays are updated in place):
+
+     import { applyNavigation } from 'hanoryx-components/content/routeConfig';
+     applyNavigation({ navGroups, pageRouteKeys, footerColumns, footerLegalRow, siteSections, redirects });
+
+   Each key is optional. A navGroup is { id, label, code, to, blurb, lead, categories }
+   (its flat `children` list is derived when missing). ----------------------- */
+const replace = (target, next) => target.splice(0, target.length, ...next);
+export function applyNavigation({ navGroups: groups, pageRouteKeys: keys, footerColumns: columns, footerLegalRow: legal, siteSections: sections, redirects: moved } = {}) {
+  if (groups) replace(navGroups, groups.map((g) => (g.children ? g : { ...g, children: [g.lead, ...(g.categories ?? []).flatMap((c) => c.items)].filter(Boolean) })));
+  if (keys) { replace(pageRouteKeys, keys); replace(allRouteKeys, [...keys, ...showcaseRouteKeys]); }
+  if (columns) replace(footerColumns, columns);
+  if (legal) replace(footerLegalRow, legal);
+  if (sections) replace(siteSections, sections);
+  if (moved) replace(redirects, moved);
+  rebuildDirectory();
+}

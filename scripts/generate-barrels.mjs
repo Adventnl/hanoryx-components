@@ -25,6 +25,7 @@ const AREAS = [
   { dir: 'core/providers' },
   { dir: 'core/performance' },
   { dir: 'core/site' },
+  { dir: 'kit', recursive: true, exclude: [/\/demos\//, /\/internal\/(?!toastContext)/] },
   { dir: 'fx' },
   { dir: 'ui' },
   { dir: 'reveal' },
@@ -56,7 +57,7 @@ function barrelFor(area) {
   const base = path.join(SRC, area.dir);
   const files = area.files
     ? area.files.map((f) => path.join(base, f))
-    : area.recursive ? walk(base, isModule) : fs.readdirSync(base).map((f) => path.join(base, f)).filter((p) => fs.statSync(p).isFile() && isModule(p));
+    : area.recursive ? walk(base, (p) => isModule(p) && !(area.exclude ?? []).some((re) => re.test(p.replace(/\\/g, '/')))) : fs.readdirSync(base).map((f) => path.join(base, f)).filter((p) => fs.statSync(p).isFile() && isModule(p));
   files.sort((a, b) => a.localeCompare(b));
   const seen = new Map();
   const lines = [];

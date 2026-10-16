@@ -9,7 +9,7 @@ import c from './progress.module.css';
     return () => clearTimeout(id);
   }, [s]);
   return (
-    <button type="button" className={c.dl} style={{ '--v': s / 100 }} data-done={s >= 100} aria-busy={s > 0 && s < 100} onClick={() => setS(s === 0 || s >= 100 ? 1 : s)}>
+    <button type="button" className={c.dl} style={{ '--prog-v': s / 100 }} data-done={s >= 100} aria-busy={s > 0 && s < 100} onClick={() => setS(s === 0 || s >= 100 ? 1 : s)}>
       <i aria-hidden="true" /><span>{s === 0 ? 'Download' : s >= 100 ? 'Done · open' : `${s}%`}</span>
     </button>
   );

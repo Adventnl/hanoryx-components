@@ -15,7 +15,7 @@ import c from './progress.module.css';
   return (
     <div className={c.scrub}>
       <button type="button" aria-label={on ? 'Pause' : 'Play'} aria-pressed={on} onClick={flip}><Ico n={on ? 'pause' : 'play'} /></button>
-      <div {...bind} aria-label="Scrub" aria-valuetext={`${Math.floor(t / 60)} minutes ${t % 60} seconds`} style={{ ...bind.style, '--v': v }}><i /><b /></div>
+      <div {...bind} aria-label="Scrub" aria-valuetext={`${Math.floor(t / 60)} minutes ${t % 60} seconds`} style={{ ...bind.style, '--prog-v': v }}><i /><b /></div>
       <output>{Math.floor(t / 60)}:{String(t % 60).padStart(2, '0')}</output>
     </div>
   );

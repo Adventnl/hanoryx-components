@@ -5,7 +5,7 @@
    ============================================================ */
 @property --lsx { syntax: '<percentage>'; inherits: true; initial-value: -10%; }
 @property --gra { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
-@property --pn { syntax: '<integer>'; inherits: false; initial-value: 0; }
+@property --pass-pn { syntax: '<integer>'; inherits: false; initial-value: 0; }
 
 /* ---- the medallion on the line ---- */
 .medal { position: relative; width: 100%; height: 100%; color: #fff; }
@@ -26,7 +26,7 @@
 }
 .medalTop, .medalNo { position: absolute; left: 0; right: 0; margin: 0; text-align: center; font: 500 3.3cqw var(--font-mono); letter-spacing: 0.3em; text-transform: uppercase; color: var(--c-white-50); }
 .medalTop { top: 17cqw; }
-.medalNo { --pn: calc(round(var(--f)) + 1); bottom: 16.5cqw; counter-reset: pn var(--pn); color: var(--c-white-80); letter-spacing: 0.2em; }
+.medalNo { --pass-pn: calc(round(var(--f)) + 1); bottom: 16.5cqw; counter-reset: pn var(--pass-pn); color: var(--c-white-80); letter-spacing: 0.2em; }
 .medalNo::before { content: 'No. ' counter(pn, decimal-leading-zero) ' / 42'; }
 .qr {
   position: absolute;

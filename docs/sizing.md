@@ -1,5 +1,7 @@
 # Sizing, ratios and padding
 
+Measurements describe the rendered example. Parts that need a table, chat or split-panel context are marked as contextual examples; the enclosing example's dimensions are not the isolated part's dimensions. Stateful content can change height after interaction.
+
 This is the page to read before you put two components next to each other. Most broken pages are not broken components — they are components given a size they were never meant to take.
 
 > **The one rule.** A component does not own its outer size. Its *parent* does. Put it in something that has the width you want, and let it fill, cap or hug as it was built to. Never put a `width`, `height` or `padding` on a library component to make it fit.

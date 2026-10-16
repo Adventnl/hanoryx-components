@@ -1,9 +1,9 @@
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 0.45rem 0.85rem;
-  border: 1px solid var(--c-line);
+  gap: var(--size-10px);
+  padding: var(--size-0p45rem) var(--size-0p85rem);
+  border: var(--size-1px) solid var(--c-line);
   border-radius: var(--r-sm);
   background: var(--c-white-03);
   color: var(--c-white-50);
@@ -23,18 +23,18 @@
 
 .viz {
   display: block;
-  width: 40px;
-  height: 14px;
+  width: var(--size-40px);
+  height: var(--size-14px);
 }
 
 .label {
   display: inline-flex;
   align-items: center;
-  gap: 0.35em;
+  gap: var(--size-0p35em);
   font-family: var(--font-mono);
   font-size: var(--fs-2xs);
   font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: var(--size-0p14em);
   white-space: nowrap;
 }
 .sep { color: var(--c-white-50); }
@@ -43,14 +43,14 @@
 .state {
   display: inline-block;
   color: inherit;
-  animation: audio-state-in 0.45s var(--ease-out) both;
+  animation: audio-state-in var(--dur-extracted-0p45s) var(--ease-out) both;
 }
 .live .state { color: var(--c-red); }
-.loading .state { animation: audio-state-in 0.45s var(--ease-out) both, audio-state-breathe 1.1s ease-in-out 0.45s infinite; }
+.loading .state { animation: audio-state-in var(--dur-extracted-0p45s) var(--ease-out) both, audio-state-breathe var(--dur-extracted-1p1s) ease-in-out var(--dur-extracted-0p45s) infinite; }
 .alert .state { color: var(--c-red); }
 
 @keyframes audio-state-in {
-  from { opacity: 0; transform: translateY(5px); }
+  from { opacity: 0; transform: translateY(var(--size-5px)); }
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes audio-state-breathe {

@@ -6,7 +6,7 @@ This library is meant to be handed to a model. Models fail with component librar
 
 1. **`AGENTS.md`** (repo root) — the rules, in one page. Tell the model to read it first.
 2. **`llms.txt`** — the map: every area, every kit/fx/ui/page/shell component with a one-line summary, every specimen family. ~10 KB.
-3. **`docs/sizing.md`** and **`docs/layout-recipes.md`** — sizes, ratios, padding and ten page skeletons. The part models get wrong without it.
+3. **`docs/sizing.md`** and **`docs/layout-recipes.md`** — sizes, ratios, padding and six page skeletons. Read `docs/extended-kit.md` for chat, dates, split panels, rich text and composable tables.
 4. A component's own entry, on demand: `npm run hx -- component <Name> --dense` (props, measured size, keys, one example), or its page on the docs site.
 
 `llms-full.txt` is the same catalogue with every prop; `docs/generated/manifest.json` is the machine-readable version of everything (entries, props, measured sizes, import lines).

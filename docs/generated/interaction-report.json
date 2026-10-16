@@ -1,0 +1,13 @@
+{
+  "generatedAt": "2026-10-16T05:44:55.895Z",
+  "passed": [
+    "calendar keyboard navigation, leap-day selection and selection/focus separation",
+    "date-range validation",
+    "chat send, clear, rejection and draft preservation",
+    "resizable keyboard updates and bounds",
+    "rich-text HTML sanitization, selection formatting and emitted value",
+    "table sort/filter/page/selection/columns/tree/resize/sticky/group/index/status composition",
+    "reduced-motion pause, visibility gating, active-loop control and direct graph keyboard editing"
+  ],
+  "errors": []
+}

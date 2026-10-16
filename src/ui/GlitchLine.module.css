@@ -2,7 +2,7 @@
   position: relative;
   display: block;
   width: 100%;
-  height: 1px;
+  height: var(--size-1px);
   background: var(--c-line);
   overflow: hidden;
 }
@@ -14,19 +14,19 @@
   width: 30%;
   height: 100%;
   background: linear-gradient(90deg, transparent, var(--c-white-40), transparent);
-  animation: glitchline-sweep 6s var(--ease-in-out) infinite;
+  animation: glitchline-sweep var(--dur-extracted-6s) var(--ease-in-out) infinite;
 }
 
 .tick {
   position: absolute;
-  top: -1px;
+  top: var(--size-negative-1px);
   left: 0;
-  width: 18px;
-  height: 3px;
+  width: var(--size-18px);
+  height: var(--size-3px);
   background: var(--c-red);
   box-shadow: var(--glow-red);
   opacity: 0;
-  animation: glitchline-tick 7s steps(1) infinite;
+  animation: glitchline-tick var(--dur-extracted-7s) steps(1) infinite;
 }
 
 .red { background: var(--c-red-ghost); }

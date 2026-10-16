@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { Navigate, Routes, Route, useLocation, useParams } from 'react-router-dom';
 import { AnimatePresence } from 'motion/react';
 import { NotFound, RouteFallback, TemplatePage } from 'hanoryx-components';

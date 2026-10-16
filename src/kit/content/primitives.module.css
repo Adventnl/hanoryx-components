@@ -13,7 +13,7 @@
 .container[data-size='text'] { max-width: calc(var(--maxw-text) + 2 * var(--gutter)); }
 
 /* Center: a capped column, centred, for a form or a card. */
-.center { width: 100%; max-width: var(--max, 36rem); margin-inline: auto; min-width: 0; }
+.center { width: 100%; max-width: var(--max, var(--size-36rem)); margin-inline: auto; min-width: 0; }
 .center[data-text='center'] { text-align: center; }
 
 /* Heading: serif, light, one token per size. */
@@ -36,4 +36,4 @@
 .text[data-tone='strong'] { color: var(--c-text-strong); }
 .text[data-tone='dim'] { color: var(--c-text-dim); }
 .text[data-tone='red'] { color: var(--c-red-bright); }
-.text[data-measure] { max-width: 62ch; }
+.text[data-measure] { max-width: var(--size-62ch); }

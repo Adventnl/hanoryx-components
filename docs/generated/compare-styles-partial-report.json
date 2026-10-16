@@ -1,0 +1,11 @@
+{
+ "generatedAt": "2026-10-16T05:19:46.355Z",
+ "mode": "computed styles",
+ "state": "Initial appearance: CSS and SVG animations, requestAnimationFrame and interval loops paused; fixed date and seeded random. Live interactions are verified separately.",
+ "reference": "http://127.0.0.1:5301",
+ "same": 84,
+ "diff": 0,
+ "missing": 0,
+ "families": 2,
+ "bad": []
+}

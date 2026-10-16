@@ -1,0 +1,19 @@
+.chat, .layout, .composer { display: grid; gap: var(--space-4); min-width: 0; }
+.layout { border: var(--border); border-radius: var(--r-md); background: var(--c-panel); padding: var(--space-5); }
+.scroll { overflow: auto; overscroll-behavior: contain; min-width: 0; }
+.messages, .tools { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-4); }
+.message { display: grid; gap: var(--space-2); min-width: 0; overflow-wrap: anywhere; }
+.message > strong, .metadata, .system { font-size: var(--fs-xs); color: var(--c-text-dim); }
+.message[data-speaker='user'] { justify-items: end; }
+.bubble { background: var(--c-panel-2); border: var(--border); border-radius: var(--r-md); padding: var(--space-4); white-space: pre-wrap; overflow-wrap: anywhere; }
+.system { padding: var(--space-3); border-block: var(--border); }
+.system > span { font-weight: 600; }
+.tools pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+.composer { border-top: var(--border); padding-top: var(--space-4); }
+.input { display: grid; gap: var(--space-2); font-size: var(--fs-sm); }
+.input textarea { resize: vertical; width: 100%; min-width: 0; padding: var(--space-3); border: var(--border); border-radius: var(--r-sm); background: var(--c-black); color: var(--c-text); font: inherit; }
+.button { justify-self: start; border: var(--border); border-radius: var(--r-sm); padding: var(--space-3) var(--space-4); color: var(--c-text-strong); background: var(--c-panel-2); font: inherit; cursor: pointer; }
+.button:disabled { opacity: .5; cursor: default; }
+.token { display: inline-flex; align-items: center; gap: var(--space-2); background: var(--c-panel-2); color: var(--c-text); border-radius: var(--r-sm); padding: var(--space-1) var(--space-2); }
+.token button { color: inherit; background: transparent; border: 0; cursor: pointer; }
+.drawer summary, .tools summary { cursor: pointer; padding-block: var(--space-2); }

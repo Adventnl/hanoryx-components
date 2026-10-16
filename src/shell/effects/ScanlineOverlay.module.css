@@ -5,10 +5,10 @@
   pointer-events: none;
   background: repeating-linear-gradient(
     0deg,
-    rgba(255, 255, 255, 0.014) 0px,
-    rgba(255, 255, 255, 0.014) 1px,
-    transparent 2px,
-    transparent 4px
+    var(--c-extracted-rgba-255-255-255-0p014) var(--size-0px),
+    var(--c-extracted-rgba-255-255-255-0p014) var(--size-1px),
+    transparent var(--size-2px),
+    transparent var(--size-4px)
   );
   opacity: 0.6;
   /* mix-blend-mode removed — see NoiseOverlay; full-screen blend over animated

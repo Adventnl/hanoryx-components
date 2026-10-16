@@ -39,13 +39,17 @@ const NORMALISE = `
     const walk = (el) => {
       if (el.nodeType !== 1) return;
       if (el.hasAttribute('class')) {
-        const cls = el.getAttribute('class').split(/\\s+/).filter(Boolean).map((c) => c.replace(/^_/, '').replace(/_[A-Za-z0-9-]{5,8}$/, '')).sort().join(' ');
+        const cls = el.getAttribute('class').split(/\\s+/).filter(Boolean).map((c) => c.replace(/^_/, '').replace(/_[A-Za-z0-9-]{5,8}(?:_\\d+)?$/, '')).sort().join(' ');
         el.setAttribute('class', cls);
       }
       for (const a of ['id', 'for', 'aria-labelledby', 'aria-describedby', 'aria-controls', 'list', 'aria-owns', 'aria-activedescendant']) {
         if (el.hasAttribute(a)) el.setAttribute(a, el.getAttribute(a).replace(/(_r_[a-z0-9]+_|«[^»]*»|:r[a-z0-9]+:|r[0-9a-z]{1,4}-?)/g, 'ID'));
       }
       el.removeAttribute('data-on');
+      if (el.style?.getPropertyValue('--prog-v')) {
+        const value = el.style.getPropertyValue('--prog-v');
+        el.style.removeProperty('--prog-v'); el.style.setProperty('--v', value);
+      }
       [...el.children].forEach(walk);
     };
     walk(clone);
@@ -63,7 +67,7 @@ const NORMALISE = `
 const STYLES = `
 (() => {
   const out = {};
-  const props = ['display', 'position', 'color', 'backgroundColor', 'backgroundImage', 'borderTopColor', 'borderTopWidth', 'borderRadius', 'fontSize', 'fontWeight', 'letterSpacing', 'opacity', 'transform', 'clipPath', 'filter', 'overflow', 'zIndex', 'boxShadow'];
+  const props = ['display', 'position', 'color', 'backgroundColor', 'backgroundImage', 'borderTopColor', 'borderTopWidth', 'borderRadius', 'fontSize', 'fontWeight', 'fontFamily', 'lineHeight', 'letterSpacing', 'opacity', 'transform', 'clipPath', 'filter', 'overflow', 'zIndex', 'boxShadow', 'fill', 'stroke', 'strokeWidth', 'strokeDasharray', 'strokeDashoffset', 'strokeLinecap', 'padding', 'margin', 'gap'];
   for (const fig of document.querySelectorAll('figure[data-spec]')) {
     const bed = fig.querySelector('.sc-bed');
     if (!bed) continue;
@@ -72,7 +76,8 @@ const STYLES = `
     for (const el of bed.querySelectorAll('*')) {
       const r = el.getBoundingClientRect();
       const cs = getComputedStyle(el);
-      rows.push({ tag: el.tagName, x: +(r.left - o.left).toFixed(1), y: +(r.top - o.top).toFixed(1), w: +r.width.toFixed(1), h: +r.height.toFixed(1), css: props.map((p) => cs[p]).join('|') });
+      const hasBox = el.getClientRects().length > 0;
+      rows.push({ tag: el.tagName, x: hasBox ? +(r.left - o.left).toFixed(1) : 0, y: hasBox ? +(r.top - o.top).toFixed(1) : 0, w: +r.width.toFixed(1), h: +r.height.toFixed(1), css: props.map((p) => cs[p]).join('|') });
     }
     out[fig.id] = rows;
   }
@@ -101,7 +106,9 @@ async function grab(page, url, ready) {
   await page.goto(url, { waitUntil: 'load' });
   await page.waitForSelector('figure[data-spec]', { timeout: 30000 });
   if (styleMode) await page.addStyleTag({ content: PIN });
+  await page.evaluate(() => document.fonts.ready);
   await page.waitForTimeout(ready);
+  await page.evaluate(() => document.querySelectorAll('svg').forEach(svg => { svg.pauseAnimations?.(); svg.setCurrentTime?.(0); }));
   return page.evaluate(styleMode ? STYLES : NORMALISE);
 }
 
@@ -109,6 +116,20 @@ const browser = await launch();
 const mk = async () => {
   const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, ignoreHTTPSErrors: true, reducedMotion: 'reduce' });
   await ctx.addInitScript(seed);
+  // Compare deterministic initial appearance. Live loops depend on when each
+  // page intersects the viewport; exercise their behaviour separately.
+  await ctx.addInitScript(() => {
+    const NativeDate = window.Date;
+    const fixed = NativeDate.parse('2026-10-16T00:00:00Z');
+    function FixedDate(...args) { return new.target ? Reflect.construct(NativeDate, args.length ? args : [fixed]) : new NativeDate(fixed).toString(); }
+    FixedDate.prototype = NativeDate.prototype;
+    Object.setPrototypeOf(FixedDate, NativeDate);
+    FixedDate.now = () => fixed;
+    window.Date = FixedDate;
+    window.setInterval = () => 0;
+    window.requestAnimationFrame = () => 0;
+    window.cancelAnimationFrame = () => {};
+  });
   await ctx.addInitScript(() => { try { sessionStorage.setItem('hnx.boot.complete', '1'); } catch { /* storage unavailable */ } });
   return ctx.newPage();
 };
@@ -120,8 +141,8 @@ const bad = [];
 for (const slug of slugs) {
   let a; let b;
   try {
-    a = await grab(refPage, `${REF}/showcase/${slug}?view=sheet`, 1500);
-    b = await grab(newPage, `${BASE}/#/a/specimens/${slug}`, 1500);
+    a = await grab(refPage, `${REF}/showcase/${slug}?view=sheet`, 250);
+    b = await grab(newPage, `${BASE}/#/a/specimens/${slug}`, 250);
   } catch (e) { console.log(`ERROR ${slug}: ${e.message.split('\n')[0]}`); bad.push({ slug, error: e.message }); continue; }
   const ids = new Set([...Object.keys(a), ...Object.keys(b)]);
   let famSame = 0; const famBad = [];
@@ -141,5 +162,5 @@ for (const slug of slugs) {
 }
 await browser.close();
 console.log(`\n${same} specimens identical, ${diff} differ, ${missing} missing, across ${slugs.length} families`);
-fs.writeFileSync(path.join(ROOT, 'docs/generated/compare-report.json'), JSON.stringify({ same, diff, missing, families: slugs.length, bad: bad.map(({ a, b, ...r }) => r) }, null, 1));
-process.exit(diff + missing ? 1 : 0);
+fs.writeFileSync(path.join(ROOT, `docs/generated/compare${styleMode ? '-styles' : ''}${only.length ? '-partial' : ''}-report.json`), JSON.stringify({ generatedAt: new Date().toISOString(), mode: styleMode ? 'computed styles' : 'DOM', state: 'Initial appearance: CSS and SVG animations, requestAnimationFrame and interval loops paused; fixed date and seeded random. Live interactions are verified separately.', reference: REF, same, diff, missing, families: slugs.length, bad: bad.map(({ a, b, ...r }) => r) }, null, 1));
+process.exit(diff + missing + bad.filter((failure) => failure.error).length ? 1 : 0);

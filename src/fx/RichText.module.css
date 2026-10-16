@@ -1,39 +1,39 @@
 .code {
-  padding: 0.08em 0.4em;
-  border: 1px solid var(--c-white-12);
-  border-radius: 3px;
+  padding: var(--size-0p08em) var(--size-0p4em);
+  border: var(--size-1px) solid var(--c-white-12);
+  border-radius: var(--size-3px);
   background: var(--c-white-05);
   color: var(--c-white-80);
-  font: 0.86em var(--font-mono);
+  font: var(--size-0p86em) var(--font-mono);
   overflow-wrap: anywhere;
 }
 .mark {
-  padding: 0 1px;
-  border-radius: 2px;
-  background: rgba(255, 51, 51, 0.28);
+  padding: 0 var(--size-1px);
+  border-radius: var(--r-xs);
+  background: var(--c-extracted-rgba-255-51-51-0p28);
   color: var(--c-white);
 }
 
 /* A defined word: dotted underline, definition on hover or focus. */
 .term {
   position: relative;
-  border-bottom: 1px dotted var(--c-red-dim);
+  border-bottom: var(--size-1px) dotted var(--c-red-dim);
   color: var(--c-white-80);
   cursor: help;
   outline: none;
   transition: color var(--dur-2) var(--ease-out), border-color var(--dur-2) var(--ease-out);
 }
 .term:hover, .term:focus-visible { color: var(--c-white); border-bottom-color: var(--c-red); }
-.term:focus-visible { outline: 1px solid var(--c-red); outline-offset: 3px; }
+.term:focus-visible { outline: var(--size-1px) solid var(--c-red); outline-offset: var(--size-3px); }
 .tip {
   position: absolute;
   left: 50%;
-  bottom: calc(100% + 0.6rem);
+  bottom: calc(100% + var(--size-0p6rem));
   z-index: 5;
   width: max-content;
-  max-width: min(22rem, 78vw);
-  padding: 0.7rem 0.9rem;
-  border: 1px solid var(--c-line-strong);
+  max-width: min(var(--size-22rem), var(--size-78vw));
+  padding: var(--size-0p7rem) var(--size-0p9rem);
+  border: var(--size-1px) solid var(--c-line-strong);
   border-radius: var(--r-md);
   background: var(--c-black-3);
   box-shadow: var(--shadow-panel);
@@ -43,8 +43,8 @@
   text-align: left;
   pointer-events: none;
   opacity: 0;
-  transform: translate(-50%, 6px);
-  transition: opacity var(--dur-2) var(--ease-out), transform 0.5s var(--ease-glide);
+  transform: translate(-50%, var(--size-6px));
+  transition: opacity var(--dur-2) var(--ease-out), transform var(--dur-extracted-0p5s) var(--ease-glide);
 }
 .term:hover .tip, .term:focus-visible .tip, .term:focus .tip { opacity: 1; transform: translate(-50%, 0); }
 @media (prefers-reduced-motion: reduce) {

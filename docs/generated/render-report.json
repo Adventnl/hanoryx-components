@@ -1,6 +1,501 @@
 {
- "checked": 5,
+ "generatedAt": "2026-10-16T05:08:36.195Z",
+ "scope": {
+  "areas": [
+   "kit",
+   "fx",
+   "ui",
+   "page",
+   "signatures",
+   "closers",
+   "specimens",
+   "scenes",
+   "reveal"
+  ],
+  "only": null,
+  "limit": 0,
+  "widths": [
+   360,
+   768,
+   1200
+  ]
+ },
+ "expected": 2525,
+ "checked": 2525,
  "failures": [],
  "overflows": [],
- "empty": []
+ "empty": [],
+ "initialFindings": {
+  "failures": [
+   {
+    "id": "page/blocks/ChecklistBlock",
+    "error": "timeout waiting for render (page.waitForSelector: Timeout 15000ms exceeded.)"
+   },
+   {
+    "id": "page/blocks/CloserBlock",
+    "error": "timeout waiting for render (page.waitForSelector: Timeout 15000ms exceeded.)"
+   },
+   {
+    "id": "page/blocks/FaqBlock",
+    "error": "timeout waiting for render (page.waitForSelector: Timeout 15000ms exceeded.)"
+   },
+   {
+    "id": "specimens/progress/Vessel",
+    "error": "timeout waiting for render (page.waitForSelector: Timeout 15000ms exceeded.)"
+   },
+   {
+    "id": "specimens/progress/CellCharge",
+    "error": "timeout waiting for render (page.waitForSelector: Timeout 15000ms exceeded.)"
+   },
+   {
+    "id": "specimens/progress/MercuryColumn",
+    "error": "timeout waiting for render (page.waitForSelector: Timeout 15000ms exceeded.)"
+   },
+   {
+    "id": "specimens/progress/TickRing",
+    "error": "timeout waiting for render (page.waitForSelector: Timeout 15000ms exceeded.)"
+   },
+   {
+    "id": "specimens/progress/TestTube",
+    "error": "timeout waiting for render (page.waitForSelector: Timeout 15000ms exceeded.)"
+   },
+   {
+    "id": "specimens/progress/DottedFill",
+    "error": "timeout waiting for render (page.waitForSelector: Timeout 15000ms exceeded.)"
+   },
+   {
+    "id": "specimens/progress/RangeFill",
+    "error": "timeout waiting for render (page.waitForSelector: Timeout 15000ms exceeded.)"
+   },
+   {
+    "id": "specimens/progress/PixelFill",
+    "error": "timeout waiting for render (page.waitForSelector: Timeout 15000ms exceeded.)"
+   }
+  ],
+  "overflows": [
+   {
+    "id": "kit/content/Disclosure",
+    "width": 360,
+    "scrollW": 363
+   },
+   {
+    "id": "kit/content/Disclosure",
+    "width": 768,
+    "scrollW": 771
+   },
+   {
+    "id": "kit/content/Disclosure",
+    "width": 1200,
+    "scrollW": 1203
+   },
+   {
+    "id": "closers/CheckSheet",
+    "width": 360,
+    "scrollW": 425
+   },
+   {
+    "id": "specimens/figures/NumberLine",
+    "width": 360,
+    "scrollW": 365
+   },
+   {
+    "id": "specimens/kinetic/ScatterWords",
+    "width": 360,
+    "scrollW": 396
+   },
+   {
+    "id": "specimens/tickers/LineMap",
+    "width": 360,
+    "scrollW": 365
+   },
+   {
+    "id": "specimens/tickers/LineMap",
+    "width": 768,
+    "scrollW": 773
+   },
+   {
+    "id": "specimens/tickers/LineMap",
+    "width": 1200,
+    "scrollW": 1205
+   },
+   {
+    "id": "specimens/editorial/Cutline",
+    "width": 360,
+    "scrollW": 377
+   }
+  ]
+ },
+ "rechecks": [
+  {
+   "generatedAt": "2026-10-16T05:23:09.766Z",
+   "scope": {
+    "areas": [
+     "kit",
+     "fx",
+     "ui",
+     "page",
+     "signatures",
+     "closers",
+     "specimens",
+     "scenes",
+     "reveal"
+    ],
+    "only": [
+     "page/blocks/ChecklistBlock",
+     "page/blocks/CloserBlock",
+     "page/blocks/FaqBlock",
+     "specimens/progress/Vessel",
+     "specimens/progress/CellCharge",
+     "specimens/progress/MercuryColumn",
+     "specimens/progress/TickRing",
+     "specimens/progress/TestTube",
+     "specimens/progress/DottedFill",
+     "specimens/progress/RangeFill",
+     "specimens/progress/PixelFill"
+    ],
+    "limit": 0,
+    "widths": [
+     360,
+     768,
+     1200
+    ]
+   },
+   "expected": 11,
+   "checked": 11,
+   "failures": [],
+   "overflows": [],
+   "empty": []
+  },
+  {
+   "generatedAt": "2026-10-16T05:26:37.391Z",
+   "scope": {
+    "areas": [
+     "kit",
+     "fx",
+     "ui",
+     "page",
+     "signatures",
+     "closers",
+     "specimens",
+     "scenes",
+     "reveal"
+    ],
+    "only": [
+     "closers/CheckSheet",
+     "kit/content/Disclosure",
+     "specimens/editorial/Cutline",
+     "specimens/figures/NumberLine",
+     "specimens/kinetic/ScatterWords",
+     "specimens/tickers/LineMap"
+    ],
+    "limit": 0,
+    "widths": [
+     360,
+     768,
+     1200
+    ]
+   },
+   "expected": 6,
+   "checked": 6,
+   "failures": [],
+   "overflows": [],
+   "expectedOverflows": [
+    {
+     "id": "specimens/kinetic/ScatterWords",
+     "width": 360,
+     "scrollW": 396,
+     "reason": "Scattered words deliberately translate beyond their button box. Use the Specimen frame and leave the measured visual overflow clear."
+    },
+    {
+     "id": "specimens/figures/NumberLine",
+     "width": 360,
+     "scrollW": 365,
+     "reason": "The end ticks and draggable point extend beyond the number-line track. Use the Specimen frame, which reserves a bed around the object."
+    },
+    {
+     "id": "specimens/tickers/LineMap",
+     "width": 360,
+     "scrollW": 365,
+     "reason": "The train and stop labels extend beyond the endpoints of the line. Use the Specimen frame rather than placing the bare line against a viewport edge."
+    },
+    {
+     "id": "specimens/editorial/Cutline",
+     "width": 360,
+     "scrollW": 377,
+     "reason": "The vertical credit deliberately sits outside the image edge. The Specimen frame provides space for that credit."
+    },
+    {
+     "id": "specimens/tickers/LineMap",
+     "width": 768,
+     "scrollW": 773,
+     "reason": "The train and stop labels extend beyond the endpoints of the line. Use the Specimen frame rather than placing the bare line against a viewport edge."
+    },
+    {
+     "id": "specimens/tickers/LineMap",
+     "width": 1200,
+     "scrollW": 1205,
+     "reason": "The train and stop labels extend beyond the endpoints of the line. Use the Specimen frame rather than placing the bare line against a viewport edge."
+    }
+   ],
+   "empty": []
+  },
+  {
+   "generatedAt": "2026-10-16T05:28:32.759Z",
+   "scope": {
+    "areas": [
+     "kit",
+     "fx",
+     "ui",
+     "page",
+     "signatures",
+     "closers",
+     "specimens",
+     "scenes",
+     "reveal"
+    ],
+    "only": [
+     "kit/inputs/Calendar",
+     "kit/inputs/Checkbox",
+     "kit/inputs/Combobox",
+     "kit/inputs/DateInput",
+     "kit/inputs/TimeInput",
+     "kit/inputs/DateTimeInput",
+     "kit/inputs/DateRangeInput",
+     "kit/inputs/Field",
+     "kit/inputs/FileDrop",
+     "kit/inputs/NumberField",
+     "kit/inputs/PasswordField",
+     "kit/inputs/RadioGroup",
+     "kit/inputs/RangeField",
+     "kit/inputs/RichTextEditor",
+     "kit/inputs/SearchField",
+     "kit/inputs/Segmented",
+     "kit/inputs/SelectField",
+     "kit/inputs/Switch",
+     "kit/inputs/TagInput",
+     "kit/inputs/TextArea",
+     "kit/inputs/TextField",
+     "kit/navigation/Breadcrumbs",
+     "kit/navigation/DropdownMenu",
+     "kit/navigation/OnThisPage",
+     "kit/navigation/Pagination",
+     "kit/navigation/SideNav",
+     "kit/navigation/Stepper",
+     "kit/navigation/Tabs",
+     "kit/navigation/Toolbar",
+     "kit/feedback/Alert",
+     "kit/feedback/Banner",
+     "kit/feedback/EmptyState",
+     "kit/feedback/Meter",
+     "kit/feedback/ProgressBar",
+     "kit/feedback/Skeleton",
+     "kit/feedback/Spinner",
+     "kit/feedback/StatusDot",
+     "kit/feedback/ToastProvider",
+     "kit/data/Avatar",
+     "kit/data/AvatarGroup",
+     "kit/data/Badge",
+     "kit/data/BarList",
+     "kit/data/Chip",
+     "kit/data/CodeBlock",
+     "kit/data/DataTable",
+     "kit/data/DescriptionList",
+     "kit/data/Sparkline",
+     "kit/data/Stat",
+     "kit/data/Table",
+     "kit/data/TableHeader",
+     "kit/data/TableBody",
+     "kit/data/TableFooter",
+     "kit/data/TableRow",
+     "kit/data/TableCell",
+     "kit/data/TableHeaderCell",
+     "kit/data/TableSelectionToolbar",
+     "kit/data/Timeline",
+     "kit/data/Tree",
+     "kit/overlays/ConfirmDialog",
+     "kit/overlays/Dialog",
+     "kit/overlays/Drawer",
+     "kit/overlays/HoverCard",
+     "kit/overlays/Popover",
+     "kit/overlays/Tooltip",
+     "kit/content/AspectRatio",
+     "kit/content/Callout",
+     "kit/content/Card",
+     "kit/content/Center",
+     "kit/content/Cluster",
+     "kit/content/Container",
+     "kit/content/Disclosure",
+     "kit/content/Divider",
+     "kit/content/Figure",
+     "kit/content/Grid",
+     "kit/content/Heading",
+     "kit/content/Prose",
+     "kit/content/Quote",
+     "kit/content/Resizable",
+     "kit/content/ResizablePanel",
+     "kit/content/ResizeHandle",
+     "kit/content/Section",
+     "kit/content/Stack",
+     "kit/content/Text",
+     "kit/content/VisuallyHidden",
+     "kit/chat/Chat",
+     "kit/chat/ChatLayout",
+     "kit/chat/ChatLayoutScrollButton",
+     "kit/chat/ChatMessageList",
+     "kit/chat/ChatMessage",
+     "kit/chat/ChatMessageBubble",
+     "kit/chat/ChatMessageMetadata",
+     "kit/chat/ChatSystemMessage",
+     "kit/chat/ChatToolCalls",
+     "kit/chat/ChatComposer",
+     "kit/chat/ChatComposerInput",
+     "kit/chat/ChatSendButton",
+     "kit/chat/ChatComposerDrawer",
+     "kit/chat/ChatComposerTokenElement",
+     "kit/chat/ChatDictationButton",
+     "kit/chat/ChatTokenizedText",
+     "fx/Accordion",
+     "fx/ArrowLink",
+     "fx/CompareSlider",
+     "fx/DragRail",
+     "fx/GlideTabs",
+     "fx/Glyph",
+     "fx/HoverIndex",
+     "fx/KeyCap",
+     "fx/Odometer",
+     "fx/ProgressRing",
+     "fx/ProximityText",
+     "fx/RichText",
+     "fx/ScrambleText",
+     "fx/ScrollRail",
+     "fx/ScrollWords",
+     "fx/SpotlightCard",
+     "fx/TiltSurface",
+     "fx/VelocityMarquee",
+     "ui/Button",
+     "ui/CatalogError",
+     "ui/DataPanel",
+     "ui/GlitchLine",
+     "ui/Pill",
+     "ui/SectionHeader",
+     "closers/CheckSheet",
+     "closers/FrameTape",
+     "page/template/PageHero",
+     "page/template/HeroTitle",
+     "page/template/NotFound",
+     "page/template/PageBlock",
+     "page/template/PageTemplate",
+     "page/template/TemplatePage",
+     "page/blocks/CalloutBlock",
+     "page/blocks/CardsBlock",
+     "page/blocks/ChecklistBlock",
+     "page/blocks/CloserBlock",
+     "page/blocks/CompareBlock",
+     "page/blocks/FactsBlock",
+     "page/blocks/FaqBlock",
+     "page/blocks/LinksBlock",
+     "page/blocks/ManifestoBlock",
+     "page/blocks/ModulesBlock",
+     "page/blocks/NumbersBlock",
+     "page/blocks/ProcessBlock",
+     "page/blocks/QuoteBlock",
+     "page/blocks/Shell",
+     "page/blocks/SignatureBlock",
+     "page/blocks/SnippetBlock",
+     "page/blocks/SplitBlock",
+     "page/blocks/StatsBlock",
+     "page/blocks/TableBlock",
+     "page/blocks/TabsBlock",
+     "page/blocks/TimelineBlock",
+     "specimens/gauges/Speedometer",
+     "specimens/gauges/BatteryCell",
+     "specimens/gauges/TankLevel",
+     "specimens/graphs/SpringGraph"
+    ],
+    "limit": 0,
+    "widths": [
+     360,
+     768,
+     1200
+    ]
+   },
+   "expected": 157,
+   "checked": 157,
+   "failures": [],
+   "overflows": [],
+   "expectedOverflows": [],
+   "empty": []
+  },
+  {
+   "generatedAt": "2026-10-16T05:35:18.356Z",
+   "scope": {
+    "areas": [
+     "kit",
+     "fx",
+     "ui",
+     "page",
+     "signatures",
+     "closers",
+     "specimens",
+     "scenes",
+     "reveal"
+    ],
+    "only": [
+     "kit/inputs/Calendar",
+     "kit/data/Table"
+    ],
+    "limit": 0,
+    "widths": [
+     360,
+     768,
+     1200
+    ]
+   },
+   "expected": 2,
+   "checked": 2,
+   "failures": [],
+   "overflows": [],
+   "expectedOverflows": [],
+   "empty": []
+  }
+ ],
+ "expectedOverflows": [
+  {
+   "id": "specimens/kinetic/ScatterWords",
+   "width": 360,
+   "scrollW": 396,
+   "reason": "Scattered words deliberately translate beyond their button box. Use the Specimen frame and leave the measured visual overflow clear."
+  },
+  {
+   "id": "specimens/figures/NumberLine",
+   "width": 360,
+   "scrollW": 365,
+   "reason": "The end ticks and draggable point extend beyond the number-line track. Use the Specimen frame, which reserves a bed around the object."
+  },
+  {
+   "id": "specimens/tickers/LineMap",
+   "width": 360,
+   "scrollW": 365,
+   "reason": "The train and stop labels extend beyond the endpoints of the line. Use the Specimen frame rather than placing the bare line against a viewport edge."
+  },
+  {
+   "id": "specimens/editorial/Cutline",
+   "width": 360,
+   "scrollW": 377,
+   "reason": "The vertical credit deliberately sits outside the image edge. The Specimen frame provides space for that credit."
+  },
+  {
+   "id": "specimens/tickers/LineMap",
+   "width": 768,
+   "scrollW": 773,
+   "reason": "The train and stop labels extend beyond the endpoints of the line. Use the Specimen frame rather than placing the bare line against a viewport edge."
+  },
+  {
+   "id": "specimens/tickers/LineMap",
+   "width": 1200,
+   "scrollW": 1205,
+   "reason": "The train and stop labels extend beyond the endpoints of the line. Use the Specimen frame rather than placing the bare line against a viewport edge."
+  }
+ ],
+ "validatedAt": "2026-10-16T05:36:15.064Z"
 }

@@ -6,8 +6,8 @@
 /* redraw when the glyph itself or a host card is hovered / focused, or `play` is set */
 .play :is(path, circle, ellipse, rect),
 :global(.glyph-host):is(:hover, :focus-visible) .glyph :is(path, circle, ellipse, rect) {
-  animation: glyph-draw 1.1s var(--ease-glide) both;
-  animation-delay: calc(var(--gi) * 0.07s);
+  animation: glyph-draw var(--dur-extracted-1p1s) var(--ease-glide) both;
+  animation-delay: calc(var(--gi) * var(--dur-extracted-0p07s));
 }
 @keyframes glyph-draw {
   from { stroke-dashoffset: 1; }

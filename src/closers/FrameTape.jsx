@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import CloserFrame from './CloserFrame';
 import { useOnScreen } from '../core/hooks/useOnScreen';
+import { usePrefersReducedMotion } from '../core/hooks/usePrefersReducedMotion';
 import { fx } from '../core/utils/fx';
 import styles from './FrameTape.module.css';
 
@@ -8,6 +9,7 @@ import styles from './FrameTape.module.css';
  *  column on the tape — tall and red when it took long — and three counters tick
  *  from the same measurements. Purely live: nothing is kept or sent. */
 export default function FrameTape({ tag, title, lede, onward }) {
+  const reduced = usePrefersReducedMotion();
   const [wrapRef, onScreen] = useOnScreen({ rootMargin: '0px', threshold: 0.15 });
   const canvasRef = useRef(null);
   const outRef = useRef({});
@@ -68,9 +70,10 @@ export default function FrameTape({ tag, title, lede, onward }) {
       }
       raf = requestAnimationFrame(loop);
     };
+    if (reduced) { draw(); return undefined; }
     raf = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(raf);
-  }, [onScreen]);
+  }, [onScreen, reduced]);
 
   return (
     <CloserFrame tag={tag} title={title} lede={lede} onward={onward}>

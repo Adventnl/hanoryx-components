@@ -1,13 +1,13 @@
-.btn { display: inline-flex; align-items: center; gap: 0.6em; padding: 0.6rem 1rem; border: 1px solid var(--c-line-strong); border-radius: var(--r-pill); background: transparent; font: 0.6rem var(--font-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--c-white-80); cursor: pointer; transition: border-color var(--dur-2) var(--ease-out), background var(--dur-2) var(--ease-out), color var(--dur-2) var(--ease-out); }
+.btn { display: inline-flex; align-items: center; gap: var(--size-0p6em); padding: var(--size-0p6rem) var(--space-4); border: var(--size-1px) solid var(--c-line-strong); border-radius: var(--r-pill); background: transparent; font: var(--size-0p6rem) var(--font-mono); letter-spacing: var(--size-0p14em); text-transform: uppercase; color: var(--c-white-80); cursor: pointer; transition: border-color var(--dur-2) var(--ease-out), background var(--dur-2) var(--ease-out), color var(--dur-2) var(--ease-out); }
 .btn:hover:not(:disabled) { border-color: var(--c-red-dim); background: var(--c-red-faint); color: var(--c-white); }
 .btn:disabled { opacity: 0.4; cursor: default; }
-.near { display: grid; gap: 0.7rem; padding: 1rem 1.1rem; border: 1px dashed var(--c-white-20); border-radius: var(--r-md); }
-.near ul { display: grid; gap: 0.5rem; }
-.near li { display: flex; flex-wrap: wrap; align-items: center; gap: 0.7rem; font-size: var(--fs-sm); color: var(--c-white-65); }
-.near i { width: 1.6rem; height: 1.6rem; border-radius: 4px; border: 1px solid var(--c-white-30); }
-.near code { font: 0.8rem var(--font-mono); color: var(--c-white); }
-.near button { margin-left: auto; padding: 0.3rem 0.8rem; border: 1px solid var(--c-red-dim); border-radius: var(--r-pill); background: var(--c-red-ghost); font: 0.56rem var(--font-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--c-white); cursor: pointer; }
-.preview { display: grid; gap: 0.8rem; justify-items: start; padding: clamp(1.2rem, 3vw, 2rem); border: 1px solid; border-radius: var(--r-lg); transition: background 0.3s var(--ease-out), color 0.3s var(--ease-out); }
-.sample { font-family: var(--font-serif); font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.1; }
-.para { max-width: 46ch; font-size: 0.95rem; line-height: 1.6; }
-.chip { padding: 0.4rem 0.9rem; border: 1.5px solid currentColor; border-radius: var(--r-pill); font: 0.62rem var(--font-mono); letter-spacing: 0.14em; text-transform: uppercase; }
+.near { display: grid; gap: var(--size-0p7rem); padding: var(--space-4) var(--size-1p1rem); border: var(--size-1px) dashed var(--c-white-20); border-radius: var(--r-md); }
+.near ul { display: grid; gap: var(--space-2); }
+.near li { display: flex; flex-wrap: wrap; align-items: center; gap: var(--size-0p7rem); font-size: var(--fs-sm); color: var(--c-white-65); }
+.near i { width: var(--size-1p6rem); height: var(--size-1p6rem); border-radius: var(--r-sm); border: var(--size-1px) solid var(--c-white-30); }
+.near code { font: var(--size-0p8rem) var(--font-mono); color: var(--c-white); }
+.near button { margin-left: auto; padding: var(--size-0p3rem) var(--size-0p8rem); border: var(--size-1px) solid var(--c-red-dim); border-radius: var(--r-pill); background: var(--c-red-ghost); font: var(--size-0p56rem) var(--font-mono); letter-spacing: var(--size-0p14em); text-transform: uppercase; color: var(--c-white); cursor: pointer; }
+.preview { display: grid; gap: var(--size-0p8rem); justify-items: start; padding: clamp(var(--size-1p2rem), var(--size-3vw), var(--space-6)); border: var(--size-1px) solid; border-radius: var(--r-lg); transition: background var(--dur-extracted-0p3s) var(--ease-out), color var(--dur-extracted-0p3s) var(--ease-out); }
+.sample { font-family: var(--font-serif); font-size: clamp(var(--size-1p8rem), var(--size-4vw), var(--size-2p6rem)); line-height: 1.1; }
+.para { max-width: var(--size-46ch); font-size: var(--size-0p95rem); line-height: 1.6; }
+.chip { padding: var(--size-0p4rem) var(--size-0p9rem); border: var(--size-1p5px) solid currentColor; border-radius: var(--r-pill); font: var(--size-0p62rem) var(--font-mono); letter-spacing: var(--size-0p14em); text-transform: uppercase; }

@@ -27,12 +27,11 @@ const ONLY = opt('only', '') ? opt('only').split(',') : null;
 const LIMIT = Number(opt('limit', 0));
 
 const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs/generated/manifest.json'), 'utf8'));
-let entries = manifest.entries.filter((e) => AREAS.includes(e.area) && !e.parent && !['hook', 'function'].includes(e.kind) && !(e.area === 'scenes' && e.kind !== 'scene') && !(e.area === 'reveal' && e.kind !== 'profile'));
+let entries = manifest.entries.filter((e) => AREAS.includes(e.area) && !['hook', 'function'].includes(e.kind));
 if (ONLY) entries = entries.filter((e) => ONLY.includes(e.id));
 if (LIMIT) entries = entries.slice(0, LIMIT);
 
 // Wide compositions are measured once (they are page sections: they fill any parent).
-const WIDE = new Set(['signatures', 'closers', 'page', 'scenes']);
 
 async function measure(page) {
   return page.evaluate(() => {
@@ -79,10 +78,10 @@ function classify(at, widths) {
 const browser = await launch();
 const queue = [...entries];
 const sizing = {};
-const report = { checked: 0, failures: [], overflows: [], empty: [] };
+const report = { generatedAt: new Date().toISOString(), scope: { areas: AREAS, only: ONLY, limit: LIMIT, widths: WIDTHS }, expected: entries.length, checked: 0, failures: [], overflows: [], expectedOverflows: [], empty: [] };
 const started = Date.now();
 
-async function worker(n) {
+async function worker() {
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, ignoreHTTPSErrors: true, reducedMotion: 'reduce' });
   const page = await ctx.newPage();
   let errors = [];
@@ -91,7 +90,7 @@ async function worker(n) {
   await page.goto(`${BASE}/#/raw/none`, { waitUntil: 'load' });
   while (queue.length) {
     const e = queue.shift();
-    const widths = WIDE.has(e.area) || e.kind === 'scene' ? [1200] : WIDTHS;
+    const widths = WIDTHS;
     const at = {};
     let fail = null;
     for (const w of widths) {
@@ -102,7 +101,11 @@ async function worker(n) {
         const m = await measure(page);
         at[w] = m;
         if (m?.empty) fail = fail ?? 'rendered nothing';
-        if (m?.overflowX && w >= 360) report.overflows.push({ id: e.id, width: w, scrollW: m.scrollW });
+        if (m?.overflowX && w >= 360) {
+          const item = { id: e.id, width: w, scrollW: m.scrollW };
+          if (e.sizing?.overflow) report.expectedOverflows.push({ ...item, reason: e.sizing.overflow });
+          else report.overflows.push(item);
+        }
       } catch (err) {
         fail = fail ?? `timeout waiting for render (${err.message.split('\n')[0]})`;
       }
@@ -111,13 +114,14 @@ async function worker(n) {
     report.checked += 1;
     if (fail) report.failures.push({ id: e.id, error: fail });
     const ok = widths.filter((w) => at[w]);
-    if (ok.length === widths.length) {
+    if (!fail && ok.length === widths.length) {
       const natural = at[widths[widths.length - 1]];
       const entry = {
         behavior: widths.length > 1 ? classify(Object.fromEntries(ok.map((w) => [w, at[w]])), widths) : 'fill',
         at: Object.fromEntries(widths.map((w) => [w, { w: at[w].w, h: at[w].h }])),
         padding: natural.padding, gap: natural.gap, radius: natural.radius, fontSize: natural.fontSize, minTouch: natural.smallest,
         overflowsAt360: widths.includes(360) ? Boolean(at[360].overflowX) : undefined,
+        scope: e.parent ? `Contextual example including ${e.parent}` : 'Standalone preview',
       };
       sizing[e.id] = { measured: Object.fromEntries(Object.entries(entry).filter(([, v]) => v !== undefined)) };
     }
@@ -126,15 +130,17 @@ async function worker(n) {
   await ctx.close();
 }
 
-await Promise.all(Array.from({ length: WORKERS }, (_, i) => worker(i)));
+await Promise.all(Array.from({ length: WORKERS }, () => worker()));
 await browser.close();
 
-console.log(`rendered ${report.checked} entries in ${Math.round((Date.now() - started) / 1000)}s — ${report.failures.length} failures, ${report.overflows.length} width overflows`);
+console.log(`rendered ${report.checked} entries in ${Math.round((Date.now() - started) / 1000)}s — ${report.failures.length} failures, ${report.overflows.length} unexpected width overflows, ${report.expectedOverflows.length} documented visual-bleed cases`);
 report.failures.slice(0, 40).forEach((f) => console.log('FAIL', f.id, '—', f.error));
 if (!flag('no-write')) {
   fs.mkdirSync(path.join(ROOT, 'docs/generated'), { recursive: true });
-  const prev = fs.existsSync(path.join(ROOT, 'docs/generated/sizing.json')) && ONLY ? JSON.parse(fs.readFileSync(path.join(ROOT, 'docs/generated/sizing.json'), 'utf8')) : {};
+  const partial = ONLY || LIMIT || args.includes('--area');
+  const prev = fs.existsSync(path.join(ROOT, 'docs/generated/sizing.json')) && partial ? JSON.parse(fs.readFileSync(path.join(ROOT, 'docs/generated/sizing.json'), 'utf8')) : {};
+  for (const entry of entries) delete prev[entry.id];
   fs.writeFileSync(path.join(ROOT, 'docs/generated/sizing.json'), JSON.stringify({ ...prev, ...sizing }));
-  fs.writeFileSync(path.join(ROOT, 'docs/generated/render-report.json'), JSON.stringify(report, null, 1));
+  fs.writeFileSync(path.join(ROOT, `docs/generated/${partial ? 'render-partial-report' : 'render-report'}.json`), JSON.stringify(report, null, 1));
 }
-process.exit(report.failures.length ? 1 : 0);
+process.exit(report.failures.length || report.overflows.length ? 1 : 0);

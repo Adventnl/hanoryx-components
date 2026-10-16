@@ -1,3 +1,4 @@
+import { usePrefersReducedMotion } from '../../core/hooks/usePrefersReducedMotion';
 import { useEffect, useRef } from 'react';
 import { useLive, clamp } from '../../stage/hooks';
 import c from './graphs.module.css';
@@ -8,13 +9,22 @@ const SP_EDGES = [[0, 1], [0, 2], [0, 3], [0, 4], [1, 5], [2, 5], [3, 6], [4, 6]
 
 export function SpringGraph() {
   const live = useLive();
+  const reduced = usePrefersReducedMotion();
   const svg = useRef(null);
   const nodes = useRef(SP_NODES.map(([x, y]) => ({ x, y, vx: 0, vy: 0 })));
   const dots = useRef([]);
   const lines = useRef([]);
   const grab = useRef(-1);
+  const paint = () => {
+    const positions = nodes.current;
+    positions.forEach((node, i) => dots.current[i]?.setAttribute('transform', `translate(${node.x.toFixed(2)} ${node.y.toFixed(2)})`));
+    SP_EDGES.forEach(([a, b], i) => {
+      const line = lines.current[i];
+      if (line) { line.setAttribute('x1', positions[a].x); line.setAttribute('y1', positions[a].y); line.setAttribute('x2', positions[b].x); line.setAttribute('y2', positions[b].y); }
+    });
+  };
   useEffect(() => {
-    if (!live) return undefined;
+    if (!live || reduced) return undefined;
     let raf = 0;
     const frame = () => {
       const p = nodes.current;
@@ -50,20 +60,20 @@ export function SpringGraph() {
     };
     raf = requestAnimationFrame(frame);
     return () => cancelAnimationFrame(raf);
-  }, [live]);
+  }, [live, reduced]);
   const toSvg = (e) => {
     const r = svg.current.getBoundingClientRect();
     return [((e.clientX - r.left) / r.width) * 100, ((e.clientY - r.top) / r.height) * 100];
   };
   return (
     <div className={c.fig}>
-      <svg ref={svg} className={`${c.svg} ${c.spring}`} viewBox="0 0 100 100" onPointerMove={(e) => { if (grab.current >= 0) { const [x, y] = toSvg(e); Object.assign(nodes.current[grab.current], { x: clamp(x, 4, 96), y: clamp(y, 4, 96) }); } }} onPointerUp={() => { grab.current = -1; }} onPointerLeave={() => { grab.current = -1; }}>
+      <svg ref={svg} className={`${c.svg} ${c.spring}`} viewBox="0 0 100 100" onPointerMove={(e) => { if (grab.current >= 0) { const [x, y] = toSvg(e); Object.assign(nodes.current[grab.current], { x: clamp(x, 4, 96), y: clamp(y, 4, 96) }); if (reduced) paint(); } }} onPointerUp={() => { grab.current = -1; }} onPointerLeave={() => { grab.current = -1; }}>
         {SP_EDGES.map(([a, b], i) => <line key={i} ref={(el) => { lines.current[i] = el; }} className={c.edge} x1={SP_NODES[a][0]} y1={SP_NODES[a][1]} x2={SP_NODES[b][0]} y2={SP_NODES[b][1]} />)}
         {SP_NODES.map(([x, y], i) => (
           <g key={i} ref={(el) => { dots.current[i] = el; }} transform={`translate(${x} ${y})`}>
             <circle className={c.grab} r="4.6" tabIndex={0} role="button" aria-roledescription="draggable node" aria-label={`Node ${i + 1}, drag it or use the arrow keys`}
               onPointerDown={(e) => { grab.current = i; e.currentTarget.setPointerCapture?.(e.pointerId); }}
-              onKeyDown={(e) => { const d = { ArrowLeft: [-5, 0], ArrowRight: [5, 0], ArrowUp: [0, -5], ArrowDown: [0, 5] }[e.key]; if (d) { e.preventDefault(); nodes.current[i].x += d[0]; nodes.current[i].y += d[1]; } }} />
+              onKeyDown={(e) => { const d = { ArrowLeft: [-5, 0], ArrowRight: [5, 0], ArrowUp: [0, -5], ArrowDown: [0, 5] }[e.key]; if (d) { e.preventDefault(); nodes.current[i].x = clamp(nodes.current[i].x + d[0], 4, 96); nodes.current[i].y = clamp(nodes.current[i].y + d[1], 4, 96); if (reduced) paint(); } }} />
           </g>
         ))}
       </svg>

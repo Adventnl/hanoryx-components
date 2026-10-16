@@ -1,32 +1,32 @@
-.rig { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: clamp(1.2rem, 4vw, 3rem); align-items: start; }
-.fields { display: grid; gap: 0.35rem; min-width: 0; }
-.row { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 0.9rem; align-items: center; padding: 0.7rem 1rem; border: 1px solid var(--c-line-strong); border-radius: var(--r-md); background: rgba(10, 11, 13, 0.88); cursor: pointer; transition: border-color var(--dur-2) var(--ease-out), background var(--dur-2) var(--ease-out); }
+.rig { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: clamp(var(--size-1p2rem), var(--size-4vw), var(--space-8)); align-items: start; }
+.fields { display: grid; gap: var(--size-0p35rem); min-width: 0; }
+.row { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: var(--size-0p9rem); align-items: center; padding: var(--size-0p7rem) var(--space-4); border: var(--size-1px) solid var(--c-line-strong); border-radius: var(--r-md); background: var(--c-extracted-rgba-10-11-13-0p88); cursor: pointer; transition: border-color var(--dur-2) var(--ease-out), background var(--dur-2) var(--ease-out); }
 .row input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; cursor: pointer; }
-.row:focus-within { outline: 1px solid var(--c-red); outline-offset: 2px; }
+.row:focus-within { outline: var(--size-1px) solid var(--c-red); outline-offset: var(--size-2px); }
 .on { border-color: var(--c-white-40); }
-.bad { border-color: var(--c-red); background: linear-gradient(90deg, var(--c-red-faint), rgba(10, 11, 13, 0.88)); }
-.sw { position: relative; width: 2.2rem; height: 1.2rem; border: 1px solid var(--c-line-strong); border-radius: var(--r-pill); transition: all var(--dur-2) var(--ease-out); }
-.sw i { position: absolute; left: 3px; top: 3px; width: 0.75rem; height: 0.75rem; border-radius: 50%; background: var(--c-white-65); transition: transform 0.3s var(--ease-glide), background var(--dur-2) var(--ease-out); }
+.bad { border-color: var(--c-red); background: linear-gradient(90deg, var(--c-red-faint), var(--c-extracted-rgba-10-11-13-0p88)); }
+.sw { position: relative; width: var(--size-2p2rem); height: var(--size-1p2rem); border: var(--size-1px) solid var(--c-line-strong); border-radius: var(--r-pill); transition: all var(--dur-2) var(--ease-out); }
+.sw i { position: absolute; left: var(--size-3px); top: var(--size-3px); width: var(--size-0p75rem); height: var(--size-0p75rem); border-radius: 50%; background: var(--c-white-65); transition: transform var(--dur-extracted-0p3s) var(--ease-glide), background var(--dur-2) var(--ease-out); }
 .on .sw { border-color: var(--c-white-50); background: var(--c-white-12); }
-.on .sw i { transform: translateX(1rem); background: var(--c-white); }
+.on .sw i { transform: translateX(var(--size-1rem)); background: var(--c-white); }
 .bad .sw { border-color: var(--c-red); }
 .bad .sw i { background: var(--c-red); }
-.name { display: grid; gap: 0.1rem; }
+.name { display: grid; gap: var(--size-0p1rem); }
 .name b { font: 500 var(--fs-sm) var(--font-sans); color: var(--c-white); }
 .name small { font-size: var(--fs-xs); line-height: 1.45; color: var(--c-white-65); }
-.rule { font: 0.5rem var(--font-mono); letter-spacing: 0.14em; text-transform: uppercase; padding: 0.15rem 0.55rem; border: 1px solid var(--c-line-strong); border-radius: var(--r-pill); color: var(--c-white-65); white-space: nowrap; }
+.rule { font: var(--size-0p5rem) var(--font-mono); letter-spacing: var(--size-0p14em); text-transform: uppercase; padding: var(--size-0p15rem) var(--size-0p55rem); border: var(--size-1px) solid var(--c-line-strong); border-radius: var(--r-pill); color: var(--c-white-65); white-space: nowrap; }
 .never { border-color: var(--c-red-dim); color: var(--c-red-bright); }
 .own { border-style: dashed; }
-.side { display: grid; gap: var(--space-3); position: sticky; top: calc(var(--nav-h) + 1.5rem); }
-.preview { display: grid; gap: 0.7rem; padding: var(--space-5); border: 1px solid var(--c-red-dim); border-radius: var(--r-lg); background: linear-gradient(160deg, var(--c-red-faint), rgba(8, 9, 11, 0) 70%), #08090b; }
+.side { display: grid; gap: var(--space-3); position: sticky; top: calc(var(--nav-h) + var(--size-1p5rem)); }
+.preview { display: grid; gap: var(--size-0p7rem); padding: var(--space-5); border: var(--size-1px) solid var(--c-red-dim); border-radius: var(--r-lg); background: linear-gradient(160deg, var(--c-red-faint), var(--c-extracted-rgba-8-9-11-0) 70%), var(--c-black-2); }
 .preview h3 { font-family: var(--font-serif); font-weight: 300; font-size: var(--fs-h2); line-height: 1.05; color: var(--c-white); }
-.preview dl { display: grid; gap: 0.1rem; margin: 0; }
-.preview dl div { display: grid; grid-template-columns: minmax(6rem, 0.6fr) minmax(0, 1fr); gap: 1rem; padding: 0.4rem 0; border-bottom: 1px dashed var(--c-line); }
-.preview dt { font: 0.56rem var(--font-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--c-white-65); }
+.preview dl { display: grid; gap: var(--size-0p1rem); margin: 0; }
+.preview dl div { display: grid; grid-template-columns: minmax(var(--size-6rem), 0.6fr) minmax(0, 1fr); gap: var(--space-4); padding: var(--size-0p4rem) 0; border-bottom: var(--size-1px) dashed var(--c-line); }
+.preview dt { font: var(--size-0p56rem) var(--font-mono); letter-spacing: var(--size-0p14em); text-transform: uppercase; color: var(--c-white-65); }
 .preview dd { margin: 0; font-size: var(--fs-sm); color: var(--c-white); overflow-wrap: anywhere; }
 .empty { font-size: var(--fs-sm); color: var(--c-white-65); }
-.verdict { display: grid; grid-template-columns: auto 1fr; gap: 0.6rem; padding: 0.8rem 1rem; border: 1px solid var(--c-line-strong); border-radius: var(--r-md); font-size: var(--fs-sm); line-height: 1.55; color: var(--c-white-80); }
-.verdict svg { margin-top: 0.2rem; }
+.verdict { display: grid; grid-template-columns: auto 1fr; gap: var(--size-0p6rem); padding: var(--size-0p8rem) var(--space-4); border: var(--size-1px) solid var(--c-line-strong); border-radius: var(--r-md); font-size: var(--fs-sm); line-height: 1.55; color: var(--c-white-80); }
+.verdict svg { margin-top: var(--size-0p2rem); }
 .warn { border-color: var(--c-red); background: var(--c-red-faint); color: var(--c-white); }
 .warn svg { color: var(--c-red); }
 .side > button { width: fit-content; }

@@ -1,3 +1,4 @@
+import { usePrefersReducedMotion } from '../../core/hooks/usePrefersReducedMotion';
 import { useEffect, useState } from 'react';
 import { useLive, clamp } from '../../stage/hooks';
 import c from './gauges.module.css';
@@ -9,14 +10,15 @@ export function Speedometer() {
   const [on, setOn] = useState(false);
   const [v, setV] = useState(0);
   const live = useLive();
+  const reduced = usePrefersReducedMotion();
   const rest = v === 0;
   useEffect(() => {
-    if (!live || (!on && rest)) return undefined;
+    if (!live || reduced || (!on && rest)) return undefined;
     const id = window.setInterval(() => setV((s) => clamp(s + (on ? 0.028 : -0.04))), 50);
     return () => window.clearInterval(id);
-  }, [on, rest, live]);
-  const go = () => setOn(true);
-  const stop = () => setOn(false);
+  }, [on, rest, live, reduced]);
+  const go = () => { setOn(true); if (reduced) setV(1); };
+  const stop = () => { setOn(false); if (reduced) setV(0); };
   return (
     <div className={c.speedo} style={{ '--v': v }}>
       <svg viewBox="0 0 100 100" aria-hidden="true">

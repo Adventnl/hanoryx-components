@@ -7,8 +7,8 @@
   overflow: hidden;
   vertical-align: top;
   /* room so descenders (g, y, p) aren't clipped by overflow:hidden */
-  padding-bottom: 0.14em;
-  margin-bottom: -0.14em;
+  padding-bottom: var(--size-0p14em);
+  margin-bottom: var(--size-negative-0p14em);
 }
 
 .inner {

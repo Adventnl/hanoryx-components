@@ -3,5 +3,5 @@
   z-index: var(--z-content);
   display: block;
   width: 100%;
-  min-height: 100vh;
+  min-height: var(--size-100vh);
 }

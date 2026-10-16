@@ -45,15 +45,15 @@ body {
 #root {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: var(--size-100vh);
   isolation: isolate;
 }
 
 body {
   /* faint vignette so the void reads as depth, not a flat fill */
   background-image:
-    radial-gradient(140% 110% at 50% -10%, rgba(255, 255, 255, 0.018), transparent 55%),
-    radial-gradient(120% 90% at 50% 120%, rgba(255, 51, 51, 0.02), transparent 60%);
+    radial-gradient(140% 110% at 50% -10%, var(--c-extracted-rgba-255-255-255-0p018), transparent 55%),
+    radial-gradient(120% 90% at 50% 120%, var(--c-extracted-rgba-255-51-51-0p02), transparent 60%);
   background-attachment: fixed;
 }
 
@@ -122,8 +122,8 @@ textarea {
 
 /* --- Custom scrollbar --- */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: var(--size-8px);
+  height: var(--size-8px);
 }
 ::-webkit-scrollbar-track {
   background: var(--c-void);
@@ -138,8 +138,8 @@ textarea {
 
 /* --- Focus visibility (keyboard) --- */
 :focus-visible {
-  outline: 1px solid var(--c-red);
-  outline-offset: 3px;
+  outline: var(--size-1px) solid var(--c-red);
+  outline-offset: var(--size-3px);
 }
 :focus:not(:focus-visible) {
   outline: none;
@@ -148,10 +148,10 @@ textarea {
 /* --- Accessibility helpers --- */
 .sr-only {
   position: absolute;
-  width: 1px;
-  height: 1px;
+  width: var(--size-1px);
+  height: var(--size-1px);
   padding: 0;
-  margin: -1px;
+  margin: var(--size-negative-1px);
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
@@ -164,7 +164,7 @@ textarea {
   left: 50%;
   transform: translate(-50%, -160%);
   z-index: var(--z-boot);
-  padding: 0.6rem 1.2rem;
+  padding: var(--size-0p6rem) var(--size-1p2rem);
   background: var(--c-black-2);
   border: var(--border);
   border-radius: var(--r-sm);
@@ -175,7 +175,7 @@ textarea {
   transition: transform var(--dur-2) var(--ease-out);
 }
 .skip-link:focus {
-  transform: translate(-50%, 1rem);
+  transform: translate(-50%, var(--size-1rem));
 }
 
 /* The page's main region takes focus after a route change (RouteAnnouncer) and from the skip link.
@@ -193,7 +193,7 @@ html.scroll-locked {
 /* When boot sequence locks the viewport */
 body.is-locked {
   overflow: hidden;
-  height: 100vh;
+  height: var(--size-100vh);
 }
 
 /* Designed cursor active -> hide the native cursor (fine pointers only;
@@ -213,9 +213,9 @@ html.hnx-cursor-active textarea {
   *,
   *::before,
   *::after {
-    animation-duration: 0.001ms !important;
+    animation-duration: var(--dur-extracted-0p001ms) !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
+    transition-duration: var(--dur-extracted-0p001ms) !important;
     scroll-behavior: auto !important;
   }
 }
@@ -224,7 +224,7 @@ html.hnx-cursor-active textarea {
 html.synthesis-active [data-chrome] {
   opacity: 0 !important;
   pointer-events: none !important;
-  transition: opacity 0.25s ease;
+  transition: opacity var(--dur-extracted-0p25s) ease;
 }
 html.synthesis-active { cursor: none; }
 
@@ -235,7 +235,7 @@ html.synthesis-active { cursor: none; }
    the ancestors are flattened so nothing clips or transforms the text. */
 @media print {
   @page { margin: 16mm; }
-  html, body { background: #fff !important; color: #000 !important; }
+  html, body { background: var(--c-white) !important; color: var(--c-extracted-000000) !important; }
   body:has([data-print='doc']) *:not(:has([data-print='doc'])):not([data-print='doc']):not([data-print='doc'] *) {
     display: none !important;
   }
@@ -251,7 +251,7 @@ html.synthesis-active { cursor: none; }
     background: none !important;
     opacity: 1 !important;
   }
-  [data-print='doc'] { color: #000 !important; }
+  [data-print='doc'] { color: var(--c-extracted-000000) !important; }
   [data-print='doc'] * { opacity: 1 !important; transform: none !important; filter: none !important; }
 }
 
@@ -260,14 +260,14 @@ html.synthesis-active { cursor: none; }
    <html>, held in memory only. */
 html[data-text='large'] { font-size: 112.5%; }
 html[data-text='larger'] { font-size: 125%; }
-html[data-spacing='wide'] body { line-height: 1.85; letter-spacing: 0.015em; word-spacing: 0.08em; }
+html[data-spacing='wide'] body { line-height: 1.85; letter-spacing: var(--size-0p015em); word-spacing: var(--size-0p08em); }
 html[data-contrast='high'] {
-  --c-white-65: rgba(255, 255, 255, 0.92);
-  --c-white-50: rgba(255, 255, 255, 0.86);
-  --c-white-40: rgba(255, 255, 255, 0.78);
-  --c-white-30: rgba(255, 255, 255, 0.68);
-  --c-text-dim: rgba(255, 255, 255, 0.86);
-  --c-text-faint: rgba(255, 255, 255, 0.78);
+  --c-white-65: var(--c-extracted-rgba-255-255-255-0p92);
+  --c-white-50: var(--c-extracted-rgba-255-255-255-0p86);
+  --c-white-40: var(--c-extracted-rgba-255-255-255-0p78);
+  --c-white-30: var(--c-extracted-rgba-255-255-255-0p68);
+  --c-text-dim: var(--c-extracted-rgba-255-255-255-0p86);
+  --c-text-faint: var(--c-extracted-rgba-255-255-255-0p78);
 }
 /* Calm mode: nothing animates, and the canvas backgrounds hold their last frame
    (SceneCanvas checks this attribute). */

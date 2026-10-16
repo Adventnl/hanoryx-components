@@ -14,23 +14,23 @@
 
 /* ---- the still side ---- */
 .vis { position: relative; width: min(94cqw, 150cqh); display: grid; gap: 5cqmin; }
-.visBox { position: relative; aspect-ratio: 5 / 3; border: 1px solid var(--c-white-20); border-radius: 1.6cqmin; overflow: hidden; }
+.visBox { position: relative; aspect-ratio: 5 / 3; border: var(--size-1px) solid var(--c-white-20); border-radius: 1.6cqmin; overflow: hidden; }
 .visBox section { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; gap: 1cqmin; }
-.visBox section:first-child { background: #14151a; }
-.visBox section:nth-child(2) { background: linear-gradient(135deg, #ff3333, #7d1010); clip-path: inset(0 calc((1 - var(--pin)) * 100%) 0 0); }
-.visBox b { font: 300 14cqmin / 1 var(--font-serif); color: #fff; }
-.visBox span { font: 500 2.4cqmin var(--font-mono); letter-spacing: 0.24em; text-transform: uppercase; color: var(--c-white-65); }
-.visBox i { position: absolute; top: 0; bottom: 0; left: calc(var(--pin) * 100%); width: 2px; margin-left: -1px; background: #fff; box-shadow: 0 0 2cqmin #fff; }
-.vis small { font: 500 2.2cqmin var(--font-mono); letter-spacing: 0.22em; color: var(--c-white-50); }
+.visBox section:first-child { background: var(--c-extracted-14151a); }
+.visBox section:nth-child(2) { background: linear-gradient(135deg, var(--c-red), var(--c-extracted-7d1010)); clip-path: inset(0 calc((1 - var(--pin)) * 100%) 0 0); }
+.visBox b { font: 300 14cqmin / 1 var(--font-serif); color: var(--c-white); }
+.visBox span { font: 500 2.4cqmin var(--font-mono); letter-spacing: var(--size-0p24em); text-transform: uppercase; color: var(--c-white-65); }
+.visBox i { position: absolute; top: 0; bottom: 0; left: calc(var(--pin) * 100%); width: var(--size-2px); margin-left: var(--size-negative-1px); background: var(--c-white); box-shadow: 0 0 2cqmin var(--c-white); }
+.vis small { font: 500 2.2cqmin var(--font-mono); letter-spacing: var(--size-0p22em); color: var(--c-white-50); }
 
 /* ---- the two panels ---- */
-.wipe { position: relative; display: block; width: 11.5rem; height: 6.6rem; padding: 0; overflow: hidden; border: 1px solid var(--c-white-20); border-radius: 6px; background: #000; cursor: pointer; text-align: left; }
+.wipe { position: relative; display: block; width: var(--size-11p5rem); height: var(--size-6p6rem); padding: 0; overflow: hidden; border: var(--size-1px) solid var(--c-white-20); border-radius: var(--size-6px); background: var(--c-extracted-000000); cursor: pointer; text-align: left; }
 .a, .b { position: absolute; inset: 0; display: grid; place-items: center; }
-.a { background: #14151a; }
-.b { background: linear-gradient(135deg, #ff3333, #7d1010); transition: clip-path 0.9s var(--ease-in-out), transform 0.9s var(--ease-in-out), opacity 0.9s var(--ease-in-out), filter 0.9s var(--ease-in-out), --wipe-c 0.9s var(--ease-in-out), --wipe-s 0.9s var(--ease-in-out), --wipe-a 0.9s var(--ease-in-out), --wipe-r 0.9s var(--ease-in-out), --wipe-c1 0.6s var(--ease-in-out) 0s, --wipe-c2 0.6s var(--ease-in-out) 0.12s, --wipe-c3 0.6s var(--ease-in-out) 0.24s, --wipe-c4 0.6s var(--ease-in-out) 0.36s, --wipe-c5 0.6s var(--ease-in-out) 0.48s; }
-.a { transition: clip-path 0.9s var(--ease-in-out), transform 0.9s var(--ease-in-out), opacity 0.9s var(--ease-in-out), filter 0.9s var(--ease-in-out), --wipe-d 0.9s var(--ease-in-out); }
-.a b, .b b { font: 300 2.4rem var(--font-serif); color: #fff; }
-.wipe:focus-visible { outline: 1px solid var(--c-red); outline-offset: 3px; }
+.a { background: var(--c-extracted-14151a); }
+.b { background: linear-gradient(135deg, var(--c-red), var(--c-extracted-7d1010)); transition: clip-path var(--dur-4) var(--ease-in-out), transform var(--dur-4) var(--ease-in-out), opacity var(--dur-4) var(--ease-in-out), filter var(--dur-4) var(--ease-in-out), --wipe-c var(--dur-4) var(--ease-in-out), --wipe-s var(--dur-4) var(--ease-in-out), --wipe-a var(--dur-4) var(--ease-in-out), --wipe-r var(--dur-4) var(--ease-in-out), --wipe-c1 var(--dur-3) var(--ease-in-out) var(--dur-extracted-0s), --wipe-c2 var(--dur-3) var(--ease-in-out) var(--dur-extracted-0p12s), --wipe-c3 var(--dur-3) var(--ease-in-out) var(--dur-extracted-0p24s), --wipe-c4 var(--dur-3) var(--ease-in-out) var(--dur-extracted-0p36s), --wipe-c5 var(--dur-3) var(--ease-in-out) var(--dur-extracted-0p48s); }
+.a { transition: clip-path var(--dur-4) var(--ease-in-out), transform var(--dur-4) var(--ease-in-out), opacity var(--dur-4) var(--ease-in-out), filter var(--dur-4) var(--ease-in-out), --wipe-d var(--dur-4) var(--ease-in-out); }
+.a b, .b b { font: 300 var(--size-2p4rem) var(--font-serif); color: var(--c-white); }
+.wipe:focus-visible { outline: var(--size-1px) solid var(--c-red); outline-offset: var(--size-3px); }
 
 /* 1–4 edges */
 .lr .b { clip-path: inset(0 100% 0 0); } .lr[data-b='true'] .b { clip-path: inset(0); }
@@ -52,30 +52,30 @@
 .star[data-b='true'] .b { clip-path: polygon(50.0% -180.0%, 104.1% -24.4%, 268.7% -21.1%, 137.5% 78.4%, 185.2% 236.1%, 50.0% 142.0%, -85.2% 236.1%, -37.5% 78.4%, -168.7% -21.1%, -4.1% -24.4%); }
 
 /* 11 / 12 / 17 blinds and slats */
-.blindsH .b { --wipe-c: 0%; mask: repeating-linear-gradient(to bottom, #000 0, #000 var(--wipe-c), transparent var(--wipe-c), transparent 20%); }
+.blindsH .b { --wipe-c: 0%; mask: repeating-linear-gradient(to bottom, var(--c-extracted-000000) 0, var(--c-extracted-000000) var(--wipe-c), transparent var(--wipe-c), transparent 20%); }
 .blindsH[data-b='true'] .b { --wipe-c: 20%; }
-.blindsV .b { --wipe-c: 0%; mask: repeating-linear-gradient(to right, #000 0, #000 var(--wipe-c), transparent var(--wipe-c), transparent 20%); }
+.blindsV .b { --wipe-c: 0%; mask: repeating-linear-gradient(to right, var(--c-extracted-000000) 0, var(--c-extracted-000000) var(--wipe-c), transparent var(--wipe-c), transparent 20%); }
 .blindsV[data-b='true'] .b { --wipe-c: 20%; }
-.slats .b { --wipe-c: 0%; mask: repeating-linear-gradient(to bottom, #000 0, #000 var(--wipe-c), transparent var(--wipe-c), transparent 8%); }
+.slats .b { --wipe-c: 0%; mask: repeating-linear-gradient(to bottom, var(--c-extracted-000000) 0, var(--c-extracted-000000) var(--wipe-c), transparent var(--wipe-c), transparent 8%); }
 .slats[data-b='true'] .b { --wipe-c: 8%; }
 
 /* 13 pixel checker / 36 stepped pixels */
-.checker .b, .pixel .b { --wipe-s: 0%; mask: linear-gradient(90deg, transparent calc(50% - var(--wipe-s) / 2), #000 calc(50% - var(--wipe-s) / 2) calc(50% + var(--wipe-s) / 2), transparent 0) 0 0 / 1.6rem 1.6rem, linear-gradient(transparent calc(50% - var(--wipe-s) / 2), #000 calc(50% - var(--wipe-s) / 2) calc(50% + var(--wipe-s) / 2), transparent 0) 0 0 / 1.6rem 1.6rem; mask-composite: intersect; -webkit-mask-composite: source-in; }
+.checker .b, .pixel .b { --wipe-s: 0%; mask: linear-gradient(90deg, transparent calc(50% - var(--wipe-s) / 2), var(--c-extracted-000000) calc(50% - var(--wipe-s) / 2) calc(50% + var(--wipe-s) / 2), transparent 0) 0 0 / var(--size-1p6rem) var(--size-1p6rem), linear-gradient(transparent calc(50% - var(--wipe-s) / 2), var(--c-extracted-000000) calc(50% - var(--wipe-s) / 2) calc(50% + var(--wipe-s) / 2), transparent 0) 0 0 / var(--size-1p6rem) var(--size-1p6rem); mask-composite: intersect; -webkit-mask-composite: source-in; }
 .checker[data-b='true'] .b, .pixel[data-b='true'] .b { --wipe-s: 102%; }
 .pixel .b { transition-timing-function: steps(6, end); }
 
 /* 14–16 curtains and doors */
 .curtain .b { clip-path: inset(0 50% 0 50%); } .curtain[data-b='true'] .b { clip-path: inset(0); }
 .shutter .b { clip-path: inset(50% 0 50% 0); } .shutter[data-b='true'] .b { clip-path: inset(0); }
-.barn .a { z-index: 2; --wipe-d: 50%; mask: linear-gradient(90deg, #000 var(--wipe-d), transparent var(--wipe-d) calc(100% - var(--wipe-d)), #000 calc(100% - var(--wipe-d))); }
+.barn .a { z-index: 2; --wipe-d: 50%; mask: linear-gradient(90deg, var(--c-extracted-000000) var(--wipe-d), transparent var(--wipe-d) calc(100% - var(--wipe-d)), var(--c-extracted-000000) calc(100% - var(--wipe-d))); }
 .barn[data-b='true'] .a { --wipe-d: 0%; }
 
 /* 18–20 sweeps */
-.clock .b { --wipe-a: 0deg; mask: conic-gradient(#000 var(--wipe-a), transparent 0); }
+.clock .b { --wipe-a: 0deg; mask: conic-gradient(var(--c-extracted-000000) var(--wipe-a), transparent 0); }
 .clock[data-b='true'] .b { --wipe-a: 361deg; }
-.radial .b { --wipe-a: 0deg; mask: conic-gradient(from 180deg, #000 var(--wipe-a), transparent 0); }
+.radial .b { --wipe-a: 0deg; mask: conic-gradient(from 180deg, var(--c-extracted-000000) var(--wipe-a), transparent 0); }
 .radial[data-b='true'] .b { --wipe-a: 361deg; }
-.fan .b { --wipe-a: 0deg; mask: conic-gradient(from -90deg at 50% 100%, #000 var(--wipe-a), transparent 0); }
+.fan .b { --wipe-a: 0deg; mask: conic-gradient(from -90deg at 50% 100%, var(--c-extracted-000000) var(--wipe-a), transparent 0); }
 .fan[data-b='true'] .b { --wipe-a: 182deg; }
 
 /* 21 / 22 edges */
@@ -85,11 +85,11 @@
 .wave[data-b='true'] .b { clip-path: polygon(0 0, 112.0% 0%, 119.0% 6.25%, 112.0% 12.5%, 105.0% 18.75%, 112.0% 25%, 119.0% 31.25%, 112.0% 37.5%, 105.0% 43.75%, 112.0% 50%, 119.0% 56.25%, 112.0% 62.5%, 105.0% 68.75%, 112.0% 75%, 119.0% 81.25%, 112.0% 87.5%, 105.0% 93.75%, 112.0% 100%, 0 100%); }
 
 /* 23 ink bleed */
-.ink .b { --wipe-r: 0%; mask: radial-gradient(circle at 30% 60%, #000 var(--wipe-r), transparent calc(var(--wipe-r) + 22%)), radial-gradient(circle at 70% 36%, #000 var(--wipe-r), transparent calc(var(--wipe-r) + 22%)); mask-composite: add; -webkit-mask-composite: source-over; }
+.ink .b { --wipe-r: 0%; mask: radial-gradient(circle at 30% 60%, var(--c-extracted-000000) var(--wipe-r), transparent calc(var(--wipe-r) + 22%)), radial-gradient(circle at 70% 36%, var(--c-extracted-000000) var(--wipe-r), transparent calc(var(--wipe-r) + 22%)); mask-composite: add; -webkit-mask-composite: source-over; }
 .ink[data-b='true'] .b { --wipe-r: 90%; }
 
 /* 24–26 slides */
-.push .a, .push .b { transition-duration: 0.8s; }
+.push .a, .push .b { transition-duration: var(--dur-extracted-0p8s); }
 .push .b { transform: translateX(100%); } .push[data-b='true'] .b { transform: none; } .push[data-b='true'] .a { transform: translateX(-100%); }
 .cover .b { transform: translateX(100%); } .cover[data-b='true'] .b { transform: none; }
 .uncover .a { z-index: 2; } .uncover[data-b='true'] .a { transform: translateX(-100%); }
@@ -99,54 +99,54 @@
 .zoom[data-b='true'] .a { transform: scale(2.6); opacity: 0; }
 
 /* 28–30 3D */
-.cube { perspective: 700px; }
-.cube .a { transform: translateZ(-5.75rem) rotateY(0) translateZ(5.75rem); } .cube[data-b='true'] .a { transform: translateZ(-5.75rem) rotateY(-90deg) translateZ(5.75rem); }
-.cube .b { transform: translateZ(-5.75rem) rotateY(90deg) translateZ(5.75rem); } .cube[data-b='true'] .b { transform: translateZ(-5.75rem) rotateY(0) translateZ(5.75rem); }
-.flipw { perspective: 700px; }
+.cube { perspective: var(--size-700px); }
+.cube .a { transform: translateZ(var(--size-negative-5p75rem)) rotateY(0) translateZ(var(--size-5p75rem)); } .cube[data-b='true'] .a { transform: translateZ(var(--size-negative-5p75rem)) rotateY(-90deg) translateZ(var(--size-5p75rem)); }
+.cube .b { transform: translateZ(var(--size-negative-5p75rem)) rotateY(90deg) translateZ(var(--size-5p75rem)); } .cube[data-b='true'] .b { transform: translateZ(var(--size-negative-5p75rem)) rotateY(0) translateZ(var(--size-5p75rem)); }
+.flipw { perspective: var(--size-700px); }
 .flipw .a, .flipw .b { backface-visibility: hidden; }
 .flipw .b { transform: rotateY(180deg); } .flipw[data-b='true'] .a { transform: rotateY(-180deg); } .flipw[data-b='true'] .b { transform: rotateY(0); }
-.fold { perspective: 700px; }
+.fold { perspective: var(--size-700px); }
 .fold .a { z-index: 2; transform-origin: 50% 0; backface-visibility: hidden; } .fold[data-b='true'] .a { transform: rotateX(-100deg); }
 
 /* 31 peel */
 .peel .a { z-index: 2; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); } .peel[data-b='true'] .a { clip-path: polygon(0 0, 100% 0, 100% 0, 0 100%); }
-.peel::after { content: ''; position: absolute; inset: 0; z-index: 3; background: linear-gradient(135deg, transparent 49%, rgba(0, 0, 0, 0.55) 50%, #e9e4d8 50.5%, #fff 56%, transparent 56.5%); opacity: 0; transition: opacity 0.4s; pointer-events: none; }
+.peel::after { content: ''; position: absolute; inset: 0; z-index: 3; background: linear-gradient(135deg, transparent 49%, var(--c-extracted-rgba-0-0-0-0p55) 50%, var(--c-extracted-e9e4d8) 50.5%, var(--c-white) 56%, transparent 56.5%); opacity: 0; transition: opacity var(--dur-2); pointer-events: none; }
 .peel[data-b='true']::after { opacity: 0; }
 
 /* 32 / 33 dissolves */
 .fade .b { opacity: 0; } .fade[data-b='true'] .b { opacity: 1; }
-.blur .b { opacity: 0; filter: blur(14px); } .blur[data-b='true'] .b { opacity: 1; filter: blur(0); }
-.blur[data-b='true'] .a { filter: blur(14px); opacity: 0; }
+.blur .b { opacity: 0; filter: blur(var(--size-14px)); } .blur[data-b='true'] .b { opacity: 1; filter: blur(0); }
+.blur[data-b='true'] .a { filter: blur(var(--size-14px)); opacity: 0; }
 
 /* 34 glitch / 35 scan */
 .glitch .b { clip-path: inset(0 0 100% 0); transform: skewX(10deg); transition-timing-function: steps(7, end); } .glitch[data-b='true'] .b { clip-path: inset(0); transform: none; }
 .scan .b { clip-path: inset(0 100% 0 0); } .scan[data-b='true'] .b { clip-path: inset(0); }
-.scan::after { content: ''; position: absolute; top: 0; bottom: 0; left: -2%; width: 2px; z-index: 3; background: #fff; box-shadow: 0 0 10px #fff, 0 0 24px var(--c-red); opacity: 0; pointer-events: none; }
-.scan[data-b='true']::after { opacity: 1; animation: sweep 0.9s var(--ease-in-out) forwards; }
+.scan::after { content: ''; position: absolute; top: 0; bottom: 0; left: -2%; width: var(--size-2px); z-index: 3; background: var(--c-white); box-shadow: 0 0 var(--size-10px) var(--c-white), 0 0 var(--size-24px) var(--c-red); opacity: 0; pointer-events: none; }
+.scan[data-b='true']::after { opacity: 1; animation: sweep var(--dur-4) var(--ease-in-out) forwards; }
 
 /* 37 / 38 staggers */
-.colStagger .b { --wipe-c1: 0%; --wipe-c2: 0%; --wipe-c3: 0%; --wipe-c4: 0%; --wipe-c5: 0%; mask: linear-gradient(to bottom, #000 var(--wipe-c1), transparent 0) 0 0 / 20% 100% no-repeat, linear-gradient(to bottom, #000 var(--wipe-c2), transparent 0) 25% 0 / 20% 100% no-repeat, linear-gradient(to bottom, #000 var(--wipe-c3), transparent 0) 50% 0 / 20% 100% no-repeat, linear-gradient(to bottom, #000 var(--wipe-c4), transparent 0) 75% 0 / 20% 100% no-repeat, linear-gradient(to bottom, #000 var(--wipe-c5), transparent 0) 100% 0 / 20% 100% no-repeat; }
+.colStagger .b { --wipe-c1: 0%; --wipe-c2: 0%; --wipe-c3: 0%; --wipe-c4: 0%; --wipe-c5: 0%; mask: linear-gradient(to bottom, var(--c-extracted-000000) var(--wipe-c1), transparent 0) 0 0 / 20% 100% no-repeat, linear-gradient(to bottom, var(--c-extracted-000000) var(--wipe-c2), transparent 0) 25% 0 / 20% 100% no-repeat, linear-gradient(to bottom, var(--c-extracted-000000) var(--wipe-c3), transparent 0) 50% 0 / 20% 100% no-repeat, linear-gradient(to bottom, var(--c-extracted-000000) var(--wipe-c4), transparent 0) 75% 0 / 20% 100% no-repeat, linear-gradient(to bottom, var(--c-extracted-000000) var(--wipe-c5), transparent 0) 100% 0 / 20% 100% no-repeat; }
 .colStagger[data-b='true'] .b { --wipe-c1: 101%; --wipe-c2: 101%; --wipe-c3: 101%; --wipe-c4: 101%; --wipe-c5: 101%; }
-.rowStagger .b { --wipe-c1: 0%; --wipe-c2: 0%; --wipe-c3: 0%; --wipe-c4: 0%; --wipe-c5: 0%; mask: linear-gradient(to right, #000 var(--wipe-c1), transparent 0) 0 0 / 100% 20% no-repeat, linear-gradient(to right, #000 var(--wipe-c2), transparent 0) 0 25% / 100% 20% no-repeat, linear-gradient(to right, #000 var(--wipe-c3), transparent 0) 0 50% / 100% 20% no-repeat, linear-gradient(to right, #000 var(--wipe-c4), transparent 0) 0 75% / 100% 20% no-repeat, linear-gradient(to right, #000 var(--wipe-c5), transparent 0) 0 100% / 100% 20% no-repeat; }
+.rowStagger .b { --wipe-c1: 0%; --wipe-c2: 0%; --wipe-c3: 0%; --wipe-c4: 0%; --wipe-c5: 0%; mask: linear-gradient(to right, var(--c-extracted-000000) var(--wipe-c1), transparent 0) 0 0 / 100% 20% no-repeat, linear-gradient(to right, var(--c-extracted-000000) var(--wipe-c2), transparent 0) 0 25% / 100% 20% no-repeat, linear-gradient(to right, var(--c-extracted-000000) var(--wipe-c3), transparent 0) 0 50% / 100% 20% no-repeat, linear-gradient(to right, var(--c-extracted-000000) var(--wipe-c4), transparent 0) 0 75% / 100% 20% no-repeat, linear-gradient(to right, var(--c-extracted-000000) var(--wipe-c5), transparent 0) 0 100% / 100% 20% no-repeat; }
 .rowStagger[data-b='true'] .b { --wipe-c1: 101%; --wipe-c2: 101%; --wipe-c3: 101%; --wipe-c4: 101%; --wipe-c5: 101%; }
 
 /* 39 drag / 40 scrub */
 .dragw .b, .scrubw .b { transition: none; clip-path: inset(0 calc((1 - var(--v)) * 100%) 0 0); }
 .dragw { cursor: ew-resize; }
-.dragw i { position: absolute; top: 0; bottom: 0; left: calc(var(--v) * 100%); width: 1.2rem; margin-left: -0.6rem; z-index: 3; cursor: ew-resize; touch-action: none; }
-.dragw i::after { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: #fff; box-shadow: 0 0 8px #fff; }
+.dragw i { position: absolute; top: 0; bottom: 0; left: calc(var(--v) * 100%); width: var(--size-1p2rem); margin-left: var(--size-negative-0p6rem); z-index: 3; cursor: ew-resize; touch-action: none; }
+.dragw i::after { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: var(--size-2px); margin-left: var(--size-negative-1px); background: var(--c-white); box-shadow: 0 0 var(--size-8px) var(--c-white); }
 .dragw i:focus-visible { outline: none; }
-.dragw i:focus-visible::after { background: var(--c-red); width: 4px; margin-left: -2px; }
-.scrub { display: grid; gap: 0.6rem; justify-items: center; }
+.dragw i:focus-visible::after { background: var(--c-red); width: var(--size-4px); margin-left: var(--size-negative-2px); }
+.scrub { display: grid; gap: var(--size-0p6rem); justify-items: center; }
 .scrubw { cursor: default; }
-.scrub input { width: 11.5rem; accent-color: #ff3333; }
+.scrub input { width: var(--size-11p5rem); accent-color: var(--c-red); }
 
 /* 41 text mask */
-.textMask .t { position: absolute; inset: 0; display: grid; place-items: center; font: 800 2.7rem / 1 var(--font-sans); letter-spacing: 0.02em; color: transparent; -webkit-text-stroke: 1px var(--c-white-30); background: linear-gradient(90deg, #ff3333, #ffb347) 0 0 / 0% 100% no-repeat; -webkit-background-clip: text; background-clip: text; transition: background-size 1.1s var(--ease-in-out); }
+.textMask .t { position: absolute; inset: 0; display: grid; place-items: center; font: 800 var(--size-2p7rem) / 1 var(--font-sans); letter-spacing: var(--size-0p02em); color: transparent; -webkit-text-stroke: var(--size-1px) var(--c-white-30); background: linear-gradient(90deg, var(--c-red), var(--c-extracted-ffb347)) 0 0 / 0% 100% no-repeat; -webkit-background-clip: text; background-clip: text; transition: background-size var(--dur-extracted-1p1s) var(--ease-in-out); }
 .textMask[data-b='true'] .t { background-size: 100% 100%; }
 .textMask .a b { display: none; }
 
 /* 42 click reveal */
 .spot { --cx: 50%; --cy: 50%; cursor: pointer; }
-.spot .b { clip-path: circle(0% at var(--cx) var(--cy)); transition: clip-path 0.8s var(--ease-out); }
+.spot .b { clip-path: circle(0% at var(--cx) var(--cy)); transition: clip-path var(--dur-extracted-0p8s) var(--ease-out); }
 .spot[data-on='true'] .b { clip-path: circle(160% at var(--cx) var(--cy)); }

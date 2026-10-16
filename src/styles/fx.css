@@ -54,21 +54,21 @@
 .keycap {
   display: inline-grid;
   place-items: center;
-  min-width: 1.9em;
-  height: 1.9em;
-  padding: 0 0.5em;
-  border: 1px solid var(--c-white-20);
-  border-bottom-width: 2px;
-  border-radius: 5px;
+  min-width: var(--size-1p9em);
+  height: var(--size-1p9em);
+  padding: 0 var(--size-0p5em);
+  border: var(--size-1px) solid var(--c-white-20);
+  border-bottom-width: var(--size-2px);
+  border-radius: var(--size-5px);
   background: linear-gradient(180deg, var(--c-white-08), var(--c-white-03));
   color: var(--c-white-80);
-  font: 500 0.68rem var(--font-mono);
-  letter-spacing: 0.04em;
+  font: 500 var(--size-0p68rem) var(--font-mono);
+  letter-spacing: var(--size-0p04em);
   transition: transform var(--dur-1) var(--ease-out), background var(--dur-2) var(--ease-out), border-color var(--dur-2) var(--ease-out), color var(--dur-2) var(--ease-out);
 }
 .keycap[data-pressed='true'] {
-  transform: translateY(1px);
-  border-bottom-width: 1px;
+  transform: translateY(var(--size-1px));
+  border-bottom-width: var(--size-1px);
   border-color: var(--c-red);
   background: var(--c-red-ghost);
   color: var(--c-white);
@@ -80,8 +80,8 @@
   font-weight: 300;
   line-height: 0.9;
   color: transparent;
-  -webkit-text-stroke: 1px var(--c-white-20);
-  text-stroke: 1px var(--c-white-20);
+  -webkit-text-stroke: var(--size-1px) var(--c-white-20);
+  text-stroke: var(--size-1px) var(--c-white-20);
   font-variant-numeric: lining-nums tabular-nums;
 }
 
@@ -89,12 +89,12 @@
    discovery for people who like to look under the hood. Outlines only — it
    never changes layout. */
 html.blueprint main section {
-  outline: 1px dashed rgba(255, 51, 51, 0.35);
-  outline-offset: -1px;
+  outline: var(--size-1px) dashed var(--c-extracted-rgba-255-51-51-0p35);
+  outline-offset: var(--size-negative-1px);
 }
 html.blueprint [data-fx]:not([data-fx^='cursor.']):not([data-fx^='blueprint.']):not([data-fx^='transition.']) {
-  outline: 1px dashed rgba(255, 51, 51, 0.35);
-  outline-offset: -1px;
+  outline: var(--size-1px) dashed var(--c-extracted-rgba-255-51-51-0p35);
+  outline-offset: var(--size-negative-1px);
 }
 
 @media (prefers-reduced-motion: reduce) {

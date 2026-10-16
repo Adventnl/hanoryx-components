@@ -4,7 +4,7 @@ Read this first. It is the one instruction file for the repository; nested `AGEN
 
 ## What this repository is
 
-The Hanoryx Systems interface, extracted from the website (`hanoryx-web`) and organised as a library: **React 19 + CSS Modules, published as source.** A site built from it needs no new components. **2,604 catalogued pieces** in twelve areas; a docs site (`npm run dev`) shows each live with its props and measured size.
+The Hanoryx Systems interface, extracted from the website (`hanoryx-web`) and organised as a library: **React 19 + CSS Modules, published as source.** A site built from it needs no new components. **2,658 catalogued pieces** in twelve areas; a docs site (`npm run dev`) shows each live with its props and measured size.
 
 `hanoryx-web` and `astryx` are reference only. Never edit them from here.
 
@@ -27,7 +27,7 @@ Read `llms.txt` (the map), `docs/sizing.md` (sizes), `docs/layout-recipes.md` (p
 src/
   styles/        tokens.css and the global sheet            -> 'hanoryx-components/styles'
   core/          hooks, providers, motion engine, utilities  -> '…/core'
-  kit/           interface kit, 6 families                   -> '…/kit'
+  kit/           interface kit, 7 families                   -> '…/kit'
   fx/ ui/        foreground toolkit; the site's own UI       -> '…/fx' '…/ui'
   page/          hero, page blocks, page template            -> '…/page'
   shell/         navbar, footer, search, shortcuts, cursor…  -> '…/shell'

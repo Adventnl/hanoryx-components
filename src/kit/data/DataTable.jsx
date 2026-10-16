@@ -2,8 +2,7 @@ import { useMemo, useState } from 'react';
 import { ArrowDown, ArrowUp, ChevronsUpDown } from 'lucide-react';
 import Checkbox from '../inputs/Checkbox';
 import styles from './data.module.css';
-
-const compare = (a, b) => (typeof a === 'number' && typeof b === 'number' ? a - b : String(a ?? '').localeCompare(String(b ?? ''), undefined, { numeric: true, sensitivity: 'base' }));
+import { sortRows } from '../internal/table-model';
 
 /**
  * A table you can sort and select from. A sortable column's header is a button
@@ -18,11 +17,7 @@ export default function DataTable({ caption, columns = [], rows = [], rowKey = '
   const [picked, setPicked] = useState(() => new Set());
 
   const sorted = useMemo(() => {
-    if (!sort.key || sort.dir === 'none') return rows;
-    const col = columns.find((c) => c.key === sort.key);
-    const get = col?.value || ((r) => r[sort.key]);
-    const out = [...rows].sort((a, b) => compare(get(a), get(b)));
-    return sort.dir === 'descending' ? out.reverse() : out;
+    return sortRows(rows, { key: sort.key, direction: sort.dir }, columns);
   }, [rows, columns, sort]);
 
   const cycle = (key) => setSort((s) => {

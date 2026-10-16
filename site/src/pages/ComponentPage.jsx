@@ -44,6 +44,7 @@ function SizingPanel({ entry }) {
   return (
     <section aria-labelledby="sz" className="sx-section">
       <h2 id="sz" className="sx-h3">Sizing</h2>
+      {m?.scope && <p>{m.scope}, measured on the bare page. The live demo may include additional content or controls.</p>}
       {m?.behavior && <p className="sx-sizing-lead"><b className="sx-tag" data-b={m.behavior}>{m.behavior}</b> {BEHAVIOR[m.behavior]}</p>}
       {s.rules?.length > 0 && <ul className="sx-rules">{s.rules.map((r) => <li key={r}>{r}</li>)}</ul>}
       {rows.length > 0 && (
@@ -67,6 +68,8 @@ function SizingPanel({ entry }) {
 }
 
 const BEHAVIOR = {
+  capped: 'Follows its parent up to a maximum. Leave room around it; do not stretch it.',
+  fluid: 'Changes size with the parent. Use the measurements below to choose a suitable container.',
   fill: 'Takes the width of its parent. Give it a parent with the width you want; never set a width on it.',
   intrinsic: 'Sizes to its content. Centre it or put it in a row; it will not stretch.',
   fixed: 'Has its own dimensions that do not follow the parent. Leave at least this much room.',
@@ -111,8 +114,10 @@ export default function ComponentPage({ data }) {
   const area = data.areas.find((a) => a.id === entry.area);
   const fam = entry.area === 'specimens' ? data.families.find((f) => f.slug === entry.family) : null;
   const famLabel = fam ? fam.title : data.kitFamilies?.[entry.family] ?? entry.family;
-  const hasLive = Boolean(entry.area === 'specimens' || ['kit', 'fx', 'ui', 'page', 'signatures', 'closers'].includes(entry.area) || entry.kind === 'scene' || entry.kind === 'profile');
+  const hasLive = !['hook', 'function'].includes(entry.kind) && Boolean(entry.area === 'specimens' || ['kit', 'fx', 'ui', 'page', 'signatures', 'closers', 'reveal', 'scenes'].includes(entry.area) || entry.kind === 'scene' || entry.kind === 'profile');
   const importText = entry.import;
+  const snippet = usageSnippet(entry);
+  const usageText = /^\s*import\b/m.test(snippet) ? snippet : `${importText}\n\n${snippet}`;
   return (
     <article className="sx-component">
       <nav aria-label="Breadcrumb" className="sx-crumbs">
@@ -143,6 +148,7 @@ export default function ComponentPage({ data }) {
       {entry.params?.length > 0 && (
         <section className="sx-section"><h2 className="sx-h3">Parameters</h2><pre className="sx-code"><code>{entry.name}({entry.params.join(', ')})</code></pre></section>
       )}
+      {entry.returns && <section className="sx-section"><h2 className="sx-h3">Returns</h2><p><Inline text={entry.returns} /></p></section>}
       {entry.description && <section className="sx-section"><h2 className="sx-h3">Notes from the source</h2><p className="sx-pre">{entry.description}</p></section>}
       {entry.usage?.bestPractices?.length > 0 && (
         <section className="sx-section"><h2 className="sx-h3">Do and don't</h2>
@@ -157,7 +163,7 @@ export default function ComponentPage({ data }) {
       {entry.notes?.length > 0 && <section className="sx-section"><h2 className="sx-h3">Notes</h2><ul className="sx-notes">{entry.notes.map((n) => <li key={n}>{n}</li>)}</ul></section>}
 
       <section className="sx-section"><h2 className="sx-h3">Usage</h2>
-        <div className="sx-import sx-import-block"><pre><code>{`${importText}\n\n${usageSnippet(entry)}`}</code></pre><CopyButton text={`${importText}\n\n${usageSnippet(entry)}`} /></div>
+        <div className="sx-import sx-import-block"><pre><code>{usageText}</code></pre><CopyButton text={usageText} /></div>
       </section>
 
       <section className="sx-section"><h2 className="sx-h3">Source</h2>

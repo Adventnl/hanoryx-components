@@ -11,7 +11,7 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  width: clamp(40px, 8vw, 140px);
+  width: clamp(var(--size-40px), var(--size-8vw), var(--size-140px));
   z-index: 2;
   pointer-events: none;
 }
@@ -28,12 +28,12 @@
   padding: 0 var(--space-5);
   font-family: var(--font-serif);
   font-weight: 300;
-  font-size: clamp(1.3rem, 3vw, 2.2rem);
+  font-size: clamp(var(--size-1p3rem), var(--size-3vw), var(--size-2p2rem));
   color: var(--c-white-50);
 }
 .sep {
-  width: 6px;
-  height: 6px;
+  width: var(--size-6px);
+  height: var(--size-6px);
   flex: none;
   border-radius: 50%;
   background: var(--c-red);

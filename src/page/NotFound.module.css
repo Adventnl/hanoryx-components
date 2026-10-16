@@ -26,7 +26,7 @@
       120% 90% at 50% 42%,
       transparent 0%,
       transparent 38%,
-      rgba(2, 2, 3, 0.85) 100%
+      var(--c-extracted-rgba-2-2-3-0p85) 100%
     );
 }
 
@@ -58,7 +58,7 @@
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-display);
   /* faint red bleed under the type, like a misregistered print */
-  text-shadow: 0 0 60px rgba(255, 51, 51, 0.08);
+  text-shadow: 0 0 var(--size-60px) var(--c-extracted-rgba-255-51-51-0p08);
 }
 
 .intro {
@@ -67,16 +67,16 @@
 }
 
 .rule {
-  width: min(100%, 280px);
+  width: min(100%, var(--size-280px));
   margin-inline: auto;
 }
 
 .actions {
   justify-content: center;
 }
-.searchButton { display: inline-flex; align-items: center; gap: 0.6em; min-height: 44px; padding-inline: var(--space-5); border: var(--border); background: var(--c-black-3); color: var(--c-white); font: 0.66rem var(--font-mono); letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: border-color var(--dur-2) var(--ease-out); }
+.searchButton { display: inline-flex; align-items: center; gap: var(--size-0p6em); min-height: var(--size-44px); padding-inline: var(--space-5); border: var(--border); background: var(--c-black-3); color: var(--c-white); font: var(--size-0p66rem) var(--font-mono); letter-spacing: var(--size-0p16em); text-transform: uppercase; cursor: pointer; transition: border-color var(--dur-2) var(--ease-out); }
 .searchButton:hover { border-color: var(--c-red); }
-.searchButton:focus-visible { outline: 2px solid var(--c-red); outline-offset: 2px; }
+.searchButton:focus-visible { outline: var(--size-2px) solid var(--c-red); outline-offset: var(--size-2px); }
 
 /* --- Responsive --- */
 @media (max-width: 1024px) {
@@ -91,15 +91,15 @@
   }
 }
 
-.asked { font-family: var(--font-mono); font-size: 0.85em; color: var(--c-white); letter-spacing: 0.04em; overflow-wrap: anywhere; }
+.asked { font-family: var(--font-mono); font-size: var(--size-0p85em); color: var(--c-white); letter-spacing: var(--size-0p04em); overflow-wrap: anywhere; }
 
-.near { width: min(100%, 36rem); text-align: left; }
-.nearLabel { display: block; margin-bottom: var(--space-3); font: 0.58rem var(--font-mono); letter-spacing: 0.24em; text-transform: uppercase; color: var(--c-white-50); text-align: center; }
-.near ul { list-style: none; border-top: 1px solid var(--c-line-strong); }
-.near li { border-bottom: 1px solid var(--c-line); animation: near-in 0.8s var(--ease-glide) both; animation-delay: calc(0.5s + var(--i) * 0.09s); }
-@keyframes near-in { from { opacity: 0; transform: translate3d(0, 10px, 0); } to { opacity: 1; transform: none; } }
-.nearLink { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr) auto; align-items: baseline; gap: var(--space-3); padding: 0.85rem 0.3rem; color: var(--c-white-50); transition: color var(--dur-2) var(--ease-out), padding var(--dur-3) var(--ease-glide), background var(--dur-3) var(--ease-out); }
-.nearLink:hover, .nearLink:focus-visible { color: var(--c-white); padding-left: 0.9rem; background: linear-gradient(90deg, var(--c-red-faint), transparent 70%); }
-.nearGroup { font: 0.54rem var(--font-mono); letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-red-bright); }
+.near { width: min(100%, var(--size-36rem)); text-align: left; }
+.nearLabel { display: block; margin-bottom: var(--space-3); font: var(--size-0p58rem) var(--font-mono); letter-spacing: var(--size-0p24em); text-transform: uppercase; color: var(--c-white-50); text-align: center; }
+.near ul { list-style: none; border-top: var(--size-1px) solid var(--c-line-strong); }
+.near li { border-bottom: var(--size-1px) solid var(--c-line); animation: near-in var(--dur-extracted-0p8s) var(--ease-glide) both; animation-delay: calc(var(--dur-extracted-0p5s) + var(--i) * var(--dur-extracted-0p09s)); }
+@keyframes near-in { from { opacity: 0; transform: translate3d(0, var(--size-10px), 0); } to { opacity: 1; transform: none; } }
+.nearLink { display: grid; grid-template-columns: var(--size-6p5rem) minmax(0, 1fr) auto; align-items: baseline; gap: var(--space-3); padding: var(--size-0p85rem) var(--size-0p3rem); color: var(--c-white-50); transition: color var(--dur-2) var(--ease-out), padding var(--dur-3) var(--ease-glide), background var(--dur-3) var(--ease-out); }
+.nearLink:hover, .nearLink:focus-visible { color: var(--c-white); padding-left: var(--size-0p9rem); background: linear-gradient(90deg, var(--c-red-faint), transparent 70%); }
+.nearGroup { font: var(--size-0p54rem) var(--font-mono); letter-spacing: var(--size-0p2em); text-transform: uppercase; color: var(--c-red-bright); }
 .nearName { font-family: var(--font-serif); font-size: var(--fs-h4); color: inherit; }
 @media (prefers-reduced-motion: reduce) { .near li { animation: none; } }

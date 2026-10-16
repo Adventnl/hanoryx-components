@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { areaHref } from '../data';
 
 const START = [
-  ['Build a page', '/guides/layout-recipes', 'Ten page skeletons with the exact tokens, widths and padding.'],
+  ['Build a page', '/guides/layout-recipes', 'Six page skeletons with the exact tokens, widths and padding.'],
   ['Get sizes right', '/guides/sizing', 'Spacing scale, type scale, widths, ratios and what each component does when its parent changes.'],
   ['Give it to an LLM', '/guides/for-llms', 'llms.txt, the manifest, the CLI and the rules that stop a page from breaking.'],
   ['See the whole shell', '/preview/shell', 'Navbar, footer, search, shortcuts and route transitions around a page.'],

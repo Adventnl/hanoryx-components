@@ -7,15 +7,15 @@
   stroke-linecap: round;
   stroke-dasharray: 1;
   filter: none;
-  transition: stroke-dashoffset 0.9s var(--ease-glide);
+  transition: stroke-dashoffset var(--dur-4) var(--ease-glide);
 }
 .center {
   position: absolute;
   inset: 0;
   display: grid;
   place-items: center;
-  font: 0.72rem var(--font-mono);
-  letter-spacing: 0.06em;
+  font: var(--size-0p72rem) var(--font-mono);
+  letter-spacing: var(--size-0p06em);
   color: var(--c-white);
   font-variant-numeric: lining-nums tabular-nums;
 }

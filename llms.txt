@@ -4,18 +4,21 @@
 
 Read first: AGENTS.md (rules), docs/sizing.md (sizes, ratios, padding), docs/layout-recipes.md (page skeletons). Then look components up with `npm run hx -- component <Name>` or in docs/generated/manifest.json.
 
-## Interface kit — import from 'hanoryx-components/kit' (67)
+## Interface kit — import from 'hanoryx-components/kit' (116)
 
-Sixty-one accessible components in six families: inputs, navigation, feedback, data display, overlays, content and layout.
+Accessible inputs, navigation, feedback, data, overlays, layout and chat, with composable parts and utility hooks.
 
+- Calendar [inputs] — A single-date calendar with roving focus, min/max bounds, month navigation and locale-aware labels.
 - Checkbox [inputs] — A checkbox with room for a hint. It is a real input — the square is drawn beside it — and it supports the indeterminate “some of them” state of a parent box.
 - Combobox [inputs] — An editable combobox: type to filter, move through the matches with the arrow keys, choose with Enter. Focus stays in the input; the highlighted option is named with aria-activedescendant.
+- DateInput [inputs] — Labelled native date input, plus local time, local date/time and paired date-range controls.
 - Field [inputs] — The label, hint and error that every field shares, wired up so a screen reader hears them. The control you put inside it receives its id, aria-describedby and aria-invalid.
 - FileDrop [inputs] — A drop zone that is also a file button: drag files onto it, or press it and choose. It lists what was picked and uploads nothing itself.
 - NumberField [inputs] — A number with a minus and a plus either side. The value is clamped to its range when you leave the field, never while you are typing.
 - PasswordField [inputs] — A password field with a show/hide toggle and a rough strength meter. Everything happens in the page; nothing is sent anywhere.
 - RadioGroup [inputs] — A group of real radio buttons under a legend: the arrow keys move and choose, Tab leaves the group, and a screen reader says “2 of 4”.
 - RangeField [inputs] — A slider: the native range input, with its value written beside the label and a text version (“240 ms”) for assistive technology.
+- RichTextEditor [inputs] — A compact editor for bold, italic, underline and code, with sanitized HTML values and plain-text paste.
 - SearchField [inputs] — A search box with a clear button and, when you give it a count, a result count that is read out as it changes.
 - Segmented [inputs] — A short row of exclusive choices drawn as one control, with an ink that glides to the chosen one. Radio buttons underneath.
 - SelectField [inputs] — A native select, styled. Native on purpose: the platform’s own keyboard handling, its picker on a phone and its screen-reader behaviour come for free.
@@ -49,8 +52,10 @@ Sixty-one accessible components in six families: inputs, navigation, feedback, d
 - DescriptionList [data] — Terms and what they mean, or labels and their values — the right element for a fact sheet. A real dl, so a screen reader pairs each term with its detail.
 - Sparkline [data] — A tiny line chart with no axes, for “which way is it going”. It is an image with a text description — range, first and last value — so the shape is never the only way to learn it.
 - Stat [data] — One number, large, with its label above and, if you have it, how it moved. The change is written as words for a screen reader; the arrow and colour are decoration.
+- Table [data] — Semantic table parts with optional sortable headers and a selected-row action group.
 - Timeline [data] — Things in the order they happen, down a line. It is an ordered list, so the order is announced. This site’s own timeline is told in undated phases — pass words, not dates, unless you have them.
 - Tree [data] — An expandable tree — files, categories, an outline — following the ARIA tree-view pattern: one tab stop, arrow keys through what is visible.
+- useTableSortable [data] — { rows, sort, setSort, toggleSort(key) }.
 - ConfirmDialog [overlays] — “Are you sure?” done properly: the title says what will happen, the buttons say what they do, and for something that cannot be undone the safe choice has focus.
 - Dialog [overlays] — A modal dialog: it takes over the screen until it is dealt with. Focus moves in and is trapped, Escape and the backdrop close it, the page behind stops scrolling and focus returns to what opened it.
 - Drawer [overlays] — A dialog that slides in from an edge and runs the full height — for a filter panel or a record’s detail, where the page behind still gives context.
@@ -70,10 +75,13 @@ Sixty-one accessible components in six families: inputs, navigation, feedback, d
 - Heading [content] — A heading in the serif voice. `level` is the HTML element (for the outline); `size` is how it looks, from the type scale — display, hero, h1–h4. New in this library.
 - Prose [content] — A reading column. Wrap plain HTML — headings, paragraphs, lists, links, code, quotes — and it is typeset for reading: about 68 characters wide, generous leading, serif headings.
 - Quote [content] — A pull quote with its source: a real blockquote inside a figure, the attribution as the caption. Only put words here that someone really said.
+- Resizable [content] — Two resizable panels with a pointer- and keyboard-operated separator.
 - Section [content] — A page block's outer shell: the vertical rhythm between blocks (80–176 px, or 48–96 px with size="sm"). New in this library — the same as the global `.section` class.
 - Stack [content] — Children in a column with an even gap taken from the spacing tokens.
 - Text [content] — Text in one of the three voices: body, lead, small, caption, or the mono uppercase label. Tone is an opacity of white (strong, default, dim) or red. New in this library.
 - VisuallyHidden [content] — Text for assistive technology that is not drawn: the “Close” on an icon-only button, the “(current page)” after a link. It stays in the reading order and out of the layout.
+- useResizable [content] — Percentage split state and separator bindings for pointer and keyboard resizing.
+- Chat [chat] — Composable conversation regions, transcript items and a message composer with asynchronous send handling.
 
 ## Foreground toolkit — import from 'hanoryx-components/fx' (18)
 
@@ -132,7 +140,7 @@ The data-driven page: hero, twenty block types and the template that renders the
 - NumbersBlock [blocks] — A row of figures with how they moved, and a line if there is a series.
 - ProcessBlock [blocks] — Numbered steps on a rail that fills as you scroll.
 - QuoteBlock [blocks] — A pull quote with its source.
-- Shell [blocks] — Section wrapper: each block owns its own scene background + container, and an optional anchor id the ScrollRail can jump to.
+- Shell [blocks] — The shared scene, section padding and container around a page block.
 - SignatureBlock [blocks] — A composition that belongs to one page, loaded when it is needed.
 - SnippetBlock [blocks] — A piece of code or data with a file name and a copy button.
 - SplitBlock [blocks] — A heading and prose on one side, a short list of labelled points on the other.
@@ -306,4 +314,4 @@ The scroll-driven stages that present specimens, and the parts they share.
 
 Hooks, providers, the motion engine, utilities and site sources.
 
-useAudioAnalyzer, useCopy, useDocumentTitle, useElementInView, useMediaQuery, useFinePointer, useOnScreen, usePageCatalog, usePointerField, usePrefersReducedMotion, useProximity, AnimationProvider, AudioProvider, ExperienceProvider, HanoryxProvider, LenisProvider, useAudio, useExperience, useLenis, setAudioActive, writeAudioBytes, getAudio, clamp, lerp, mapRange, easeInOutCubic, easeOutCubic, easeInOutSine, pseudoNoise, flowAngle, getMotionState, maxDpr, resolveQuality, maxActiveScenes, sceneFrameInterval, initPointer, getPointer, subscribe, getFps, getSubscriberCount, setScenesPaused, registerScene, reportVisibility, activeSceneCount, white, red, accentFn, registerScene, getScene, listScenes, initPerformanceMode, getPerformanceMode, subscribePerformanceMode, initViewportDirector, configureAssets, copyText, downloadText, parseHex, toHex, contrastRatio, nearestPassing, parseCron, expand, describe, warnings, nextRuns, readFootprint, isOwnKey, clearOwnStorage, fx, lockScroll, offsetLabel, changesIn, effectOn, loadPageCatalog, configureSite, loadPage, warmPage, fetchPageCatalog, fetchSearchDocuments
+useAudioAnalyzer, useCopy, useDocumentTitle, useElementInView, useMediaQuery, useFinePointer, useOnScreen, usePageCatalog, usePointerField, usePrefersReducedMotion, useProximity, AnimationProvider, AudioProvider, ExperienceProvider, HanoryxProvider, LenisProvider, useAudio, useExperience, useLenis, setAudioActive, writeAudioBytes, getAudio, clamp, lerp, mapRange, easeInOutCubic, easeOutCubic, easeInOutSine, pseudoNoise, flowAngle, getMotionState, maxDpr, resolveQuality, maxActiveScenes, sceneFrameInterval, initPointer, getPointer, subscribe, getFps, getSubscriberCount, setScenesPaused, registerSceneController, reportVisibility, activeSceneCount, white, red, accentFn, registerScene, getScene, listScenes, initPerformanceMode, getPerformanceMode, subscribePerformanceMode, initViewportDirector, configureAssets, copyText, downloadText, parseHex, toHex, contrastRatio, nearestPassing, parseCron, expand, describe, warnings, nextRuns, readFootprint, isOwnKey, clearOwnStorage, fx, lockScroll, offsetLabel, changesIn, effectOn, loadPageCatalog, configureSite, loadPage, warmPage, fetchPageCatalog, fetchSearchDocuments

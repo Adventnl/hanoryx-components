@@ -7,11 +7,11 @@
 /* ---- a specimen --------------------------------------------------------- */
 .sc-spec {
   --sc-line: var(--c-line-strong);
-  --sc-fill: rgba(10, 11, 13, 0.9);
+  --sc-fill: var(--c-extracted-rgba-10-11-13-0p9);
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: var(--size-0p7rem);
   width: 100%;
   min-width: 0;
   margin: 0;
@@ -21,9 +21,9 @@
   z-index: 1;
   display: flex;
   align-items: baseline;
-  gap: 0.7rem;
-  font: 500 0.6rem var(--font-mono);
-  letter-spacing: 0.16em;
+  gap: var(--size-0p7rem);
+  font: 500 var(--size-0p6rem) var(--font-mono);
+  letter-spacing: var(--size-0p16em);
   text-transform: uppercase;
 }
 .sc-no { color: var(--c-red); }
@@ -33,11 +33,11 @@
   position: relative;
   display: grid;
   place-items: center;
-  min-height: var(--bed, 9.5rem);
-  padding: 0.9rem 0.4rem;
+  min-height: var(--bed, var(--size-9p5rem));
+  padding: var(--size-0p9rem) var(--size-0p4rem);
   min-width: 0;
 }
-.sc-fail { font: 0.7rem var(--font-mono); color: var(--c-white-50); }
+.sc-fail { font: var(--fs-label) var(--font-mono); color: var(--c-white-50); }
 
 /* animation only while the specimen is on screen */
 .sc-spec[data-on='0'],
@@ -46,134 +46,134 @@
 .sc-spec[data-on='0'] *::after { animation-play-state: paused !important; }
 
 /* small things a specimen author reaches for */
-.sc-m { font: 500 0.6rem var(--font-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--c-white-50); }
-.sc-led { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--c-red); box-shadow: var(--glow-red); }
+.sc-m { font: 500 var(--size-0p6rem) var(--font-mono); letter-spacing: var(--size-0p14em); text-transform: uppercase; color: var(--c-white-50); }
+.sc-led { display: inline-block; width: var(--size-6px); height: var(--size-6px); border-radius: 50%; background: var(--c-red); box-shadow: var(--glow-red); }
 
 /* ---- frames: how a page dresses its specimens (data-frame on the stage) ---- */
 [data-frame='bracket'] .sc-spec {
   --br: var(--c-red-dim);
-  padding: 1.15rem 1.2rem 1.25rem;
+  padding: var(--size-1p15rem) var(--size-1p2rem) var(--size-1p25rem);
   background:
-    linear-gradient(var(--br), var(--br)) 0 0 / 14px 1px no-repeat,
-    linear-gradient(var(--br), var(--br)) 0 0 / 1px 14px no-repeat,
-    linear-gradient(var(--br), var(--br)) 100% 0 / 14px 1px no-repeat,
-    linear-gradient(var(--br), var(--br)) 100% 0 / 1px 14px no-repeat,
-    linear-gradient(var(--br), var(--br)) 0 100% / 14px 1px no-repeat,
-    linear-gradient(var(--br), var(--br)) 0 100% / 1px 14px no-repeat,
-    linear-gradient(var(--br), var(--br)) 100% 100% / 14px 1px no-repeat,
-    linear-gradient(var(--br), var(--br)) 100% 100% / 1px 14px no-repeat,
-    radial-gradient(90% 90% at 50% 0%, rgba(255, 255, 255, 0.035), transparent 70%);
+    linear-gradient(var(--br), var(--br)) 0 0 / var(--size-14px) var(--size-1px) no-repeat,
+    linear-gradient(var(--br), var(--br)) 0 0 / var(--size-1px) var(--size-14px) no-repeat,
+    linear-gradient(var(--br), var(--br)) 100% 0 / var(--size-14px) var(--size-1px) no-repeat,
+    linear-gradient(var(--br), var(--br)) 100% 0 / var(--size-1px) var(--size-14px) no-repeat,
+    linear-gradient(var(--br), var(--br)) 0 100% / var(--size-14px) var(--size-1px) no-repeat,
+    linear-gradient(var(--br), var(--br)) 0 100% / var(--size-1px) var(--size-14px) no-repeat,
+    linear-gradient(var(--br), var(--br)) 100% 100% / var(--size-14px) var(--size-1px) no-repeat,
+    linear-gradient(var(--br), var(--br)) 100% 100% / var(--size-1px) var(--size-14px) no-repeat,
+    radial-gradient(90% 90% at 50% 0%, var(--c-extracted-rgba-255-255-255-0p035), transparent 70%);
 }
 
 [data-frame='plate'] .sc-spec {
-  padding: 1rem 1.1rem 1.1rem;
-  border: 1px solid var(--sc-line);
+  padding: var(--space-4) var(--size-1p1rem) var(--size-1p1rem);
+  border: var(--size-1px) solid var(--sc-line);
   border-radius: var(--r-lg);
-  background: linear-gradient(170deg, rgba(16, 17, 21, 0.92), rgba(6, 6, 8, 0.86));
+  background: linear-gradient(170deg, var(--c-extracted-rgba-16-17-21-0p92), var(--c-extracted-rgba-6-6-8-0p86));
 }
 
 [data-frame='ticket'] .sc-spec {
-  padding: 1rem 1.2rem 1.15rem;
-  border: 1px solid var(--sc-line);
-  border-radius: 10px;
-  background: linear-gradient(170deg, rgba(15, 16, 20, 0.94), rgba(7, 7, 9, 0.9));
+  padding: var(--space-4) var(--size-1p2rem) var(--size-1p15rem);
+  border: var(--size-1px) solid var(--sc-line);
+  border-radius: var(--size-10px);
+  background: linear-gradient(170deg, var(--c-extracted-rgba-15-16-20-0p94), var(--c-extracted-rgba-7-7-9-0p9));
 }
-[data-frame='ticket'] .sc-cap { padding-bottom: 0.7rem; border-bottom: 1px dashed var(--c-white-20); }
+[data-frame='ticket'] .sc-cap { padding-bottom: var(--size-0p7rem); border-bottom: var(--size-1px) dashed var(--c-white-20); }
 [data-frame='ticket'] .sc-spec::before,
 [data-frame='ticket'] .sc-spec::after {
   content: '';
   position: absolute;
-  top: 1.78rem;
-  width: 16px;
-  height: 16px;
+  top: var(--size-1p78rem);
+  width: var(--size-16px);
+  height: var(--size-16px);
   border-radius: 50%;
   background: var(--c-black);
-  border: 1px solid var(--sc-line);
+  border: var(--size-1px) solid var(--sc-line);
 }
-[data-frame='ticket'] .sc-spec::before { left: -9px; clip-path: inset(0 0 0 50%); }
-[data-frame='ticket'] .sc-spec::after { right: -9px; clip-path: inset(0 50% 0 0); }
+[data-frame='ticket'] .sc-spec::before { left: var(--size-negative-9px); clip-path: inset(0 0 0 50%); }
+[data-frame='ticket'] .sc-spec::after { right: var(--size-negative-9px); clip-path: inset(0 50% 0 0); }
 
-[data-frame='bare'] .sc-cap { padding-bottom: 0.55rem; border-bottom: 1px solid var(--c-line); }
+[data-frame='bare'] .sc-cap { padding-bottom: var(--size-0p55rem); border-bottom: var(--size-1px) solid var(--c-line); }
 
 [data-frame='slab'] .sc-spec {
-  padding: 1rem 1.15rem 1.15rem;
-  border-top: 2px solid var(--c-red-dim);
-  border-left: 1px solid var(--sc-line);
-  background: linear-gradient(180deg, rgba(14, 15, 18, 0.95), rgba(6, 6, 8, 0.9));
+  padding: var(--space-4) var(--size-1p15rem) var(--size-1p15rem);
+  border-top: var(--size-2px) solid var(--c-red-dim);
+  border-left: var(--size-1px) solid var(--sc-line);
+  background: linear-gradient(180deg, var(--c-extracted-rgba-14-15-18-0p95), var(--c-extracted-rgba-6-6-8-0p9));
 }
 
 [data-frame='tape'] .sc-spec {
-  margin-top: 0.9rem;
-  padding: 1.5rem 1.1rem 1.1rem;
-  border: 1px solid var(--sc-line);
-  border-radius: 6px;
-  background: rgba(8, 9, 11, 0.88);
+  margin-top: var(--size-0p9rem);
+  padding: var(--space-5) var(--size-1p1rem) var(--size-1p1rem);
+  border: var(--size-1px) solid var(--sc-line);
+  border-radius: var(--size-6px);
+  background: var(--c-extracted-rgba-8-9-11-0p88);
 }
 [data-frame='tape'] .sc-cap {
   position: absolute;
-  top: -0.8rem;
-  left: 0.9rem;
-  padding: 0.28rem 0.7rem;
-  border: 1px solid var(--sc-line);
+  top: var(--size-negative-0p8rem);
+  left: var(--size-0p9rem);
+  padding: var(--size-0p28rem) var(--size-0p7rem);
+  border: var(--size-1px) solid var(--sc-line);
   border-radius: var(--r-pill);
   background: var(--c-black-3);
 }
 [data-frame='tape'] .sc-mode { display: none; }
 
 [data-frame='cross'] .sc-spec {
-  padding: 1.1rem 1.2rem 1.2rem;
-  outline: 1px solid var(--c-white-05);
-  outline-offset: -1px;
+  padding: var(--size-1p1rem) var(--size-1p2rem) var(--size-1p2rem);
+  outline: var(--size-1px) solid var(--c-white-05);
+  outline-offset: var(--size-negative-1px);
 }
 [data-frame='cross'] .sc-spec::before,
 [data-frame='cross'] .sc-spec::after {
   content: '+';
   position: absolute;
-  font: 300 1.1rem/1 var(--font-mono);
+  font: 300 var(--size-1p1rem)/1 var(--font-mono);
   color: var(--c-white-30);
 }
-[data-frame='cross'] .sc-spec::before { top: -0.55rem; left: -0.35rem; }
-[data-frame='cross'] .sc-spec::after { right: -0.35rem; bottom: -0.55rem; }
+[data-frame='cross'] .sc-spec::before { top: var(--size-negative-0p55rem); left: var(--size-negative-0p35rem); }
+[data-frame='cross'] .sc-spec::after { right: var(--size-negative-0p35rem); bottom: var(--size-negative-0p55rem); }
 
 [data-frame='edge'] .sc-spec {
-  padding: 0.2rem 0 0.4rem 1.2rem;
-  border-left: 1px solid var(--sc-line);
+  padding: var(--size-0p2rem) 0 var(--size-0p4rem) var(--size-1p2rem);
+  border-left: var(--size-1px) solid var(--sc-line);
   transition: border-color var(--dur-2) var(--ease-out);
 }
 [data-frame='edge'] .sc-spec:hover,
 [data-frame='edge'] .sc-spec:focus-within { border-left-color: var(--c-red); }
 
 [data-frame='dash'] .sc-spec {
-  padding: 1rem 1.1rem 1.1rem;
-  border: 1px dashed var(--c-white-20);
-  border-radius: 6px;
+  padding: var(--space-4) var(--size-1p1rem) var(--size-1p1rem);
+  border: var(--size-1px) dashed var(--c-white-20);
+  border-radius: var(--size-6px);
 }
 
 [data-frame='lift'] .sc-spec {
-  padding: 1.1rem 1.2rem 1.2rem;
-  border-radius: 18px;
-  background: linear-gradient(180deg, rgba(24, 25, 30, 0.95), rgba(9, 10, 12, 0.95));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 30px 60px -34px #000;
+  padding: var(--size-1p1rem) var(--size-1p2rem) var(--size-1p2rem);
+  border-radius: var(--size-18px);
+  background: linear-gradient(180deg, var(--c-extracted-rgba-24-25-30-0p95), var(--c-extracted-rgba-9-10-12-0p95));
+  box-shadow: inset 0 var(--size-1px) 0 var(--c-extracted-rgba-255-255-255-0p07), 0 var(--size-30px) var(--size-60px) var(--size-negative-34px) var(--c-extracted-000000);
 }
 
 [data-frame='ring'] .sc-spec {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  gap: 0 0.9rem;
-  padding: 0.9rem 1rem 0.9rem 0.8rem;
-  border: 1px solid var(--sc-line);
-  border-radius: 999px 22px 22px 999px;
+  gap: 0 var(--size-0p9rem);
+  padding: var(--size-0p9rem) var(--space-4) var(--size-0p9rem) var(--size-0p8rem);
+  border: var(--size-1px) solid var(--sc-line);
+  border-radius: var(--r-pill) var(--r-xl) var(--r-xl) var(--r-pill);
 }
-[data-frame='ring'] .sc-cap { flex-direction: column; align-items: center; justify-content: space-between; writing-mode: vertical-rl; transform: rotate(180deg); gap: 0.6rem; padding: 0.4rem 0; }
+[data-frame='ring'] .sc-cap { flex-direction: column; align-items: center; justify-content: space-between; writing-mode: vertical-rl; transform: rotate(180deg); gap: var(--size-0p6rem); padding: var(--size-0p4rem) 0; }
 [data-frame='ring'] .sc-name { flex: 0 1 auto; }
 [data-frame='ring'] .sc-mode { display: none; }
 
 /* ---- grounds: the faint pattern under a stage (data-ground) ---- */
-[data-ground='dots'] { background-image: radial-gradient(circle, var(--c-white-12) 1px, transparent 1.5px); background-size: 26px 26px; }
-[data-ground='lines'] { background-image: linear-gradient(var(--c-white-05) 1px, transparent 1px); background-size: 100% 44px; }
-[data-ground='cross'] { background-image: linear-gradient(var(--c-white-05) 1px, transparent 1px), linear-gradient(90deg, var(--c-white-05) 1px, transparent 1px); background-size: 56px 56px; }
-[data-ground='rings'] { background-image: repeating-radial-gradient(circle at 28% 42%, transparent 0 46px, var(--c-white-05) 46px 47px); }
-[data-ground='ruler'] { background-image: repeating-linear-gradient(90deg, var(--c-white-20) 0 1px, transparent 1px 60px), repeating-linear-gradient(90deg, var(--c-white-12) 0 1px, transparent 1px 12px); background-size: 100% 16px, 100% 8px; background-repeat: repeat-x; background-position: left bottom; }
+[data-ground='dots'] { background-image: radial-gradient(circle, var(--c-white-12) var(--size-1px), transparent var(--size-1p5px)); background-size: var(--size-26px) var(--size-26px); }
+[data-ground='lines'] { background-image: linear-gradient(var(--c-white-05) var(--size-1px), transparent var(--size-1px)); background-size: 100% var(--size-44px); }
+[data-ground='cross'] { background-image: linear-gradient(var(--c-white-05) var(--size-1px), transparent var(--size-1px)), linear-gradient(90deg, var(--c-white-05) var(--size-1px), transparent var(--size-1px)); background-size: var(--size-56px) var(--size-56px); }
+[data-ground='rings'] { background-image: repeating-radial-gradient(circle at 28% 42%, transparent 0 var(--size-46px), var(--c-white-05) var(--size-46px) var(--size-47px)); }
+[data-ground='ruler'] { background-image: repeating-linear-gradient(90deg, var(--c-white-20) 0 var(--size-1px), transparent var(--size-1px) var(--size-60px)), repeating-linear-gradient(90deg, var(--c-white-12) 0 var(--size-1px), transparent var(--size-1px) var(--size-12px)); background-size: 100% var(--size-16px), 100% var(--size-8px); background-repeat: repeat-x; background-position: left bottom; }
 
 /* ---- reveal (progressive: where the browser can tie it to the scroll) ---- */
 @supports (animation-timeline: view()) {
@@ -183,13 +183,13 @@
     animation-range: entry 4% entry 62%;
   }
 }
-@keyframes sc-rise { from { opacity: 0; transform: translateY(46px) scale(0.965); } to { opacity: 1; transform: none; } }
+@keyframes sc-rise { from { opacity: 0; transform: translateY(var(--size-46px)) scale(0.965); } to { opacity: 1; transform: none; } }
 
 /* ---- the sheet: every specimen at once ---- */
 .sc-sheet {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
-  gap: 1.6rem 1.2rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--size-19rem)), 1fr));
+  gap: var(--size-1p6rem) var(--size-1p2rem);
   padding: 0 var(--gutter);
   max-width: var(--maxw);
   margin-inline: auto;
@@ -200,8 +200,8 @@
 }
 
 /* ---- line icons (icons.jsx) ---- */
-.sc-ico { width: 1.2em; height: 1.2em; flex: none; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.sc-ico { width: var(--size-1p2em); height: var(--size-1p2em); flex: none; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 
 /* A canvas simulation (Sim.jsx): a small dark swatch that is also the focus target. */
-.sc-sim { display: block; width: 11rem; height: 6.4rem; border: 1px solid var(--c-white-12); border-radius: 6px; background: #07080a; touch-action: none; }
-.sc-sim:focus-visible { outline: 2px solid var(--c-red); outline-offset: 3px; }
+.sc-sim { display: block; width: var(--size-11rem); height: var(--size-6p4rem); border: var(--size-1px) solid var(--c-white-12); border-radius: var(--size-6px); background: var(--c-extracted-07080a); touch-action: none; }
+.sc-sim:focus-visible { outline: var(--size-2px) solid var(--c-red); outline-offset: var(--size-3px); }

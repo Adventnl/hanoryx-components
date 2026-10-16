@@ -51,7 +51,7 @@ const step = (name, ok, detail = '') => { console.log(`${ok ? '✓' : '✗'} ${n
 
 /* 3. manifest */
 {
-  const r = spawnSync('node', ['scripts/generate-manifest.mjs'], { cwd: ROOT, encoding: 'utf8' });
+  const r = spawnSync(process.execPath, ['scripts/generate-manifest.mjs', '--check'], { cwd: ROOT, encoding: 'utf8' });
   let ok = r.status === 0;
   let detail = (r.stderr || '').trim().split('\n')[0];
   if (ok) {
@@ -63,10 +63,22 @@ const step = (name, ok, detail = '') => { console.log(`${ok ? '✓' : '✗'} ${n
   step('manifest builds', ok, detail);
 }
 
-/* 4. lint */
+/* 4. CSS token contract */
 {
-  const r = spawnSync('npx', ['eslint', '.'], { cwd: ROOT, encoding: 'utf8' });
-  step('eslint', r.status === 0, r.status === 0 ? '' : (r.stdout || r.stderr).trim().split('\n').slice(0, 6).join(' | '));
+  const r = spawnSync(process.execPath, ['scripts/check-catalog.mjs'], { cwd: ROOT, encoding: 'utf8' });
+  step('catalog imports match their sources', r.status === 0, r.status === 0 ? '' : (r.stdout || r.stderr || r.error?.message || 'Catalog check could not start').trim().split('\n').slice(0, 4).join(' | '));
+}
+
+/* CSS token contract */
+{
+  const r = spawnSync(process.execPath, ['scripts/check-css-tokens.mjs'], { cwd: ROOT, encoding: 'utf8' });
+  step('CSS uses tokens', r.status === 0, r.status === 0 ? '' : (r.stdout || r.stderr || r.error?.message || 'Token check could not start').trim().split('\n').slice(0, 4).join(' | '));
+}
+
+/* 5. lint */
+{
+  const r = spawnSync(process.execPath, ['node_modules/eslint/bin/eslint.js', '.'], { cwd: ROOT, encoding: 'utf8' });
+  step('eslint', r.status === 0, r.status === 0 ? '' : (r.stdout || r.stderr || r.error?.message || 'ESLint could not start').trim().split('\n').slice(0, 6).join(' | '));
 }
 
 process.exit(failed ? 1 : 0);

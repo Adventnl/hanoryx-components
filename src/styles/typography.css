@@ -87,13 +87,13 @@
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.6em;
+  gap: var(--size-0p6em);
   color: var(--c-white-50);
 }
 .eyebrow::before {
   content: '';
-  width: 5px;
-  height: 5px;
+  width: var(--size-5px);
+  height: var(--size-5px);
   border-radius: 50%;
   background: var(--c-red);
   box-shadow: var(--glow-red);
@@ -103,18 +103,18 @@
 .mono {
   font-family: var(--font-mono);
   font-size: var(--fs-2xs);
-  letter-spacing: 0.12em;
+  letter-spacing: var(--size-0p12em);
   color: var(--c-white-50);
 }
 
 /* --- Inline live red node (preserves original "flashing-red-dot") --- */
 .node-dot {
   display: inline-block;
-  width: 0.12em;
-  height: 0.12em;
+  width: var(--size-0p12em);
+  height: var(--size-0p12em);
   vertical-align: baseline;
   border-radius: 50%;
   background: var(--c-red);
   box-shadow: var(--glow-red);
-  animation: node-pulse 1.5s infinite ease-in-out;
+  animation: node-pulse var(--dur-extracted-1p5s) infinite ease-in-out;
 }

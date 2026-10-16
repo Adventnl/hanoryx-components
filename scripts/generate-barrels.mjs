@@ -48,7 +48,7 @@ let stale = 0;
 
 function write(file, text) {
   const old = fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : null;
-  if (old === text) return;
+  if (old?.replaceAll('\r\n', '\n') === text) return;
   stale += 1;
   if (!check) fs.writeFileSync(file, text);
 }

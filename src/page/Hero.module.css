@@ -2,8 +2,8 @@
    peeks on load. Uses the viewportDirector's --viewport-h with an svh fallback. */
 .hero {
   position: relative;
-  min-height: 100svh;
-  min-height: var(--viewport-h, 100svh);
+  min-height: var(--size-100svh);
+  min-height: var(--viewport-h, var(--size-100svh));
   display: flex;
   flex-direction: column;
   padding-top: calc(var(--nav-h) + var(--space-8));
@@ -18,12 +18,12 @@
 .hasAside { grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr); }
 .copy { position: relative; display: flex; flex-direction: column; gap: var(--space-5); min-width: 0; }
 .eyebrow { color: var(--c-white-50); }
-.title { max-width: 18ch; }
-.intro { max-width: 58ch; color: var(--c-white-65); }
+.title { max-width: var(--size-18ch); }
+.intro { max-width: var(--size-58ch); color: var(--c-white-65); }
 .actions { gap: var(--space-4); margin-top: var(--space-2); }
 
 .aside { position: relative; min-width: 0; }
-.asideHold { aspect-ratio: 1 / 1; max-height: 560px; }
+.asideHold { aspect-ratio: 1 / 1; max-height: var(--size-560px); }
 
 /* scroll cue: a dot travels a hairline downward, looping gently */
 .cue {
@@ -34,22 +34,22 @@
   align-items: center;
   gap: var(--space-3);
 }
-.cueLabel { font: 0.58rem var(--font-mono); letter-spacing: 0.3em; text-transform: uppercase; color: var(--c-white-50); }
-.cueLine { position: relative; width: 46px; height: 1px; background: var(--c-line-strong); overflow: hidden; }
+.cueLabel { font: var(--size-0p58rem) var(--font-mono); letter-spacing: var(--size-0p3em); text-transform: uppercase; color: var(--c-white-50); }
+.cueLine { position: relative; width: var(--size-46px); height: var(--size-1px); background: var(--c-line-strong); overflow: hidden; }
 .cueDot {
   position: absolute;
-  top: -1px;
+  top: var(--size-negative-1px);
   left: 0;
-  width: 14px;
-  height: 3px;
+  width: var(--size-14px);
+  height: var(--size-3px);
   background: var(--c-red);
   box-shadow: var(--glow-red);
-  animation: cue-travel 2.6s var(--ease-in-out) infinite;
+  animation: cue-travel var(--dur-extracted-2p6s) var(--ease-in-out) infinite;
 }
 @keyframes cue-travel {
-  0% { transform: translateX(-16px); opacity: 0; }
+  0% { transform: translateX(var(--size-negative-16px)); opacity: 0; }
   25% { opacity: 1; }
-  100% { transform: translateX(50px); opacity: 0; }
+  100% { transform: translateX(var(--size-50px)); opacity: 0; }
 }
 
 .telemetry {
@@ -58,13 +58,13 @@
   bottom: calc(var(--space-5) - var(--space-12));
   display: flex;
   align-items: center;
-  gap: 0.7rem;
+  gap: var(--size-0p7rem);
 }
-.dot { width: 5px; height: 5px; border-radius: 50%; background: var(--c-red); box-shadow: var(--glow-red); animation: node-pulse 2.2s ease-in-out infinite; }
+.dot { width: var(--size-5px); height: var(--size-5px); border-radius: 50%; background: var(--c-red); box-shadow: var(--glow-red); animation: node-pulse var(--dur-6) ease-in-out infinite; }
 
 @media (max-width: 1060px) {
   .hasAside { grid-template-columns: minmax(0, 1fr); }
-  .aside { max-width: 560px; }
+  .aside { max-width: var(--size-560px); }
 }
 @media (max-width: 900px) {
   .telemetry, .cue { display: none; }
@@ -72,5 +72,5 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .dot, .cueDot { animation: none; }
-  .cueDot { transform: translateX(16px); opacity: 1; }
+  .cueDot { transform: translateX(var(--size-16px)); opacity: 1; }
 }

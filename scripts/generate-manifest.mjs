@@ -17,6 +17,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { analyzeModule, summarize } from './lib/analyze.mjs';
+import { specimenDocs } from './lib/specimen-docs.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = path.join(ROOT, 'src');
@@ -25,10 +26,17 @@ const readJson = (p, fallback) => (fs.existsSync(p) ? JSON.parse(fs.readFileSync
 const list = (dir, re) => (fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => re.test(f)).sort() : []);
 
 const sizing = readJson(path.join(ROOT, 'docs/generated/sizing.json'), {});
+const checking = process.argv.includes('--check');
+const stale = [];
+function write(file, value) {
+  if (!checking) { fs.writeFileSync(file, value); return; }
+  const current = fs.existsSync(file) ? fs.readFileSync(file, 'utf8').replaceAll('\r\n', '\n') : null;
+  if (current !== value.replaceAll('\r\n', '\n')) stale.push(rel(file));
+}
 
 /* ---------- areas ---------- */
 export const AREAS = [
-  { id: 'kit', title: 'Interface kit', blurb: 'Sixty-one accessible components in six families: inputs, navigation, feedback, data display, overlays, content and layout.', pkg: 'kit' },
+  { id: 'kit', title: 'Interface kit', blurb: 'Accessible inputs, navigation, feedback, data, overlays, layout and chat, with composable parts and utility hooks.', pkg: 'kit' },
   { id: 'fx', title: 'Foreground toolkit', blurb: 'The motion-rich pieces signatures are built from: tilt, spotlight, odometer, marquee, drawn glyphs.', pkg: 'fx' },
   { id: 'ui', title: 'Site UI', blurb: "The site's own button, pill, section header and data panel.", pkg: 'ui' },
   { id: 'page', title: 'Page', blurb: 'The data-driven page: hero, twenty block types and the template that renders them.', pkg: 'page' },
@@ -43,7 +51,7 @@ export const AREAS = [
 ];
 
 const KIT_FAMILIES = {
-  inputs: 'Inputs', navigation: 'Navigation', feedback: 'Feedback', data: 'Data display', overlays: 'Overlays', content: 'Content & layout',
+  inputs: 'Inputs', navigation: 'Navigation', feedback: 'Feedback', data: 'Data display', overlays: 'Overlays', content: 'Content & layout', chat: 'Chat',
 };
 
 /* ---------- helpers ---------- */
@@ -95,14 +103,16 @@ async function addModule({ area, family, file, pkg, kind }) {
     const isPrimary = c === primary;
     const authored = isPrimary ? doc : (doc?.subcomponents?.[c.name] ?? null);
     const text = c.doc ?? (isPrimary ? info.header : null);
+    const publicName = file.endsWith('sceneBudget.js') && c.name === 'registerScene' ? 'registerSceneController' : c.name;
     const e = {
-      id: `${area}/${family ? family + '/' : ''}${c.name}`,
-      name: c.name,
+      id: `${area}/${family ? family + '/' : ''}${publicName}`,
+      name: publicName,
       area,
       family: family || undefined,
       kind: c.kind === 'hook' ? 'hook' : c.kind === 'component' ? 'component' : 'function',
       parent: isPrimary ? undefined : primary?.name,
-      import: importLine(c.name, pkg),
+      import: importLine(publicName, pkg),
+      origin: authored?.origin ?? doc?.origin ?? 'hanoryx-web',
       source: rel(file),
       styles: fs.existsSync(file.replace(/\.(jsx?|mjs)$/, '.module.css')) ? rel(file.replace(/\.(jsx?|mjs)$/, '.module.css')) : undefined,
       summary: authored?.summary ?? summarize(text),
@@ -110,6 +120,7 @@ async function addModule({ area, family, file, pkg, kind }) {
       keywords: authored?.keywords,
       props: c.kind === 'component' ? mergeProps(c.props, authored?.props) : undefined,
       params: c.params,
+      returns: authored?.returns,
       keyboard: authored?.keyboard,
       usage: authored?.usage,
       sizing: authored?.sizing,
@@ -129,7 +140,7 @@ function prune(o) {
 /* ---------- kit ---------- */
 for (const fam of Object.keys(KIT_FAMILIES)) {
   const dir = path.join(SRC, 'kit', fam);
-  for (const f of list(dir, /\.jsx$/)) await addModule({ area: 'kit', family: fam, file: path.join(dir, f), pkg: 'kit' });
+  for (const f of list(dir, /\.jsx$|^use\w+\.js$/)) await addModule({ area: 'kit', family: fam, file: path.join(dir, f), pkg: 'kit', kind: f.endsWith('.js') ? 'core' : undefined });
 }
 
 /* ---------- flat areas ---------- */
@@ -232,10 +243,11 @@ for (const fam of familyMod.showcasePages) {
   const pkg = `specimens/${fam.slug}`;
   for (const it of items) {
     const sz = sizing[`specimens/${fam.slug}/${it.component}`];
+    const detail = specimenDocs({ ...fam, number: fm.number }, it, chapter, dir);
     entries.push(prune({
       id: `specimens/${fam.slug}/${it.component}`, name: it.component, label: it.label, area: 'specimens', family: fam.slug, kind: 'specimen', mode: it.mode,
       import: `import { ${it.component} } from 'hanoryx-components/${pkg}';`, source: `src/specimens/${fam.slug}/${it.component}.jsx`, styles: `src/specimens/${fam.slug}/${fam.slug}.module.css`,
-      summary: `${it.label} — ${chapter?.title?.toLowerCase()} specimen in ${fam.title} (${it.mode}).`, sizing: sz,
+      ...detail, sizing: { ...detail.sizing, ...sz },
     }));
   }
 }
@@ -258,7 +270,7 @@ const manifest = {
   entries,
 };
 fs.mkdirSync(path.join(ROOT, 'docs/generated'), { recursive: true });
-fs.writeFileSync(path.join(ROOT, 'docs/generated/manifest.json'), JSON.stringify(manifest));
+write(path.join(ROOT, 'docs/generated/manifest.json'), JSON.stringify(manifest));
 
 /* llms.txt — the short map */
 const lines = [];
@@ -276,7 +288,7 @@ for (const a of AREAS) {
   }
   lines.push('');
 }
-fs.writeFileSync(path.join(ROOT, 'llms.txt'), lines.join('\n'));
+write(path.join(ROOT, 'llms.txt'), lines.join('\n'));
 
 /* llms-full.txt and COMPONENTS.md */
 const full = ['# hanoryx-components — full catalogue', ''];
@@ -296,16 +308,18 @@ for (const a of AREAS) {
   for (const e of es) {
     full.push(`### ${e.name}${e.family ? ` (${e.area}/${e.family})` : ''}`, e.import, e.summary ?? '');
     if (e.props?.length) full.push('props: ' + e.props.map((p) => `${p.name}${p.default ? `=${p.default}` : ''}`).join(', '));
+    if (e.returns) full.push('returns: ' + e.returns);
     full.push('');
   }
   md.push('| Name | Family | Summary |', '| --- | --- | --- |');
   for (const e of es.filter((x) => !x.parent)) md.push(`| \`${e.name}\` | ${e.family ?? ''} | ${(e.summary ?? '').replace(/\|/g, '\\|')} |`);
   md.push('');
 }
-fs.writeFileSync(path.join(ROOT, 'llms-full.txt'), full.join('\n'));
-fs.writeFileSync(path.join(ROOT, 'docs/COMPONENTS.md'), md.join('\n'));
+write(path.join(ROOT, 'llms-full.txt'), full.join('\n'));
+write(path.join(ROOT, 'docs/COMPONENTS.md'), md.join('\n'));
 
 const undocumented = entries.filter((e) => !e.documented && ['kit', 'fx', 'ui', 'page', 'shell'].includes(e.area));
 console.log(`manifest: ${entries.length} entries — ` + AREAS.map((a) => `${a.id} ${byArea[a.id].length}`).join(', '));
-if (undocumented.length) console.log(`${undocumented.length} core entries have no .doc.mjs yet`);
+if (undocumented.length) console.log(`${undocumented.length} component entries have no .doc.mjs yet`);
 warnings.forEach((w) => console.warn('WARN', w));
+if (stale.length) { console.error(`Generated docs are stale: ${stale.join(', ')}. Run npm run docs:generate.`); process.exitCode = 1; }

@@ -50,7 +50,8 @@ function sizingLines(e) {
   if (s.at) out.push('size by parent width: ' + Object.entries(s.at).map(([p, v]) => `${p}→${v.w}×${v.h}`).join('  '));
   if (s.at) { const last = Object.values(s.at).pop(); if (last?.h) out.push(`ratio at widest: ${(last.w / last.h).toFixed(2)}`); }
   for (const [k, label] of [['padding', 'root padding'], ['gap', 'gap'], ['radius', 'radius'], ['fontSize', 'type'], ['minTouch', 'smallest control']]) if (s[k]) out.push(`${label}: ${s[k]}`);
-  if (s.overflowsAt360) out.push('WARNING: overflows a 360px parent sideways');
+  if (e.sizing?.overflow) out.push(`VISUAL BLEED: ${e.sizing.overflow}`);
+  else if (s.overflowsAt360) out.push('WARNING: overflows a 360px parent sideways');
   if (e.sizing?.rules) e.sizing.rules.forEach((r) => out.push(`rule: ${r}`));
   return out;
 }
@@ -69,6 +70,7 @@ function printComponent(e) {
     for (const p of e.props) console.log(`  ${p.name}${p.required ? '*' : ''}${p.default ? ` = ${p.default}` : ''}${p.type ? `  <${p.type}>` : ''}${p.description && !dense ? `  — ${p.description}` : ''}`);
   }
   if (e.params?.length) console.log(`\nCALL\n  ${e.name}(${e.params.join(', ')})`);
+  if (e.returns) console.log(`\nRETURNS\n  ${e.returns}`);
   if (e.keyboard?.length && !dense) { console.log('\nKEYS'); e.keyboard.forEach((k) => console.log(`  ${k.key} — ${k.does}`)); }
   if (e.usage?.bestPractices?.length) { console.log('\nRULES'); e.usage.bestPractices.forEach((b) => console.log(`  ${b.do ? 'DO   ' : 'DON\'T'} ${b.text}`)); }
   if (e.notes?.length && !dense) { console.log('\nNOTES'); e.notes.forEach((n) => console.log(`  - ${n}`)); }

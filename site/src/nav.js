@@ -6,8 +6,10 @@ export const GUIDES = [
   ['sizing', 'Sizing, ratios & padding'],
   ['sizes', 'Measured sizes'],
   ['layout-recipes', 'Layout recipes'],
+  ['extended-kit', 'Application families'],
   ['for-llms', 'Building with an LLM'],
   ['porting-map', 'Where things came from'],
+  ['verification', 'Verification'],
 ];
 
 export const RECIPES = [

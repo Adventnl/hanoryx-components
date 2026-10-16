@@ -2,6 +2,11 @@
 
 ## Interface kit
 
+### Calendar (kit/inputs)
+import { Calendar } from 'hanoryx-components/kit';
+A single-date calendar with roving focus, min/max bounds, month navigation and locale-aware labels.
+props: label='Choose a date', value, defaultValue='', onChange, min, max, disabled=false, locale='en', weekStartsOn=0, today=formatDate(new Date())
+
 ### Checkbox (kit/inputs)
 import { Checkbox } from 'hanoryx-components/kit';
 A checkbox with room for a hint. It is a real input — the square is drawn beside it — and it supports the indeterminate “some of them” state of a parent box.
@@ -11,6 +16,26 @@ props: label, hint, checked, defaultChecked, onChange, indeterminate=false, disa
 import { Combobox } from 'hanoryx-components/kit';
 An editable combobox: type to filter, move through the matches with the arrow keys, choose with Enter. Focus stays in the input; the highlighted option is named with aria-activedescendant.
 props: label, hint, error, required, options=[], value, defaultValue='', onChange, onSelect, placeholder='Type to search…', emptyText="Nothing matches.", className, disabled
+
+### DateInput (kit/inputs)
+import { DateInput } from 'hanoryx-components/kit';
+Labelled native date input, plus local time, local date/time and paired date-range controls.
+props: label='Date', ...props
+
+### TimeInput (kit/inputs)
+import { TimeInput } from 'hanoryx-components/kit';
+Local civil time, with no timezone conversion. onChange receives the native event.
+props: label='Time', ...props
+
+### DateTimeInput (kit/inputs)
+import { DateTimeInput } from 'hanoryx-components/kit';
+Local date and time. The host owns timezone selection and conversion.
+props: label='Date and time', ...props
+
+### DateRangeInput (kit/inputs)
+import { DateRangeInput } from 'hanoryx-components/kit';
+A labelled pair. No partial selection is discarded; a reversed range is explained.
+props: label='Date range', value={ start: '', end: '' }, onChange, min, max, disabled=false, required=false
 
 ### Field (kit/inputs)
 import { Field } from 'hanoryx-components/kit';
@@ -41,6 +66,11 @@ props: legend, options=[], value, defaultValue, onChange, name, row=false, class
 import { RangeField } from 'hanoryx-components/kit';
 A slider: the native range input, with its value written beside the label and a text version (“240 ms”) for assistive technology.
 props: label, hint, value, defaultValue=0, onChange, min=0, max=100, step=1, format=String, marks, className, disabled
+
+### RichTextEditor (kit/inputs)
+import { RichTextEditor } from 'hanoryx-components/kit';
+A compact editor for bold, italic, underline and code, with sanitized HTML values and plain-text paste.
+props: label='Rich text', value, defaultValue='', onChange, disabled=false, hint='Select text, then choose bold, italic, underline or code.', error, rows=6
 
 ### SearchField (kit/inputs)
 import { SearchField } from 'hanoryx-components/kit';
@@ -212,6 +242,46 @@ import { Stat } from 'hanoryx-components/kit';
 One number, large, with its label above and, if you have it, how it moved. The change is written as words for a screen reader; the arrow and colour are decoration.
 props: label, value, unit, change, changeLabel, note, className
 
+### Table (kit/data)
+import { Table } from 'hanoryx-components/kit';
+Semantic table parts with optional sortable headers and a selected-row action group.
+props: caption='Table', children, label
+
+### TableHeader (kit/data)
+import { TableHeader } from 'hanoryx-components/kit';
+
+props: children
+
+### TableBody (kit/data)
+import { TableBody } from 'hanoryx-components/kit';
+
+props: children
+
+### TableFooter (kit/data)
+import { TableFooter } from 'hanoryx-components/kit';
+
+props: children
+
+### TableRow (kit/data)
+import { TableRow } from 'hanoryx-components/kit';
+
+props: children, selected, ...props
+
+### TableCell (kit/data)
+import { TableCell } from 'hanoryx-components/kit';
+
+props: children, align, ...props
+
+### TableHeaderCell (kit/data)
+import { TableHeaderCell } from 'hanoryx-components/kit';
+
+props: children, sortDirection='none', onSort, scope='col', ...props
+
+### TableSelectionToolbar (kit/data)
+import { TableSelectionToolbar } from 'hanoryx-components/kit';
+
+props: count=0, onClear, children
+
 ### Timeline (kit/data)
 import { Timeline } from 'hanoryx-components/kit';
 Things in the order they happen, down a line. It is an ordered list, so the order is announced. This site’s own timeline is told in undated phases — pass words, not dates, unless you have them.
@@ -221,6 +291,81 @@ props: items=[], className
 import { Tree } from 'hanoryx-components/kit';
 An expandable tree — files, categories, an outline — following the ARIA tree-view pattern: one tab stop, arrow keys through what is visible.
 props: nodes=[], label, onSelect, defaultOpen=[], className
+
+### useTableSortable (kit/data)
+import { useTableSortable } from 'hanoryx-components/kit';
+{ rows, sort, setSort, toggleSort(key) }.
+returns: { rows, sort, setSort, toggleSort(key) }. sort = {key, direction}, with none / ascending / descending directions.
+
+### useTableFilterState (kit/data)
+import { useTableFilterState } from 'hanoryx-components/kit';
+{ filter, setFilter, setQuery, setColumnFilter, clearFilters }.
+returns: { filter, setFilter, setQuery, setColumnFilter, clearFilters }. filter = {query, filters}.
+
+### useTableFiltering (kit/data)
+import { useTableFiltering } from 'hanoryx-components/kit';
+The filtered row array.
+returns: The filtered row array. Text matching is case-insensitive. Array filter values match exact cell values.
+
+### useTablePagination (kit/data)
+import { useTablePagination } from 'hanoryx-components/kit';
+{ rows, page, pageCount, pageSize, total, setPage, nextPage, previousPage }.
+returns: { rows, page, pageCount, pageSize, total, setPage, nextPage, previousPage }. page is zero-based and clamps as data shrinks.
+
+### useTableSelectionState (kit/data)
+import { useTableSelectionState } from 'hanoryx-components/kit';
+{ selectedKeys, setSelectedKeys, isSelected, toggle(key, selected?), clear }.
+returns: { selectedKeys, setSelectedKeys, isSelected, toggle(key, selected?), clear }. Keys are stable row ids.
+
+### useTableSelection (kit/data)
+import { useTableSelection } from 'hanoryx-components/kit';
+Selection state plus allSelected, someSelected, toggleAll and getRowProps.
+returns: Selection state plus allSelected, someSelected, toggleAll and getRowProps. Bulk operations affect only the supplied rows.
+
+### useTableRowExpansion (kit/data)
+import { useTableRowExpansion } from 'hanoryx-components/kit';
+{ expandedKeys, setExpandedKeys, isExpanded, toggleExpanded, collapseAll }.
+returns: { expandedKeys, setExpandedKeys, isExpanded, toggleExpanded, collapseAll }. No rows are expanded by default.
+
+### useTableGroupedRows (kit/data)
+import { useTableGroupedRows } from 'hanoryx-components/kit';
+Array of { key, rows }, in first-seen group order.
+returns: Array of { key, rows }, in first-seen group order. groupBy is a property key or function.
+
+### useTableRowIndex (kit/data)
+import { useTableRowIndex } from 'hanoryx-components/kit';
+A function getIndex(key) returning the zero-based index, or -1 for missing keys.
+returns: A function getIndex(key) returning the zero-based index, or -1 for missing keys.
+
+### useTableRowStatus (kit/data)
+import { useTableRowStatus } from 'hanoryx-components/kit';
+A function getStatus(row) reading a status record or callback; unknown keys return undefined.
+returns: A function getStatus(row) reading a status record or callback; unknown keys return undefined.
+
+### useTableTreeState (kit/data)
+import { useTableTreeState } from 'hanoryx-components/kit';
+Expansion state using the same contract as useTableRowExpansion.
+returns: Expansion state using the same contract as useTableRowExpansion.
+
+### useTableTreeData (kit/data)
+import { useTableTreeData } from 'hanoryx-components/kit';
+Visible flattened entries: {row, id, depth, parentId, position, setSize, hasChildren, expanded}.
+returns: Visible flattened entries: {row, id, depth, parentId, position, setSize, hasChildren, expanded}. Depth starts at 1. Keys must be unique.
+
+### useTableColumnResize (kit/data)
+import { useTableColumnResize } from 'hanoryx-components/kit';
+{ widths, widthOf, setWidth, getResizeHandleProps }.
+returns: { widths, widthOf, setWidth, getResizeHandleProps }. Widths are pixels. Apply matching widths to table cells.
+
+### useTableColumnSettings (kit/data)
+import { useTableColumnSettings } from 'hanoryx-components/kit';
+{ columns, hidden, order, setOrder, toggleColumn, resetColumns }.
+returns: { columns, hidden, order, setOrder, toggleColumn, resetColumns }. Removed keys are ignored; new columns append.
+
+### useTableStickyColumns (kit/data)
+import { useTableStickyColumns } from 'hanoryx-components/kit';
+A function getStyle(key) returning a logical sticky offset for pinned start columns.
+returns: A function getStyle(key) returning a logical sticky offset for pinned start columns. Width defaults to column.width or 160.
 
 ### ConfirmDialog (kit/overlays)
 import { ConfirmDialog } from 'hanoryx-components/kit';
@@ -317,6 +462,21 @@ import { Quote } from 'hanoryx-components/kit';
 A pull quote with its source: a real blockquote inside a figure, the attribution as the caption. Only put words here that someone really said.
 props: children, cite, className
 
+### Resizable (kit/content)
+import { Resizable } from 'hanoryx-components/kit';
+Two resizable panels with a pointer- and keyboard-operated separator.
+props: children, orientation='horizontal', value, defaultValue=50, onChange, min=10, max=90, label='Resizable panels'
+
+### ResizablePanel (kit/content)
+import { ResizablePanel } from 'hanoryx-components/kit';
+
+props: children, label, side='start'
+
+### ResizeHandle (kit/content)
+import { ResizeHandle } from 'hanoryx-components/kit';
+
+props: label='Resize panels'
+
 ### Section (kit/content)
 import { Section } from 'hanoryx-components/kit';
 A page block's outer shell: the vertical rhythm between blocks (80–176 px, or 48–96 px with size="sm"). New in this library — the same as the global `.section` class.
@@ -336,6 +496,91 @@ props: variant='body', tone='default', measure=false, as, className, children, .
 import { VisuallyHidden } from 'hanoryx-components/kit';
 Text for assistive technology that is not drawn: the “Close” on an icon-only button, the “(current page)” after a link. It stays in the reading order and out of the layout.
 props: children, as="span"
+
+### useResizable (kit/content)
+import { useResizable } from 'hanoryx-components/kit';
+Percentage split state and separator bindings for pointer and keyboard resizing.
+returns: { size, setSize(next), handleProps }. size is a clamped percentage. handleProps contains separator ARIA, pointer capture and keyboard handlers.
+
+### Chat (kit/chat)
+import { Chat } from 'hanoryx-components/kit';
+Composable conversation regions, transcript items and a message composer with asynchronous send handling.
+props: label='Conversation', children
+
+### ChatLayout (kit/chat)
+import { ChatLayout } from 'hanoryx-components/kit';
+A bounded conversation viewport with a separate composer slot.
+props: children, composer, label='Conversation', maxHeight='32rem'
+
+### ChatLayoutScrollButton (kit/chat)
+import { ChatLayoutScrollButton } from 'hanoryx-components/kit';
+Scroll the supplied message-list ref to its latest message without moving focus.
+props: targetRef, children='Latest message'
+
+### ChatMessageList (kit/chat)
+import { ChatMessageList } from 'hanoryx-components/kit';
+An ordered transcript. Announcements are opt-in to avoid rereading history.
+props: children, label='Messages', announce=false, ref
+
+### ChatMessage (kit/chat)
+import { ChatMessage } from 'hanoryx-components/kit';
+One transcript item; author names are visible, and role is never only a colour.
+props: author, children, metadata, role='assistant'
+
+### ChatMessageBubble (kit/chat)
+import { ChatMessageBubble } from 'hanoryx-components/kit';
+
+props: children
+
+### ChatMessageMetadata (kit/chat)
+import { ChatMessageMetadata } from 'hanoryx-components/kit';
+
+props: children, dateTime
+
+### ChatSystemMessage (kit/chat)
+import { ChatSystemMessage } from 'hanoryx-components/kit';
+
+props: children
+
+### ChatToolCalls (kit/chat)
+import { ChatToolCalls } from 'hanoryx-components/kit';
+Tool calls stay inspectable as native disclosures; arguments are rendered as text.
+props: calls=[]
+
+### ChatComposer (kit/chat)
+import { ChatComposer } from 'hanoryx-components/kit';
+A controlled or uncontrolled composer. Sending calls the host; no request is made here.
+props: children, value, defaultValue='', onChange, onSend, disabled=false, label='Message composer', clearOnSend=true
+
+### ChatComposerInput (kit/chat)
+import { ChatComposerInput } from 'hanoryx-components/kit';
+
+props: label='Message', placeholder='Write a message…', rows=3
+
+### ChatSendButton (kit/chat)
+import { ChatSendButton } from 'hanoryx-components/kit';
+
+props: children='Send'
+
+### ChatComposerDrawer (kit/chat)
+import { ChatComposerDrawer } from 'hanoryx-components/kit';
+
+props: title='Attachments and tools', children
+
+### ChatComposerTokenElement (kit/chat)
+import { ChatComposerTokenElement } from 'hanoryx-components/kit';
+
+props: children, onRemove, label
+
+### ChatDictationButton (kit/chat)
+import { ChatDictationButton } from 'hanoryx-components/kit';
+Dictation is supplied by the host so browser support and consent remain explicit.
+props: active=false, onToggle, disabled=false
+
+### ChatTokenizedText (kit/chat)
+import { ChatTokenizedText } from 'hanoryx-components/kit';
+Render tokenized text safely as React text; tokens can carry a visible label.
+props: tokens=[]
 
 ## Foreground toolkit
 
@@ -559,7 +804,7 @@ props: block, accent
 
 ### Shell (page/blocks)
 import { Shell } from 'hanoryx-components/page';
-Section wrapper: each block owns its own scene background + container, and an optional anchor id the ScrollRail can jump to.
+The shared scene, section padding and container around a page block.
 props: block, accent, className, children
 
 ### SignatureBlock (page/blocks)
@@ -1178,7 +1423,7 @@ props: art, caption
 
 ### ArticleArtShape
 import { ArticleArtShape } from 'hanoryx-components/signatures';
-
+ArticleArtShape is an extracted page composition.
 props: art, className
 
 ### AuditLog
@@ -1262,7 +1507,7 @@ props: eyebrow, title, intro, types, email, note
 
 ### ContractDiff
 import { ContractDiff } from 'hanoryx-components/signatures';
-
+ContractDiff is an extracted page composition.
 props: eyebrow, title, intro, consumers=[], note
 
 ### ContrastChecker
@@ -1287,7 +1532,7 @@ props: eyebrow, title, intro, actions, dests, note
 
 ### DataSlab
 import { DataSlab } from 'hanoryx-components/signatures';
-
+DataSlab is an extracted page composition.
 props: eyebrow, title, intro, sizes, caption, questions
 
 ### DecisionRecord
@@ -1327,7 +1572,7 @@ props: caption
 
 ### EngineEditor
 import { EngineEditor } from 'hanoryx-components/signatures';
-
+EngineEditor is an extracted page composition.
 props: eyebrow, title, intro, caption
 
 ### EnginePipeline
@@ -1362,7 +1607,7 @@ props: eyebrow, title, intro, note
 
 ### HandoverPack
 import { HandoverPack } from 'hanoryx-components/signatures';
-
+HandoverPack is an extracted page composition.
 props: eyebrow, title, intro, items=[], note
 
 ### HiringPath
@@ -1551,7 +1796,7 @@ props: eyebrow, title, intro, known, note
 
 ### SurfaceCompare
 import { SurfaceCompare } from 'hanoryx-components/signatures';
-
+SurfaceCompare is an extracted page composition.
 props: eyebrow, title, intro, groups, note
 
 ### SystemIndex
@@ -1561,12 +1806,12 @@ props: eyebrow, title, intro, items
 
 ### SystemMap
 import { SystemMap } from 'hanoryx-components/signatures';
-
+SystemMap is an extracted page composition.
 props: nodes, links, core, caption
 
 ### TensionDials
 import { TensionDials } from 'hanoryx-components/signatures';
-
+TensionDials is an extracted page composition.
 props: dials, caption
 
 ### TokenInspector
@@ -1596,7 +1841,7 @@ props: eyebrow, title, intro, note
 
 ### ViewShift
 import { ViewShift } from 'hanoryx-components/signatures';
-
+ViewShift is an extracted page composition.
 props: eyebrow, title, intro, records, states, views, note
 
 ### WorkPortals
@@ -2302,46 +2547,57 @@ props: Visual
 ### useAudioAnalyzer (core/hooks)
 import { useAudioAnalyzer } from 'hanoryx-components/core';
 Drives a small canvas visualizer from real frequency data. Only runs the shared rAF loop while audio is playing; draws a single static frame when paused (no perpetual loop). DPR-capped, cleaned up on unmount.
+returns: No return value. Paints the attached canvas using the AudioProvider analyser.
 
 ### useCopy (core/hooks)
 import { useCopy } from 'hanoryx-components/core';
 Copy-to-clipboard with a short "copied" state for the button label.
+returns: [copied, copy]. copied is the last copied string or false. await copy(text) returns whether copying succeeded.
 
 ### useDocumentTitle (core/hooks)
 import { useDocumentTitle } from 'hanoryx-components/core';
 Sets the document title for a page (external sync — not React state). Pass the page label; the base brand is appended automatically.
+returns: No return value. Updates the document title and optional description when arguments change.
 
 ### useElementInView (core/hooks)
 import { useElementInView } from 'hanoryx-components/core';
 IntersectionObserver wrapper for cheap "is this on screen" reveals.
+returns: [ref, inView]. once defaults to true; with once:false visibility keeps toggling.
 
 ### useMediaQuery (core/hooks)
 import { useMediaQuery } from 'hanoryx-components/core';
 Subscribes to a CSS media query without effect-driven state (so it is safe under the React 19 lint rules and never causes a cascading render).
+returns: Boolean matching the supplied query. serverDefault is used during server rendering.
 
 ### useFinePointer (core/hooks)
 import { useFinePointer } from 'hanoryx-components/core';
 True for a mouse / trackpad (hover-capable, precise). Touch gets simpler, tap-first behaviour.
+returns: Boolean: true only for a hover-capable fine pointer.
 
 ### useOnScreen (core/hooks)
 import { useOnScreen } from 'hanoryx-components/core';
 Tracks whether an element is on screen. Unlike useElementInView (one-shot reveals) this keeps toggling, so loops, canvases and infinite animations can pause the moment they scroll away. State is only set from the observer callback.
+returns: [ref, onScreen]. Attach ref to one element; onScreen follows every intersection change.
 
 ### usePageCatalog (core/hooks)
 import { usePageCatalog } from 'hanoryx-components/core';
 Loads shared page metadata only while a catalog-backed control is mounted.
+returns: {catalog, error, retry}. catalog starts null; configureSite must register loadPageCatalog.
 
 ### usePointerField (core/hooks)
 import { usePointerField } from 'hanoryx-components/core';
 Writes the pointer's position INSIDE an element to CSS variables, so any descendant can respond with pure CSS (transforms, gradients, parallax).
+returns: No return value. Writes --px/--py, --mx/--my and data-hot on the attached element.
 
 ### usePrefersReducedMotion (core/hooks)
 import { usePrefersReducedMotion } from 'hanoryx-components/core';
 Reactively tracks the user's reduced-motion preference. Components use this to gate or simplify expensive animation.
+returns: Boolean reflecting the prefers-reduced-motion media query.
 
 ### useProximity (core/hooks)
 import { useProximity } from 'hanoryx-components/core';
 Pointer-proximity engine. Finds every `[data-prox]` unit inside `ref` and keeps a CSS variable --k (0..1) on each: 1 under the cursor, easing to 0 at `radius` px (smoothstep falloff).
+returns: No return value. Writes --k on each [data-prox] descendant; disabled for touch and reduced motion.
 
 ### AnimationProvider (core/providers)
 import { AnimationProvider } from 'hanoryx-components/core';
@@ -2370,15 +2626,18 @@ props: children
 
 ### useAudio (core/providers)
 import { useAudio } from 'hanoryx-components/core';
-
+useAudio: {status,isPlaying,start,stop,toggle,bins,getFrequencyData,available}. start() resolves a boolean and must follow a user gesture.
+returns: {status,isPlaying,start,stop,toggle,bins,getFrequencyData,available}. start() resolves a boolean and must follow a user gesture.
 
 ### useExperience (core/providers)
 import { useExperience } from 'hanoryx-components/core';
-
+useExperience: {isSynthesisOpen,openSynthesis,closeSynthesis}. Requires ExperienceProvider for a working overlay.
+returns: {isSynthesisOpen,openSynthesis,closeSynthesis}. Requires ExperienceProvider for a working overlay.
 
 ### useLenis (core/providers)
 import { useLenis } from 'hanoryx-components/core';
-
+useLenis: {scrollTo,stop,start,getLenis}. The instance is owned and cleaned up by LenisProvider.
+returns: {scrollTo,stop,start,getLenis}. The instance is owned and cleaned up by LenisProvider.
 
 ### setAudioActive (core/motion)
 import { setAudioActive } from 'hanoryx-components/core';
@@ -2468,8 +2727,8 @@ import { getSubscriberCount } from 'hanoryx-components/core';
 import { setScenesPaused } from 'hanoryx-components/core';
 Pause/resume ALL background scenes at once (overlay/route-transition takeover).
 
-### registerScene (core/motion)
-import { registerScene } from 'hanoryx-components/core';
+### registerSceneController (core/motion)
+import { registerSceneController } from 'hanoryx-components/core';
 Register a scene controller. @param {{ratio:number, running:boolean, run:(on:boolean)=>void}} ctrl @returns {() => void} unregister
 
 ### reportVisibility (core/motion)

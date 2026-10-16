@@ -4,11 +4,11 @@
   z-index: var(--z-synthesis, 12000);
   /* inset:0 already sizes this to the viewport; an explicit 100vw would be the
      scrollbar-gutter width too wide and nudge the layout. */
-  height: var(--viewport-h, 100svh);
+  height: var(--viewport-h, var(--size-100svh));
   overflow: hidden;
-  background: #020203;
+  background: var(--c-void);
   isolation: isolate;
-  animation: overlayIn 0.32s ease both;
+  animation: overlayIn var(--dur-extracted-0p32s) ease both;
 }
 
 @keyframes overlayIn {
@@ -39,80 +39,80 @@
 
 .telemetry {
   position: absolute;
-  left: clamp(16px, 4vw, 56px);
-  bottom: clamp(72px, 14vh, 140px);
+  left: clamp(var(--size-16px), var(--size-4vw), var(--size-56px));
+  bottom: clamp(var(--size-72px), var(--size-14vh), var(--size-140px));
   list-style: none; margin: 0; padding: 0;
-  display: flex; flex-direction: column; gap: 4px;
-  font-size: 11px; letter-spacing: 0.04em;
-  color: rgba(255, 255, 255, 0.5);
+  display: flex; flex-direction: column; gap: var(--size-4px);
+  font-size: var(--size-11px); letter-spacing: var(--size-0p04em);
+  color: var(--c-extracted-rgba-255-255-255-0p5);
 }
 
 .routeChips, .moduleChips {
   position: absolute; left: 50%; transform: translateX(-50%);
   list-style: none; margin: 0; padding: 0;
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
-  max-width: min(82%, 780px);
+  display: flex; flex-wrap: wrap; justify-content: center; gap: var(--size-8px);
+  max-width: min(82%, var(--size-780px));
 }
 .routeChips { top: 23%; }
 .moduleChips { top: 70%; }
 .routeChips li, .moduleChips li {
-  font-size: 10px; letter-spacing: 0.14em; color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(255, 51, 51, 0.4); background: rgba(255, 51, 51, 0.05);
-  padding: 4px 9px; border-radius: 3px; white-space: nowrap;
+  font-size: var(--size-10px); letter-spacing: var(--size-0p14em); color: var(--c-extracted-rgba-255-255-255-0p8);
+  border: var(--size-1px) solid var(--c-extracted-rgba-255-51-51-0p4); background: var(--c-extracted-rgba-255-51-51-0p05);
+  padding: var(--size-4px) var(--size-9px); border-radius: var(--size-3px); white-space: nowrap;
 }
 
 .converge {
   position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-  font-size: clamp(20px, 4.6vw, 46px); letter-spacing: 0.2em; color: #fff;
+  font-size: clamp(var(--size-20px), var(--size-4p6vw), var(--size-46px)); letter-spacing: var(--size-0p2em); color: var(--c-white);
   font-weight: 600; text-align: center;
 }
 
 .lockGroup {
   position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-  display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: var(--size-16px); text-align: center;
 }
 .wordmark {
-  display: inline-flex; align-items: center; gap: 0.18em;
+  display: inline-flex; align-items: center; gap: var(--size-0p18em);
   font-family: var(--font-serif, Georgia, serif);
-  font-size: clamp(30px, 8vw, 84px); font-weight: 600; letter-spacing: 0.04em;
-  color: #fff; line-height: 1; white-space: nowrap;
+  font-size: clamp(var(--size-30px), var(--size-8vw), var(--size-84px)); font-weight: 600; letter-spacing: var(--size-0p04em);
+  color: var(--c-white); line-height: 1; white-space: nowrap;
 }
 .locknode {
-  display: inline-block; width: 0.32em; height: 0.32em; border-radius: 50%;
-  background: var(--red, #ff3333); box-shadow: 0 0 22px rgba(255, 51, 51, 0.95);
+  display: inline-block; width: var(--size-0p32em); height: var(--size-0p32em); border-radius: 50%;
+  background: var(--red, var(--c-red)); box-shadow: 0 0 var(--size-22px) var(--c-extracted-rgba-255-51-51-0p95);
 }
 .tagline {
-  font-family: var(--font-mono, monospace); font-size: 11px;
-  letter-spacing: 0.34em; color: rgba(255, 255, 255, 0.6);
+  font-family: var(--font-mono, monospace); font-size: var(--size-11px);
+  letter-spacing: var(--size-0p34em); color: var(--c-extracted-rgba-255-255-255-0p6);
 }
 
 /* ---- minimal HUD (system, not player) ---- */
 .hud {
-  position: absolute; top: 20px; left: clamp(16px, 4vw, 32px);
-  display: flex; align-items: center; gap: 12px;
-  font-family: var(--font-mono, monospace); font-size: 11px; letter-spacing: 0.12em;
+  position: absolute; top: var(--size-20px); left: clamp(var(--size-16px), var(--size-4vw), var(--size-32px));
+  display: flex; align-items: center; gap: var(--size-12px);
+  font-family: var(--font-mono, monospace); font-size: var(--size-11px); letter-spacing: var(--size-0p12em);
 }
-.hudCode { color: var(--red, #ff3333); }
-.hudPhase { color: rgba(255, 255, 255, 0.8); text-transform: uppercase; }
+.hudCode { color: var(--red, var(--c-red)); }
+.hudPhase { color: var(--c-extracted-rgba-255-255-255-0p8); text-transform: uppercase; }
 
 .progress {
-  position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
-  background: rgba(255, 255, 255, 0.08);
+  position: absolute; left: 0; right: 0; bottom: 0; height: var(--size-2px);
+  background: var(--c-white-08);
 }
 .progressFill {
   position: absolute; left: 0; top: 0; bottom: 0; width: 0%;
-  background: linear-gradient(90deg, rgba(255, 51, 51, 0.5), var(--red, #ff3333));
+  background: linear-gradient(90deg, var(--c-extracted-rgba-255-51-51-0p5), var(--red, var(--c-red)));
 }
 
 .skip {
-  position: absolute; top: 18px; right: clamp(16px, 4vw, 32px);
-  font-family: var(--font-mono, monospace); font-size: 11px; letter-spacing: 0.24em;
-  color: rgba(255, 255, 255, 0.7);
-  padding: 7px 16px; border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 4px; background: rgba(5, 5, 8, 0.4); cursor: pointer;
-  transition: color 0.2s ease, border-color 0.2s ease;
+  position: absolute; top: var(--size-18px); right: clamp(var(--size-16px), var(--size-4vw), var(--size-32px));
+  font-family: var(--font-mono, monospace); font-size: var(--size-11px); letter-spacing: var(--size-0p24em);
+  color: var(--c-extracted-rgba-255-255-255-0p7);
+  padding: var(--size-7px) var(--size-16px); border: var(--size-1px) solid var(--c-extracted-rgba-255-255-255-0p2);
+  border-radius: var(--r-sm); background: var(--c-extracted-rgba-5-5-8-0p4); cursor: pointer;
+  transition: color var(--dur-1) ease, border-color var(--dur-1) ease;
 }
-.skip:hover { color: #fff; border-color: rgba(255, 51, 51, 0.7); }
+.skip:hover { color: var(--c-white); border-color: var(--c-extracted-rgba-255-51-51-0p7); }
 
 @media (prefers-reduced-motion: reduce) {
   .overlay { animation: none; }

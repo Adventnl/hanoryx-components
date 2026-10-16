@@ -1,6 +1,6 @@
 # Getting started
 
-`hanoryx-components` is the Hanoryx Systems interface, taken out of the website and organised so any site can be built from it without writing a new component: **2,604 catalogued pieces** — the interface kit, the foreground toolkit, page blocks, the site shell, 67 canvas scenes, 176 compositions and 2,091 stand-alone specimens.
+`hanoryx-components` is the Hanoryx Systems interface, taken out of the website and organised so any site can be built from it without writing a new component: **2,658 catalogued pieces** — the interface kit, the foreground toolkit, page blocks, the site shell, 67 canvas scenes, 176 compositions and 2,091 stand-alone specimens.
 
 It is a **source library**: React 19 + CSS Modules, published as source, built by *your* bundler (Vite). Nothing is pre-compiled.
 
@@ -56,8 +56,15 @@ Components that need data they do not own ask for it through registered sources:
 ```js
 import { configureSite, configureAssets } from 'hanoryx-components/core';
 
+// React use() requires the same promise for a page key across renders.
+const pages = new Map();
+const loadPage = (key) => {
+  if (!pages.has(key)) pages.set(key, import(`./data/pages/${key.replace(/\//g, '-')}.js`).then((m) => m.default));
+  return pages.get(key);
+};
+
 configureSite({
-  loadPage: (key) => import(`./data/pages/${key.replace(/\//g, '-')}.js`).then((m) => m.default),  // for <TemplatePage routeKey="…">
+  loadPage,                                                                                  // for <TemplatePage routeKey="…">
   loadPageCatalog: () => fetch('/pageCatalog.json').then((r) => r.json()),                       // titles + intros, for listings
   loadSearchDocuments: () => fetch('/searchDocuments.json').then((r) => r.json()),               // full text, for Ctrl-K search
 });

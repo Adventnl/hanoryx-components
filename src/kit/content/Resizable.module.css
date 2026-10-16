@@ -1,0 +1,6 @@
+.root { display: grid; grid-template-columns: minmax(0, var(--split)) var(--space-3) minmax(0, 1fr); min-width: 0; border: var(--border); border-radius: var(--r-md); overflow: hidden; }
+.root[data-orientation='vertical'] { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, var(--split)) var(--space-3) minmax(0, 1fr); }
+.panel { min-width: 0; min-height: 0; overflow: auto; padding: var(--space-4); overflow-wrap: anywhere; }
+.handle { touch-action: none; cursor: col-resize; background: var(--c-line); border-inline: var(--border); }
+.handle:hover, .handle:focus-visible { background: var(--c-red); }
+.root[data-orientation='vertical'] .handle { cursor: row-resize; }

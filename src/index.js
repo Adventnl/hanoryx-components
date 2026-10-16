@@ -4,7 +4,7 @@
    area (`hanoryx-components/kit`) to keep the module graph small:
 
      core         hooks, providers, motion engine, utilities, site sources
-     kit          61 interface components in six families
+     kit          100 visual components and 16 hooks in seven families
      fx           the foreground toolkit (tilt, spotlight, odometer, …)
      ui           the site's own buttons, pills and panels
      reveal       entrance profiles and kinetic text

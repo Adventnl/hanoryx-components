@@ -106,5 +106,8 @@ const glob = [
 ];
 out.push('| Class | What it does |', '| --- | --- |', ...glob.map(([c, d]) => `| \`${c}\` | ${d} |`), '');
 
+const extracted = fs.readFileSync(path.join(ROOT, 'src/styles/extracted-tokens.css'), 'utf8');
+out.push('## Preserved extraction tokens', '', 'The original visual values are retained in `src/styles/extracted-tokens.css`. New interfaces should prefer the semantic tokens above. These aliases preserve source geometry and colours during extraction; they are not additional theme recommendations.', '', 'CSS custom properties cannot be used for media-query thresholds or typed `@property` initial values, so those syntax positions retain literals.', '', '| Token | Preserved value |', '| --- | --- |');
+for (const match of extracted.matchAll(/^\s*(--[\w-]+):\s*([^;]+);/gm)) out.push(`| \`${match[1]}\` | \`${match[2]}\` |`);
 fs.writeFileSync(path.join(ROOT, 'docs/tokens.md'), out.join('\n'));
 console.log(`docs/tokens.md written (${rows.length} tokens)`);

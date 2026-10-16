@@ -1,0 +1,14 @@
+.rig { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: clamp(var(--size-1p2rem), var(--size-4vw), var(--space-8)); align-items: start; }
+.pick { display: grid; gap: var(--size-0p4rem); margin: 0; padding: 0; border: 0; }
+.pick legend { margin-bottom: var(--size-0p6rem); font: var(--size-0p58rem) var(--font-mono); letter-spacing: var(--size-0p22em); text-transform: uppercase; color: var(--c-red-bright); }
+.opt { position: relative; display: grid; grid-template-columns: auto 1fr; gap: var(--size-0p8rem); align-items: start; padding: var(--size-0p7rem) var(--size-0p9rem); border: var(--size-1px) solid var(--c-line-strong); border-radius: var(--r-md); background: var(--c-extracted-rgba-10-11-13-0p8); cursor: pointer; transition: border-color var(--dur-2) var(--ease-out), background var(--dur-2) var(--ease-out); }
+.opt input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; cursor: pointer; }
+.opt:focus-within { outline: var(--size-1px) solid var(--c-red); outline-offset: var(--size-2px); }
+.box { width: var(--size-16px); height: var(--size-16px); margin-top: var(--size-0p2em); border: var(--size-1px) solid var(--c-white-50); border-radius: var(--size-3px); transition: all var(--dur-2) var(--ease-out); }
+.opt b { display: block; font: 500 var(--fs-body) var(--font-sans); color: var(--c-white); }
+.opt small { display: block; margin-top: var(--size-0p15rem); font-size: var(--fs-xs); line-height: 1.5; color: var(--c-white-65); }
+.on { border-color: var(--c-red-dim); background: var(--c-red-faint); }
+.on .box { border-color: var(--c-red); background: var(--c-red); box-shadow: inset 0 0 0 var(--size-3px) var(--c-black); }
+.out { display: grid; gap: var(--space-3); min-width: 0; }
+.out pre { max-height: var(--size-26rem); padding: var(--space-4) var(--size-1p2rem); overflow: auto; border: var(--size-1px) solid var(--c-line-strong); border-radius: var(--r-md); background: var(--c-extracted-rgba-3-3-4-0p92); font: var(--size-0p72rem)/1.7 var(--font-mono); color: var(--c-white-80); }
+@media (max-width: 860px) { .rig { grid-template-columns: minmax(0, 1fr); } }

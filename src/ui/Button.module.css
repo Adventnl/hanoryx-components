@@ -1,0 +1,107 @@
+.btn {
+  --btn-px: var(--size-1p5rem);
+  --btn-py: var(--size-0p85rem);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--size-0p6em);
+  padding: var(--btn-py) var(--btn-px);
+  border-radius: var(--r-sm);
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--c-white-80);
+  border: var(--size-1px) solid transparent;
+  transition:
+    color var(--dur-2) var(--ease-out),
+    background var(--dur-2) var(--ease-out),
+    border-color var(--dur-2) var(--ease-out),
+    transform var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-3) var(--ease-out);
+}
+/* tactile press compression */
+.btn:active { transform: scale(0.97); }
+
+/* hover light-sweep crawling across the control (not on the underline variant) */
+.btn:not(.line) { overflow: hidden; }
+.btn:not(.line)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 35%, var(--c-white-12) 50%, transparent 65%);
+  transform: translateX(-130%);
+  pointer-events: none;
+}
+.btn:not(.line):hover::after { animation: btn-sweep var(--dur-4) var(--ease-out) 1; }
+@keyframes btn-sweep { to { transform: translateX(130%); } }
+@media (prefers-reduced-motion: reduce) {
+  .btn:active { transform: none; }
+  .btn:not(.line):hover::after { animation: none; }
+}
+
+.label { display: inline-block; }
+
+.icon {
+  transition: transform var(--dur-2) var(--ease-out);
+}
+.btn:hover .icon {
+  transform: translate(var(--size-2px), var(--size-negative-2px));
+}
+
+/* --- Variants --- */
+.primary {
+  background: var(--c-white-05);
+  border-color: var(--c-line-strong);
+  color: var(--c-white);
+}
+.primary:hover {
+  background: var(--c-white-08);
+  border-color: var(--c-red-dim);
+  box-shadow: var(--glow-red-soft);
+}
+
+.outline {
+  background: transparent;
+  border-color: var(--c-line-strong);
+  color: var(--c-white-80);
+}
+.outline:hover {
+  border-color: var(--c-white-40);
+  color: var(--c-white);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--c-white-50);
+}
+.ghost:hover {
+  color: var(--c-white);
+  background: var(--c-white-03);
+}
+
+/* underline link, echoes the original START control */
+.line {
+  padding: 0 0 var(--space-2);
+  border-radius: 0;
+  border-bottom: var(--size-1px) solid var(--c-white-20);
+  color: var(--c-white-50);
+  letter-spacing: var(--size-0p4em);
+  transition:
+    color var(--dur-3) var(--ease-out),
+    border-color var(--dur-3) var(--ease-out),
+    letter-spacing var(--dur-3) var(--ease-out);
+}
+.line:hover {
+  color: var(--c-white);
+  border-color: var(--c-white);
+  letter-spacing: var(--size-0p55em);
+}
+
+/* --- Sizes --- */
+.sm { --btn-px: var(--size-1p1rem); --btn-py: var(--size-0p6rem); }
+.md { --btn-px: var(--size-1p5rem); --btn-py: var(--size-0p85rem); }
+.lg { --btn-px: var(--size-2p1rem); --btn-py: var(--size-1p1rem); font-size: var(--fs-xs); }

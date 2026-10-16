@@ -1,0 +1,17 @@
+.hud {
+  position: fixed;
+  bottom: var(--size-8px);
+  left: var(--size-8px);
+  z-index: var(--z-cursor);
+  padding: var(--size-4px) var(--size-8px);
+  font-family: var(--font-mono);
+  font-size: var(--size-10px);
+  letter-spacing: var(--size-0p08em);
+  color: var(--c-white-50);
+  background: var(--c-extracted-rgba-0-0-0-0p6);
+  border: var(--size-1px) solid var(--c-line);
+  border-radius: var(--r-xs);
+  pointer-events: none;
+  user-select: none;
+}
+.hud[data-warn='1'] { color: var(--c-red); border-color: var(--c-red-dim); }

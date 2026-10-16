@@ -1,0 +1,44 @@
+/* Both faces share one grid cell, so the card is at least the 0.82 ratio and
+   grows to whichever face is taller (the back lists five links; on a phone
+   they need more than the ratio gives). */
+.wrap { display: grid; width: min(100%, var(--size-420px)); aspect-ratio: 0.82; margin-inline: auto; perspective: var(--size-1400px); }
+.card { display: grid; grid-template: 'stack' / minmax(0, 1fr); transform-style: preserve-3d; transition: transform var(--dur-extracted-1p1s) var(--ease-glide); }
+.flipped { transform: rotateY(180deg); }
+.face {
+  grid-area: stack;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6);
+  border: var(--size-1px) solid var(--c-line-strong);
+  border-radius: var(--r-lg);
+  background: linear-gradient(160deg, var(--c-extracted-rgba-30-31-36-0p98), var(--c-extracted-rgba-10-11-13-0p98));
+  box-shadow: var(--shadow-lift);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  text-align: left;
+}
+.front { cursor: pointer; justify-content: space-between; }
+.front::after { content: ''; position: absolute; inset: 0; border-radius: inherit; background: radial-gradient(var(--size-260px) circle at 80% 0%, var(--c-extracted-rgba-255-51-51-0p16), transparent 60%); pointer-events: none; }
+.mark { position: relative; z-index: 1; width: var(--size-64px); height: var(--size-64px); border-radius: var(--size-6px); object-fit: cover; box-shadow: 0 var(--size-10px) var(--size-30px) var(--size-negative-10px) var(--c-extracted-rgba-255-51-51-0p5); }
+.watermark { position: absolute; right: var(--size-0p02em); top: 50%; margin-top: var(--size-negative-0p55em); font-size: var(--size-15rem); line-height: 1; opacity: 0.7; pointer-events: none; }
+.front > * { position: relative; }
+.front > .watermark { position: absolute; }
+.front::before { content: ''; position: absolute; inset: 0; border-radius: inherit; background-image: linear-gradient(var(--c-white-05) var(--size-1px), transparent var(--size-1px)), linear-gradient(90deg, var(--c-white-05) var(--size-1px), transparent var(--size-1px)); background-size: var(--size-34px) var(--size-34px); mask-image: linear-gradient(160deg, var(--c-extracted-000000), transparent 70%); -webkit-mask-image: linear-gradient(160deg, var(--c-extracted-000000), transparent 70%); pointer-events: none; }
+.name { margin-top: auto; font-family: var(--font-serif); font-size: clamp(var(--size-2rem), var(--size-4vw), var(--size-2p8rem)); font-weight: 300; line-height: 1; color: var(--c-white); }
+.status { display: inline-flex; align-items: center; gap: var(--size-0p6em); margin-top: var(--space-3); font: var(--size-0p64rem) var(--font-mono); letter-spacing: var(--size-0p22em); text-transform: uppercase; color: var(--c-white-65); }
+.status i { width: var(--size-7px); height: var(--size-7px); border-radius: 50%; background: var(--c-red); box-shadow: var(--glow-red); animation: node-pulse var(--dur-6) ease-in-out infinite; }
+.flip { display: inline-flex; align-items: center; gap: var(--size-0p5em); margin-top: var(--space-5); font: var(--size-0p58rem) var(--font-mono); letter-spacing: var(--size-0p2em); text-transform: uppercase; color: var(--c-white-50); transition: color var(--dur-2) var(--ease-out); }
+.front:hover .flip { color: var(--c-red); }
+.back { transform: rotateY(180deg); justify-content: space-between; gap: var(--space-4); }
+.list { display: flex; flex-direction: column; gap: var(--space-2); }
+.entry { display: flex; flex-direction: column; gap: var(--size-0p2rem); padding: var(--space-3) var(--space-4); border: var(--size-1px) solid var(--c-line); border-radius: var(--r-sm); transition: border-color var(--dur-3) var(--ease-out), background var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-glide); }
+.entry:hover, .entry:focus-visible { border-color: var(--c-red-dim); background: var(--c-red-faint); transform: translateX(var(--size-4px)); }
+.entryLabel { font-family: var(--font-serif); font-size: var(--fs-h3); color: var(--c-white); }
+.entryLine { font-size: var(--fs-sm); line-height: 1.5; color: var(--c-white-50); }
+.back2 { align-self: flex-start; display: inline-flex; align-items: center; gap: var(--size-0p5em); font: var(--size-0p58rem) var(--font-mono); letter-spacing: var(--size-0p2em); text-transform: uppercase; color: var(--c-white-50); cursor: pointer; }
+.back2:hover { color: var(--c-white); }
+@media (max-width: 560px) {
+  .face { padding: var(--space-5); }
+}
+@media (prefers-reduced-motion: reduce) { .card { transition: none; } .status i { animation: none; } }

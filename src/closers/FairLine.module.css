@@ -1,0 +1,21 @@
+.meter { display: flex; flex-wrap: wrap; align-items: center; gap: var(--size-0p8rem) var(--size-1p4rem); margin-bottom: var(--space-5); }
+.bar { display: flex; gap: var(--size-4px); flex: 1 1 var(--size-14rem); max-width: var(--size-26rem); }
+.seg { flex: 1; height: var(--size-6px); border-radius: var(--size-3px); background: var(--c-white-12); transition: background var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-glide); }
+.hit { background: var(--c-red); box-shadow: var(--glow-red); }
+.miss { background: var(--c-white-50); transform: scaleY(0.6); }
+.score { font: var(--size-0p66rem) var(--font-mono); letter-spacing: var(--size-0p14em); text-transform: uppercase; color: var(--c-white-80); font-variant-numeric: lining-nums tabular-nums; }
+.cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--size-19rem)), 1fr)); gap: var(--space-3); margin-bottom: var(--space-5); }
+.case { position: relative; display: flex; flex-direction: column; gap: var(--size-0p8rem); padding: var(--size-1p1rem) var(--size-1p2rem) var(--size-1p2rem); border: var(--size-1px) solid var(--c-line-strong); border-radius: var(--r-md); background: var(--c-extracted-rgba-10-11-13-0p82); transition: border-color var(--dur-3) var(--ease-out), background var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-glide); }
+.case:hover { transform: translateY(var(--size-negative-3px)); }
+.n { font: var(--size-0p6rem) var(--font-mono); letter-spacing: var(--size-0p2em); color: var(--c-red-bright); }
+.text { font-size: var(--fs-body); line-height: 1.55; color: var(--c-white-80); }
+.choices { display: flex; gap: var(--space-2); margin-top: auto; }
+.isFine.answered { border-color: var(--c-extracted-rgba-255-255-255-0p28); }
+.isNot.answered { border-color: var(--c-red-dim); background: linear-gradient(160deg, var(--c-red-faint), var(--c-extracted-rgba-10-11-13-0p82)); }
+.verdict { margin-top: auto; display: grid; gap: var(--size-0p3rem); font-size: var(--fs-sm); line-height: 1.55; color: var(--c-white-65); }
+.verdict b { font: 500 var(--size-0p62rem) var(--font-mono); letter-spacing: var(--size-0p24em); text-transform: uppercase; color: var(--c-white); }
+.isNot .verdict b { color: var(--c-red); }
+.yes, .no { font: var(--size-0p58rem) var(--font-mono); letter-spacing: var(--size-0p14em); text-transform: uppercase; }
+.yes { color: var(--c-white-65); }
+.no { color: var(--c-red-bright); }
+@media (prefers-reduced-motion: reduce) { .case, .seg { transition: none; } .case:hover { transform: none; } }

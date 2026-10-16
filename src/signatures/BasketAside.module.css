@@ -1,0 +1,20 @@
+.wrap { width: min(100%, var(--size-470px)); margin-inline: auto; }
+.shell { padding: var(--space-4); border: var(--size-1px) solid var(--c-line-strong); border-radius: var(--r-lg); background: var(--c-black-2); box-shadow: var(--shadow-lift); }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); margin-bottom: var(--space-4); }
+.search { flex: 1; height: var(--size-30px); border: var(--size-1px) solid var(--c-line-strong); border-radius: var(--r-pill); background: var(--c-white-03); }
+.basket { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--size-0p3rem) var(--size-0p8rem); border: var(--size-1px) solid var(--c-red-dim); border-radius: var(--r-pill); background: var(--c-red-faint); font: var(--size-0p8rem) var(--font-mono); color: var(--c-white); }
+.basketIcon { width: var(--size-12px); height: var(--size-9px); border: var(--size-1p5px) solid var(--c-red); border-top: 0; border-radius: 0 0 var(--size-3px) var(--size-3px); }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--size-10px); }
+.tile { position: relative; display: flex; flex-direction: column; gap: var(--size-10px); padding: var(--size-8px); border: var(--size-1px) solid var(--c-line); border-radius: var(--size-10px); background: var(--c-white-03); cursor: pointer; text-align: left; transition: transform var(--dur-3) var(--ease-glide), border-color var(--dur-2) var(--ease-out), background var(--dur-2) var(--ease-out); animation: tile-in var(--dur-extracted-0p7s) var(--ease-out) both; animation-delay: calc(var(--i) * var(--dur-extracted-0p07s)); }
+@keyframes tile-in { from { opacity: 0; transform: translateY(var(--size-14px)) scale(0.96); } to { opacity: 1; transform: none; } }
+.tile:hover { transform: translateY(var(--size-negative-4px)); border-color: var(--c-white-30); }
+.art { display: block; aspect-ratio: 1; border-radius: var(--size-6px); background: linear-gradient(160deg, var(--c-white-12), var(--c-white-03)); transition: background var(--dur-extracted-0p5s) var(--ease-out); }
+.tile:nth-child(3n + 2) .art { background: linear-gradient(160deg, var(--c-extracted-rgba-255-51-51-0p28), var(--c-extracted-rgba-255-51-51-0p05)); }
+.lines { display: flex; flex-direction: column; gap: var(--size-5px); }
+.lines i { display: block; height: var(--size-5px); border-radius: var(--size-3px); background: var(--c-white-08); }
+.lines i:last-child { width: 55%; }
+.tick { position: absolute; top: var(--size-12px); right: var(--size-12px); display: grid; place-items: center; width: var(--size-20px); height: var(--size-20px); border-radius: 50%; background: var(--c-red); color: var(--c-extracted-000000); transform: scale(0); transition: transform var(--dur-extracted-0p45s) var(--ease-spring-soft); }
+.on { border-color: var(--c-red); background: var(--c-red-faint); transform: translateY(var(--size-negative-3px)); }
+.on .tick { transform: scale(1); }
+.caption { display: block; margin-top: var(--space-3); font: var(--size-0p58rem) var(--font-mono); letter-spacing: var(--size-0p18em); text-transform: uppercase; color: var(--c-white-50); }
+@media (prefers-reduced-motion: reduce) { .tile { animation: none; } .tile, .tick { transition: none; } }

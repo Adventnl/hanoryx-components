@@ -1,0 +1,60 @@
+/* 42 · PATTERNS — a surface that changes as you scroll, and forty-three swatches. */
+
+@keyframes ptPulse { 0%, 100% { transform: scale(0.8); } 50% { transform: scale(1.25); } }
+
+/* ---- the still side ---- */
+.vis { display: grid; gap: 3cqmin; justify-items: center; width: min(92cqw, 130cqh); }
+.visSheet { position: relative; width: 100%; aspect-ratio: 4 / 3; border-radius: 1.6cqmin; background: var(--c-extracted-0a0b0e); border: 0.4cqmin solid var(--c-white-20); overflow: hidden; }
+.visSheet i { position: absolute; inset: 0; }
+.visDots { background-image: radial-gradient(var(--c-extracted-rgba-255-255-255-0p55) 0.4cqmin, transparent 0.8cqmin); background-size: calc(4cqmin + var(--pin) * 5cqmin) calc(4cqmin + var(--pin) * 5cqmin); }
+.visHatch { background-image: repeating-linear-gradient(calc(30deg + var(--pin) * 40deg), var(--c-extracted-rgba-255-90-90-0p7) 0 0.3cqmin, transparent 0.3cqmin 2.6cqmin); mask: linear-gradient(90deg, var(--c-extracted-000000) calc(var(--pin) * 130% - 30%), transparent calc(var(--pin) * 130% - 8%)); }
+.visSheet b { position: absolute; top: 0; bottom: 0; left: calc(var(--pin) * 130% - 20%); width: 0.5cqmin; background: var(--c-extracted-ff5a5a); box-shadow: 0 0 2cqmin var(--c-red-bright); opacity: clamp(0, calc(var(--pin) * 20), 1); }
+.vis small { font: 500 2.2cqmin var(--font-mono); letter-spacing: var(--size-0p22em); color: var(--c-white-50); }
+
+/* ---- shared ---- */
+.sw { --pf: var(--c-extracted-rgba-255-255-255-0p28); position: relative; display: block; width: var(--size-11rem); height: var(--size-6p4rem); padding: 0; border: var(--size-1px) solid var(--c-white-12); border-radius: var(--size-6px); background-color: var(--c-extracted-0a0b0e); color: inherit; overflow: hidden; }
+button.sw { cursor: pointer; }
+.sw:focus-visible { outline: var(--size-2px) solid var(--c-red); outline-offset: var(--size-3px); }
+.rail { position: absolute; left: var(--size-0p8rem); right: var(--size-0p8rem); bottom: var(--size-0p5rem); height: var(--size-0p25rem); border-radius: var(--r-xs); background: var(--c-white-30); cursor: ew-resize; touch-action: none; box-shadow: 0 0 0 var(--size-3px) var(--c-extracted-rgba-0-0-0-0p5); }
+.rail:focus-visible { outline: var(--size-2px) solid var(--c-red); outline-offset: var(--size-4px); }
+.rail u { position: absolute; top: 50%; width: var(--size-0p7rem); height: var(--size-0p7rem); margin: var(--size-negative-0p35rem) 0 0 var(--size-negative-0p35rem); border-radius: 50%; background: var(--c-white); box-shadow: 0 0 var(--size-6px) var(--c-extracted-rgba-255-255-255-0p6); }
+.val, .tag { position: absolute; right: var(--size-0p5rem); top: var(--size-0p4rem); padding: var(--size-0p1rem) var(--size-0p35rem); border-radius: var(--size-3px); background: var(--c-extracted-rgba-0-0-0-0p7); color: var(--c-white); font: 600 var(--size-0p5rem) var(--font-mono); letter-spacing: var(--size-0p1em); text-transform: uppercase; }
+.tag { left: var(--size-0p5rem); right: auto; top: auto; bottom: var(--size-0p4rem); }
+.layer { position: absolute; inset: 0; }
+
+/* 34 spotlight */
+.spot { --x: 0.5; --y: 0.5; background-image: radial-gradient(var(--c-extracted-rgba-255-255-255-0p22) var(--size-1px), transparent var(--size-1p6px)); background-size: var(--size-14px) var(--size-14px); }
+.spot i { position: absolute; inset: 0; background-image: radial-gradient(var(--c-extracted-ff7a7a) var(--size-1p8px), transparent var(--size-2p4px)); background-size: var(--size-14px) var(--size-14px); mask: radial-gradient(circle at calc(var(--x) * 100%) calc(var(--y) * 100%), var(--c-extracted-000000), transparent var(--size-3p2rem)); }
+
+/* 37 pixels */
+.pixels { display: grid; grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(5, 1fr); gap: var(--size-2px); padding: var(--size-0p4rem); }
+.pixels button { padding: 0; border: 0; border-radius: var(--size-1px); background: var(--c-white-08); cursor: pointer; transition: background var(--dur-extracted-0p15s); }
+.pixels button[aria-pressed='true'] { background: var(--c-extracted-ff6b6b); box-shadow: 0 0 var(--size-6px) var(--c-extracted-rgba-255-90-90-0p5); }
+.pixels button:focus-visible { outline: var(--size-2px) solid var(--c-white); outline-offset: var(--size-negative-2px); }
+
+/* 38 snap */
+.snap { display: grid; grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(5, 1fr); gap: var(--size-1px); padding: var(--size-0p4rem); background: var(--c-white-08); }
+.snap button { padding: 0; border: 0; background: var(--c-extracted-0a0b0e); cursor: crosshair; transition: background var(--dur-extracted-0p12s); }
+.snap button[data-hot='line'] { background: var(--c-extracted-rgba-255-90-90-0p18); }
+.snap button[data-hot='cell'] { background: var(--c-extracted-ff5a5a); box-shadow: 0 0 var(--size-8px) var(--c-red-bright); }
+.snap button:focus-visible { outline: var(--size-1px) solid var(--c-white); }
+
+/* 39 moving stripes */
+.moving { background-image: repeating-linear-gradient(45deg, var(--c-extracted-rgba-255-255-255-0p28) 0 var(--size-8px), transparent var(--size-8px) var(--size-20px)); background-size: var(--size-28p28px) var(--size-28p28px); animation: ptSlide2 var(--dur-5) linear infinite; }
+@keyframes ptSlide2 { to { background-position: var(--size-28p28px) 0; } }
+
+/* 40 op art */
+.op { background-image: repeating-radial-gradient(circle at 30% 50%, var(--c-extracted-rgba-255-255-255-0p3) 0 var(--size-3px), transparent var(--size-3px) var(--size-9px)), repeating-radial-gradient(circle at 70% 50%, var(--c-extracted-rgba-255-90-90-0p35) 0 var(--size-3px), transparent var(--size-3px) var(--size-9px)); }
+.op i { position: absolute; left: 50%; top: 50%; width: var(--size-5rem); height: var(--size-5rem); margin: var(--size-negative-2p5rem) 0 0 var(--size-negative-2p5rem); border-radius: 50%; border: var(--size-1px) solid var(--c-extracted-rgba-255-255-255-0p4); animation: ptPulse var(--dur-extracted-3s) ease-in-out infinite; }
+
+/* 41 checker flip */
+.flipChk { background-image: conic-gradient(var(--pf) 25%, transparent 0 50%, var(--pf) 0 75%, transparent 0); background-size: var(--size-20px) var(--size-20px); transition: background-position var(--dur-extracted-0p5s) var(--ease-out); }
+.flipChk[data-on='true'] { background-position: var(--size-20px) 0; }
+
+/* 42 grain, halftone */
+.grain { position: absolute; inset: 0; width: 100%; height: 100%; mix-blend-mode: overlay; transition: opacity var(--dur-1); }
+.ht { position: absolute; inset: 0; width: 100%; height: 100%; fill: var(--c-white); opacity: 0.8; }
+
+@media (prefers-reduced-motion: reduce) {
+  .moving, .op i { animation: none; }
+}

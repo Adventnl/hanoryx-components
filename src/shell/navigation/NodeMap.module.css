@@ -1,0 +1,33 @@
+/* The orbit diagram in the wide menu's aside. Transform and opacity only. Every
+   entrance is offset by --t0, the head start the menu's first drop sets (unset = 0). */
+.map { width: 100%; max-width: var(--size-230px); }
+.svg { width: 100%; height: auto; overflow: visible; }
+
+.ticks { transform-box: fill-box; transform-origin: center; animation: ticks-in var(--dur-extracted-1p2s) var(--ease-out) var(--t0, var(--dur-extracted-0s)) backwards; }
+.ticks line { stroke: var(--c-white-12); stroke-width: 1; }
+@keyframes ticks-in { from { transform: rotate(-70deg) scale(0.9); opacity: 0; } }
+.ring { fill: none; stroke-dasharray: 1; stroke-dashoffset: 1; animation: ring-draw var(--dur-4) var(--ease-out) var(--t0, var(--dur-extracted-0s)) forwards; }
+.outer { stroke: var(--c-white-12); stroke-width: 1; }
+.mid { stroke: var(--c-white-20); stroke-width: 1.4; animation-delay: calc(var(--t0, var(--dur-extracted-0s)) + var(--dur-extracted-0p06s)); }
+.inner { stroke: var(--c-white-08); stroke-width: 1; animation-delay: calc(var(--t0, var(--dur-extracted-0s)) + var(--dur-extracted-0p12s)); animation-direction: reverse; }
+@keyframes ring-draw { to { stroke-dashoffset: 0; } }
+
+.selector { transform-box: fill-box; transform-origin: center; transition: transform var(--dur-extracted-0p45s) var(--ease-out); }
+.selectorLine { stroke: var(--c-red); stroke-width: 1.2; opacity: 0.7; }
+.selectorHead { fill: var(--c-red); }
+
+.connector { stroke: var(--c-white-08); stroke-width: 1; stroke-dasharray: 1; stroke-dashoffset: 1; animation: ring-draw var(--dur-extracted-0p45s) var(--ease-out) var(--t0, var(--dur-extracted-0s)) forwards; }
+.dot { fill: var(--c-white-40); transform-box: fill-box; transform-origin: center; animation: node-pop var(--dur-2) var(--ease-spring-soft) both; transition: fill var(--dur-extracted-0p25s) var(--ease-out); }
+@keyframes node-pop { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.on .dot { fill: var(--c-red); }
+.on .connector { stroke: var(--c-red-dim); }
+
+.glow { fill: var(--c-red-ghost); animation: node-pulse var(--dur-extracted-2p6s) ease-in-out infinite; }
+.core { fill: var(--c-red); }
+.label { fill: var(--c-white-50); font-family: var(--font-mono); font-size: var(--size-10px); letter-spacing: var(--size-0p16em); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ring, .connector { animation: none; stroke-dashoffset: 0; }
+  .ticks, .dot { animation: none; }
+  .selector, .glow { transition: none; animation: none; }
+}

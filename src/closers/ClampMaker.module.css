@@ -1,0 +1,12 @@
+.rig { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(var(--size-1p2rem), var(--size-4vw), var(--space-8)); align-items: start; }
+.form { display: grid; gap: var(--space-4); min-width: 0; }
+.view { display: grid; gap: var(--space-3); min-width: 0; }
+.graph { margin: 0; padding: var(--size-0p8rem) var(--space-4) var(--space-2); border: var(--size-1px) solid var(--c-line-strong); border-radius: var(--r-md); background: var(--c-extracted-rgba-10-11-13-0p82); }
+.graph svg { display: block; width: 100%; height: auto; }
+.graph figcaption { margin-top: var(--size-0p3rem); font: var(--size-0p62rem) var(--font-mono); letter-spacing: var(--size-0p1em); color: var(--c-white-65); }
+.axis { stroke: var(--c-white-30); stroke-width: 1; }
+.line { fill: none; stroke: var(--c-white-80); stroke-width: 1.6; stroke-linejoin: round; }
+.cursor { stroke: var(--c-red-dim); stroke-dasharray: 3 3; }
+.dot { fill: var(--c-red); }
+.sample { padding: var(--space-4) var(--space-5); border: var(--size-1px) dashed var(--c-white-20); border-radius: var(--r-md); font-family: var(--font-serif); font-weight: 300; line-height: 1.1; color: var(--c-white); overflow: hidden; white-space: nowrap; }
+@media (max-width: 860px) { .rig { grid-template-columns: minmax(0, 1fr); } }

@@ -1,0 +1,22 @@
+.rig { display: grid; grid-template-columns: minmax(0, var(--size-20rem)) minmax(0, 1fr); gap: clamp(var(--space-5), var(--size-5vw), var(--space-10)); align-items: center; }
+.dial { display: grid; gap: var(--space-3); justify-items: center; }
+.dial svg { width: 100%; height: auto; }
+.max { fill: none; stroke: var(--c-white-12); stroke-dasharray: 3 4; }
+.blast { fill: var(--c-white-08); stroke: var(--c-white-65); stroke-width: 1; transition: r var(--dur-extracted-0p7s) var(--ease-glide), fill var(--dur-3) var(--ease-out), stroke var(--dur-3) var(--ease-out); }
+.over { fill: var(--c-red-ghost); stroke: var(--c-red); filter: drop-shadow(0 0 var(--size-8px) var(--c-extracted-rgba-255-51-51-0p4)); }
+.need { fill: none; stroke: var(--c-white-30); stroke-dasharray: 2 3; }
+.core { fill: var(--c-red); }
+.read { font: var(--size-0p64rem) var(--font-mono); letter-spacing: var(--size-0p14em); text-transform: uppercase; color: var(--c-white-65); }
+.read b { font-family: var(--font-serif); font-size: var(--fs-h2); letter-spacing: 0; color: var(--c-white); font-weight: 400; margin-right: var(--size-0p3em); }
+.side { display: grid; gap: var(--space-4); min-width: 0; }
+.slider { display: grid; gap: var(--size-0p6rem); font-size: var(--fs-sm); color: var(--c-white-80); }
+.slider input { width: 100%; accent-color: var(--c-red); }
+.list { display: grid; gap: var(--size-0p3rem); }
+.list li { display: grid; grid-template-columns: minmax(var(--size-8rem), var(--size-12rem)) minmax(0, 1fr); gap: var(--space-4); padding: var(--size-0p6rem) var(--size-0p9rem); border: var(--size-1px) solid var(--c-line); border-radius: var(--r-sm); transition: opacity var(--dur-extracted-0p5s) var(--ease-out), border-color var(--dur-extracted-0p5s) var(--ease-out), background var(--dur-extracted-0p5s) var(--ease-out); }
+.list li:not(.on) b { color: var(--c-white-65); }
+.list li.on:not(.need2) { border-color: var(--c-red-dim); background: var(--c-red-faint); }
+.list b { font: 500 var(--fs-sm) var(--font-sans); color: var(--c-white); }
+.list span { font-size: var(--fs-sm); color: var(--c-white-65); line-height: 1.45; }
+.list li.on:not(.need2) span { color: var(--c-white-80); }
+@media (max-width: 800px) { .rig { grid-template-columns: minmax(0, 1fr); } .dial svg { max-width: var(--size-15rem); } .list li { grid-template-columns: minmax(0, 1fr); gap: var(--size-0p2rem); } }
+@media (prefers-reduced-motion: reduce) { .blast, .list li { transition: none; } }

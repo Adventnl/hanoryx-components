@@ -1,0 +1,914 @@
+{
+ "splitFlap": {
+  "page": "company/careers",
+  "props": {
+   "hero": {
+    "scene": "glyph-field",
+    "intensity": "hero",
+    "eyebrow": "Company / Careers",
+    "title": "People who like hard systems.",
+    "intro": "No roles are listed right now. This page describes the kinds of work the company does, for anyone who would like to introduce themselves.",
+    "code": "CMP.04",
+    "status": "INTRODUCTIONS",
+    "actions": [
+     {
+      "label": "Introduce yourself",
+      "to": "/contact?type=careers"
+     }
+    ],
+    "aside": {
+     "kind": "splitFlap",
+     "rows": [
+      {
+       "label": "Roles listed",
+       "value": "None"
+      },
+      {
+       "label": "Introductions",
+       "value": "Welcome"
+      }
+     ],
+     "cycle": {
+      "label": "Areas of work",
+      "values": [
+       "Interfaces",
+       "Systems",
+       "Data at scale",
+       "Engines",
+       "Automation"
+      ]
+     },
+     "caption": "Press the last row to flip to the next area."
+    }
+   },
+   "aside": {
+    "kind": "splitFlap",
+    "rows": [
+     {
+      "label": "Roles listed",
+      "value": "None"
+     },
+     {
+      "label": "Introductions",
+      "value": "Welcome"
+     }
+    ],
+    "cycle": {
+     "label": "Areas of work",
+     "values": [
+      "Interfaces",
+      "Systems",
+      "Data at scale",
+      "Engines",
+      "Automation"
+     ]
+    },
+    "caption": "Press the last row to flip to the next area."
+   }
+  }
+ },
+ "tensionDials": {
+  "page": "company/principles",
+  "props": {
+   "hero": {
+    "scene": "compass-vector",
+    "intensity": "hero",
+    "eyebrow": "Company / Principles",
+    "title": "Six rules the work is held to.",
+    "intro": "Short enough to remember and strict enough to say no. Each one settles a tension that keeps coming back — and each comes with what it changes in practice.",
+    "code": "CMP.01",
+    "status": "DOCTRINE",
+    "actions": [
+     {
+      "label": "Security approach",
+      "to": "/company/security"
+     },
+     {
+      "label": "Selected work",
+      "to": "/work",
+      "variant": "outline"
+     }
+    ],
+    "aside": {
+     "kind": "tensionDials",
+     "dials": [
+      {
+       "id": "depth",
+       "left": "Depth",
+       "right": "Clarity",
+       "start": 18,
+       "states": {
+        "low": "All depth, no surface. Powerful, and hard to read.",
+        "mid": "Depth held underneath, clarity on top.",
+        "high": "All surface, no depth. Easy to read, and shallow."
+       }
+      },
+      {
+       "id": "speed",
+       "left": "Speed",
+       "right": "Durability",
+       "start": 82,
+       "states": {
+        "low": "Fast to ship, and has to be done twice.",
+        "mid": "Quick iteration on foundations that last.",
+        "high": "Built to last, but too slow to learn from."
+       }
+      },
+      {
+       "id": "scope",
+       "left": "Scoped",
+       "right": "Open",
+       "start": 30,
+       "states": {
+        "low": "Everything scoped. Safe, and nobody can do their work.",
+        "mid": "Each role sees what concerns it.",
+        "high": "Everything open. Convenient, and everyone sees everything."
+       }
+      }
+     ],
+     "caption": "Each principle below settles one of these tensions. Nothing here is measured or stored."
+    }
+   },
+   "aside": {
+    "kind": "tensionDials",
+    "dials": [
+     {
+      "id": "depth",
+      "left": "Depth",
+      "right": "Clarity",
+      "start": 18,
+      "states": {
+       "low": "All depth, no surface. Powerful, and hard to read.",
+       "mid": "Depth held underneath, clarity on top.",
+       "high": "All surface, no depth. Easy to read, and shallow."
+      }
+     },
+     {
+      "id": "speed",
+      "left": "Speed",
+      "right": "Durability",
+      "start": 82,
+      "states": {
+       "low": "Fast to ship, and has to be done twice.",
+       "mid": "Quick iteration on foundations that last.",
+       "high": "Built to last, but too slow to learn from."
+      }
+     },
+     {
+      "id": "scope",
+      "left": "Scoped",
+      "right": "Open",
+      "start": 30,
+      "states": {
+       "low": "Everything scoped. Safe, and nobody can do their work.",
+       "mid": "Each role sees what concerns it.",
+       "high": "Everything open. Convenient, and everyone sees everything."
+      }
+     }
+    ],
+    "caption": "Each principle below settles one of these tensions. Nothing here is measured or stored."
+   }
+  }
+ },
+ "identityCard": {
+  "page": "company",
+  "props": {
+   "hero": {
+    "scene": "network-constellation",
+    "intensity": "hero",
+    "eyebrow": "Company / Overview",
+    "title": "The company behind the systems.",
+    "intro": "Hanoryx Systems designs and builds online systems, software platforms and the interfaces people use to work in them. Hanoryx North is its development team.",
+    "code": "CMP.00",
+    "status": "LIVE",
+    "actions": [
+     {
+      "label": "Selected work",
+      "to": "/work"
+     },
+     {
+      "label": "How we decide",
+      "to": "/company/principles",
+      "variant": "outline"
+     }
+    ],
+    "aside": {
+     "kind": "identityCard",
+     "hint": "Turn the card over",
+     "back": [
+      {
+       "label": "Principles",
+       "line": "How decisions get made",
+       "to": "/company/principles"
+      },
+      {
+       "label": "Security approach",
+       "line": "Starting at the boundary",
+       "to": "/company/security"
+      },
+      {
+       "label": "Timeline",
+       "line": "The company, told in phases",
+       "to": "/company/timeline"
+      },
+      {
+       "label": "Careers",
+       "line": "The areas of work",
+       "to": "/company/careers"
+      },
+      {
+       "label": "Hanoryx North",
+       "line": "The development team",
+       "to": "/north"
+      }
+     ]
+    }
+   },
+   "aside": {
+    "kind": "identityCard",
+    "hint": "Turn the card over",
+    "back": [
+     {
+      "label": "Principles",
+      "line": "How decisions get made",
+      "to": "/company/principles"
+     },
+     {
+      "label": "Security approach",
+      "line": "Starting at the boundary",
+      "to": "/company/security"
+     },
+     {
+      "label": "Timeline",
+      "line": "The company, told in phases",
+      "to": "/company/timeline"
+     },
+     {
+      "label": "Careers",
+      "line": "The areas of work",
+      "to": "/company/careers"
+     },
+     {
+      "label": "Hanoryx North",
+      "line": "The development team",
+      "to": "/north"
+     }
+    ]
+   }
+  }
+ },
+ "liveBudget": {
+  "page": "engineering",
+  "props": {
+   "hero": {
+    "scene": "network-constellation",
+    "intensity": "hero",
+    "eyebrow": "Development / Site engineering",
+    "title": "Engineering, visible in the system.",
+    "intro": "This website is a working example: a scene registry, a shared animation scheduler, a quality budget and route-level code splitting. The panel on the right is live.",
+    "code": "ENG.01",
+    "status": "IMPLEMENTED HERE",
+    "actions": [
+     {
+      "label": "Explore the lab",
+      "to": "/lab"
+     },
+     {
+      "label": "Motion systems",
+      "to": "/north/motion-systems",
+      "variant": "outline"
+     }
+    ],
+    "aside": {
+     "kind": "liveBudget",
+     "framed": true
+    }
+   },
+   "aside": {
+    "kind": "liveBudget",
+    "framed": true
+   }
+  }
+ },
+ "orbitNav": {
+  "page": "home",
+  "props": {
+   "hero": {
+    "scene": "home-core",
+    "intensity": "hero",
+    "eyebrow": "Hanoryx Systems / Live",
+    "title": "Software systems, made visible.",
+    "intro": "We build online systems, platforms and interfaces. Explore the work, the systems behind it, and the team that builds them.",
+    "code": "SYS.CORE",
+    "status": "LIVE",
+    "actions": [
+     {
+      "label": "Explore selected work",
+      "to": "/work"
+     },
+     {
+      "label": "Play system sequence",
+      "action": "system-synthesis",
+      "variant": "outline"
+     }
+    ],
+    "aside": {
+     "kind": "orbitNav"
+    }
+   },
+   "aside": {
+    "kind": "orbitNav"
+   }
+  }
+ },
+ "articleArt": {
+  "page": "insights/triggers",
+  "props": {
+   "hero": {
+    "scene": "trigger-action-pulse",
+    "intensity": "hero",
+    "eyebrow": "Insights / Reliability",
+    "title": "Three ways to start work, and who decides when.",
+    "intro": "A clock, a pile of jobs, or something that happened: each of these can start the same piece of work, and each fails in its own way. This guide compares them on a burst of jobs you can resize, then sets out how to choose.",
+    "code": "INS.05",
+    "status": "GUIDE · AUTOMATION",
+    "actions": [
+     {
+      "label": "Compare them",
+      "to": "/insights/triggers#try"
+     },
+     {
+      "label": "Read the guide",
+      "to": "/insights/triggers#guide",
+      "variant": "outline"
+     }
+    ],
+    "aside": {
+     "kind": "articleArt",
+     "art": "lanes",
+     "caption": "Three lanes, three kinds of starting gun."
+    }
+   },
+   "aside": {
+    "kind": "articleArt",
+    "art": "lanes",
+    "caption": "Three lanes, three kinds of starting gun."
+   }
+  }
+ },
+ "northCompass": {
+  "page": "north",
+  "props": {
+   "hero": {
+    "scene": "topographic-lines",
+    "intensity": "hero",
+    "eyebrow": "Development / Hanoryx North",
+    "title": "The team behind the systems.",
+    "intro": "Hanoryx North is the development team behind Hanoryx Systems: platform architecture, interface systems, operational tooling and production-minded software engineering.",
+    "code": "DEV.00",
+    "status": "LIVE",
+    "actions": [
+     {
+      "label": "Engineering",
+      "to": "/north/engineering"
+     },
+     {
+      "label": "Selected work",
+      "to": "/work",
+      "variant": "outline"
+     }
+    ],
+    "aside": {
+     "kind": "northCompass",
+     "pillars": [
+      {
+       "id": "n-01",
+       "code": "N.ARCH",
+       "title": "Platform architecture",
+       "body": "Service boundaries, data models, and orchestration layers designed to carry operational load without ceremony."
+      },
+      {
+       "id": "n-02",
+       "code": "N.IFACE",
+       "title": "Interface systems",
+       "body": "Component systems and interaction models built as a controlled language, not a collection of screens."
+      },
+      {
+       "id": "n-03",
+       "code": "N.ORCH",
+       "title": "Orchestration & automation",
+       "body": "Internal tooling that removes manual operational drag and keeps multi-role coordination predictable."
+      },
+      {
+       "id": "n-04",
+       "code": "N.PROTO",
+       "title": "Production-minded prototyping",
+       "body": "Applied software engineering that ships fast, then hardens — foundations first, surface second."
+      }
+     ],
+     "caption": "Move the pointer around the dial, or tap a point. Each point is a pillar of the work."
+    }
+   },
+   "aside": {
+    "kind": "northCompass",
+    "pillars": [
+     {
+      "id": "n-01",
+      "code": "N.ARCH",
+      "title": "Platform architecture",
+      "body": "Service boundaries, data models, and orchestration layers designed to carry operational load without ceremony."
+     },
+     {
+      "id": "n-02",
+      "code": "N.IFACE",
+      "title": "Interface systems",
+      "body": "Component systems and interaction models built as a controlled language, not a collection of screens."
+     },
+     {
+      "id": "n-03",
+      "code": "N.ORCH",
+      "title": "Orchestration & automation",
+      "body": "Internal tooling that removes manual operational drag and keeps multi-role coordination predictable."
+     },
+     {
+      "id": "n-04",
+      "code": "N.PROTO",
+      "title": "Production-minded prototyping",
+      "body": "Applied software engineering that ships fast, then hardens — foundations first, surface second."
+     }
+    ],
+    "caption": "Move the pointer around the dial, or tap a point. Each point is a pillar of the work."
+   }
+  }
+ },
+ "systemMap": {
+  "page": "systems",
+  "props": {
+   "hero": {
+    "scene": "hex-lattice",
+    "intensity": "hero",
+    "eyebrow": "Systems / Overview",
+    "title": "Seven areas where we build.",
+    "intro": "Management layers, commerce infrastructure, automation, dashboards, data interfaces, client-facing portals and research — described as design areas, not as a count of deployed products.",
+    "code": "SYS.00",
+    "status": "DESIGN AREAS",
+    "actions": [
+     {
+      "label": "Selected work",
+      "to": "/work"
+     },
+     {
+      "label": "Development team",
+      "to": "/north",
+      "variant": "outline"
+     }
+    ],
+    "aside": {
+     "kind": "systemMap",
+     "nodes": [
+      {
+       "id": "cat-01",
+       "code": "SYS.01",
+       "title": "Operational management platforms",
+       "summary": "Structured operating layers for scheduling, communication, records, and multi-role coordination.",
+       "tags": [
+        "Scheduling",
+        "Records",
+        "Roles"
+       ],
+       "glyph": "calendar",
+       "to": "/systems/operational-management",
+       "short": "Ops"
+      },
+      {
+       "id": "cat-02",
+       "code": "SYS.02",
+       "title": "Commerce infrastructure",
+       "summary": "Transaction models, catalog logic, and payment workflow design.",
+       "tags": [
+        "Payments",
+        "Catalog",
+        "Workflows"
+       ],
+       "glyph": "cart",
+       "to": "/systems/commerce-infrastructure",
+       "short": "Orders"
+      },
+      {
+       "id": "cat-03",
+       "code": "SYS.03",
+       "title": "Automation systems",
+       "summary": "Orchestration patterns for reducing manual steps and making state predictable.",
+       "tags": [
+        "Orchestration",
+        "Workflows"
+       ],
+       "glyph": "loop",
+       "to": "/systems/automation",
+       "short": "Auto"
+      },
+      {
+       "id": "cat-04",
+       "code": "SYS.04",
+       "title": "Internal dashboards",
+       "summary": "Control surfaces that help people read operational data and make decisions.",
+       "tags": [
+        "Data",
+        "Control"
+       ],
+       "glyph": "terminal",
+       "to": "/systems/internal-platforms",
+       "short": "Console"
+      },
+      {
+       "id": "cat-05",
+       "code": "SYS.05",
+       "title": "Data interfaces",
+       "summary": "Readable, queryable surfaces over complex records and relationships.",
+       "tags": [
+        "Records",
+        "Query"
+       ],
+       "glyph": "database",
+       "to": "/systems/data-interfaces",
+       "short": "Data"
+      },
+      {
+       "id": "cat-06",
+       "code": "SYS.06",
+       "title": "Client-facing portals",
+       "summary": "Scoped, role-aware access points between an operation and the people it serves.",
+       "tags": [
+        "Access",
+        "Roles"
+       ],
+       "glyph": "gate",
+       "to": "/systems/client-portals",
+       "short": "Portals"
+      },
+      {
+       "id": "cat-07",
+       "code": "SYS.07",
+       "title": "Research systems",
+       "summary": "Visible interface, motion, and Canvas studies in this website.",
+       "tags": [
+        "Research",
+        "Lab"
+       ],
+       "glyph": "lens",
+       "to": "/systems/research-systems",
+       "short": "Lab"
+      }
+     ],
+     "links": [
+      [
+       "cat-01",
+       "cat-06"
+      ],
+      [
+       "cat-01",
+       "cat-03"
+      ],
+      [
+       "cat-01",
+       "cat-02"
+      ],
+      [
+       "cat-01",
+       "cat-04"
+      ],
+      [
+       "cat-04",
+       "cat-05"
+      ],
+      [
+       "cat-03",
+       "cat-05"
+      ],
+      [
+       "cat-02",
+       "cat-05"
+      ],
+      [
+       "cat-06",
+       "cat-05"
+      ],
+      [
+       "cat-07",
+       "cat-04"
+      ]
+     ],
+     "core": {
+      "title": "Shared core",
+      "line": "Records · Roles"
+     },
+     "caption": "Which areas lean on which — a design model, not a diagram of deployed software."
+    }
+   },
+   "aside": {
+    "kind": "systemMap",
+    "nodes": [
+     {
+      "id": "cat-01",
+      "code": "SYS.01",
+      "title": "Operational management platforms",
+      "summary": "Structured operating layers for scheduling, communication, records, and multi-role coordination.",
+      "tags": [
+       "Scheduling",
+       "Records",
+       "Roles"
+      ],
+      "glyph": "calendar",
+      "to": "/systems/operational-management",
+      "short": "Ops"
+     },
+     {
+      "id": "cat-02",
+      "code": "SYS.02",
+      "title": "Commerce infrastructure",
+      "summary": "Transaction models, catalog logic, and payment workflow design.",
+      "tags": [
+       "Payments",
+       "Catalog",
+       "Workflows"
+      ],
+      "glyph": "cart",
+      "to": "/systems/commerce-infrastructure",
+      "short": "Orders"
+     },
+     {
+      "id": "cat-03",
+      "code": "SYS.03",
+      "title": "Automation systems",
+      "summary": "Orchestration patterns for reducing manual steps and making state predictable.",
+      "tags": [
+       "Orchestration",
+       "Workflows"
+      ],
+      "glyph": "loop",
+      "to": "/systems/automation",
+      "short": "Auto"
+     },
+     {
+      "id": "cat-04",
+      "code": "SYS.04",
+      "title": "Internal dashboards",
+      "summary": "Control surfaces that help people read operational data and make decisions.",
+      "tags": [
+       "Data",
+       "Control"
+      ],
+      "glyph": "terminal",
+      "to": "/systems/internal-platforms",
+      "short": "Console"
+     },
+     {
+      "id": "cat-05",
+      "code": "SYS.05",
+      "title": "Data interfaces",
+      "summary": "Readable, queryable surfaces over complex records and relationships.",
+      "tags": [
+       "Records",
+       "Query"
+      ],
+      "glyph": "database",
+      "to": "/systems/data-interfaces",
+      "short": "Data"
+     },
+     {
+      "id": "cat-06",
+      "code": "SYS.06",
+      "title": "Client-facing portals",
+      "summary": "Scoped, role-aware access points between an operation and the people it serves.",
+      "tags": [
+       "Access",
+       "Roles"
+      ],
+      "glyph": "gate",
+      "to": "/systems/client-portals",
+      "short": "Portals"
+     },
+     {
+      "id": "cat-07",
+      "code": "SYS.07",
+      "title": "Research systems",
+      "summary": "Visible interface, motion, and Canvas studies in this website.",
+      "tags": [
+       "Research",
+       "Lab"
+      ],
+      "glyph": "lens",
+      "to": "/systems/research-systems",
+      "short": "Lab"
+     }
+    ],
+    "links": [
+     [
+      "cat-01",
+      "cat-06"
+     ],
+     [
+      "cat-01",
+      "cat-03"
+     ],
+     [
+      "cat-01",
+      "cat-02"
+     ],
+     [
+      "cat-01",
+      "cat-04"
+     ],
+     [
+      "cat-04",
+      "cat-05"
+     ],
+     [
+      "cat-03",
+      "cat-05"
+     ],
+     [
+      "cat-02",
+      "cat-05"
+     ],
+     [
+      "cat-06",
+      "cat-05"
+     ],
+     [
+      "cat-07",
+      "cat-04"
+     ]
+    ],
+    "core": {
+     "title": "Shared core",
+     "line": "Records · Roles"
+    },
+    "caption": "Which areas lean on which — a design model, not a diagram of deployed software."
+   }
+  }
+ },
+ "basketAside": {
+  "page": "work/customer-product",
+  "props": {
+   "hero": {
+    "scene": "commerce-pipeline",
+    "intensity": "hero",
+    "eyebrow": "Work / 03 · Supporting study",
+    "title": "From first look to a confirmed purchase.",
+    "intro": "A customer-facing product built around the shopping and transaction experience. It is unnamed by design.",
+    "code": "WRK.03",
+    "status": "SUPPORTING STUDY",
+    "actions": [
+     {
+      "label": "Next: Internal CRM",
+      "to": "/work/internal-crm"
+     },
+     {
+      "label": "All work",
+      "to": "/work",
+      "variant": "outline"
+     }
+    ],
+    "aside": {
+     "kind": "basketAside",
+     "caption": "Abstract tiles — tap to add"
+    }
+   },
+   "aside": {
+    "kind": "basketAside",
+    "caption": "Abstract tiles — tap to add"
+   }
+  }
+ },
+ "dotField": {
+  "page": "work/internal-crm",
+  "props": {
+   "hero": {
+    "scene": "data-rain",
+    "intensity": "hero",
+    "eyebrow": "Work / 04 · Supporting study",
+    "title": "Built for very large data sets.",
+    "intro": "An internal CRM and data system, designed to stay usable when the data set is very large. It is internal — not a public product.",
+    "code": "WRK.04",
+    "status": "SUPPORTING STUDY",
+    "actions": [
+     {
+      "label": "Back to the first project",
+      "to": "/work/musebase"
+     },
+     {
+      "label": "All work",
+      "to": "/work",
+      "variant": "outline"
+     }
+    ],
+    "aside": {
+     "kind": "dotField",
+     "caption": "A dense field — hover to focus"
+    }
+   },
+   "aside": {
+    "kind": "dotField",
+    "caption": "A dense field — hover to focus"
+   }
+  }
+ },
+ "logoPlate": {
+  "page": "work/musebase",
+  "props": {
+   "hero": {
+    "scene": "musebase-coordination",
+    "intensity": "hero",
+    "eyebrow": "Work / 01 · Primary project",
+    "title": "Coordination, held in one place.",
+    "intro": "Musebase is an advanced coordination application. It brings scheduling, communication and records into one environment, with access scoped to each role.",
+    "code": "WRK.01",
+    "status": "CASE STUDY",
+    "actions": [
+     {
+      "label": "Next: YK Engine",
+      "to": "/work/yk-engine"
+     },
+     {
+      "label": "All work",
+      "to": "/work",
+      "variant": "outline"
+     }
+    ],
+    "aside": {
+     "kind": "logoPlate",
+     "caption": "Musebase"
+    }
+   },
+   "aside": {
+    "kind": "logoPlate",
+    "caption": "Musebase"
+   }
+  }
+ },
+ "engineAside": {
+  "page": "work/yk-engine",
+  "props": {
+   "hero": {
+    "scene": "isometric-infra",
+    "intensity": "hero",
+    "eyebrow": "Work / 02 · Primary project",
+    "title": "A proprietary 2D engine.",
+    "intro": "YK Engine is a proprietary 2D engine with an editor, a standalone player and project export tooling.",
+    "code": "WRK.02",
+    "status": "CASE STUDY",
+    "actions": [
+     {
+      "label": "View the repository",
+      "href": "https://github.com/Adventnl/YK-Engine"
+     },
+     {
+      "label": "All work",
+      "to": "/work",
+      "variant": "outline"
+     }
+    ],
+    "aside": {
+     "kind": "engineAside",
+     "caption": "Illustration of an engine viewport"
+    }
+   },
+   "aside": {
+    "kind": "engineAside",
+    "caption": "Illustration of an engine viewport"
+   }
+  }
+ },
+ "caseDeck": {
+  "page": "work",
+  "props": {
+   "hero": {
+    "scene": "node-compression",
+    "intensity": "hero",
+    "eyebrow": "Hanoryx Systems / Work",
+    "title": "Selected work.",
+    "intro": "Two primary projects and two quieter supporting studies — described plainly, without client names, dates or figures we cannot stand behind.",
+    "code": "WRK.00",
+    "status": "CASE STUDIES",
+    "actions": [
+     {
+      "label": "Musebase",
+      "to": "/work/musebase"
+     },
+     {
+      "label": "YK Engine",
+      "to": "/work/yk-engine",
+      "variant": "outline"
+     }
+    ],
+    "aside": {
+     "kind": "caseDeck"
+    }
+   },
+   "aside": {
+    "kind": "caseDeck"
+   }
+  }
+ }
+}

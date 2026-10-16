@@ -1,0 +1,177 @@
+/* 41 · BEAMS — a trace of light running down the still side, and forty-two swatches of light on a dark ground. */
+
+@property --bmA { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+@keyframes bmSpin { to { --bmA: 360deg; } }
+@keyframes bmRun { from { stroke-dashoffset: var(--len); } to { stroke-dashoffset: -100; } }
+@keyframes bmSway { 0%, 100% { transform: translateY(var(--size-negative-3px)); } 50% { transform: translateY(var(--size-3px)); } }
+@keyframes bmPad { 0%, 40% { fill: var(--c-extracted-1a1c22); filter: none; } 55% { fill: var(--c-extracted-ff6b6b); filter: drop-shadow(0 0 var(--size-4px) var(--c-red-bright)); } 100% { fill: var(--c-extracted-1a1c22); filter: none; } }
+@keyframes bmDown { from { top: -12%; } to { top: 100%; } }
+@keyframes bmAcross { from { transform: translateX(-120%); } to { transform: translateX(120%); } }
+@keyframes bmDrift { 0%, 100% { transform: translate(-20%, -10%); } 50% { transform: translate(40%, 30%); } }
+@keyframes bmShoot { from { transform: translate(-30%, -10%) rotate(-20deg); opacity: 0; } 10% { opacity: 1; } to { transform: translate(480%, 90%) rotate(-20deg); opacity: 0; } }
+@keyframes bmSpinG { to { transform: rotate(360deg); } }
+@keyframes bmSine { to { transform: translateX(var(--size-negative-30px)); } }
+@keyframes bmTrail { from { stroke-dashoffset: 100; } 60%, 100% { stroke-dashoffset: -100; } }
+@keyframes bmRing { from { transform: translate(-50%, -50%) scale(0.1); opacity: 0.9; } to { transform: translate(-50%, -50%) scale(1); opacity: 0; } }
+@keyframes bmDraw { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+@keyframes bmPin { from { opacity: 0; transform: scale(0.2); } 80% { opacity: 0; } to { opacity: 1; transform: scale(1); } }
+@keyframes bmRun2 { 0% { opacity: 0.15; } 50% { opacity: 1; } 100% { opacity: 0.15; } }
+@keyframes bmFlash { 0% { opacity: 0; transform: scaleX(0.1); } 25% { opacity: 1; transform: scaleX(1); } 100% { opacity: 0; transform: scaleX(1.2); } }
+@keyframes bmStrobe { 0%, 100% { opacity: 0.1; } 12% { opacity: 1; } }
+@keyframes bmFlick { 0%, 19%, 22%, 62%, 64%, 100% { opacity: 1; } 20%, 63% { opacity: 0.4; } }
+
+/* ---- the still side ---- */
+.vis { display: grid; gap: 3cqmin; justify-items: center; width: min(46cqw, 52cqh); }
+.vis svg { width: 100%; height: auto; max-height: 82cqh; overflow: visible; }
+.visBase { fill: none; stroke: var(--c-white-20); stroke-width: 1.2; stroke-linejoin: round; }
+.visLit { fill: none; stroke: var(--c-extracted-ff5a5a); stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; stroke-dasharray: 100; stroke-dashoffset: calc((1 - var(--pin)) * 100); filter: drop-shadow(0 0 var(--size-3px) var(--c-red-bright)); }
+.visPad { stroke: var(--c-white-30); stroke-width: 0.8; fill: color-mix(in srgb, var(--c-extracted-ff5a5a) calc(clamp(0, calc((var(--pin) - var(--at) + 0.12) * 12), 1) * 100%), var(--c-extracted-1a1c22)); }
+.vis small { font: 500 2.2cqmin var(--font-mono); letter-spacing: var(--size-0p22em); color: var(--c-white-50); }
+
+/* ---- shared ---- */
+.sw { position: relative; display: block; width: var(--size-11rem); height: var(--size-6p4rem); padding: 0; border: var(--size-1px) solid var(--c-white-12); border-radius: var(--size-6px); background: var(--c-extracted-07080a); color: inherit; overflow: hidden; }
+button.sw { cursor: pointer; }
+.sw:focus-visible { outline: var(--size-2px) solid var(--c-red); outline-offset: var(--size-3px); }
+.sv { position: absolute; inset: 0; width: 100%; height: 100%; }
+.base { fill: none; stroke: var(--c-white-20); stroke-width: 1; stroke-linejoin: round; }
+.lit { fill: none; stroke: var(--c-extracted-ff5a5a); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: var(--len, 14) calc(100 - var(--len, 14)); stroke-dashoffset: var(--len, 14); animation: bmRun var(--dur-extracted-2p4s) linear infinite; filter: drop-shadow(0 0 var(--size-2p5px) var(--c-red-bright)); }
+.dot { fill: var(--c-extracted-ffe08a); filter: drop-shadow(0 0 var(--size-3px) var(--c-extracted-ffb84d)); }
+.white { fill: none; stroke: var(--c-white); stroke-width: 1.4; filter: drop-shadow(0 0 var(--size-3px) var(--c-white)); transition: opacity var(--dur-extracted-0p3s); }
+.glass { fill: var(--c-extracted-rgba-160-200-255-0p18); stroke: var(--c-extracted-rgba-200-225-255-0p8); stroke-width: 0.8; }
+.mirror { fill: var(--c-extracted-cfd8ff); }
+.rail { position: absolute; left: var(--size-0p8rem); right: var(--size-0p8rem); bottom: var(--size-0p45rem); height: var(--size-0p25rem); border-radius: var(--r-xs); background: var(--c-white-20); cursor: ew-resize; touch-action: none; }
+.rail:focus-visible { outline: var(--size-2px) solid var(--c-red); outline-offset: var(--size-4px); }
+.rail u { position: absolute; top: 50%; width: var(--size-0p7rem); height: var(--size-0p7rem); margin: var(--size-negative-0p35rem) 0 0 var(--size-negative-0p35rem); border-radius: 50%; background: var(--c-white); box-shadow: 0 0 var(--size-6px) var(--c-extracted-rgba-255-255-255-0p6); }
+.railV { left: auto; right: var(--size-0p6rem); top: var(--size-0p8rem); bottom: var(--size-0p8rem); width: var(--size-0p25rem); height: auto; cursor: ns-resize; }
+.railV u { top: auto; left: 50%; margin: 0 0 var(--size-negative-0p35rem) var(--size-negative-0p35rem); }
+
+/* 03 pads */
+.pad { fill: var(--c-extracted-1a1c22); stroke: var(--c-white-30); stroke-width: 0.8; animation: bmPad var(--dur-extracted-2p4s) linear infinite; }
+.via { fill: var(--c-extracted-07080a); stroke: var(--c-extracted-ff5a5a); stroke-width: 1; }
+
+/* 06 / 37 strands */
+.strand { fill: none; stroke-width: 1.2; stroke-linecap: round; opacity: 0.85; filter: drop-shadow(0 0 var(--size-2px) currentColor); animation: bmSway var(--dur-extracted-2p8s) ease-in-out infinite; }
+
+/* 07 neon */
+.neon { fill: none; stroke: var(--c-extracted-ff5ad8); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 var(--size-4px) var(--c-extracted-ff5ad8)) drop-shadow(0 0 var(--size-10px) var(--c-extracted-ff2bd6)); transition: opacity var(--dur-extracted-0p3s), filter var(--dur-extracted-0p3s); animation: bmFlick var(--dur-extracted-4p5s) linear infinite; }
+.neon[data-on='false'] { opacity: 0.18; filter: none; animation: none; }
+
+/* 08 pipe */
+.pipe { position: absolute; left: var(--size-0p8rem); right: var(--size-0p8rem); top: 50%; height: var(--size-1rem); margin-top: var(--size-negative-0p5rem); border-radius: var(--size-99px); background: linear-gradient(180deg, var(--c-extracted-rgba-255-255-255-0p18), var(--c-extracted-rgba-255-255-255-0p02) 50%, var(--c-white-12)); border: var(--size-1px) solid var(--c-white-20); overflow: hidden; }
+.pipe::after { content: ''; position: absolute; top: 0; bottom: 0; width: 40%; background: linear-gradient(90deg, transparent, var(--c-extracted-rgba-255-90-90-0p85), transparent); animation: bmAcross var(--dur-extracted-2s) linear infinite; }
+
+/* 09 laser grid */
+.lgrid { position: absolute; inset: 0; background: repeating-linear-gradient(90deg, var(--c-extracted-rgba-255-70-70-0p55) 0 var(--size-1px), transparent var(--size-1px) var(--size-1p1rem)), repeating-linear-gradient(0deg, var(--c-extracted-rgba-255-70-70-0p55) 0 var(--size-1px), transparent var(--size-1px) var(--size-1p1rem)); mask: linear-gradient(90deg, transparent 0 20%, var(--c-extracted-000000) 40% 60%, transparent 80%) 0 0 / 300% 100%; animation: bmGridSweep var(--dur-extracted-3s) linear infinite; }
+@keyframes bmGridSweep { from { mask-position: 100% 0; } to { mask-position: 0 0; } }
+
+/* 10 tripwire */
+.wire { position: absolute; left: 6%; right: 6%; top: 50%; height: var(--size-2px); background: var(--c-extracted-ff3b3b); box-shadow: 0 0 var(--size-8px) var(--c-extracted-ff3b3b); transition: opacity var(--dur-1); }
+.wire[data-cut='true'] { opacity: 0.15; }
+.emit { position: absolute; top: 50%; width: var(--size-0p5rem); height: var(--size-1p2rem); margin-top: var(--size-negative-0p6rem); border-radius: var(--r-xs); background: var(--c-extracted-3a3b42); }
+.alarm { position: absolute; left: 0; right: 0; bottom: var(--size-0p5rem); color: var(--c-extracted-4ade80); font: 700 var(--size-0p5rem) var(--font-mono); letter-spacing: var(--size-0p24em); text-align: center; }
+.alarm[data-cut='true'] { color: var(--c-extracted-ff6b6b); }
+
+/* 11 radar */
+.radar { position: absolute; left: 50%; top: 50%; width: var(--size-5p6rem); height: var(--size-5p6rem); margin: var(--size-negative-2p8rem) 0 0 var(--size-negative-2p8rem); border-radius: 50%; background: conic-gradient(from var(--bmA), var(--c-extracted-rgba-74-222-128-0p7), transparent 28%), repeating-radial-gradient(circle, transparent 0 var(--size-0p9rem), var(--c-extracted-rgba-74-222-128-0p3) var(--size-0p9rem) calc(var(--size-0p9rem) + var(--size-1px))); border: var(--size-1px) solid var(--c-extracted-rgba-74-222-128-0p5); animation: bmSpin var(--dur-extracted-3s) linear infinite; }
+
+/* 12 scan */
+.hatch { position: absolute; inset: 0; background: repeating-linear-gradient(0deg, var(--c-white-12) 0 var(--size-1px), transparent var(--size-1px) var(--size-0p45rem)); }
+.scanbar { position: absolute; left: 0; right: 0; height: var(--size-1rem); background: linear-gradient(transparent, var(--c-extracted-rgba-110-231-183-0p5), transparent); box-shadow: 0 0 var(--size-12px) var(--c-extracted-rgba-110-231-183-0p4); animation: bmDown var(--dur-6) linear infinite; }
+
+/* 13 rays */
+.rays { position: absolute; left: 50%; top: 50%; width: var(--size-10rem); height: var(--size-10rem); margin: var(--size-negative-5rem) 0 0 var(--size-negative-5rem); background: repeating-conic-gradient(from var(--bmA), var(--c-extracted-rgba-255-220-120-0p4) 0 4deg, transparent 4deg 14deg); mask: radial-gradient(circle, var(--c-extracted-000000) 5%, transparent 55%); animation: bmSpin var(--dur-extracted-24s) linear infinite; }
+
+/* 14 search light */
+.cone { --x: 0.5; --y: 0.3; background: radial-gradient(ellipse at 50% 120%, var(--c-extracted-1a1c22), var(--c-extracted-07080a) 70%); }
+.cone i { position: absolute; inset: 0; background: conic-gradient(from calc(atan2(calc((var(--x) - 0.5) * 11), calc((1.05 - var(--y)) * 6.4)) - 13deg) at 50% 105%, transparent 0deg, var(--c-extracted-rgba-255-244-200-0p85) 13deg, transparent 26deg, transparent 360deg); filter: blur(var(--size-2px)); }
+.cone b { position: absolute; left: 50%; bottom: var(--size-negative-0p4rem); width: var(--size-1p2rem); height: var(--size-0p8rem); margin-left: var(--size-negative-0p6rem); border-radius: var(--r-sm) var(--r-sm) 0 0; background: var(--c-extracted-3a3b42); }
+
+/* 15 spot */
+.spot { position: absolute; inset: 0; background: conic-gradient(from calc(180deg + var(--ang) - 16deg) at 50% 0%, transparent 0deg, var(--c-extracted-rgba-255-244-200-0p75) 16deg, transparent 32deg, transparent 360deg); filter: blur(var(--size-1p5px)); }
+.lamp { position: absolute; left: 50%; top: var(--size-negative-0p3rem); width: var(--size-1p6rem); height: var(--size-0p7rem); margin-left: var(--size-negative-0p8rem); border-radius: 0 0 var(--size-6px) var(--size-6px); background: var(--c-extracted-3a3b42); }
+
+/* 16 border beam */
+.border { display: grid; place-items: center; border: var(--size-1px) solid transparent; background: linear-gradient(var(--c-black-2), var(--c-black-2)) padding-box, conic-gradient(from var(--bmA), transparent 0 72%, var(--c-red-bright) 90%, var(--c-extracted-ffb84d) 96%, transparent) border-box; animation: bmSpin var(--dur-extracted-3p2s) linear infinite; }
+.border b { font: 800 var(--size-1p6rem) var(--font-sans); letter-spacing: var(--size-0p1em); color: var(--c-white-65); }
+
+/* 17 shine */
+.shine { display: grid; place-items: center; background: var(--c-extracted-1a1c22); }
+.shine span { position: relative; z-index: 1; padding: var(--space-2) var(--size-1p4rem); border-radius: var(--size-99px); background: var(--c-extracted-2a2c34); border: var(--size-1px) solid var(--c-white-20); color: var(--c-white); font: 600 var(--fs-label) var(--font-sans); overflow: hidden; }
+.shine span::after { content: ''; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%; background: linear-gradient(100deg, transparent, var(--c-extracted-rgba-255-255-255-0p5), transparent); transform: skewX(-20deg); transition: left var(--dur-3) var(--ease-out); }
+.shine:hover span::after, .shine:focus-visible span::after { left: 130%; }
+
+/* 18 leaks */
+.leak { position: absolute; width: var(--size-6rem); height: var(--size-6rem); border-radius: 50%; filter: blur(var(--size-18px)); opacity: 0.7; animation: bmDrift var(--dur-extracted-7s) ease-in-out infinite; }
+.leak:nth-child(1) { left: 0; top: 0; background: var(--c-extracted-ff5a5a); } .leak:nth-child(2) { right: 0; bottom: var(--size-negative-1rem); background: var(--c-extracted-ffb84d); animation-delay: var(--dur-extracted-negative-3s); } .leak:nth-child(3) { left: 40%; top: 20%; background: var(--c-extracted-c084fc); animation-delay: var(--dur-extracted-negative-5s); opacity: 0.5; }
+
+/* 19 aurora */
+.aurora { fill: none; stroke-linecap: round; opacity: 0.55; filter: blur(var(--size-2p4px)); animation: bmSway var(--dur-extracted-5s) ease-in-out infinite; }
+
+/* 20 shooting stars */
+.shoot { position: absolute; left: 0; top: var(--y); width: var(--size-3p4rem); height: var(--size-2px); background: linear-gradient(90deg, transparent, var(--c-white)); border-radius: var(--r-xs); animation: bmShoot var(--d) linear infinite; }
+
+/* 21 comet */
+.comet { fill: none; stroke: var(--c-extracted-ffe08a); stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 18 82; animation: bmRun var(--dur-extracted-3s) linear infinite; --len: 18; filter: drop-shadow(0 0 var(--size-3px) var(--c-extracted-ffb84d)); }
+
+/* 22 orbits */
+.spinG { transform-origin: var(--size-55px) var(--size-32px); animation: bmSpinG var(--dur-extracted-6s) linear infinite; }
+
+/* 24 sine */
+.sine { fill: none; stroke-width: 1.8; stroke-linecap: round; filter: drop-shadow(0 0 var(--size-3px) currentColor); animation: bmSine var(--dur-extracted-2p4s) linear infinite; }
+
+/* 26 plexus */
+.plex { --x: 0.5; --y: 0.5; }
+.link { stroke: var(--c-white-20); stroke-width: 0.5; }
+.node { fill: var(--c-extracted-8b8d97); }
+.plex i { position: absolute; left: calc(var(--x) * 100%); top: calc(var(--y) * 100%); width: var(--size-4rem); height: var(--size-4rem); margin: var(--size-negative-2rem) 0 0 var(--size-negative-2rem); border-radius: 50%; background: radial-gradient(circle, var(--c-extracted-rgba-255-90-90-0p5), transparent 65%); pointer-events: none; }
+
+/* 27 ribbon */
+.rib { fill: none; stroke-width: 4; stroke-linecap: round; filter: blur(var(--size-0p4px)); animation: bmSway var(--dur-extracted-4s) ease-in-out infinite; }
+
+/* 29 prism */
+.prism { background: var(--c-extracted-07080a); }
+.fan { stroke-width: 1.8; stroke-linecap: round; filter: drop-shadow(0 0 var(--size-2px) currentColor); transform-origin: var(--size-56px) var(--size-34px); transform: rotate(calc(var(--k) * 4deg)); transition: transform var(--dur-extracted-0p5s) var(--ease-out); }
+.prism:hover .fan, .prism:focus-visible .fan { transform: rotate(calc(var(--k) * 9deg)); }
+
+/* 30 streak */
+.streak { position: absolute; left: 0; right: 0; top: 50%; height: var(--size-3px); background: linear-gradient(90deg, transparent, var(--c-extracted-rgba-110-170-255-0p9) 30%, var(--c-white) 50%, var(--c-extracted-rgba-110-170-255-0p9) 70%, transparent); box-shadow: 0 0 var(--size-14px) var(--c-extracted-rgba-110-170-255-0p7); opacity: 0.35; }
+.streak[data-go='true'] { animation: bmFlash var(--dur-4) var(--ease-out) both; }
+.flare { position: absolute; left: 50%; top: 50%; width: var(--size-0p8rem); height: var(--size-0p8rem); margin: var(--size-negative-0p4rem) 0 0 var(--size-negative-0p4rem); border-radius: 50%; background: var(--c-white); box-shadow: 0 0 var(--size-16px) var(--size-4px) var(--c-extracted-rgba-110-170-255-0p8); }
+
+/* 31 runway */
+.run { position: absolute; left: 0; right: 0; top: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: space-around; padding: var(--space-2) 0; }
+.run i { display: block; width: calc(var(--size-0p5rem) + var(--k) * var(--size-0p5rem)); height: var(--size-3px); border-radius: var(--r-xs); background: var(--c-extracted-ffe08a); box-shadow: 0 0 var(--size-8px) var(--c-extracted-ffb84d); animation: bmRun2 var(--dur-extracted-1p6s) linear infinite; animation-delay: calc(var(--k) * var(--dur-extracted-negative-0p2s)); }
+
+/* 32 rails */
+.rails { position: absolute; left: 0; right: 0; top: 50%; height: var(--size-2p4rem); margin-top: var(--size-negative-1p2rem); background: linear-gradient(transparent 0 8%, var(--c-extracted-rgba-255-90-90-0p8) 8% 14%, transparent 14% 86%, var(--c-extracted-rgba-255-90-90-0p8) 86% 92%, transparent 92%), repeating-linear-gradient(90deg, var(--c-extracted-rgba-255-255-255-0p35) 0 var(--size-2px), transparent var(--size-2px) var(--size-0p8rem)); background-size: 100% 100%, var(--size-0p8rem) 100%; animation: bmRailMove var(--dur-extracted-0p8s) linear infinite; }
+@keyframes bmRailMove { to { background-position: 0 0, var(--size-0p8rem) 0; } }
+
+/* 33 trails */
+.trail { fill: none; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 36 64; filter: drop-shadow(0 0 var(--size-3px) currentColor); animation: bmTrail var(--dur-extracted-3p6s) linear infinite; }
+
+/* 34 harp */
+.harp { display: flex; justify-content: space-evenly; align-items: stretch; background: linear-gradient(var(--c-extracted-07080a), var(--c-extracted-14151a)); }
+.harp button { position: relative; width: var(--size-1p2rem); padding: 0; border: 0; background: transparent; cursor: pointer; }
+.harp button i { position: absolute; left: 50%; top: 0; bottom: 0; width: var(--size-2px); margin-left: var(--size-negative-1px); background: hsl(var(--h), 90%, 62%); box-shadow: 0 0 var(--size-8px) hsl(var(--h), 90%, 60%); opacity: 0.16; transition: opacity var(--dur-1); }
+.harp button[aria-pressed='true'] i { opacity: 1; animation: bmFlick var(--dur-extracted-2p5s) linear infinite; }
+.harp button:focus-visible { outline: var(--size-2px) solid var(--c-red); outline-offset: var(--size-negative-2px); }
+
+/* 38 strobe */
+.bars { position: absolute; inset: 0; display: flex; align-items: stretch; gap: var(--size-0p35rem); padding: var(--size-0p6rem); }
+.bars i { flex: 1; background: linear-gradient(var(--c-white), var(--c-extracted-ff5a5a)); border-radius: var(--r-xs); opacity: 0.12; }
+.bars[data-go='true'] i { animation: bmStrobe var(--dur-4) linear both; animation-delay: calc(var(--k) * var(--dur-extracted-0p06s)); }
+
+/* 39 caustic */
+.caustic { fill: none; stroke: var(--c-extracted-rgba-110-200-255-0p55); stroke-width: 0.9; animation: bmSway var(--dur-extracted-4s) ease-in-out infinite; }
+
+/* 40 tracer */
+.draw { fill: none; stroke: var(--c-extracted-ffe08a); stroke-width: 1.8; stroke-linecap: round; stroke-dasharray: 100; filter: drop-shadow(0 0 var(--size-3px) var(--c-extracted-ffb84d)); animation: bmDraw var(--dur-extracted-1p6s) var(--ease-out) both; }
+.endpin { fill: var(--c-extracted-ff5a5a); transform-box: fill-box; transform-origin: center; animation: bmPin var(--dur-extracted-1p6s) var(--ease-out) both; }
+
+/* 42 rings */
+.hint { position: absolute; left: 0; right: 0; bottom: var(--size-0p5rem); color: var(--c-white-30); font: 700 var(--size-0p5rem) var(--font-mono); letter-spacing: var(--size-0p3em); text-align: center; }
+.ring { position: absolute; width: var(--size-8rem); height: var(--size-8rem); border-radius: 50%; border: var(--size-2px) solid var(--c-extracted-ff6b6b); box-shadow: 0 0 var(--size-10px) var(--c-extracted-rgba-255-90-90-0p5); animation: bmRing var(--dur-5) var(--ease-out) both; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .lit, .strand, .neon, .pipe::after, .lgrid, .radar, .scanbar, .rays, .border, .leak, .aurora, .shoot, .comet, .spinG, .sine, .rib, .run i, .rails, .trail, .harp button i, .caustic { animation: none; }
+}

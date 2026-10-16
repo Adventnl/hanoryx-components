@@ -1,0 +1,76 @@
+/* ============================================================
+   LAYOUT — containers, sections, grids, primitives of structure
+   ============================================================ */
+
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* A full section block with vertical rhythm */
+.section {
+  position: relative;
+  padding-block: var(--section-pad);
+}
+
+/* Min-height hero stage */
+.stage {
+  position: relative;
+  min-height: var(--size-100vh);
+  min-height: var(--size-100svh);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Vertical stacks */
+.stack {
+  display: flex;
+  flex-direction: column;
+}
+.stack-4 { gap: var(--space-4); }
+.stack-5 { gap: var(--space-5); }
+.stack-6 { gap: var(--space-6); }
+
+/* Horizontal clusters */
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+/* Responsive auto grid */
+.grid {
+  display: grid;
+  gap: var(--space-5);
+}
+.grid--3 { grid-template-columns: repeat(3, 1fr); }
+.grid--split {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+}
+
+/* Hairline divider */
+.divider {
+  width: 100%;
+  height: var(--size-1px);
+  border: 0;
+  background: linear-gradient(90deg, transparent, var(--c-line-strong), transparent);
+}
+
+/* Measure-limited prose */
+.measure { max-width: var(--size-62ch); }
+
+/* Responsive collapse */
+@media (max-width: 1024px) {
+  .grid--3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 720px) {
+  .grid--3,
+  .grid--split {
+    grid-template-columns: 1fr;
+  }
+}

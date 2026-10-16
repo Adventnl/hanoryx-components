@@ -1,0 +1,5182 @@
+{
+ "markMisuse": {
+  "page": "company/brand",
+  "props": {
+   "type": "closer",
+   "kind": "markMisuse",
+   "scene": "voronoi-cell",
+   "tag": "End of the brand page",
+   "minHeight": 560,
+   "title": "Six ways not to, and the one way to.",
+   "lede": "Each tile is the real mark, treated the wrong way. The first is how the site shows it.",
+   "tiles": [
+    {
+     "id": "right",
+     "right": true,
+     "name": "As the site shows it",
+     "why": "Square, unaltered, on near-black, with room around it.",
+     "style": {}
+    },
+    {
+     "id": "stretch",
+     "name": "Stretched",
+     "why": "The mark is square. Never squash or widen it.",
+     "style": {
+      "width": "132px",
+      "height": "54px",
+      "objectFit": "fill"
+     }
+    },
+    {
+     "id": "rotate",
+     "name": "Rotated",
+     "why": "It always stands upright.",
+     "style": {
+      "transform": "rotate(18deg)"
+     }
+    },
+    {
+     "id": "recolour",
+     "name": "Recoloured",
+     "why": "The red is the red. Do not shift its hue.",
+     "style": {
+      "filter": "hue-rotate(190deg) saturate(1.6)"
+     }
+    },
+    {
+     "id": "effects",
+     "name": "Glows and shadows",
+     "why": "No effects. The mark is flat.",
+     "style": {
+      "boxShadow": "0 0 28px 8px rgba(255,255,255,0.7)"
+     }
+    },
+    {
+     "id": "crowd",
+     "name": "Crowded",
+     "why": "Keep clear space. Nothing should touch or crop it.",
+     "style": {
+      "transform": "translateX(54px) scale(1.4)"
+     }
+    },
+    {
+     "id": "faint",
+     "name": "Faded",
+     "why": "Do not lower its contrast against the ground.",
+     "style": {
+      "opacity": 0.22
+     }
+    }
+   ],
+   "onward": [
+    {
+     "label": "Press & media",
+     "to": "/company/press"
+    },
+    {
+     "label": "Copyright & marks",
+     "to": "/legal/copyright"
+    }
+   ]
+  }
+ },
+ "fitRadar": {
+  "page": "company/careers",
+  "props": {
+   "type": "closer",
+   "kind": "fitRadar",
+   "scene": "glyph-field",
+   "tag": "End of careers",
+   "minHeight": 620,
+   "title": "Where would you lean?",
+   "lede": "Set how much each area of the work draws you. Nothing is stored or sent; it is a mirror, not a form.",
+   "axes": [
+    {
+     "id": "interfaces",
+     "label": "Interfaces",
+     "short": "UI",
+     "blurb": "Screens that resolve intent in a single read, with motion that explains state.",
+     "to": "/north/interface-lab"
+    },
+    {
+     "id": "systems",
+     "label": "Systems",
+     "short": "SYS",
+     "blurb": "Operational platforms, boundaries and the shape of a whole system.",
+     "to": "/systems"
+    },
+    {
+     "id": "data",
+     "label": "Data at scale",
+     "short": "DATA",
+     "blurb": "Records in their millions, and the views that make them usable.",
+     "to": "/work/internal-crm"
+    },
+    {
+     "id": "engines",
+     "label": "Engines",
+     "short": "ENG",
+     "blurb": "Real-time tools: editors, players and the pipeline between them.",
+     "to": "/work/yk-engine"
+    },
+    {
+     "id": "automation",
+     "label": "Automation",
+     "short": "AUTO",
+     "blurb": "Work that runs without being asked, and tells you when it can’t.",
+     "to": "/systems/automation"
+    }
+   ],
+   "onward": [
+    {
+     "label": "The hiring process",
+     "to": "/company/hiring"
+    },
+    {
+     "label": "How we work",
+     "to": "/company/how-we-work"
+    }
+   ]
+  }
+ },
+ "askTheSite": {
+  "page": "company/faq",
+  "props": {
+   "type": "closer",
+   "kind": "askTheSite",
+   "anchor": "ask",
+   "scene": "trigger-action-pulse",
+   "tag": "End of the questions",
+   "minHeight": 560,
+   "title": "Not here? Ask the whole site.",
+   "lede": "Every page’s title and text is searched, with the same engine as ⌘K, and the best answers are laid out below.",
+   "examples": [
+    "cookies",
+    "idempotency",
+    "hiring",
+    "contrast",
+    "keyboard"
+   ],
+   "onward": [
+    {
+     "label": "The site map",
+     "to": "/sitemap"
+    },
+    {
+     "label": "Glossary",
+     "to": "/resources/glossary"
+    }
+   ]
+  }
+ },
+ "askDeck": {
+  "page": "company/hiring",
+  "props": {
+   "type": "closer",
+   "kind": "askDeck",
+   "scene": "orbital-node",
+   "tag": "End of the hiring process",
+   "minHeight": 620,
+   "title": "Questions you’re welcome to ask.",
+   "lede": "Eight, on cards. Turn one over to see why it is worth asking, and what a good answer sounds like.",
+   "cards": [
+    {
+     "q": "What would a good first six months look like?",
+     "why": "It shows what the company thinks the job is, rather than what the title says.",
+     "listen": "Specific work and specific outcomes, not adjectives."
+    },
+    {
+     "q": "How are decisions made, and written down?",
+     "why": "Decisions that are not recorded get made again.",
+     "listen": "A place where decisions live, and an example of one being reversed."
+    },
+    {
+     "q": "What did the team get wrong recently, and what changed?",
+     "why": "Teams that can name a recent mistake can learn from one.",
+     "listen": "A real, recent, specific example, told without blame."
+    },
+    {
+     "q": "Who reviews my work, and how?",
+     "why": "Review is where you learn the standard.",
+     "listen": "Named practices, not “we trust each other”."
+    },
+    {
+     "q": "What does support look like at three in the morning?",
+     "why": "It shows how much thought has gone into running things, not only building them.",
+     "listen": "Runbooks, ownership, and a view on who should be woken."
+    },
+    {
+     "q": "How do you decide what not to build?",
+     "why": "Saying no is most of the craft.",
+     "listen": "Criteria, and a story about something left out."
+    },
+    {
+     "q": "What do you wish candidates asked?",
+     "why": "It invites the thing they care about most.",
+     "listen": "Enthusiasm, and honest limits."
+    },
+    {
+     "q": "What would make this a bad fit for me?",
+     "why": "It saves everyone time.",
+     "listen": "Candour about the downsides."
+    }
+   ],
+   "onward": [
+    {
+     "label": "Careers",
+     "to": "/company/careers"
+    },
+    {
+     "label": "How we work",
+     "to": "/company/how-we-work"
+    }
+   ]
+  }
+ },
+ "prepSheet": {
+  "page": "company/how-we-work",
+  "props": {
+   "type": "closer",
+   "kind": "prepSheet",
+   "anchor": "prep",
+   "scene": "build-pipeline",
+   "tag": "End of how we work",
+   "minHeight": 640,
+   "title": "Before a first conversation.",
+   "lede": "Not a form. A sheet of the things worth having to hand, so the first hour is spent on the problem. Tick as you go, copy it, or print it.",
+   "sheetTitle": "First-conversation sheet",
+   "groups": [
+    {
+     "name": "The problem",
+     "items": [
+      {
+       "id": "p1",
+       "text": "In two sentences: what is going wrong, or what is missing?"
+      },
+      {
+       "id": "p2",
+       "text": "Who feels it, and how often?"
+      },
+      {
+       "id": "p3",
+       "text": "What happens if nothing changes?"
+      }
+     ]
+    },
+    {
+     "name": "The setting",
+     "items": [
+      {
+       "id": "s1",
+       "text": "The systems, tools and data involved today"
+      },
+      {
+       "id": "s2",
+       "text": "Who owns each of them"
+      },
+      {
+       "id": "s3",
+       "text": "Anything that cannot change, and why"
+      }
+     ]
+    },
+    {
+     "name": "Done",
+     "items": [
+      {
+       "id": "d1",
+       "text": "What would you see if this had worked?"
+      },
+      {
+       "id": "d2",
+       "text": "Who would have to say so?"
+      },
+      {
+       "id": "d3",
+       "text": "What would make you stop?"
+      }
+     ]
+    },
+    {
+     "name": "Practicalities",
+     "items": [
+      {
+       "id": "x1",
+       "text": "Who can decide, and who only needs to be asked"
+      },
+      {
+       "id": "x2",
+       "text": "Anything confidential, and how it may be shared"
+      },
+      {
+       "id": "x3",
+       "text": "Dates that are real, and dates that are hopes"
+      }
+     ]
+    }
+   ],
+   "onward": [
+    {
+     "label": "Insights",
+     "to": "/insights"
+    },
+    {
+     "label": "The readiness check",
+     "to": "/resources/tools/readiness"
+    }
+   ]
+  }
+ },
+ "nameStyle": {
+  "page": "company/press",
+  "props": {
+   "type": "closer",
+   "kind": "nameStyle",
+   "scene": "split-prism",
+   "tag": "End of press & media",
+   "minHeight": 640,
+   "title": "Write it right.",
+   "lede": "Four quick choices. Each is answered the moment you make it.",
+   "questions": [
+    {
+     "id": "q1",
+     "prompt": "The company’s name, on first mention, is…",
+     "options": [
+      "Hanoryx Systems",
+      "Hanoryx-Systems",
+      "HANORYX SYSTEMS INC."
+     ],
+     "answer": 0,
+     "why": "Two words, no hyphen. The site sets it in capitals in places, as a typographic choice, but it is written in sentence case."
+    },
+    {
+     "id": "q2",
+     "prompt": "On second mention it is…",
+     "options": [
+      "HS",
+      "Hanoryx",
+      "Hanoryx Sys."
+     ],
+     "answer": 1,
+     "why": "“Hanoryx” stands for the company. Initials and abbreviations are not used."
+    },
+    {
+     "id": "q3",
+     "prompt": "The development team is called…",
+     "options": [
+      "Hanoryx Dev",
+      "The North Division",
+      "Hanoryx North"
+     ],
+     "answer": 2,
+     "why": "Hanoryx North. It is a team of the company."
+    },
+    {
+     "id": "q4",
+     "prompt": "YK Engine is described as…",
+     "options": [
+      "An open-source game engine",
+      "A proprietary 2D engine",
+      "A web framework"
+     ],
+     "answer": 1,
+     "why": "It is the company’s own 2D engine, with an editor, a player and export tooling. Only its repository is public."
+    }
+   ],
+   "summary": "Hanoryx Systems first, Hanoryx after. The team is Hanoryx North. YK Engine is a proprietary 2D engine. No clients, dates or results.",
+   "onward": [
+    {
+     "label": "Brand",
+     "to": "/company/brand"
+    },
+    {
+     "label": "Copyright & marks",
+     "to": "/legal/copyright"
+    }
+   ]
+  }
+ },
+ "reviewDraw": {
+  "page": "company/principles",
+  "props": {
+   "type": "closer",
+   "kind": "reviewDraw",
+   "scene": "vector-compass",
+   "tag": "End of the principles",
+   "minHeight": 560,
+   "title": "Take one into your next review.",
+   "lede": "Six cards, one for each principle. Draw one and it comes with a question worth asking out loud.",
+   "cards": [
+    {
+     "title": "Controlled complexity",
+     "question": "Which part of this would we be unable to explain in six months, and why are we accepting that?"
+    },
+    {
+     "title": "Interfaces before noise",
+     "question": "What could we take off this screen without anyone noticing it was gone?"
+    },
+    {
+     "title": "Motion with purpose",
+     "question": "What does each movement here say about state, direction or hierarchy? If nothing, why is it moving?"
+    },
+    {
+     "title": "Architecture that can expand",
+     "question": "What would the second use of this look like, and does this design make it cheaper or dearer?"
+    },
+    {
+     "title": "Reveal only what is needed",
+     "question": "Who sees this by default, and who should not?"
+    },
+    {
+     "title": "Production-minded prototypes",
+     "question": "If this prototype were still running in a year, what would break first?"
+    }
+   ],
+   "onward": [
+    {
+     "label": "How we work",
+     "to": "/company/how-we-work"
+    },
+    {
+     "label": "Selected work",
+     "to": "/work"
+    }
+   ]
+  }
+ },
+ "gateRun": {
+  "page": "company/security",
+  "props": {
+   "type": "closer",
+   "kind": "gateRun",
+   "scene": "concentric-gate",
+   "tag": "End of the security approach",
+   "minHeight": 600,
+   "title": "Send a request through the gates.",
+   "lede": "The four review areas are four questions. Pick a request and watch where, if anywhere, it is turned back.",
+   "gates": [
+    {
+     "id": "identity",
+     "label": "Identity",
+     "ask": "Who is making the request?"
+    },
+    {
+     "id": "scope",
+     "label": "Scope",
+     "ask": "What may this identity reach?"
+    },
+    {
+     "id": "ownership",
+     "label": "Ownership",
+     "ask": "Whose record is it?"
+    },
+    {
+     "id": "change",
+     "label": "Change",
+     "ask": "Is the action traceable?"
+    }
+   ],
+   "scenarios": [
+    {
+     "id": "own",
+     "label": "A customer reads their own order",
+     "passes": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "note": "A signed-in customer asks for an order they placed."
+    },
+    {
+     "id": "other",
+     "label": "A customer reads someone else’s order",
+     "passes": [
+      true,
+      true,
+      false,
+      true
+     ],
+     "note": "A signed-in customer asks for an order number that is not theirs.",
+     "why": "The record belongs to someone else, so the read is refused at the service, before any data leaves it."
+    },
+    {
+     "id": "admin",
+     "label": "A signed-out visitor opens the admin screen",
+     "passes": [
+      false,
+      true,
+      true,
+      true
+     ],
+     "note": "Nobody has signed in.",
+     "why": "No identity was presented, so nothing else is even asked."
+    },
+    {
+     "id": "export",
+     "label": "A service account exports every record",
+     "passes": [
+      true,
+      false,
+      true,
+      true
+     ],
+     "note": "A background service asks for everything.",
+     "why": "Its role covers reading one table, not exporting all of them."
+    },
+    {
+     "id": "edit",
+     "label": "An edit that leaves no trace",
+     "passes": [
+      true,
+      true,
+      true,
+      false
+     ],
+     "note": "A permitted edit, made through a path that records nothing.",
+     "why": "An action that cannot be traced to an actor and a time is not allowed to complete."
+    },
+    {
+     "id": "refund",
+     "label": "A support agent refunds an order",
+     "passes": [
+      true,
+      true,
+      true,
+      true
+     ],
+     "note": "An agent with the refund role acts on a customer’s order."
+    }
+   ],
+   "onward": [
+    {
+     "label": "Trust centre",
+     "to": "/trust"
+    },
+    {
+     "label": "Security disclosure",
+     "to": "/trust/disclosure"
+    }
+   ]
+  }
+ },
+ "horizon": {
+  "page": "company/timeline",
+  "props": {
+   "type": "closer",
+   "kind": "horizon",
+   "scene": "timeline-pulse",
+   "tag": "End of the timeline",
+   "minHeight": 600,
+   "title": "Where the story stands.",
+   "lede": "The oldest phase lies deepest; the newest sits just under the surface. Above the line is what has not been told.",
+   "phases": [
+    {
+     "id": "foundations",
+     "code": "PHASE.01",
+     "name": "Foundations",
+     "line": "Structure first.",
+     "body": "Online systems begin beneath the surface: the data model, the boundaries and the roles. The interface comes after the foundations are settled."
+    },
+    {
+     "id": "coordination",
+     "code": "PHASE.02",
+     "name": "Coordination",
+     "line": "Musebase.",
+     "body": "An advanced coordination application that brings people, time and information into one shared environment."
+    },
+    {
+     "id": "customer-experience",
+     "code": "PHASE.03",
+     "name": "Customer experience",
+     "line": "A product for customers.",
+     "body": "A customer-facing product shaped around the shopping and transaction experience, from first look to confirmation."
+    },
+    {
+     "id": "data-at-scale",
+     "code": "PHASE.04",
+     "name": "Data at scale",
+     "line": "An internal data system.",
+     "body": "An internal CRM and data system designed for very large data sets — kept internal, and kept quiet."
+    },
+    {
+     "id": "engine",
+     "code": "PHASE.05",
+     "name": "Engine",
+     "line": "YK Engine.",
+     "body": "A proprietary 2D engine with an editor, a standalone player and export tooling."
+    },
+    {
+     "id": "now",
+     "code": "PHASE.06",
+     "name": "Now",
+     "line": "Live.",
+     "body": "The company, its work and this site are live. New phases are added here as they are ready to be told."
+    }
+   ],
+   "onward": [
+    {
+     "label": "Selected work",
+     "to": "/work"
+    },
+    {
+     "label": "Release notes",
+     "to": "/resources/changelog"
+    }
+   ]
+  }
+ },
+ "endCredits": {
+  "page": "company",
+  "props": {
+   "type": "closer",
+   "kind": "endCredits",
+   "scene": "network-constellation",
+   "tag": "End of the company overview",
+   "minHeight": 560,
+   "title": "Roll the credits.",
+   "lede": "Not people: the disciplines, the work and the parts the company is made from.",
+   "credits": [
+    {
+     "role": "A systems company",
+     "names": [
+      "Hanoryx Systems"
+     ]
+    },
+    {
+     "role": "Development",
+     "names": [
+      "Hanoryx North"
+     ]
+    },
+    {
+     "role": "Architecture",
+     "names": [
+      "Boundaries",
+      "Data models",
+      "Orchestration"
+     ]
+    },
+    {
+     "role": "Interface",
+     "names": [
+      "Components",
+      "Interaction",
+      "Motion"
+     ]
+    },
+    {
+     "role": "Work shown",
+     "names": [
+      "Musebase",
+      "YK Engine",
+      "A customer-facing product",
+      "An internal data system"
+     ]
+    },
+    {
+     "role": "Held to",
+     "names": [
+      "Controlled complexity",
+      "Interfaces before noise",
+      "Motion with purpose"
+     ]
+    },
+    {
+     "role": "Set in",
+     "names": [
+      "Cormorant Garamond",
+      "Inter",
+      "JetBrains Mono"
+     ]
+    },
+    {
+     "role": "Built with",
+     "names": [
+      "React",
+      "GSAP",
+      "Motion",
+      "Lenis"
+     ]
+    },
+    {
+     "role": "And",
+     "names": [
+      "Everyone who read this far."
+     ]
+    }
+   ],
+   "onward": [
+    {
+     "label": "How we work",
+     "to": "/company/how-we-work"
+    },
+    {
+     "label": "Principles",
+     "to": "/company/principles"
+    }
+   ]
+  }
+ },
+ "pageVitals": {
+  "page": "engineering",
+  "props": {
+   "type": "closer",
+   "kind": "pageVitals",
+   "anchor": "vitals",
+   "scene": "command-terminal",
+   "tag": "End of site engineering",
+   "minHeight": 560,
+   "title": "The page you are on, weighed.",
+   "lede": "Its elements, its requests, its size, its first paint and the frame rate it is managing right now. Every number comes from the browser’s own Performance API; nothing is sent anywhere.",
+   "onward": [
+    {
+     "label": "The stack",
+     "to": "/north/stack"
+    },
+    {
+     "label": "Animation budgets",
+     "to": "/insights/animation-budgets"
+    }
+   ]
+  }
+ },
+ "trySite": {
+  "page": "home",
+  "props": {
+   "type": "closer",
+   "kind": "trySite",
+   "anchor": "try",
+   "scene": "home-core",
+   "tag": "End of the home page",
+   "minHeight": 520,
+   "title": "Now try it.",
+   "lede": "Five things worth doing before you go, each a real control: the search, the shortcuts, blueprint mode, the calm setting, and a page chosen for you.",
+   "onward": [
+    {
+     "label": "Selected work",
+     "to": "/work"
+    },
+    {
+     "label": "Resource centre",
+     "to": "/resources"
+    }
+   ]
+  }
+ },
+ "easePick": {
+  "page": "insights/animation-budgets",
+  "props": {
+   "type": "closer",
+   "kind": "easePick",
+   "anchor": "ease",
+   "scene": "spline-ribbon",
+   "tag": "End of animation budgets",
+   "minHeight": 620,
+   "title": "Open the menu four ways.",
+   "lede": "The same menu, opening on four different curves. Pick the one that feels right, then compare it with the rule of thumb.",
+   "options": [
+    {
+     "id": "linear",
+     "label": "Linear",
+     "css": "linear"
+    },
+    {
+     "id": "in",
+     "label": "Ease-in",
+     "css": "cubic-bezier(0.4, 0, 1, 1)"
+    },
+    {
+     "id": "out",
+     "label": "Ease-out",
+     "css": "cubic-bezier(0, 0, 0.2, 1)"
+    },
+    {
+     "id": "inout",
+     "label": "Ease-in-out",
+     "css": "cubic-bezier(0.4, 0, 0.2, 1)"
+    }
+   ],
+   "answer": "out",
+   "why": "Something that appears in response to a press should start moving at once and settle gently. Ease-out feels immediate; ease-in makes the visitor wait for the movement to begin.",
+   "onward": [
+    {
+     "label": "Motion systems",
+     "to": "/north/motion-systems"
+    },
+    {
+     "label": "Accessibility statement",
+     "to": "/legal/accessibility"
+    },
+    {
+     "label": "All insights",
+     "to": "/insights"
+    }
+   ]
+  }
+ },
+ "deprecationNotice": {
+  "page": "insights/api-contracts",
+  "props": {
+   "type": "closer",
+   "kind": "deprecationNotice",
+   "anchor": "notice",
+   "scene": "data-interface-wave",
+   "tag": "End of API contracts",
+   "minHeight": 640,
+   "title": "Write the notice before you break anything.",
+   "lede": "Say what is going, what replaces it and how long people have. Out come the announcement and the two response headers that let tools notice by themselves.",
+   "onward": [
+    {
+     "label": "Cron, queues and events",
+     "to": "/insights/triggers"
+    },
+    {
+     "label": "Designing for handover",
+     "to": "/insights/handover"
+    },
+    {
+     "label": "All insights",
+     "to": "/insights"
+    }
+   ]
+  }
+ },
+ "logLine": {
+  "page": "insights/audit-trails",
+  "props": {
+   "type": "closer",
+   "kind": "logLine",
+   "anchor": "write",
+   "scene": "timeline-pulse",
+   "tag": "End of audit trails",
+   "minHeight": 640,
+   "title": "Write one entry.",
+   "lede": "Fill in the five things a person will want to know. The server’s part — time, request and source — is added for you, and the entry comes out as a line you can copy. Nothing is stored.",
+   "onward": [
+    {
+     "label": "Roles, permissions and scopes",
+     "to": "/insights/permissions"
+    },
+    {
+     "label": "Data retention",
+     "to": "/legal/retention"
+    },
+    {
+     "label": "All insights",
+     "to": "/insights"
+    }
+   ]
+  }
+ },
+ "readmeMaker": {
+  "page": "insights/handover",
+  "props": {
+   "type": "closer",
+   "kind": "readmeMaker",
+   "anchor": "readme",
+   "scene": "isometric-module",
+   "tag": "End of handover",
+   "minHeight": 700,
+   "title": "Start the README.",
+   "lede": "Choose the sections that apply. The skeleton is assembled beside you, with a prompt under every heading saying what belongs there. Download it and begin on day one.",
+   "sections": [
+    {
+     "id": "what",
+     "name": "What it is",
+     "prompt": "One paragraph: what it does, and who it is for.",
+     "default": true
+    },
+    {
+     "id": "run",
+     "name": "Run it locally",
+     "prompt": "The exact commands, from a clean machine to a working copy.",
+     "default": true
+    },
+    {
+     "id": "config",
+     "name": "Configuration and secrets",
+     "prompt": "Every setting, what it does, and where its value lives. Never the value itself.",
+     "default": true
+    },
+    {
+     "id": "arch",
+     "name": "How it fits together",
+     "prompt": "A picture, and a paragraph: the parts, and where they meet.",
+     "default": true
+    },
+    {
+     "id": "deploy",
+     "name": "Release and rollback",
+     "prompt": "How a change reaches production, and how to undo it.",
+     "default": true
+    },
+    {
+     "id": "tests",
+     "name": "Tests",
+     "prompt": "What runs, how to run it, and what a failure means.",
+     "default": false
+    },
+    {
+     "id": "ops",
+     "name": "Running it",
+     "prompt": "What is monitored, what the alerts mean, and links to the runbooks.",
+     "default": false
+    },
+    {
+     "id": "data",
+     "name": "The data",
+     "prompt": "What each table holds, which are authoritative, and who owns what.",
+     "default": false
+    },
+    {
+     "id": "decisions",
+     "name": "Decisions",
+     "prompt": "Links to the decision records, newest first.",
+     "default": false
+    },
+    {
+     "id": "known",
+     "name": "Known problems",
+     "prompt": "What is fragile or wrong, and how to tell when it bites.",
+     "default": false
+    },
+    {
+     "id": "who",
+     "name": "Who to ask",
+     "prompt": "Roles and names, and what each can answer.",
+     "default": false
+    }
+   ],
+   "onward": [
+    {
+     "label": "Runbooks people actually use",
+     "to": "/insights/runbooks"
+    },
+    {
+     "label": "How we work",
+     "to": "/company/how-we-work"
+    },
+    {
+     "label": "All insights",
+     "to": "/insights"
+    }
+   ]
+  }
+ },
+ "takeawayDeck": {
+  "page": "insights/idempotency",
+  "props": {
+   "type": "closer",
+   "kind": "takeawayDeck",
+   "anchor": "keep",
+   "scene": "transaction-wave",
+   "tag": "End of idempotency",
+   "minHeight": 560,
+   "title": "Five cards worth keeping.",
+   "lede": "The guide, folded down. Page through them with the arrows, or the arrow keys.",
+   "cards": [
+    {
+     "title": "Retries are normal",
+     "body": "Every layer between the person and the database may send a request again. Design for the second copy, not against it."
+    },
+    {
+     "title": "Key the intent",
+     "body": "The client makes one key per intent, and sends it with every attempt. A new key per attempt recognises nothing."
+    },
+    {
+     "title": "One transaction",
+     "body": "Keep the key in the same transaction as the effect, with a unique constraint. If they can disagree, they will."
+    },
+    {
+     "title": "Fingerprint it",
+     "body": "A key is a promise about one request. If it comes back attached to a different one, say so loudly."
+    },
+    {
+     "title": "Test the gap",
+     "body": "Drop the answer after the commit. Send fifty at once. Kill the process halfway. The bugs live between the steps."
+    }
+   ],
+   "onward": [
+    {
+     "label": "Audit trails that answer questions",
+     "to": "/insights/audit-trails"
+    },
+    {
+     "label": "Cron, queues and events",
+     "to": "/insights/triggers"
+    },
+    {
+     "label": "All insights",
+     "to": "/insights"
+    }
+   ]
+  }
+ },
+ "leastPrivilege": {
+  "page": "insights/permissions",
+  "props": {
+   "type": "closer",
+   "kind": "leastPrivilege",
+   "anchor": "least",
+   "scene": "permission-orbit",
+   "tag": "End of permissions",
+   "minHeight": 640,
+   "title": "How far could it reach?",
+   "lede": "Slide to give a job more powers. The ring shows how much a stolen password, or a slip, could touch. The job only ever needed the first three.",
+   "job": "the nightly stock report",
+   "needed": 3,
+   "powers": [
+    {
+     "name": "Read stock levels",
+     "risk": ""
+    },
+    {
+     "name": "Read product names",
+     "risk": ""
+    },
+    {
+     "name": "Write one report file",
+     "risk": ""
+    },
+    {
+     "name": "Read customer records",
+     "risk": "A stolen key could now read personal data the report never touches."
+    },
+    {
+     "name": "Edit stock levels",
+     "risk": "A bug, or a thief, could change what the business believes it holds."
+    },
+    {
+     "name": "Issue refunds",
+     "risk": "Money could leave the business."
+    },
+    {
+     "name": "Create other accounts",
+     "risk": "An attacker could make themselves a way back in."
+    },
+    {
+     "name": "Change permissions",
+     "risk": "It could grant itself anything else."
+    }
+   ],
+   "onward": [
+    {
+     "label": "Audit trails that answer questions",
+     "to": "/insights/audit-trails"
+    },
+    {
+     "label": "Security approach",
+     "to": "/company/security"
+    },
+    {
+     "label": "All insights",
+     "to": "/insights"
+    }
+   ]
+  }
+ },
+ "pagerCard": {
+  "page": "insights/runbooks",
+  "props": {
+   "type": "closer",
+   "kind": "pagerCard",
+   "anchor": "card",
+   "scene": "command-terminal",
+   "tag": "End of runbooks",
+   "minHeight": 700,
+   "title": "The one-page template.",
+   "lede": "The shape most good runbooks share, on a single card. Read it here, copy it as Markdown, or download it and fill it in for a real service.",
+   "sections": [
+    {
+     "name": "What you are seeing",
+     "hint": "The symptom, in the words of the person who reports it.",
+     "lines": [
+      "The alert text, exactly as it appears",
+      "What a customer or colleague would say",
+      "Which dashboard shows it"
+     ]
+    },
+    {
+     "name": "Is it really this?",
+     "hint": "Two quick checks: one that rules it in, one that rules it out.",
+     "lines": [
+      "A check that confirms the problem",
+      "A check that points to a different runbook"
+     ]
+    },
+    {
+     "name": "Do this first",
+     "hint": "Safe whatever the cause. It buys time and costs little.",
+     "lines": [
+      "The first action",
+      "What to expect afterwards"
+     ]
+    },
+    {
+     "name": "Then",
+     "hint": "Decisions as questions that can be answered by looking.",
+     "lines": [
+      "A question. Yes → step 2. No → step 4.",
+      "The dramatic steps, held until the cause is known"
+     ]
+    },
+    {
+     "name": "How you will know",
+     "hint": "The graph, the number, the time.",
+     "lines": [
+      "What should fall, and by when",
+      "When to stop because nothing here can help"
+     ]
+    },
+    {
+     "name": "If it did not work",
+     "hint": "Whom to ask, when, and what to say.",
+     "lines": [
+      "Who, by role and name, and how to reach them",
+      "After how many minutes",
+      "The symptom, what was tried, what was seen"
+     ]
+    },
+    {
+     "name": "Afterwards",
+     "hint": "So the next person has an easier night.",
+     "lines": [
+      "What to write down, and where",
+      "Whether this page was right"
+     ]
+    },
+    {
+     "name": "Owner and review",
+     "hint": "A wrong runbook is worse than none.",
+     "lines": [
+      "Owner",
+      "Last reviewed",
+      "Next review"
+     ]
+    }
+   ],
+   "onward": [
+    {
+     "label": "Designing for handover",
+     "to": "/insights/handover"
+    },
+    {
+     "label": "Live status",
+     "to": "/trust/status"
+    },
+    {
+     "label": "All insights",
+     "to": "/insights"
+    }
+   ]
+  }
+ },
+ "whichOne": {
+  "page": "insights/triggers",
+  "props": {
+   "type": "closer",
+   "kind": "whichOne",
+   "anchor": "which",
+   "scene": "trigger-action-pulse",
+   "tag": "End of triggers",
+   "minHeight": 640,
+   "title": "Which one for this job?",
+   "lede": "Three questions about the job in front of you. The answer names the trigger that fits, and why the others do not.",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "What starts the work?",
+     "options": [
+      "The time of day",
+      "Something that happened"
+     ]
+    },
+    {
+     "id": "q2",
+     "text": "Who needs to react?",
+     "options": [
+      "One known worker",
+      "Several, some not yet known"
+     ]
+    },
+    {
+     "id": "q3",
+     "text": "Can one item fail without the others?",
+     "options": [
+      "No — one run covers the lot",
+      "Yes — each item stands alone"
+     ]
+    }
+   ],
+   "outcomes": {
+    "100": {
+     "name": "A queue",
+     "why": "Something happened, one worker handles it, and one pass is enough. A queue smooths the burst and keeps the backlog visible.",
+     "watch": "The age of the oldest job, not only the count."
+    },
+    "101": {
+     "name": "A queue with retries and a dead-letter queue",
+     "why": "Something happened and each item can fail alone. Give each job a limited number of attempts, then set it aside for a person.",
+     "watch": "A dead-letter queue nobody reads is just a bin."
+    },
+    "110": {
+     "name": "Events",
+     "why": "A fact has occurred and several parts need to react, some not yet known. Publish it and let them subscribe.",
+     "watch": "The shape of the event is a contract. Version it."
+    },
+    "111": {
+     "name": "Events, with a queue behind each consumer",
+     "why": "A fact, many consumers, and items that can fail alone. Publish the event; give each consumer a queue with its own retries.",
+     "watch": "Replays. Consumers must recognise an event they have already handled."
+    },
+    "000": {
+     "name": "Cron",
+     "why": "The clock is the reason, one worker handles it, and one run covers the lot. This is what cron is for.",
+     "watch": "A cron job that silently stops. Add a heartbeat, and skip a run if the last one is still going."
+    },
+    "001": {
+     "name": "Cron that feeds a queue",
+     "why": "The time starts it, but each item can fail alone. Let cron decide what is due and put one job per item on a queue.",
+     "watch": "Duplicates: a job can arrive twice. Record what is done in the same transaction as the effect."
+    },
+    "010": {
+     "name": "Cron that publishes an event",
+     "why": "The clock starts it, but several parts of the system care. Have the schedule announce a fact, such as “day closed”, and let others react.",
+     "watch": "Consumers that miss the event. Watch each one’s lag."
+    },
+    "011": {
+     "name": "A scheduled event, with a queue behind each consumer",
+     "why": "Time starts it, many react, and each item can fail alone. Publish on a schedule, and give each consumer its own queue.",
+     "watch": "A tangle. Name each event as a fact and give it an id."
+    },
+    "default": {
+     "name": "A queue",
+     "why": "When in doubt, a queue is the most forgiving: it smooths bursts, retries one item at a time and shows its backlog.",
+     "watch": "Make the work safe to repeat."
+    }
+   },
+   "onward": [
+    {
+     "label": "Idempotency in order systems",
+     "to": "/insights/idempotency"
+    },
+    {
+     "label": "APIs people can integrate against",
+     "to": "/insights/api-contracts"
+    },
+    {
+     "label": "All insights",
+     "to": "/insights"
+    }
+   ]
+  }
+ },
+ "randomRead": {
+  "page": "insights",
+  "props": {
+   "type": "closer",
+   "kind": "randomRead",
+   "anchor": "spin",
+   "scene": "network-constellation",
+   "tag": "End of insights",
+   "minHeight": 520,
+   "title": "Can’t choose? Spin for one.",
+   "lede": "A reel of the guide titles turns and lands on one. It never lands on the same one twice in a row.",
+   "keys": [
+    "insights/idempotency",
+    "insights/audit-trails",
+    "insights/permissions",
+    "insights/runbooks",
+    "insights/triggers",
+    "insights/api-contracts",
+    "insights/handover",
+    "insights/animation-budgets"
+   ],
+   "onward": [
+    {
+     "label": "Glossary",
+     "to": "/resources/glossary"
+    },
+    {
+     "label": "Tools",
+     "to": "/resources/tools"
+    }
+   ]
+  }
+ },
+ "sigilMaker": {
+  "page": "lab",
+  "props": {
+   "type": "closer",
+   "kind": "sigilMaker",
+   "anchor": "sigil",
+   "scene": "magnetic-particles",
+   "tag": "End of the visual lab",
+   "minHeight": 640,
+   "title": "Draw a figure from a word.",
+   "lede": "A seeded drawing: the same word always makes the same shape, so it is a signature rather than a random picture. Change the rings and spokes, then download it as an SVG.",
+   "onward": [
+    {
+     "label": "Interface lab",
+     "to": "/north/interface-lab"
+    },
+    {
+     "label": "Motion systems",
+     "to": "/north/motion-systems"
+    }
+   ]
+  }
+ },
+ "fairLine": {
+  "page": "legal/acceptable-use",
+  "props": {
+   "type": "closer",
+   "kind": "fairLine",
+   "scene": "permission-orbit",
+   "tag": "End of acceptable use",
+   "minHeight": 560,
+   "title": "Where is the line?",
+   "lede": "Eight things a visitor might do. Decide for each one, then see how the policy reads it.",
+   "cases": [
+    {
+     "id": "quote",
+     "text": "Quote two sentences from a case study in a blog post, with a link back.",
+     "fine": true,
+     "why": "Short, credited quotation is ordinary use, and linking back is welcome."
+    },
+    {
+     "id": "crawl",
+     "text": "Run a gentle crawler that identifies itself and respects the robots file.",
+     "fine": true,
+     "why": "Gentle, identified automated access that follows the robots file is fine."
+    },
+    {
+     "id": "hammer",
+     "text": "Fetch every page as fast as the connection allows, from several machines at once.",
+     "fine": false,
+     "why": "That could slow the site for other people. Keep the rate reasonable."
+    },
+    {
+     "id": "clone",
+     "text": "Copy the whole site, swap the name, and publish it as your own.",
+     "fine": false,
+     "why": "Presenting the site’s material as your own is not allowed."
+    },
+    {
+     "id": "link",
+     "text": "Link to the Principles page from a newsletter.",
+     "fine": true,
+     "why": "Linking and sharing are welcome."
+    },
+    {
+     "id": "probe",
+     "text": "Spot a way to read something that isn’t public, and keep reading it to see how far it goes.",
+     "fine": false,
+     "why": "Report it instead of using it. The disclosure page says how."
+    },
+    {
+     "id": "print",
+     "text": "Print the privacy notice to PDF and keep it for your records.",
+     "fine": true,
+     "why": "Printing and saving pages for your own reference is welcome."
+    },
+    {
+     "id": "pose",
+     "text": "Register a lookalike domain and email people as “Hanoryx Systems”.",
+     "fine": false,
+     "why": "Impersonating the company is not allowed, and may be unlawful."
+    }
+   ],
+   "onward": [
+    {
+     "label": "Linking to this site",
+     "to": "/legal/linking"
+    },
+    {
+     "label": "Security disclosure",
+     "to": "/trust/disclosure"
+    }
+   ]
+  }
+ },
+ "prefsPanel": {
+  "page": "legal/accessibility",
+  "props": {
+   "type": "closer",
+   "kind": "prefsPanel",
+   "anchor": "display",
+   "scene": "architectural-grid",
+   "tag": "End of accessibility",
+   "minHeight": 520,
+   "title": "Tune the site to you.",
+   "lede": "Five settings you can change right now. They apply until you reload and are not stored.",
+   "onward": [
+    {
+     "label": "Feedback & complaints",
+     "to": "/legal/complaints"
+    },
+    {
+     "label": "Keyboard shortcuts",
+     "to": "/legal/accessibility#keys"
+    }
+   ]
+  }
+ },
+ "parcelTrack": {
+  "page": "legal/complaints",
+  "props": {
+   "type": "closer",
+   "kind": "parcelTrack",
+   "scene": "workflow-river",
+   "tag": "End of complaints",
+   "minHeight": 560,
+   "title": "Follow a report through.",
+   "lede": "Four stages, no promises about how long each takes. Step through to see what happens at each.",
+   "stages": [
+    {
+     "id": "received",
+     "label": "Received",
+     "line": "It lands in the company’s mailbox like any email.",
+     "who": "Automatic"
+    },
+    {
+     "id": "read",
+     "label": "Read",
+     "line": "Someone reads it and, if it describes a fault, tries to reproduce it.",
+     "who": "A person at the company"
+    },
+    {
+     "id": "answered",
+     "label": "Answered",
+     "line": "You are told what was found and what will change, or why nothing will.",
+     "who": "A person at the company"
+    },
+    {
+     "id": "followed",
+     "label": "Followed up",
+     "line": "The fix goes into the site, and the accessibility statement or documents are updated if they need it.",
+     "who": "The development team"
+    }
+   ],
+   "onward": [
+    {
+     "label": "Accessibility statement",
+     "to": "/legal/accessibility"
+    },
+    {
+     "label": "Security disclosure",
+     "to": "/trust/disclosure"
+    }
+   ]
+  }
+ },
+ "purge": {
+  "page": "legal/cookies",
+  "props": {
+   "type": "closer",
+   "kind": "purge",
+   "scene": "topology-pulse",
+   "tag": "End of storage",
+   "minHeight": 520,
+   "title": "Leave nothing behind.",
+   "lede": "One press removes every item this site keeps in your browser. It touches nothing that belongs to another site.",
+   "onward": [
+    {
+     "label": "Privacy",
+     "to": "/legal/privacy"
+    },
+    {
+     "label": "Data retention",
+     "to": "/legal/retention"
+    }
+   ]
+  }
+ },
+ "markDesk": {
+  "page": "legal/copyright",
+  "props": {
+   "type": "closer",
+   "kind": "markDesk",
+   "scene": "glyph-field",
+   "tag": "End of copyright",
+   "minHeight": 560,
+   "title": "May I…?",
+   "lede": "Pick what you would like to do. The desk answers in one line, and says what to do next.",
+   "cases": [
+    {
+     "id": "link",
+     "label": "Link to a page",
+     "verdict": "Yes",
+     "tone": "yes",
+     "line": "Linking is welcome. Use the page’s own title as the link text.",
+     "next": {
+      "label": "How to link well",
+      "to": "/legal/linking"
+     }
+    },
+    {
+     "id": "quote",
+     "label": "Quote a paragraph",
+     "verdict": "Briefly",
+     "tone": "maybe",
+     "line": "Short, credited quotation is ordinary. Say where it came from and link back.",
+     "next": null
+    },
+    {
+     "id": "name",
+     "label": "Name the company in a talk",
+     "verdict": "Yes",
+     "tone": "yes",
+     "line": "Referring to the company by name to describe it accurately is fine. Don’t imply endorsement.",
+     "next": {
+      "label": "Press & media",
+      "to": "/company/press"
+     }
+    },
+    {
+     "id": "logo",
+     "label": "Show the mark on my site",
+     "verdict": "Ask first",
+     "tone": "maybe",
+     "line": "Showing the mark can suggest a connection. Ask first, and say how it will appear.",
+     "next": {
+      "label": "Brand page",
+      "to": "/company/brand"
+     }
+    },
+    {
+     "id": "code",
+     "label": "Reuse the site’s code",
+     "verdict": "Ask first",
+     "tone": "maybe",
+     "line": "The site’s own code belongs to the company. The third-party libraries under it have their own licences.",
+     "next": {
+      "label": "Licences & notices",
+      "to": "/trust/licences"
+     }
+    },
+    {
+     "id": "copy",
+     "label": "Copy the whole site",
+     "verdict": "No",
+     "tone": "no",
+     "line": "Copying the site to publish as your own is not allowed.",
+     "next": null
+    },
+    {
+     "id": "fonts",
+     "label": "Use the same typefaces",
+     "verdict": "Yes",
+     "tone": "yes",
+     "line": "They are open fonts from their designers. Check each licence; none of it is the company’s to grant.",
+     "next": null
+    }
+   ],
+   "onward": [
+    {
+     "label": "Acceptable use",
+     "to": "/legal/acceptable-use"
+    }
+   ]
+  }
+ },
+ "finePrint": {
+  "page": "legal/disclaimer",
+  "props": {
+   "type": "closer",
+   "kind": "finePrint",
+   "scene": "redaction-matrix",
+   "tag": "End of disclaimers",
+   "minHeight": 520,
+   "title": "The fine print, made readable.",
+   "lede": "Move over it. Or switch the lens on, and read it at a size you can.",
+   "lines": [
+    "The site is provided as it is and as it is available, and may change, move or be withdrawn without notice.",
+    "Descriptions of work are descriptions, not offers, quotations or guarantees of any result.",
+    "Illustrations, demonstrations and sample records are not real systems, real data or real measurements.",
+    "Articles and tools are general information. They are not advice, and they do not know your circumstances.",
+    "Figures measured on your own device describe that device at that moment, and nothing else.",
+    "Links to other sites are not endorsements. Those sites, and the font service, are not under the company’s control.",
+    "Nothing here limits any responsibility that the law does not allow to be limited."
+   ],
+   "onward": [
+    {
+     "label": "Terms of use",
+     "to": "/legal/terms"
+    }
+   ]
+  }
+ },
+ "linkBuilder": {
+  "page": "legal/linking",
+  "props": {
+   "type": "closer",
+   "kind": "linkBuilder",
+   "scene": "network-constellation",
+   "tag": "End of linking",
+   "minHeight": 560,
+   "title": "Build the link.",
+   "lede": "Pick a page and a format. The link, written the way this policy asks, is ready to copy.",
+   "onward": [
+    {
+     "label": "Site map",
+     "to": "/sitemap"
+    }
+   ]
+  }
+ },
+ "receipt": {
+  "page": "legal/privacy",
+  "props": {
+   "type": "closer",
+   "kind": "receipt",
+   "scene": "privacy-quiet-grid",
+   "tag": "End of privacy",
+   "minHeight": 560,
+   "title": "Your receipt.",
+   "lede": "Everything the site is holding for you right now, itemised from your own browser. Nothing on it was sent anywhere.",
+   "onward": [
+    {
+     "label": "Cookies & storage",
+     "to": "/legal/cookies"
+    },
+    {
+     "label": "Third-party services",
+     "to": "/trust/third-parties"
+    }
+   ]
+  }
+ },
+ "lifetimeRuler": {
+  "page": "legal/retention",
+  "props": {
+   "type": "closer",
+   "kind": "lifetimeRuler",
+   "scene": "architectural-grid",
+   "tag": "End of retention",
+   "minHeight": 560,
+   "title": "Slide through time.",
+   "lede": "Drag the marker along the ruler, and watch what is still alive at each moment.",
+   "stops": [
+    {
+     "id": "now",
+     "label": "While you read",
+     "note": "The page is open."
+    },
+    {
+     "id": "leave",
+     "label": "After you leave the page",
+     "note": "You navigate away, or reload."
+    },
+    {
+     "id": "close",
+     "label": "After you close the tab",
+     "note": "The browser clears the tab’s storage."
+    },
+    {
+     "id": "later",
+     "label": "A week later",
+     "note": "Nothing of the site’s remains in your browser."
+    }
+   ],
+   "items": [
+    {
+     "id": "typed",
+     "label": "Text you typed",
+     "lives": [
+      1,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "id": "boot",
+     "label": "hnx.boot.complete",
+     "lives": [
+      1,
+      1,
+      0,
+      0
+     ]
+    },
+    {
+     "id": "audio",
+     "label": "hnx.audio.on",
+     "lives": [
+      1,
+      1,
+      0,
+      0
+     ]
+    },
+    {
+     "id": "recent",
+     "label": "hnx.search.recent",
+     "lives": [
+      1,
+      1,
+      0,
+      0
+     ]
+    },
+    {
+     "id": "cookies",
+     "label": "Cookies from the site",
+     "lives": [
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "id": "records",
+     "label": "Visitor records on the site’s side",
+     "lives": [
+      0,
+      0,
+      0,
+      0
+     ]
+    }
+   ],
+   "onward": [
+    {
+     "label": "Cookies & storage",
+     "to": "/legal/cookies"
+    },
+    {
+     "label": "Privacy",
+     "to": "/legal/privacy"
+    }
+   ]
+  }
+ },
+ "termsCard": {
+  "page": "legal/terms",
+  "props": {
+   "type": "closer",
+   "kind": "termsCard",
+   "scene": "architectural-grid",
+   "tag": "End of terms",
+   "minHeight": 560,
+   "title": "The terms, on one card.",
+   "lede": "Turn it over. One side is what you can do; the other is what not to lean on.",
+   "can": [
+    "Read, use the tools, print what you need",
+    "Link to any page, and say where it came from",
+    "Quote briefly, as the law allows",
+    "Ask to reuse more, through the contact page"
+   ],
+   "cant": [
+    "Treat a description as an offer or a quotation",
+    "Treat a demo or sample record as a real system",
+    "Expect the site to always be there, or always right",
+    "Present the site’s material as your own"
+   ],
+   "onward": [
+    {
+     "label": "Acceptable use",
+     "to": "/legal/acceptable-use"
+    },
+    {
+     "label": "Disclaimers",
+     "to": "/legal/disclaimer"
+    }
+   ]
+  }
+ },
+ "statusLedger": {
+  "page": "legal",
+  "props": {
+   "type": "closer",
+   "kind": "statusLedger",
+   "scene": "architectural-grid",
+   "tag": "End of the legal centre",
+   "minHeight": 520,
+   "title": "Where each document stands.",
+   "lede": "Written, and checked against how the site works. Not yet read by a lawyer.",
+   "columns": [
+    "Plain language",
+    "Checked against the site",
+    "Reviewed by a lawyer",
+    "Registered details added"
+   ],
+   "rows": [
+    {
+     "label": "Privacy",
+     "to": "/legal/privacy",
+     "marks": [
+      true,
+      true,
+      false,
+      false
+     ]
+    },
+    {
+     "label": "Terms",
+     "to": "/legal/terms",
+     "marks": [
+      true,
+      true,
+      false,
+      false
+     ]
+    },
+    {
+     "label": "Cookies & storage",
+     "to": "/legal/cookies",
+     "marks": [
+      true,
+      true,
+      false,
+      true
+     ]
+    },
+    {
+     "label": "Acceptable use",
+     "to": "/legal/acceptable-use",
+     "marks": [
+      true,
+      true,
+      false,
+      true
+     ]
+    },
+    {
+     "label": "Data retention",
+     "to": "/legal/retention",
+     "marks": [
+      true,
+      true,
+      false,
+      true
+     ]
+    },
+    {
+     "label": "Copyright & marks",
+     "to": "/legal/copyright",
+     "marks": [
+      true,
+      true,
+      false,
+      true
+     ]
+    },
+    {
+     "label": "Disclaimers",
+     "to": "/legal/disclaimer",
+     "marks": [
+      true,
+      true,
+      false,
+      true
+     ]
+    },
+    {
+     "label": "Linking",
+     "to": "/legal/linking",
+     "marks": [
+      true,
+      true,
+      false,
+      true
+     ]
+    },
+    {
+     "label": "Accessibility",
+     "to": "/legal/accessibility",
+     "marks": [
+      true,
+      true,
+      false,
+      true
+     ]
+    },
+    {
+     "label": "Complaints",
+     "to": "/legal/complaints",
+     "marks": [
+      true,
+      true,
+      false,
+      true
+     ]
+    }
+   ],
+   "note": "The terms and the privacy notice have one open item each: they cannot name the governing law or a registered address until the company’s details are published.",
+   "onward": [
+    {
+     "label": "Site map",
+     "to": "/sitemap"
+    }
+   ]
+  }
+ },
+ "altTextLab": {
+  "page": "north/accessibility",
+  "props": {
+   "type": "closer",
+   "kind": "altTextLab",
+   "anchor": "alt",
+   "scene": "redaction-matrix",
+   "tag": "End of accessibility",
+   "minHeight": 760,
+   "title": "Write the alt text.",
+   "lede": "Four pictures, four different problems: a chart, an ornament, an icon inside a button and an illustration. Describe each as you would to someone who cannot see it, then check against a few common rules.",
+   "onward": [
+    {
+     "label": "Accessibility statement",
+     "to": "/legal/accessibility"
+    },
+    {
+     "label": "Contrast checker",
+     "to": "/resources/tools/contrast"
+    }
+   ]
+  }
+ },
+ "layerSort": {
+  "page": "north/architecture",
+  "props": {
+   "type": "closer",
+   "kind": "layerSort",
+   "anchor": "sort",
+   "scene": "secure-boundary",
+   "tag": "End of architecture",
+   "minHeight": 780,
+   "title": "Where does it belong?",
+   "lede": "Eight small responsibilities and four layers. Put each in the layer you would give it, then check against the reasoning. There is rarely only one possible answer; the point is to say why.",
+   "layers": [
+    {
+     "id": "interface",
+     "name": "Interface",
+     "blurb": "Shows things and takes input. Presentation, and nothing that has to be true."
+    },
+    {
+     "id": "surface",
+     "name": "Service surface",
+     "blurb": "The typed contracts. Who may ask for what, and what shape the question and answer take."
+    },
+    {
+     "id": "orchestration",
+     "name": "Orchestration",
+     "blurb": "Moves work between states: steps, retries, hand-offs, schedules."
+    },
+    {
+     "id": "data",
+     "name": "Data core",
+     "blurb": "Owns the truth. One writer per record, with rules that cannot be bypassed."
+    }
+   ],
+   "items": [
+    {
+     "id": "a",
+     "text": "Show a price with a currency symbol and two decimals",
+     "layer": "interface",
+     "why": "Presentation is the edge’s job. The data core stores an amount and a currency code, and every screen formats it for its reader."
+    },
+    {
+     "id": "b",
+     "text": "Check that this person may issue a refund",
+     "layer": "surface",
+     "why": "Authorisation belongs at the boundary of the service, decided there for every request, so no path can skip it."
+    },
+    {
+     "id": "c",
+     "text": "Move an order from paid to packed and tell the warehouse",
+     "layer": "orchestration",
+     "why": "Moving work between states, and telling other parts about it, is orchestration. State moves; it is not edited loosely."
+    },
+    {
+     "id": "d",
+     "text": "Make sure two people cannot change one record at the same moment",
+     "layer": "data",
+     "why": "Only the layer that owns the record can guarantee this, with a transaction or a version check that cannot be bypassed."
+    },
+    {
+     "id": "e",
+     "text": "Retry a failed email three times, then give up",
+     "layer": "orchestration",
+     "why": "Retries, back-off and the point of giving up are about the progress of work, not about data or screens."
+    },
+    {
+     "id": "f",
+     "text": "Reject a request that is missing a field it promised to carry",
+     "layer": "surface",
+     "why": "The contract states the shape of a request. Enforcing it at the surface keeps bad input from travelling any further."
+    },
+    {
+     "id": "g",
+     "text": "Remember that this order has been refunded",
+     "layer": "data",
+     "why": "A fact about the world is stored where truth lives, once. Everything else reads it."
+    },
+    {
+     "id": "h",
+     "text": "Grey out the Refund button for people who cannot refund",
+     "layer": "interface",
+     "why": "A courtesy at the edge. The real check is at the surface, because anyone can send the request the button would have sent."
+    }
+   ],
+   "onward": [
+    {
+     "label": "Roles, permissions and scopes",
+     "to": "/insights/permissions"
+    },
+    {
+     "label": "Security approach",
+     "to": "/company/security"
+    }
+   ]
+  }
+ },
+ "blockPicker": {
+  "page": "north/blocks",
+  "props": {
+   "type": "closer",
+   "kind": "blockPicker",
+   "anchor": "picker",
+   "scene": "privacy-quiet-grid",
+   "tag": "End of the page blocks",
+   "minHeight": 820,
+   "title": "What are you trying to show?",
+   "lede": "Say what the page needs to do and the block that suits it comes up, with the data that makes it and the usual wrong choice.",
+   "intents": [
+    {
+     "id": "remark",
+     "label": "One thing that must not be missed",
+     "sees": "A note, a tip, a warning",
+     "use": "callout",
+     "to": "/north/blocks#callout",
+     "why": "It sets one remark apart from the text, worded by kind so that colour is never the only signal.",
+     "notThis": "A banner across the whole site for something that belongs to one page.",
+     "sample": "{\n  type: 'callout',\n  tone: 'warning',\n  heading: 'An open item',\n  body: ['This section is incomplete rather than guessed.'],\n}"
+    },
+    {
+     "id": "records",
+     "label": "Records people will compare",
+     "sees": "Rows and columns",
+     "use": "table",
+     "to": "/north/blocks#catalogue",
+     "why": "A table is the honest shape for records. A screen reader can say which column a cell is in, and a sortable header lets people put the rows in their own order.",
+     "notThis": "A grid of cards, which hides the columns and with them the comparison.",
+     "sample": "{\n  type: 'table',\n  caption: 'Scheduled jobs',\n  head: ['Job', 'Minutes'],\n  rows: [['Nightly export', '12'], ['Archive old records', '48']],\n  sortable: true,\n}"
+    },
+    {
+     "id": "order",
+     "label": "Things in an order",
+     "sees": "A sequence",
+     "use": "timeline",
+     "to": "/north/blocks#timeline",
+     "why": "An ordered list, so the order is announced. Words such as First and Then do the job of dates, and they are never wrong.",
+     "notThis": "Dates the page cannot back up.",
+     "sample": "{\n  type: 'timeline',\n  items: [\n    { when: 'First', title: 'Shape' },\n    { when: 'Then', title: 'Build' },\n    { when: 'Last', title: 'Retire' },\n  ],\n}"
+    },
+    {
+     "id": "questions",
+     "label": "Questions people ask",
+     "sees": "A question and its answer",
+     "use": "faq",
+     "to": "/north/blocks#faq",
+     "why": "Each answer is a disclosure, so a long page of questions stays easy to scan and a closed answer is out of the tab order and the reading order.",
+     "notThis": "A wall of text with the questions in bold.",
+     "sample": "{\n  type: 'faq',\n  openFirst: true,\n  items: [{ q: 'Can I reuse this?', a: ['Ask first.'] }],\n}"
+    },
+    {
+     "id": "choice",
+     "label": "Two ways of doing it",
+     "sees": "This, or that",
+     "use": "compare",
+     "to": "/north/blocks#compare",
+     "why": "Columns that say in words what each side is, so the comparison does not depend on colour.",
+     "notThis": "A table of ticks and crosses, which says less and reads worse aloud.",
+     "sample": "{\n  type: 'compare',\n  columns: [\n    { label: 'Do', title: 'This', tone: 'yes', items: ['Link to the page'] },\n    { label: 'Not', title: 'That', tone: 'no', items: ['Frame the page'] },\n  ],\n}"
+    },
+    {
+     "id": "code",
+     "label": "A piece of code or data",
+     "sees": "Text that must be copied exactly",
+     "use": "snippet",
+     "to": "/north/blocks#snippet",
+     "why": "It keeps every character, offers a copy button and can be scrolled from the keyboard. The colours are a nicety; copying gives exactly what you see.",
+     "notThis": "A screenshot of code, which cannot be copied, searched or read aloud.",
+     "sample": "{\n  type: 'snippet',\n  filename: 'tokens.css',\n  language: 'css',\n  code: ':root { --space-4: 1rem; }',\n}"
+    },
+    {
+     "id": "views",
+     "label": "Several short views of one thing",
+     "sees": "Parallel versions",
+     "use": "tabs",
+     "to": "/north/blocks#tabs",
+     "why": "One panel at a time, with the arrow keys moving between the tabs and the panel shown at once.",
+     "notThis": "Tabs for things a reader must compare, which hide one half of the comparison.",
+     "sample": "{\n  type: 'tabs',\n  label: 'Ways to link',\n  tabs: [{ id: 'html', label: 'HTML', body: ['Use an anchor.'] }],\n}"
+    },
+    {
+     "id": "words",
+     "label": "The company’s own words",
+     "sees": "A statement and its source",
+     "use": "quote",
+     "to": "/north/blocks#quote",
+     "why": "A real blockquote with its source as the caption. It is for words someone said and agreed to have quoted.",
+     "notThis": "An invented testimonial.",
+     "sample": "{\n  type: 'quote',\n  quote: 'Nothing moves to decorate.',\n  cite: 'Hanoryx Systems, Principle 03',\n}"
+    },
+    {
+     "id": "steps",
+     "label": "A list to tick through",
+     "sees": "Progress",
+     "use": "checklist",
+     "to": "/north/blocks#checklist",
+     "why": "Real checkboxes, with a count that is announced politely. The ticks live in the page and nothing is stored.",
+     "notThis": "A numbered list, which shows an order but not how far you have got.",
+     "sample": "{\n  type: 'checklist',\n  done: 'Ready.',\n  items: [{ label: 'The type is known' }, { label: 'The words are in the data' }],\n}"
+    },
+    {
+     "id": "facts",
+     "label": "Facts about one thing",
+     "sees": "Labels and values",
+     "use": "facts",
+     "to": "/north/blocks#facts",
+     "why": "A real description list, so a screen reader pairs each term with its detail.",
+     "notThis": "Bold text and a colon, which looks the same and means nothing to software.",
+     "sample": "{\n  type: 'facts',\n  items: [{ term: 'anchor', detail: 'An address on the page.' }],\n}"
+    },
+    {
+     "id": "onward",
+     "label": "Where to go next",
+     "sees": "Related pages",
+     "use": "links",
+     "to": "/north/blocks#links",
+     "why": "Cards that each hold one link, so the thing you press is a link with a name and not a whole card wrapped in an anchor.",
+     "notThis": "A row of bare addresses, or “click here”.",
+     "sample": "{\n  type: 'links',\n  items: [{ title: 'Components', body: 'The kit.', to: '/north/components', label: 'Open it' }],\n}"
+    },
+    {
+     "id": "figures",
+     "label": "A few figures",
+     "sees": "Numbers and how they moved",
+     "use": "numbers",
+     "to": "/north/blocks#numbers",
+     "why": "Each figure is large and labelled, and how it moved is said in words as well as drawn. A note says where the figures come from.",
+     "notThis": "A figure with no baseline and no source.",
+     "sample": "{\n  type: 'numbers',\n  note: 'Sample data.',\n  items: [{ label: 'Jobs on time', value: 96, unit: '%', change: 2, changeLabel: 'on last week' }],\n}"
+    }
+   ],
+   "onward": [
+    {
+     "label": "The interface components",
+     "to": "/north/components"
+    },
+    {
+     "label": "How we check the work",
+     "to": "/north/quality"
+    }
+   ]
+  }
+ },
+ "readingColumn": {
+  "page": "north/components/content",
+  "props": {
+   "type": "closer",
+   "anchor": "column",
+   "kind": "readingColumn",
+   "scene": "split-prism",
+   "tag": "End of the content and layout components",
+   "minHeight": 800,
+   "title": "Set a reading column.",
+   "lede": "Slide the measure, the line height and the size, and change the face. The text reflows as you go, and the page says whether each setting is short, comfortable or long: the rules of thumb behind the Prose component.",
+   "heading": "Handing a system over",
+   "paragraphs": [
+    "A handover is judged by the first change a stranger can make safely. Everything else — the diagrams, the wiki, the recorded walkthrough — is in service of that one moment, and it is worth designing for it from the first week rather than the last.",
+    "The people who built a system carry a great deal in their heads: why a table is shaped as it is, which job must never run twice, what the odd configuration value is for. None of it is secret, and almost none of it is written down. The work of a handover is the unglamorous work of writing it down while it is still fresh.",
+    "Write how it is run, not only how it is built. List what can go wrong, in the order it usually does. Say what you would do differently. A newcomer reading that has a head start of months."
+   ],
+   "onward": [
+    {
+     "label": "Designing for handover",
+     "to": "/insights/handover"
+    },
+    {
+     "label": "Design tokens",
+     "to": "/north/design-tokens"
+    }
+   ]
+  }
+ },
+ "dataShape": {
+  "page": "north/components/data",
+  "props": {
+   "type": "closer",
+   "anchor": "shape",
+   "kind": "dataShape",
+   "scene": "architectural-grid",
+   "tag": "End of the data display components",
+   "minHeight": 780,
+   "title": "What shape is your data?",
+   "lede": "Choose the shape the information has and the page shows the component that suits it, drawn with sample data, with the reason — and the usual wrong choice and why it fails.",
+   "shapes": [
+    {
+     "id": "trend",
+     "label": "A trend over time",
+     "sees": "One measure, many moments",
+     "use": "Sparkline",
+     "to": "/north/components/data#sparkline",
+     "why": "A single line shows direction at a glance and takes almost no room, so it fits in a row, a card or a sentence. Give it a text description so the shape is never the only way in.",
+     "notThis": "A full chart with axes, gridlines and a legend, when all anyone needs is better or worse."
+    },
+    {
+     "id": "compare",
+     "label": "A few values to compare",
+     "sees": "Four or five things, one measure",
+     "use": "BarList",
+     "to": "/north/components/data#barList",
+     "why": "Length is the easiest thing for the eye to compare, and a list keeps the label and the figure beside the bar, so the numbers stay real text.",
+     "notThis": "A pie or donut. Angles and areas are hard to compare, and the labels end up far from the slices."
+    },
+    {
+     "id": "records",
+     "label": "Records with several fields",
+     "sees": "Rows and columns",
+     "use": "DataTable",
+     "to": "/north/components/data#dataTable",
+     "why": "When people need to find, sort and compare rows, a table is the honest shape. Headers are real headers, so a screen reader can say which column a cell is in.",
+     "notThis": "A grid of cards. Cards hide the columns, and with them the ability to compare."
+    },
+    {
+     "id": "facts",
+     "label": "Facts about one thing",
+     "sees": "Labels and values",
+     "use": "DescriptionList",
+     "to": "/north/components/data#descriptionList",
+     "why": "A term and its detail, paired in the markup and not only side by side on the screen.",
+     "notThis": "Bold text and a colon in a paragraph. It looks the same and means nothing to software."
+    },
+    {
+     "id": "steps",
+     "label": "Things in an order",
+     "sees": "A sequence",
+     "use": "Timeline",
+     "to": "/north/components/data#timeline",
+     "why": "An ordered list, so the order is announced. The line and the markers only repeat what the list already says.",
+     "notThis": "Dates you do not have. If the order is known and the dates are not, say phases — this site does."
+    },
+    {
+     "id": "nested",
+     "label": "Things inside things",
+     "sees": "A hierarchy",
+     "use": "Tree",
+     "to": "/north/components/data#tree",
+     "why": "One tab stop, arrow keys to walk it, and the level and position announced for every item.",
+     "notThis": "Nested lists of links where every item is a tab stop: forty Tabs to get past a folder."
+    },
+    {
+     "id": "one",
+     "label": "One important number",
+     "sees": "A single figure",
+     "use": "Stat",
+     "to": "/north/components/data#stat",
+     "why": "Large, labelled and, if you have it, compared with something — in words.",
+     "notThis": "A gauge, when a number would do."
+    }
+   ],
+   "onward": [
+    {
+     "label": "Overlay components",
+     "to": "/north/components/overlays"
+    },
+    {
+     "label": "Audit trails that answer questions",
+     "to": "/insights/audit-trails"
+    }
+   ]
+  }
+ },
+ "toastBench": {
+  "page": "north/components/feedback",
+  "props": {
+   "type": "closer",
+   "anchor": "bench",
+   "kind": "toastBench",
+   "scene": "privacy-quiet-grid",
+   "tag": "End of the feedback components",
+   "minHeight": 800,
+   "title": "Fire one, and read what it says.",
+   "lede": "Toasts for what needs no answer, alerts for what needs looking at. Each time you fire one, the log writes down the words a screen reader would say and whether it would wait politely or interrupt.",
+   "presets": [
+    {
+     "id": "saved",
+     "label": "Saved",
+     "tone": "success",
+     "title": "Saved",
+     "body": "Your changes are kept."
+    },
+    {
+     "id": "copied",
+     "label": "Copied",
+     "tone": "success",
+     "title": "Copied",
+     "body": "The address is on your clipboard."
+    },
+    {
+     "id": "sync",
+     "label": "Syncing",
+     "tone": "info",
+     "title": "Syncing",
+     "body": "This can take a moment. You can keep working."
+    },
+    {
+     "id": "fail",
+     "label": "Failed",
+     "tone": "danger",
+     "title": "Could not save",
+     "body": "Check your connection and try again."
+    }
+   ],
+   "alerts": [
+    {
+     "id": "info",
+     "label": "Information",
+     "tone": "info",
+     "title": "Maintenance window",
+     "body": "The service is read-only from 02:00 to 02:30 UTC on Sunday."
+    },
+    {
+     "id": "warn",
+     "label": "Warning",
+     "tone": "warning",
+     "title": "Token expires soon",
+     "body": "Replace it before Friday."
+    },
+    {
+     "id": "err",
+     "label": "Error",
+     "tone": "danger",
+     "title": "Export failed",
+     "body": "Two rows had no order number."
+    }
+   ],
+   "onward": [
+    {
+     "label": "Data display components",
+     "to": "/north/components/data"
+    },
+    {
+     "label": "Runbooks people actually use",
+     "to": "/insights/runbooks"
+    }
+   ]
+  }
+ },
+ "formBuilder": {
+  "page": "north/components/inputs",
+  "props": {
+   "type": "closer",
+   "anchor": "build",
+   "kind": "formBuilder",
+   "scene": "signal-wave",
+   "tag": "End of the input components",
+   "minHeight": 900,
+   "title": "Build a form, check it, take the code.",
+   "lede": "Tick the fields a form needs and the page builds it from the kit’s own components. Send it empty to see how the errors read and where focus goes; the JSX underneath is yours to copy.",
+   "fields": [
+    {
+     "id": "name",
+     "label": "Full name",
+     "kind": "text",
+     "required": true,
+     "start": true
+    },
+    {
+     "id": "email",
+     "label": "Email address",
+     "kind": "email",
+     "required": true,
+     "start": true,
+     "hint": "We reply from this address."
+    },
+    {
+     "id": "password",
+     "label": "Password",
+     "kind": "password",
+     "required": true,
+     "hint": "At least 12 characters is a good start."
+    },
+    {
+     "id": "seats",
+     "label": "Seats",
+     "kind": "number",
+     "min": 1,
+     "max": 12,
+     "hint": "Between 1 and 12."
+    },
+    {
+     "id": "plan",
+     "label": "Plan",
+     "kind": "select",
+     "required": true,
+     "start": true,
+     "options": [
+      "Starter",
+      "Team",
+      "Studio"
+     ]
+    },
+    {
+     "id": "contact",
+     "label": "Contact by",
+     "kind": "radio",
+     "required": true,
+     "options": [
+      "Email",
+      "Phone",
+      "Post"
+     ]
+    },
+    {
+     "id": "notes",
+     "label": "Anything else",
+     "kind": "textarea",
+     "max": 200,
+     "hint": "Optional."
+    },
+    {
+     "id": "agree",
+     "label": "I have read the terms",
+     "kind": "checkbox",
+     "required": true,
+     "start": true
+    }
+   ],
+   "onward": [
+    {
+     "label": "Navigation components",
+     "to": "/north/components/navigation"
+    },
+    {
+     "label": "Roles, permissions and scopes",
+     "to": "/insights/permissions"
+    }
+   ]
+  }
+ },
+ "wizardRun": {
+  "page": "north/components/navigation",
+  "props": {
+   "type": "closer",
+   "anchor": "walk",
+   "kind": "wizardRun",
+   "scene": "data-interface-wave",
+   "tag": "End of the navigation components",
+   "minHeight": 820,
+   "title": "Walk a flow, and hear it.",
+   "lede": "Four steps with a stepper, a Next that waits until the step is complete and says why, and focus that moves to each step’s heading. Beside it, a log writes down what a screen reader would announce.",
+   "steps": [
+    {
+     "title": "Details",
+     "hint": "Who and what",
+     "intro": "Give it a name. At least three characters unlocks the next step."
+    },
+    {
+     "title": "Review",
+     "hint": "Check it over",
+     "intro": "Read back what you entered. Nothing has happened yet."
+    },
+    {
+     "title": "Confirm",
+     "hint": "Make it so",
+     "intro": "One last check before it would be made."
+    },
+    {
+     "title": "Done",
+     "hint": "Nothing left",
+     "intro": "That is the whole flow."
+    }
+   ],
+   "onward": [
+    {
+     "label": "Feedback components",
+     "to": "/north/components/feedback"
+    },
+    {
+     "label": "Accessible by default",
+     "to": "/north/accessibility"
+    }
+   ]
+  }
+ },
+ "focusTrap": {
+  "page": "north/components/overlays",
+  "props": {
+   "type": "closer",
+   "anchor": "trap",
+   "kind": "focusTrap",
+   "scene": "polar-status",
+   "tag": "End of the overlay components",
+   "minHeight": 760,
+   "title": "Try to escape the dialog.",
+   "lede": "Open it and press Tab, Shift+Tab and Escape. A log beside it writes down where focus goes: in, round and round inside, and back to the button that opened it.",
+   "rules": [
+    "Focus moves in when it opens, to the first control or the one marked for it.",
+    "Tab and Shift+Tab cycle inside; focus never reaches the page behind.",
+    "Escape, the close button and a press on the dark area all dismiss it.",
+    "Focus returns to what opened it, and the page behind stops scrolling meanwhile."
+   ],
+   "onward": [
+    {
+     "label": "Content and layout components",
+     "to": "/north/components/content"
+    },
+    {
+     "label": "Accessible by default",
+     "to": "/north/accessibility"
+    }
+   ]
+  }
+ },
+ "kitPicker": {
+  "page": "north/components",
+  "props": {
+   "type": "closer",
+   "kind": "kitPicker",
+   "anchor": "pick",
+   "scene": "topology-pulse",
+   "tag": "End of the interface components",
+   "minHeight": 760,
+   "title": "Which component do you need?",
+   "lede": "Say what you are trying to do, then narrow it. The page names the one or two components that fit, says why, and takes you to each in its gallery.",
+   "goals": [
+    {
+     "id": "collect",
+     "label": "Collect something",
+     "ask": "What kind of thing?",
+     "choices": [
+      {
+       "label": "A few words or a number",
+       "picks": [
+        {
+         "id": "textField",
+         "why": "One line with a label, a hint and an error that is announced. Add a prefix or suffix for a unit."
+        },
+        {
+         "id": "numberField",
+         "why": "If it is a quantity with a range: arrows step it, typing is free, and it is clamped when you leave."
+        }
+       ]
+      },
+      {
+       "label": "One choice from a few",
+       "picks": [
+        {
+         "id": "radioGroup",
+         "why": "Native radios: the arrows choose, and a screen reader says “2 of 4”."
+        },
+        {
+         "id": "segmented",
+         "why": "When the choices are short and few and the control should read as one piece."
+        }
+       ]
+      },
+      {
+       "label": "One choice from many",
+       "picks": [
+        {
+         "id": "selectField",
+         "why": "Native, so a phone gives its own picker. The first thing to try."
+        },
+        {
+         "id": "combobox",
+         "why": "When the list is long enough that people will want to type to find their answer."
+        }
+       ]
+      },
+      {
+       "label": "Several things",
+       "picks": [
+        {
+         "id": "checkbox",
+         "why": "Each option is its own box; a parent box can show the mixed state."
+        },
+        {
+         "id": "tagInput",
+         "why": "When people supply their own words rather than choosing from a list."
+        }
+       ]
+      },
+      {
+       "label": "A file",
+       "picks": [
+        {
+         "id": "fileDrop",
+         "why": "Drag and drop, with a real file button underneath for everyone else."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "move",
+     "label": "Help people move",
+     "ask": "How?",
+     "choices": [
+      {
+       "label": "Show where they are",
+       "picks": [
+        {
+         "id": "breadcrumbs",
+         "why": "A trail back up the site, with the current page marked."
+        },
+        {
+         "id": "onThisPage",
+         "why": "For a long page: the section you are in is marked as you read."
+        }
+       ]
+      },
+      {
+       "label": "Step through a process",
+       "picks": [
+        {
+         "id": "stepper",
+         "why": "The steps in order and which one you are on, written out for a screen reader."
+        },
+        {
+         "id": "pagination",
+         "why": "For a long list split into pages: first, last and the neighbours."
+        }
+       ]
+      },
+      {
+       "label": "Switch between views",
+       "picks": [
+        {
+         "id": "tabs",
+         "why": "When each choice shows a different panel of content."
+        },
+        {
+         "id": "segmented",
+         "why": "When each choice only changes a setting or a nearby demonstration."
+        }
+       ]
+      },
+      {
+       "label": "Offer a set of actions",
+       "picks": [
+        {
+         "id": "dropdownMenu",
+         "why": "A button that opens a menu of actions, with typeahead and Escape."
+        },
+        {
+         "id": "toolbar",
+         "why": "A row of tools that is one tab stop, with toggles."
+        }
+       ]
+      },
+      {
+       "label": "List the pages of a section",
+       "picks": [
+        {
+         "id": "sideNav",
+         "why": "Grouped links that fold, with the current page marked."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "tell",
+     "label": "Tell someone something",
+     "ask": "How much does it matter?",
+     "choices": [
+      {
+       "label": "It needs no answer",
+       "picks": [
+        {
+         "id": "toast",
+         "why": "A brief message in a corner that leaves by itself and never takes focus."
+        },
+        {
+         "id": "statusDot",
+         "why": "A live state, written out beside its colour."
+        }
+       ]
+      },
+      {
+       "label": "It is about this part of the page",
+       "picks": [
+        {
+         "id": "alert",
+         "why": "In the flow, with a tone that is also an icon and a word."
+        }
+       ]
+      },
+      {
+       "label": "It is about the whole page",
+       "picks": [
+        {
+         "id": "banner",
+         "why": "Runs the width of its container, with one action and a dismiss."
+        }
+       ]
+      },
+      {
+       "label": "Something is loading",
+       "picks": [
+        {
+         "id": "spinner",
+         "why": "When the wait is short and you cannot say how short."
+        },
+        {
+         "id": "skeleton",
+         "why": "When you know the shape of what is coming and want nothing to jump."
+        },
+        {
+         "id": "progressBar",
+         "why": "When you know how far along it is."
+        }
+       ]
+      },
+      {
+       "label": "There is nothing to show",
+       "picks": [
+        {
+         "id": "emptyState",
+         "why": "Say why, and say what to do next."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "show",
+     "label": "Show information",
+     "ask": "What shape is it?",
+     "choices": [
+      {
+       "label": "Records with several fields",
+       "picks": [
+        {
+         "id": "dataTable",
+         "why": "Sortable, selectable, and scrollable inside a named region."
+        }
+       ]
+      },
+      {
+       "label": "Facts about one thing",
+       "picks": [
+        {
+         "id": "descriptionList",
+         "why": "Labels and values, paired in the markup."
+        },
+        {
+         "id": "stat",
+         "why": "For the one number that matters, with how it moved."
+        }
+       ]
+      },
+      {
+       "label": "A trend",
+       "picks": [
+        {
+         "id": "sparkline",
+         "why": "Direction at a glance, with a text description of the range."
+        }
+       ]
+      },
+      {
+       "label": "A few values to compare",
+       "picks": [
+        {
+         "id": "barList",
+         "why": "Length is easy to compare, and the figures stay as text."
+        },
+        {
+         "id": "meter",
+         "why": "One quantity inside a known range, with its zone in words."
+        }
+       ]
+      },
+      {
+       "label": "Things in order",
+       "picks": [
+        {
+         "id": "timeline",
+         "why": "An ordered list with a line and markers."
+        }
+       ]
+      },
+      {
+       "label": "Things inside things",
+       "picks": [
+        {
+         "id": "tree",
+         "why": "One tab stop, arrow keys to walk it."
+        }
+       ]
+      },
+      {
+       "label": "Code",
+       "picks": [
+        {
+         "id": "codeBlock",
+         "why": "With a copy button, optional line numbers and light colouring."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "attention",
+     "label": "Ask for attention",
+     "ask": "How much?",
+     "choices": [
+      {
+       "label": "A hint on hover or focus",
+       "picks": [
+        {
+         "id": "tooltip",
+         "why": "A short description that adds detail and never replaces a label."
+        },
+        {
+         "id": "hoverCard",
+         "why": "A richer preview of where a link goes."
+        }
+       ]
+      },
+      {
+       "label": "A small panel on demand",
+       "picks": [
+        {
+         "id": "popover",
+         "why": "Opens under a button; not modal, so Tab moves on."
+        }
+       ]
+      },
+      {
+       "label": "A decision before going on",
+       "picks": [
+        {
+         "id": "dialog",
+         "why": "Takes over until it is dealt with; traps focus and gives it back."
+        },
+        {
+         "id": "confirmDialog",
+         "why": "For “are you sure?”, with buttons that say what they do."
+        }
+       ]
+      },
+      {
+       "label": "A side panel with context",
+       "picks": [
+        {
+         "id": "drawer",
+         "why": "A dialog that runs the full height from an edge."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "arrange",
+     "label": "Arrange content",
+     "ask": "What do you need?",
+     "choices": [
+      {
+       "label": "Group related content",
+       "picks": [
+        {
+         "id": "card",
+         "why": "A surface with an eyebrow, a heading and a foot."
+        },
+        {
+         "id": "callout",
+         "why": "A remark set apart from the text: a note, a tip, a warning."
+        }
+       ]
+      },
+      {
+       "label": "Lay things out",
+       "picks": [
+        {
+         "id": "stack",
+         "why": "A column with an even gap."
+        },
+        {
+         "id": "cluster",
+         "why": "A row that wraps."
+        },
+        {
+         "id": "grid",
+         "why": "As many columns as fit, with no breakpoint."
+        }
+       ]
+      },
+      {
+       "label": "A long text",
+       "picks": [
+        {
+         "id": "prose",
+         "why": "A reading column about 68 characters wide."
+        },
+        {
+         "id": "quote",
+         "why": "A pull quote with its source."
+        },
+        {
+         "id": "figure",
+         "why": "A picture and its caption, kept together."
+        }
+       ]
+      },
+      {
+       "label": "Hide detail until asked",
+       "picks": [
+        {
+         "id": "disclosure",
+         "why": "One section that opens and closes properly."
+        }
+       ]
+      },
+      {
+       "label": "Hold the shape of an image",
+       "picks": [
+        {
+         "id": "aspectRatio",
+         "why": "Reserves the room before the picture arrives."
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "onward": [
+    {
+     "label": "Interface lab",
+     "to": "/north/interface-lab"
+    },
+    {
+     "label": "Design tokens",
+     "to": "/north/design-tokens"
+    },
+    {
+     "label": "Accessible by default",
+     "to": "/north/accessibility"
+    }
+   ]
+  }
+ },
+ "tokenPlayground": {
+  "page": "north/design-tokens",
+  "props": {
+   "type": "closer",
+   "kind": "tokenPlayground",
+   "anchor": "playground",
+   "scene": "interface-lab-shape",
+   "tag": "End of design tokens",
+   "minHeight": 780,
+   "title": "Change a decision. Watch it spread.",
+   "lede": "Five tokens on a small interface: an accent colour, a corner radius, a space unit, a transition time and a base text size. Change one and everything that uses it follows. The values are set on the preview alone.",
+   "onward": [
+    {
+     "label": "Brand",
+     "to": "/company/brand"
+    },
+    {
+     "label": "Type scale",
+     "to": "/resources/tools/type-scale"
+    }
+   ]
+  }
+ },
+ "spotTheBug": {
+  "page": "north/engineering",
+  "props": {
+   "type": "closer",
+   "kind": "spotTheBug",
+   "anchor": "review",
+   "scene": "tooling-console",
+   "tag": "End of engineering",
+   "minHeight": 640,
+   "title": "Review this change.",
+   "lede": "Twelve lines that charge a customer. Read them the way a reviewer would and mark the ones you would not let through. There are four real problems and eight lines that are fine.",
+   "lang": "javascript",
+   "lines": [
+    {
+     "text": "async function chargeCustomer(order) {"
+    },
+    {
+     "text": "  const res = await fetch('https://pay.example.test/charge', {",
+     "flaw": {
+      "title": "No timeout",
+      "why": "If the provider never answers, this waits for ever, and so does the customer. Every outbound call needs a limit and a decision about what happens when it is reached."
+     }
+    },
+    {
+     "text": "    method: 'POST',"
+    },
+    {
+     "text": "    headers: { Authorization: 'Bearer sk_live_51Hx9exampleonly' },",
+     "flaw": {
+      "title": "A secret in the code",
+      "why": "Anything in the repository is readable by everyone who can read it, for as long as history is kept. Secrets belong in the environment and can be changed without a release."
+     }
+    },
+    {
+     "text": "    body: JSON.stringify({ amount: order.total }),",
+     "flaw": {
+      "title": "No idempotency key",
+      "why": "A retry after a lost answer will charge twice. Send a key derived from the order so the provider can recognise a repeat."
+     }
+    },
+    {
+     "text": "  });"
+    },
+    {
+     "text": "  const body = await res.json();",
+     "flaw": {
+      "title": "Success assumed",
+      "why": "Nothing checks res.ok. A declined card or a server error comes back as data, and the next line treats it as success."
+     }
+    },
+    {
+     "text": "  await db.orders.update(order.id, { status: 'paid' });"
+    },
+    {
+     "text": "  return body;"
+    },
+    {
+     "text": "}"
+    },
+    {
+     "text": ""
+    },
+    {
+     "text": "export { chargeCustomer };"
+    }
+   ],
+   "onward": [
+    {
+     "label": "Idempotency in order systems",
+     "to": "/insights/idempotency"
+    },
+    {
+     "label": "Engineering handbook",
+     "to": "/north/handbook"
+    }
+   ]
+  }
+ },
+ "doneBuilder": {
+  "page": "north/handbook",
+  "props": {
+   "type": "closer",
+   "kind": "doneBuilder",
+   "anchor": "done",
+   "scene": "build-pipeline",
+   "tag": "End of the handbook",
+   "minHeight": 760,
+   "title": "Write your definition of done.",
+   "lede": "Choose what must be true before work counts as finished. The list becomes a card to print or paste. Keep it short enough that it is really checked.",
+   "start": [
+    "t1",
+    "r1",
+    "o1",
+    "d1"
+   ],
+   "groups": [
+    {
+     "name": "The change",
+     "items": [
+      {
+       "id": "c1",
+       "text": "It does what the problem statement asked, and nothing it was told to leave out."
+      },
+      {
+       "id": "c2",
+       "text": "The unhappy paths have been decided and tried, not only the happy one."
+      },
+      {
+       "id": "c3",
+       "text": "It is as small as it can be while still being a whole change."
+      }
+     ]
+    },
+    {
+     "name": "The checks",
+     "items": [
+      {
+       "id": "t1",
+       "text": "The automated checks pass on the branch."
+      },
+      {
+       "id": "t2",
+       "text": "New behaviour has a test that would fail without it."
+      },
+      {
+       "id": "t3",
+       "text": "It has been used with a keyboard alone."
+      }
+     ]
+    },
+    {
+     "name": "The review",
+     "items": [
+      {
+       "id": "r1",
+       "text": "Someone other than the author has read it and said so."
+      },
+      {
+       "id": "r2",
+       "text": "Every blocker has been answered, and nits are decided either way."
+      }
+     ]
+    },
+    {
+     "name": "The release",
+     "items": [
+      {
+       "id": "o1",
+       "text": "It has been released, and the way back has been checked."
+      },
+      {
+       "id": "o2",
+       "text": "It has been watched for a while after release."
+      },
+      {
+       "id": "o3",
+       "text": "Monitoring or alerts have been updated if the change needed it."
+      }
+     ]
+    },
+    {
+     "name": "The record",
+     "items": [
+      {
+       "id": "d1",
+       "text": "The README and any runbook the change touches are up to date."
+      },
+      {
+       "id": "d2",
+       "text": "A decision record exists if the choice would surprise a newcomer."
+      },
+      {
+       "id": "d3",
+       "text": "One line is in the release notes, in plain words."
+      }
+     ]
+    }
+   ],
+   "onward": [
+    {
+     "label": "How we check the work",
+     "to": "/north/quality"
+    },
+    {
+     "label": "Designing for handover",
+     "to": "/insights/handover"
+    }
+   ]
+  }
+ },
+ "stateSheet": {
+  "page": "north/interface-lab",
+  "props": {
+   "type": "closer",
+   "kind": "stateSheet",
+   "anchor": "states",
+   "scene": "concentric-gate",
+   "tag": "End of the interface lab",
+   "minHeight": 700,
+   "title": "Every control owns seven states.",
+   "lede": "Resting, hover, focus, pressed, disabled, busy and error, side by side for a button, a field and a switch. Underneath is the real thing: hover it, Tab to it, press it.",
+   "onward": [
+    {
+     "label": "Accessible by default",
+     "to": "/north/accessibility"
+    },
+    {
+     "label": "Design tokens",
+     "to": "/north/design-tokens"
+    }
+   ]
+  }
+ },
+ "motionModes": {
+  "page": "north/motion-systems",
+  "props": {
+   "type": "closer",
+   "kind": "motionModes",
+   "anchor": "modes",
+   "scene": "flow-field",
+   "tag": "End of motion systems",
+   "minHeight": 640,
+   "title": "One menu, three policies.",
+   "lede": "The same menu opening in full, in calm and in still. The site follows the device’s reduced-motion setting, and also offers a calm display setting of its own, which stills the drawn backgrounds.",
+   "onward": [
+    {
+     "label": "Animation budgets",
+     "to": "/insights/animation-budgets"
+    },
+    {
+     "label": "Interface lab",
+     "to": "/north/interface-lab"
+    }
+   ]
+  }
+ },
+ "chaosWheel": {
+  "page": "north/quality",
+  "props": {
+   "type": "closer",
+   "kind": "chaosWheel",
+   "anchor": "chaos",
+   "scene": "topology-pulse",
+   "tag": "End of quality",
+   "minHeight": 700,
+   "title": "Break it on purpose.",
+   "lede": "Spin the wheel for a way things go wrong, read what should happen, and how to rehearse it. Mark the ones you have actually tried.",
+   "scenarios": [
+    {
+     "id": "dep",
+     "name": "A dependency is down",
+     "happens": "A service you call stops answering, or answers slowly.",
+     "should": "The page says so plainly, the rest of it keeps working, and the call gives up after a sensible time.",
+     "test": "Point the call at an address that never answers. Does anything hang? Is the message honest?"
+    },
+    {
+     "id": "dup",
+     "name": "The same request arrives twice",
+     "happens": "A person double-clicks, or a network retries.",
+     "should": "One effect, and the same answer both times.",
+     "test": "Send the request twice at once, and twice with the answer thrown away between."
+    },
+    {
+     "id": "big",
+     "name": "The input is enormous",
+     "happens": "Someone pastes a million characters, or uploads a vast file.",
+     "should": "It is refused clearly, quickly and without taking the server down.",
+     "test": "Send a body many times larger than any real one and watch memory and time."
+    },
+    {
+     "id": "empty",
+     "name": "The list is empty",
+     "happens": "No orders, no results, no messages yet.",
+     "should": "A page that explains the emptiness and what to do about it, not a blank or an error.",
+     "test": "Open every list with no data. Look at the words as well as the layout."
+    },
+    {
+     "id": "clock",
+     "name": "The clock jumps",
+     "happens": "Daylight saving changes, or a server’s time is corrected.",
+     "should": "Schedules run once, durations stay positive and times are stored in UTC.",
+     "test": "Run the scheduling code with the clock set to the hour before a change."
+    },
+    {
+     "id": "disk",
+     "name": "The disk fills up",
+     "happens": "Logs or uploads use every last byte.",
+     "should": "Writes fail loudly, alerts fire and nothing is silently lost.",
+     "test": "Fill a small disk in a test environment and watch what breaks first."
+    },
+    {
+     "id": "slow",
+     "name": "The network is slow",
+     "happens": "A phone on a weak connection, a long way from the server.",
+     "should": "Something useful appears early, and nothing jumps around as the rest arrives.",
+     "test": "Throttle the connection in the browser’s tools and load the heaviest page."
+    },
+    {
+     "id": "perm",
+     "name": "Someone changes an id",
+     "happens": "A person edits the number in an address to see what is next.",
+     "should": "They see only what they are allowed to, and learn nothing about what exists.",
+     "test": "Sign in as one user and request another user’s record by id."
+    }
+   ],
+   "onward": [
+    {
+     "label": "Engineering handbook",
+     "to": "/north/handbook"
+    },
+    {
+     "label": "Readiness check",
+     "to": "/resources/tools/readiness"
+    }
+   ]
+  }
+ },
+ "whatIfRemove": {
+  "page": "north/stack",
+  "props": {
+   "type": "closer",
+   "kind": "whatIfRemove",
+   "anchor": "remove",
+   "scene": "node-compression",
+   "tag": "End of the stack",
+   "minHeight": 640,
+   "title": "Pull one out.",
+   "lede": "Choose a part of the stack and take it away in your head. The card says what stops, what carries on and what it would cost to replace. The judgements are ours.",
+   "parts": [
+    {
+     "id": "lenis",
+     "name": "lenis",
+     "kind": "Runtime",
+     "headline": "Scrolling would be the browser’s own.",
+     "stops": "The smooth, eased scrolling and the glide to a section when a link points at one.",
+     "keeps": "Every page, every link and all content. Scroll-linked effects would still read the scroll position.",
+     "effort": "Small",
+     "how": "It lives behind one provider and one hook. Change what the hook returns and the callers carry on.",
+     "files": 1
+    },
+    {
+     "id": "gsap",
+     "name": "gsap",
+     "kind": "Runtime",
+     "headline": "The timelines and the pointer-driven effects go.",
+     "stops": "The intro sequence, the custom cursor, magnetic buttons, the title that answers the pointer and the marquee that scroll speed pushes.",
+     "keeps": "Content, routing, layout and the canvases. The entrance reveals use the other animation library and would carry on.",
+     "effort": "Medium",
+     "how": "Each effect is its own component. They could be dropped one by one, or rewritten with CSS and the other library.",
+     "files": 17
+    },
+    {
+     "id": "motion",
+     "name": "motion",
+     "kind": "Runtime",
+     "headline": "Things would arrive and change without easing.",
+     "stops": "The entrance reveals as sections scroll into view, page transitions, and the springs and glides in menus, tabs and panels.",
+     "keeps": "All content and function. Controls would still work, and change state at once.",
+     "effort": "Large",
+     "how": "It is used widely. Most uses could become CSS transitions or animations; the layout transitions are the hard part.",
+     "files": 22
+    },
+    {
+     "id": "router",
+     "name": "react-router-dom",
+     "kind": "Runtime",
+     "headline": "There would be one page.",
+     "stops": "Every page address, every link between pages and the back button’s meaning.",
+     "keeps": "Components and styles. The content would have nowhere to be addressed.",
+     "effort": "Large",
+     "how": "Routing is the skeleton of the site. Replacing it with another router is realistic; removing it is not.",
+     "files": 40
+    },
+    {
+     "id": "icons",
+     "name": "lucide-react",
+     "kind": "Runtime",
+     "headline": "The small line icons disappear.",
+     "stops": "Arrows, chevrons, and the pictograms on buttons and cards.",
+     "keeps": "All text and behaviour. Controls keep their labels.",
+     "effort": "Medium",
+     "how": "Replace with inline SVGs, one icon at a time. Tedious rather than hard.",
+     "files": 100
+    },
+    {
+     "id": "clsx",
+     "name": "clsx",
+     "kind": "Runtime",
+     "headline": "Class names would be joined by hand.",
+     "stops": "Nothing visible; a convenience for conditional class names.",
+     "keeps": "Everything.",
+     "effort": "Small",
+     "how": "It does one tiny job; template strings could do it, at the price of tidiness.",
+     "files": 146
+    },
+    {
+     "id": "canvas",
+     "name": "The canvas scenes",
+     "kind": "Ours",
+     "headline": "The backgrounds would be plain.",
+     "stops": "The animated backgrounds behind every section and hero.",
+     "keeps": "All content and function. Calm mode already shows pages without moving backgrounds.",
+     "effort": "Small",
+     "how": "Sections declare a scene by name. Removing them leaves a quiet page that works.",
+     "files": null
+    }
+   ],
+   "onward": [
+    {
+     "label": "Licences and notices",
+     "to": "/trust/licences"
+    },
+    {
+     "label": "Site engineering",
+     "to": "/engineering"
+    }
+   ]
+  }
+ },
+ "pipelineMaker": {
+  "page": "north/tooling",
+  "props": {
+   "type": "closer",
+   "kind": "pipelineMaker",
+   "anchor": "pipeline",
+   "scene": "circuit-trace",
+   "tag": "End of tooling",
+   "minHeight": 780,
+   "title": "Assemble a pipeline.",
+   "lede": "Choose the checks, put them in order, and a workflow file comes out, with the same sequence as a local script. The commands are placeholders for your own project’s.",
+   "onward": [
+    {
+     "label": "How we check the work",
+     "to": "/north/quality"
+    },
+    {
+     "label": "Site engineering",
+     "to": "/engineering"
+    }
+   ]
+  }
+ },
+ "symptomRouter": {
+  "page": "north",
+  "props": {
+   "type": "closer",
+   "kind": "symptomRouter",
+   "anchor": "start",
+   "scene": "isometric-infra",
+   "tag": "End of development",
+   "minHeight": 560,
+   "title": "What is going wrong?",
+   "lede": "Start from the symptom, not from what the team is called. Choose the one that sounds most like yours and the page names the discipline that deals with it, and why.",
+   "symptoms": [
+    {
+     "id": "numbers",
+     "label": "The numbers disagree between screens",
+     "area": "Architecture",
+     "why": "Two places think they own the same fact. The fix is one source of truth per record and one writer, with everything else reading through a contract.",
+     "to": "/north/architecture",
+     "also": {
+      "label": "Roles, permissions and scopes",
+      "to": "/insights/permissions"
+     }
+    },
+    {
+     "id": "avoid",
+     "label": "People avoid using it",
+     "area": "The interface lab",
+     "why": "Usually the controls do not say what they are, what state they are in or what will happen. Components with a job, and every state shown, are the cure.",
+     "to": "/north/interface-lab",
+     "also": {
+      "label": "Accessible by default",
+      "to": "/north/accessibility"
+     }
+    },
+    {
+     "id": "laggy",
+     "label": "It feels laggy or jumpy",
+     "area": "Motion systems",
+     "why": "Something is spending more than its share of each frame. A motion budget says what can move, how much and on which property.",
+     "to": "/north/motion-systems",
+     "also": {
+      "label": "Animation budgets",
+      "to": "/insights/animation-budgets"
+     }
+    },
+    {
+     "id": "late",
+     "label": "It breaks, and we find out late",
+     "area": "Tooling and quality",
+     "why": "The checks are missing, or they are the wrong kind. Layer cheap fast checks in front of slow broad ones, and watch the quiet failures.",
+     "to": "/north/quality",
+     "also": {
+      "label": "Development tooling",
+      "to": "/north/tooling"
+     }
+    },
+    {
+     "id": "nodare",
+     "label": "Nobody dares change it",
+     "area": "Engineering",
+     "why": "Changes are too big to understand and too hard to undo. Small steps with gates between them make change safe again.",
+     "to": "/north/engineering",
+     "also": {
+      "label": "Engineering handbook",
+      "to": "/north/handbook"
+     }
+    },
+    {
+     "id": "slow",
+     "label": "It is slow to start",
+     "area": "The stack",
+     "why": "Too much is shipped before anything shows. Splitting by page and loading only what a page uses is a matter of structure, not tuning.",
+     "to": "/north/stack",
+     "also": {
+      "label": "Site engineering",
+      "to": "/engineering"
+     }
+    },
+    {
+     "id": "exclude",
+     "label": "Some people cannot use it",
+     "area": "Accessibility",
+     "why": "Structure, keyboard, contrast and choice. Look at the page the way a screen reader does, and fix what it meets.",
+     "to": "/north/accessibility",
+     "also": {
+      "label": "Contrast checker",
+      "to": "/resources/tools/contrast"
+     }
+    },
+    {
+     "id": "blind",
+     "label": "We cannot see what it is doing",
+     "area": "Site engineering",
+     "why": "There is no view of the layers. Tracing a page view through them, and measuring it, is how a team learns what its system is really doing.",
+     "to": "/engineering",
+     "also": {
+      "label": "Runbooks people actually use",
+      "to": "/insights/runbooks"
+     }
+    }
+   ],
+   "onward": [
+    {
+     "label": "The stack",
+     "to": "/north/stack"
+    },
+    {
+     "label": "Engineering handbook",
+     "to": "/north/handbook"
+    }
+   ]
+  }
+ },
+ "historyBar": {
+  "page": "resources/changelog",
+  "props": {
+   "type": "closer",
+   "kind": "historyBar",
+   "anchor": "chart",
+   "scene": "timeline-pulse",
+   "tag": "End of the release notes",
+   "minHeight": 560,
+   "title": "The whole history in one chart.",
+   "lede": "A row for each chapter, a bar as long as the notes in it, cut into what was added, changed and fixed. Point at a row for the chapter; press it to read.",
+   "onward": [
+    {
+     "label": "Resource centre",
+     "to": "/resources"
+    },
+    {
+     "label": "Site engineering",
+     "to": "/engineering"
+    }
+   ]
+  }
+ },
+ "bundleBuilder": {
+  "page": "resources/downloads",
+  "props": {
+   "type": "closer",
+   "kind": "bundleBuilder",
+   "anchor": "bundle",
+   "scene": "hex-lattice",
+   "tag": "End of the downloads",
+   "minHeight": 680,
+   "title": "Join several into one.",
+   "lede": "Choose documents and have them joined into a single Markdown file with a contents list: a pack for a new project, a new teammate, or a handover.",
+   "presets": [
+    {
+     "label": "A new project",
+     "ids": [
+      "readme",
+      "decision",
+      "handover",
+      "readiness"
+     ]
+    },
+    {
+     "label": "An on-call pack",
+     "ids": [
+      "runbook",
+      "incident",
+      "access"
+     ]
+    },
+    {
+     "label": "Everything",
+     "ids": [
+      "runbook",
+      "readme",
+      "decision",
+      "handover",
+      "readiness",
+      "incident",
+      "deprecation",
+      "audit",
+      "access",
+      "tokens",
+      "glossary",
+      "pages"
+     ]
+    }
+   ],
+   "onward": [
+    {
+     "label": "Tools",
+     "to": "/resources/tools"
+    },
+    {
+     "label": "Insights",
+     "to": "/insights"
+    }
+   ]
+  }
+ },
+ "flashDeck": {
+  "page": "resources/glossary",
+  "props": {
+   "type": "closer",
+   "kind": "flashDeck",
+   "anchor": "cards",
+   "scene": "glyph-field",
+   "tag": "End of the glossary",
+   "minHeight": 560,
+   "title": "Test yourself.",
+   "lede": "Ten flashcards, dealt from the glossary. Read the term, say what it means, turn the card, and mark whether you had it.",
+   "onward": [
+    {
+     "label": "Insights",
+     "to": "/insights"
+    },
+    {
+     "label": "Download the glossary",
+     "to": "/resources/downloads"
+    }
+   ]
+  }
+ },
+ "pairMatrix": {
+  "page": "resources/tools/contrast",
+  "props": {
+   "type": "closer",
+   "kind": "pairMatrix",
+   "anchor": "palette",
+   "scene": "signal-spectrum-field",
+   "tag": "End of the contrast checker",
+   "minHeight": 640,
+   "title": "Grade a whole palette.",
+   "lede": "Paste the colours you are working with. Every text-on-background pairing is graded in a grid, so the ones that never work are visible before anything is designed with them.",
+   "onward": [
+    {
+     "label": "Accessible by default",
+     "to": "/north/accessibility"
+    },
+    {
+     "label": "Type scale",
+     "to": "/resources/tools/type-scale"
+    }
+   ]
+  }
+ },
+ "dstTrap": {
+  "page": "resources/tools/cron",
+  "props": {
+   "type": "closer",
+   "kind": "dstTrap",
+   "anchor": "dst",
+   "scene": "trigger-action-pulse",
+   "tag": "End of the cron explainer",
+   "minHeight": 600,
+   "title": "The day the clock lies.",
+   "lede": "Choose a zone and a time of day. The page finds the days this year when the clocks change there, and says what happens to your time on each: skipped, repeated, or fine.",
+   "onward": [
+    {
+     "label": "Cron, queues and events",
+     "to": "/insights/triggers"
+    },
+    {
+     "label": "Readiness check",
+     "to": "/resources/tools/readiness"
+    }
+   ]
+  }
+ },
+ "preMortem": {
+  "page": "resources/tools/decision-record",
+  "props": {
+   "type": "closer",
+   "kind": "preMortem",
+   "anchor": "premortem",
+   "scene": "unknown-silhouette",
+   "tag": "End of decision records",
+   "minHeight": 640,
+   "title": "Imagine it went badly.",
+   "lede": "A pre-mortem: it is a year later and the decision turned out badly. Why? Write the reasons, how likely each is, and what you would do about it now. The riskiest come out first.",
+   "onward": [
+    {
+     "label": "Designing for handover",
+     "to": "/insights/handover"
+    },
+    {
+     "label": "Downloads",
+     "to": "/resources/downloads"
+    }
+   ]
+  }
+ },
+ "launchTimeline": {
+  "page": "resources/tools/readiness",
+  "props": {
+   "type": "closer",
+   "kind": "launchTimeline",
+   "anchor": "launch",
+   "scene": "workflow-river",
+   "tag": "End of the readiness check",
+   "minHeight": 640,
+   "title": "The launch fortnight.",
+   "lede": "Seven stops from two weeks before to a week after. Walk along the track, tick what you have done at each stop, and watch the ring fill. The arrow keys move between stops.",
+   "stops": [
+    {
+     "id": "m14",
+     "when": "T − 14",
+     "title": "Two weeks out: decide, and find the gaps",
+     "items": [
+      "Name the person who decides go or no-go",
+      "Run the readiness check and write down the gaps",
+      "Rehearse a restore of the backup, and time it"
+     ]
+    },
+    {
+     "id": "m7",
+     "when": "T − 7",
+     "title": "A week out: test the riskiest path",
+     "items": [
+      "Walk the riskiest path from end to end",
+      "Have someone who did not write them follow the runbooks",
+      "Confirm who is on call, and how they are reached"
+     ]
+    },
+    {
+     "id": "m3",
+     "when": "T − 3",
+     "title": "Three days out: freeze and rehearse",
+     "items": [
+      "Freeze changes that are not needed for the launch",
+      "Break something on purpose, to see that monitoring notices",
+      "Tell the people who will be affected, and when"
+     ]
+    },
+    {
+     "id": "m1",
+     "when": "T − 1",
+     "title": "The day before: confirm the way back",
+     "items": [
+      "Confirm the rollback, and who may call it",
+      "Check capacity against the load you expect",
+      "Agree the plan for the first hour"
+     ]
+    },
+    {
+     "id": "d0",
+     "when": "Launch",
+     "title": "Launch day: release quietly, watch together",
+     "items": [
+      "Release in a quiet hour, not a busy one",
+      "Watch the first-hour graphs together",
+      "Write down anything odd as it happens"
+     ]
+    },
+    {
+     "id": "p1",
+     "when": "T + 1",
+     "title": "The day after: review and mend",
+     "items": [
+      "Read the overnight alerts",
+      "Fix the small things while the memory is fresh",
+      "Thank the people who stayed up"
+     ]
+    },
+    {
+     "id": "p7",
+     "when": "T + 7",
+     "title": "A week after: learn from it",
+     "items": [
+      "Hold a blameless review",
+      "Update the runbooks with what you learned",
+      "Decide what to leave alone"
+     ]
+    }
+   ],
+   "onward": [
+    {
+     "label": "Designing for handover",
+     "to": "/insights/handover"
+    },
+    {
+     "label": "Runbooks people actually use",
+     "to": "/insights/runbooks"
+    }
+   ]
+  }
+ },
+ "clampMaker": {
+  "page": "resources/tools/type-scale",
+  "props": {
+   "type": "closer",
+   "kind": "clampMaker",
+   "anchor": "fluid",
+   "scene": "wave-interference",
+   "tag": "End of the type scale",
+   "minHeight": 640,
+   "title": "Make one size fluid.",
+   "lede": "Give a smallest and a largest size, and the window widths between which it grows. One line of CSS comes out, with no media query. Drag the slider to stand in for the browser window.",
+   "onward": [
+    {
+     "label": "Design tokens",
+     "to": "/north/design-tokens"
+    },
+    {
+     "label": "Contrast checker",
+     "to": "/resources/tools/contrast"
+    }
+   ]
+  }
+ },
+ "cheatSheet": {
+  "page": "resources/tools",
+  "props": {
+   "type": "closer",
+   "kind": "cheatSheet",
+   "anchor": "sheet",
+   "scene": "tooling-console",
+   "tag": "End of the tools",
+   "minHeight": 640,
+   "title": "All five, on one page.",
+   "lede": "The thresholds, the ratios, the field ranges, the groups and the headings the tools turn on, laid out as a sheet. Print it, or copy it as plain text.",
+   "onward": [
+    {
+     "label": "Downloads",
+     "to": "/resources/downloads"
+    },
+    {
+     "label": "Glossary",
+     "to": "/resources/glossary"
+    }
+   ]
+  }
+ },
+ "readingList": {
+  "page": "resources",
+  "props": {
+   "type": "closer",
+   "kind": "readingList",
+   "anchor": "list",
+   "scene": "data-stream-ribbons",
+   "tag": "End of the resource centre",
+   "minHeight": 700,
+   "title": "Make a reading list.",
+   "lede": "Tick pages from anywhere on the site, or start from a preset. The list comes out as Markdown, with the links and an estimate of the time, ready to send to someone.",
+   "presets": [
+    {
+     "label": "A new teammate",
+     "keys": [
+      "company/how-we-work",
+      "company/principles",
+      "insights/handover",
+      "insights/runbooks",
+      "north/handbook",
+      "resources/glossary"
+     ]
+    },
+    {
+     "label": "Someone deciding",
+     "keys": [
+      "work",
+      "company/security",
+      "trust",
+      "company/faq",
+      "insights/handover",
+      "legal/privacy"
+     ]
+    },
+    {
+     "label": "A developer",
+     "keys": [
+      "north/stack",
+      "north/quality",
+      "insights/idempotency",
+      "insights/api-contracts",
+      "insights/triggers",
+      "resources/tools"
+     ]
+    }
+   ],
+   "onward": [
+    {
+     "label": "Glossary",
+     "to": "/resources/glossary"
+    },
+    {
+     "label": "Tools",
+     "to": "/resources/tools"
+    }
+   ]
+  }
+ },
+ "automationMath": {
+  "page": "systems/automation",
+  "props": {
+   "type": "closer",
+   "kind": "automationMath",
+   "anchor": "worth",
+   "scene": "signal-wave",
+   "tag": "End of automation",
+   "minHeight": 700,
+   "title": "Is it worth automating?",
+   "lede": "How long the job takes, how often it happens, what it costs to build and what it costs to keep alive. The page says when it pays for itself, if it ever does. Your numbers; only the arithmetic is ours.",
+   "onward": [
+    {
+     "label": "Cron explainer",
+     "to": "/resources/tools/cron"
+    },
+    {
+     "label": "Cron, queues and events",
+     "to": "/insights/triggers"
+    }
+   ]
+  }
+ },
+ "sizeUp": {
+  "page": "systems/capabilities",
+  "props": {
+   "type": "closer",
+   "kind": "sizeUp",
+   "anchor": "size",
+   "scene": "orbital-node",
+   "tag": "End of capabilities",
+   "minHeight": 740,
+   "title": "How big is yours?",
+   "lede": "Five questions about a system, each a judgement. The answer is a shape, not a price and not a duration: what kind of work this adds up to, what changes at that size and what to decide first.",
+   "questions": [
+    {
+     "id": "users",
+     "text": "How many kinds of people use it?",
+     "options": [
+      {
+       "label": "One",
+       "points": 0
+      },
+      {
+       "label": "Two or three",
+       "points": 1
+      },
+      {
+       "label": "Four or more",
+       "points": 2
+      }
+     ]
+    },
+    {
+     "id": "links",
+     "text": "How many other systems does it talk to?",
+     "options": [
+      {
+       "label": "None",
+       "points": 0
+      },
+      {
+       "label": "One or two",
+       "points": 1
+      },
+      {
+       "label": "Three or more",
+       "points": 2
+      }
+     ]
+    },
+    {
+     "id": "data",
+     "text": "What does it hold?",
+     "options": [
+      {
+       "label": "Little that matters",
+       "points": 0
+      },
+      {
+       "label": "Ordinary business records",
+       "points": 1
+      },
+      {
+       "label": "Personal, financial or regulated data",
+       "points": 2
+      }
+     ]
+    },
+    {
+     "id": "down",
+     "text": "What happens if it is down for a day?",
+     "options": [
+      {
+       "label": "People wait, mildly",
+       "points": 0
+      },
+      {
+       "label": "Work stops",
+       "points": 1
+      },
+      {
+       "label": "Money or safety is at risk",
+       "points": 2
+      }
+     ]
+    },
+    {
+     "id": "start",
+     "text": "Where does its data come from?",
+     "options": [
+      {
+       "label": "It starts empty",
+       "points": 0
+      },
+      {
+       "label": "We import a spreadsheet",
+       "points": 1
+      },
+      {
+       "label": "We migrate from systems still in use",
+       "points": 2
+      }
+     ]
+    }
+   ],
+   "bands": [
+    {
+     "min": 0,
+     "name": "A focused tool",
+     "summary": "One job, a few people, little around it. It can be small, quick and simple, and should stay that way.",
+     "changes": [
+      "One person can hold the whole thing in their head.",
+      "A single release path is enough.",
+      "A good README is the documentation."
+     ],
+     "first": [
+      "The one job it must do well.",
+      "What “done” means.",
+      "Who will look after it."
+     ]
+    },
+    {
+     "min": 4,
+     "name": "A platform",
+     "summary": "Several roles and several neighbours. The seams between the parts now matter as much as the parts.",
+     "changes": [
+      "Boundaries and contracts between parts become the design.",
+      "Access rules need to be written down and tested.",
+      "Operation (watching, alerting, recovering) is part of the build."
+     ],
+     "first": [
+      "Who may see and do what.",
+      "What the source of truth is for each record.",
+      "How you will know when it is unwell."
+     ]
+    },
+    {
+     "min": 7,
+     "name": "A programme",
+     "summary": "Many roles, sensitive data and real consequences if it stops. A long piece of work with several parts moving together, which has to be managed as one.",
+     "changes": [
+      "Work is staged, with a working slice early.",
+      "Security, audit and recovery are designed first, not added.",
+      "Several people must be able to run it, so handover starts in week one.",
+      "Migration and running in parallel are projects of their own."
+     ],
+     "first": [
+      "The riskiest assumption, and how to test it first.",
+      "What must never be lost, and how it is protected.",
+      "How you will cut over, and how you will go back."
+     ]
+    }
+   ],
+   "onward": [
+    {
+     "label": "Integration patterns",
+     "to": "/systems/integrations"
+    },
+    {
+     "label": "System lifecycle",
+     "to": "/systems/lifecycle"
+    }
+   ]
+  }
+ },
+ "exposureDesk": {
+  "page": "systems/client-portals",
+  "props": {
+   "type": "closer",
+   "kind": "exposureDesk",
+   "anchor": "exposure",
+   "scene": "client-portal-gate",
+   "tag": "End of client portals",
+   "minHeight": 800,
+   "title": "Design what the customer sees.",
+   "lede": "Ten fields of an invented order. Each says what the usual rule is. Switch them on and off, and the preview changes, with a warning for anything that should never leave the building.",
+   "fields": [
+    {
+     "id": "status",
+     "label": "Order status",
+     "value": "Packed",
+     "rule": "yes",
+     "why": "The thing they came to find out."
+    },
+    {
+     "id": "items",
+     "label": "What they ordered",
+     "value": "3 lines, 5 units",
+     "rule": "yes",
+     "why": "They chose it. Show it back."
+    },
+    {
+     "id": "total",
+     "label": "What they paid",
+     "value": "84.50",
+     "rule": "yes",
+     "why": "Their own money, on their own order."
+    },
+    {
+     "id": "tracking",
+     "label": "Tracking number",
+     "value": "TRK-0000-EXAMPLE",
+     "rule": "yes",
+     "why": "Helps them, and costs nothing to share."
+    },
+    {
+     "id": "address",
+     "label": "Delivery address",
+     "value": "12 Sample Street",
+     "rule": "own",
+     "why": "Theirs to see, and never anyone else’s: show it only to the signed-in owner."
+    },
+    {
+     "id": "email",
+     "label": "Email on file",
+     "value": "a@example.test",
+     "rule": "own",
+     "why": "Fine for them to see. A leak if it reaches the wrong visitor."
+    },
+    {
+     "id": "margin",
+     "label": "Margin on the order",
+     "value": "31%",
+     "rule": "never",
+     "why": "Internal. It says what the business earns."
+    },
+    {
+     "id": "notes",
+     "label": "Internal notes",
+     "value": "Phoned twice; short on patience",
+     "rule": "never",
+     "why": "Written for colleagues, in a tone not meant for the customer."
+    },
+    {
+     "id": "agent",
+     "label": "Support agent",
+     "value": "agent_4417",
+     "rule": "never",
+     "why": "A colleague’s identity is theirs to share, not the system’s."
+    },
+    {
+     "id": "risk",
+     "label": "Fraud score",
+     "value": "0.12",
+     "rule": "never",
+     "why": "Showing it teaches people to game it."
+    }
+   ],
+   "onward": [
+    {
+     "label": "Security approach",
+     "to": "/company/security"
+    },
+    {
+     "label": "Roles, permissions and scopes",
+     "to": "/insights/permissions"
+    }
+   ]
+  }
+ },
+ "lastItem": {
+  "page": "systems/commerce-infrastructure",
+  "props": {
+   "type": "closer",
+   "kind": "lastItem",
+   "anchor": "race",
+   "scene": "transaction-wave",
+   "tag": "End of commerce infrastructure",
+   "minHeight": 700,
+   "title": "Two people, one item left.",
+   "lede": "The classic race: both press Buy at the same moment. Step through three ways of handling it and see which of them sell the item twice.",
+   "onward": [
+    {
+     "label": "Idempotency in order systems",
+     "to": "/insights/idempotency"
+    },
+    {
+     "label": "Customer product",
+     "to": "/work/customer-product"
+    }
+   ]
+  }
+ },
+ "roleLens": {
+  "page": "systems/data-interfaces",
+  "props": {
+   "type": "closer",
+   "kind": "roleLens",
+   "anchor": "lens",
+   "scene": "data-interface-wave",
+   "tag": "End of data interfaces",
+   "minHeight": 720,
+   "title": "One record, four people.",
+   "lede": "Each role needs a few of the fields and not the rest. Choose a role and the record rearranges itself: what they need is sharp, what they do not is tucked away but never gone. An invented record.",
+   "record": [
+    {
+     "id": "order",
+     "label": "Order",
+     "value": "30211"
+    },
+    {
+     "id": "placed",
+     "label": "Placed",
+     "value": "Tuesday, 09:14"
+    },
+    {
+     "id": "status",
+     "label": "Status",
+     "value": "Paid, not yet packed"
+    },
+    {
+     "id": "customer",
+     "label": "Customer",
+     "value": "A. Example"
+    },
+    {
+     "id": "email",
+     "label": "Email",
+     "value": "a@example.test"
+    },
+    {
+     "id": "address",
+     "label": "Delivery address",
+     "value": "12 Sample Street"
+    },
+    {
+     "id": "items",
+     "label": "Items",
+     "value": "3 lines, 5 units"
+    },
+    {
+     "id": "total",
+     "label": "Total",
+     "value": "84.50"
+    },
+    {
+     "id": "margin",
+     "label": "Margin",
+     "value": "31%"
+    },
+    {
+     "id": "carrier",
+     "label": "Carrier",
+     "value": "Parcel, tracked"
+    },
+    {
+     "id": "notes",
+     "label": "Notes",
+     "value": "Gift. Leave with a neighbour."
+    },
+    {
+     "id": "refund",
+     "label": "Refund",
+     "value": "None"
+    }
+   ],
+   "roles": [
+    {
+     "id": "support",
+     "name": "Support",
+     "asks": "Where is it, and what did they pay?",
+     "needs": [
+      "order",
+      "placed",
+      "status",
+      "customer",
+      "email",
+      "items",
+      "total",
+      "carrier",
+      "notes",
+      "refund"
+     ]
+    },
+    {
+     "id": "finance",
+     "name": "Finance",
+     "asks": "What came in, and what went back?",
+     "needs": [
+      "order",
+      "placed",
+      "status",
+      "total",
+      "margin",
+      "refund"
+     ]
+    },
+    {
+     "id": "warehouse",
+     "name": "Warehouse",
+     "asks": "What goes in the box, and where does it go?",
+     "needs": [
+      "order",
+      "status",
+      "address",
+      "items",
+      "carrier",
+      "notes"
+     ]
+    },
+    {
+     "id": "manager",
+     "name": "Manager",
+     "asks": "How is the day going?",
+     "needs": [
+      "order",
+      "status",
+      "items",
+      "total",
+      "margin",
+      "carrier"
+     ]
+    }
+   ],
+   "onward": [
+    {
+     "label": "Internal CRM",
+     "to": "/work/internal-crm"
+    },
+    {
+     "label": "Roles, permissions and scopes",
+     "to": "/insights/permissions"
+    }
+   ]
+  }
+ },
+ "integrationSheet": {
+  "page": "systems/integrations",
+  "props": {
+   "type": "closer",
+   "kind": "integrationSheet",
+   "anchor": "contract",
+   "scene": "dependency-graph",
+   "tag": "End of integration patterns",
+   "minHeight": 780,
+   "title": "Write the contract.",
+   "lede": "Choose what is sent, when, what happens when it fails and who owns it. Out comes a one-page contract to put in front of both teams. It is a starting point to adapt, not a legal document.",
+   "onward": [
+    {
+     "label": "APIs people can integrate against",
+     "to": "/insights/api-contracts"
+    },
+    {
+     "label": "Cron, queues and events",
+     "to": "/insights/triggers"
+    }
+   ]
+  }
+ },
+ "lineage": {
+  "page": "systems/internal-platforms",
+  "props": {
+   "type": "closer",
+   "kind": "lineage",
+   "anchor": "trace",
+   "scene": "orbital-command",
+   "tag": "End of internal platforms",
+   "minHeight": 720,
+   "title": "Where did that number come from?",
+   "lede": "Press the figure and follow it down, hop by hop, to the system that produced it, seeing what must be recorded at each hop for the trail to be walkable. The figure is invented, to show the idea.",
+   "figure": {
+    "label": "Refund rate",
+    "value": "4.2%"
+   },
+   "hops": [
+    {
+     "id": "screen",
+     "layer": "The dashboard",
+     "name": "A figure on a screen",
+     "says": "The number someone is about to act on.",
+     "record": "Which query produced it, which version of that query, and when it last ran."
+    },
+    {
+     "id": "query",
+     "layer": "The report",
+     "name": "A query over cleaned records",
+     "says": "Counts refunds against orders for the period, leaving out test orders.",
+     "record": "The exact definition: what counts as a refund, what counts as an order, which dates."
+    },
+    {
+     "id": "clean",
+     "layer": "The records",
+     "name": "Tidied, de-duplicated rows",
+     "says": "Orders and refunds after the rules that tidy them: repeats removed, currencies converted.",
+     "record": "Every rule applied, with a count of the rows each one changed or dropped."
+    },
+    {
+     "id": "events",
+     "layer": "The event log",
+     "name": "What happened, in order",
+     "says": "Each refund as it was requested, approved and paid.",
+     "record": "Who did it, when, and a reason or a ticket reference."
+    },
+    {
+     "id": "source",
+     "layer": "The source",
+     "name": "The system where it really happened",
+     "says": "The payment provider’s record and the shop’s own database, where the money and the order actually changed.",
+     "record": "The provider’s own reference, so that a person can open the original."
+    }
+   ],
+   "onward": [
+    {
+     "label": "Audit trails that answer questions",
+     "to": "/insights/audit-trails"
+    },
+    {
+     "label": "Internal CRM",
+     "to": "/work/internal-crm"
+    }
+   ]
+  }
+ },
+ "sunsetPlan": {
+  "page": "systems/lifecycle",
+  "props": {
+   "type": "closer",
+   "kind": "sunsetPlan",
+   "anchor": "end",
+   "scene": "redacted-timeline-branch",
+   "tag": "End of the lifecycle",
+   "minHeight": 780,
+   "title": "Plan the end now.",
+   "lede": "Choose what applies to a system you might one day retire, and how much notice people get. Out comes an ordered plan, counted back from the day it is switched off.",
+   "groups": [
+    {
+     "name": "People",
+     "items": [
+      {
+       "id": "p1",
+       "text": "Tell everyone who uses it, and say what replaces it.",
+       "when": 1,
+       "default": true
+      },
+      {
+       "id": "p2",
+       "text": "Give people a place to ask questions.",
+       "when": 1,
+       "default": true
+      },
+      {
+       "id": "p3",
+       "text": "Remind them again, closer to the day.",
+       "when": 0.25,
+       "default": true
+      }
+     ]
+    },
+    {
+     "name": "Data",
+     "items": [
+      {
+       "id": "d1",
+       "text": "Offer every user an export of their own data.",
+       "when": 0.7,
+       "default": true
+      },
+      {
+       "id": "d2",
+       "text": "Decide what must be kept, and for how long.",
+       "when": 1,
+       "default": true
+      },
+      {
+       "id": "d3",
+       "text": "Move or archive what must be kept, and check that it can be read.",
+       "when": 0.4,
+       "default": true
+      },
+      {
+       "id": "d4",
+       "text": "Delete what must not be kept, and record that you did.",
+       "when": -0.1,
+       "default": false
+      }
+     ]
+    },
+    {
+     "name": "Access",
+     "items": [
+      {
+       "id": "a1",
+       "text": "List every integration that talks to it.",
+       "when": 1,
+       "default": true
+      },
+      {
+       "id": "a2",
+       "text": "Tell the owners of those integrations.",
+       "when": 0.9,
+       "default": true
+      },
+      {
+       "id": "a3",
+       "text": "Revoke accounts, keys and tokens.",
+       "when": 0,
+       "default": true
+      },
+      {
+       "id": "a4",
+       "text": "Remove service accounts and firewall rules.",
+       "when": -0.1,
+       "default": false
+      }
+     ]
+    },
+    {
+     "name": "Traffic",
+     "items": [
+      {
+       "id": "t1",
+       "text": "Put a notice page where it used to be.",
+       "when": 0,
+       "default": true
+      },
+      {
+       "id": "t2",
+       "text": "Redirect old addresses to what replaces them.",
+       "when": 0,
+       "default": false
+      },
+      {
+       "id": "t3",
+       "text": "Watch for requests still arriving.",
+       "when": -0.2,
+       "default": true
+      }
+     ]
+    },
+    {
+     "name": "Record",
+     "items": [
+      {
+       "id": "r1",
+       "text": "Write down why it was retired and what was learned.",
+       "when": -0.1,
+       "default": true
+      },
+      {
+       "id": "r2",
+       "text": "Archive the documentation and decision records.",
+       "when": -0.1,
+       "default": true
+      },
+      {
+       "id": "r3",
+       "text": "Update the list of systems the company runs.",
+       "when": -0.1,
+       "default": false
+      }
+     ]
+    },
+    {
+     "name": "Cost",
+     "items": [
+      {
+       "id": "c1",
+       "text": "Cancel hosting, licences and domains, in that order.",
+       "when": -0.2,
+       "default": true
+      },
+      {
+       "id": "c2",
+       "text": "Confirm the final bill.",
+       "when": -0.4,
+       "default": false
+      }
+     ]
+    }
+   ],
+   "onward": [
+    {
+     "label": "Data retention",
+     "to": "/legal/retention"
+    },
+    {
+     "label": "Designing for handover",
+     "to": "/insights/handover"
+    }
+   ]
+  }
+ },
+ "bottleneck": {
+  "page": "systems/operational-management",
+  "props": {
+   "type": "closer",
+   "kind": "bottleneck",
+   "anchor": "slowest",
+   "scene": "build-pipeline",
+   "tag": "End of operational management",
+   "minHeight": 660,
+   "title": "Find the slowest step.",
+   "lede": "Five steps, each with people and minutes per item. The slowest is marked, and adding a person anywhere else changes nothing. An invented operation, to show the shape.",
+   "onward": [
+    {
+     "label": "Musebase",
+     "to": "/work/musebase"
+    },
+    {
+     "label": "System lifecycle",
+     "to": "/systems/lifecycle"
+    }
+   ]
+  }
+ },
+ "hypothesisCard": {
+  "page": "systems/research-systems",
+  "props": {
+   "type": "closer",
+   "kind": "hypothesisCard",
+   "anchor": "card",
+   "scene": "blackout-silhouette",
+   "tag": "End of research systems",
+   "minHeight": 700,
+   "title": "Write the hypothesis down.",
+   "lede": "A small card for a small experiment. A good hypothesis can be wrong, says what would show it, and says when to stop. Fill the five lines; the page flags the usual weaknesses, and the card can be taken away.",
+   "onward": [
+    {
+     "label": "Visual lab",
+     "to": "/lab"
+    },
+    {
+     "label": "Decision records",
+     "to": "/resources/tools/decision-record"
+    }
+   ]
+  }
+ },
+ "operationBrief": {
+  "page": "systems",
+  "props": {
+   "type": "closer",
+   "kind": "operationBrief",
+   "anchor": "brief",
+   "scene": "permission-orbit",
+   "tag": "End of systems",
+   "minHeight": 780,
+   "title": "Write the brief first.",
+   "lede": "Six short answers about an operation become a one-page brief you can keep, share or bring to a first conversation. It is the sheet the first conversation needs, written before the conversation. Nothing is sent anywhere.",
+   "onward": [
+    {
+     "label": "Capabilities",
+     "to": "/systems/capabilities"
+    },
+    {
+     "label": "System lifecycle",
+     "to": "/systems/lifecycle"
+    }
+   ]
+  }
+ },
+ "scopeTarget": {
+  "page": "trust/disclosure",
+  "props": {
+   "type": "closer",
+   "kind": "scopeTarget",
+   "scene": "secure-boundary",
+   "tag": "End of the disclosure policy",
+   "minHeight": 560,
+   "title": "In scope, and out.",
+   "lede": "The centre is what this policy covers. Every ring beyond it belongs to someone else.",
+   "rings": [
+    {
+     "id": "site",
+     "label": "The website",
+     "scope": "in",
+     "short": "The site",
+     "note": "The site at its public address.",
+     "items": [
+      "Pages, scripts and styles",
+      "Links, redirects and addresses",
+      "What the site’s code sends, and to whom"
+     ]
+    },
+    {
+     "id": "delivery",
+     "label": "How it is delivered",
+     "scope": "in",
+     "short": "Delivery",
+     "note": "How the site reaches your browser, as far as the company controls it.",
+     "items": [
+      "Headers and settings the company chooses",
+      "The way files are served from the site’s host"
+     ]
+    },
+    {
+     "id": "services",
+     "label": "Services it depends on",
+     "scope": "out",
+     "short": "Dependencies",
+     "note": "Other people’s systems. Report problems to their owners.",
+     "items": [
+      "The hosting platform",
+      "The font service",
+      "GitHub"
+     ]
+    },
+    {
+     "id": "people",
+     "label": "People and places",
+     "scope": "out",
+     "short": "Beyond",
+     "note": "Not covered by this policy at all.",
+     "items": [
+      "Social engineering of the company’s people",
+      "Physical attacks",
+      "Denial of service"
+     ]
+    }
+   ],
+   "onward": [
+    {
+     "label": "Acceptable use",
+     "to": "/legal/acceptable-use"
+    },
+    {
+     "label": "Trust centre",
+     "to": "/trust"
+    }
+   ]
+  }
+ },
+ "noticeFile": {
+  "page": "trust/licences",
+  "props": {
+   "type": "closer",
+   "kind": "noticeFile",
+   "scene": "hex-lattice",
+   "tag": "End of the notices",
+   "minHeight": 520,
+   "title": "The whole list, as a file.",
+   "lede": "Built on the spot from the same data as the table above. Read it here, copy it, or take it with you.",
+   "onward": [
+    {
+     "label": "Copyright & marks",
+     "to": "/legal/copyright"
+    },
+    {
+     "label": "Trust centre",
+     "to": "/trust"
+    }
+   ]
+  }
+ },
+ "frameTape": {
+  "page": "trust/status",
+  "props": {
+   "type": "closer",
+   "kind": "frameTape",
+   "scene": "timeline-pulse",
+   "tag": "End of the status board",
+   "minHeight": 440,
+   "title": "The tape keeps running.",
+   "lede": "Every frame this page draws is a column below. Move, scroll, and watch what it costs.",
+   "onward": [
+    {
+     "label": "Site engineering",
+     "to": "/engineering"
+    },
+    {
+     "label": "Trust centre",
+     "to": "/trust"
+    }
+   ]
+  }
+ },
+ "hostScan": {
+  "page": "trust/third-parties",
+  "props": {
+   "type": "closer",
+   "kind": "hostScan",
+   "scene": "network-constellation",
+   "tag": "End of the service list",
+   "minHeight": 480,
+   "title": "Where has this tab been?",
+   "lede": "Read from the browser’s own record of the requests this tab made, grouped by host and matched against the list above.",
+   "expected": {
+    "fonts.googleapis.com": "The typeface styles — Google Fonts, listed above.",
+    "fonts.gstatic.com": "The typeface files — Google Fonts, listed above."
+   },
+   "onward": [
+    {
+     "label": "Privacy notice",
+     "to": "/legal/privacy"
+    },
+    {
+     "label": "Trust centre",
+     "to": "/trust"
+    }
+   ]
+  }
+ },
+ "selfAudit": {
+  "page": "trust",
+  "props": {
+   "type": "closer",
+   "kind": "selfAudit",
+   "anchor": "audit",
+   "scene": "secure-boundary",
+   "tag": "End of the trust centre",
+   "minHeight": 560,
+   "title": "Don’t take our word for it.",
+   "lede": "Four checks that run on this page, in your browser, and say what they find.",
+   "onward": [
+    {
+     "label": "Third-party services",
+     "to": "/trust/third-parties"
+    },
+    {
+     "label": "Legal centre",
+     "to": "/legal"
+    }
+   ]
+  }
+ },
+ "funnelMath": {
+  "page": "work/customer-product",
+  "props": {
+   "type": "closer",
+   "kind": "funnelMath",
+   "anchor": "funnel",
+   "scene": "data-stream-ribbons",
+   "tag": "End of the customer product",
+   "minHeight": 720,
+   "title": "Every step has a price.",
+   "lede": "Every step between a first look and a confirmed purchase takes some people away. Set how many carry on at each step (the numbers start invented) and watch the losses multiply; then take a step away and see what it was worth.",
+   "steps": [
+    {
+     "id": "browse",
+     "name": "Browse",
+     "rate": 90
+    },
+    {
+     "id": "product",
+     "name": "Look at a product",
+     "rate": 85
+    },
+    {
+     "id": "basket",
+     "name": "Add to the basket",
+     "rate": 80
+    },
+    {
+     "id": "details",
+     "name": "Enter details",
+     "rate": 75
+    },
+    {
+     "id": "confirm",
+     "name": "Confirm the purchase",
+     "rate": 90
+    }
+   ],
+   "onward": [
+    {
+     "label": "Commerce infrastructure",
+     "to": "/systems/commerce-infrastructure"
+    },
+    {
+     "label": "All work",
+     "to": "/work"
+    }
+   ]
+  }
+ },
+ "caseExam": {
+  "page": "work/how-to-read",
+  "props": {
+   "type": "closer",
+   "kind": "caseExam",
+   "anchor": "exam",
+   "scene": "magnetic-particles",
+   "tag": "End of reading the work",
+   "minHeight": 780,
+   "title": "The six questions, put to ours.",
+   "lede": "For each of the four pieces of work on this site, which of the six questions are answered, which only partly, and which are not said at all. Written plainly, because the gaps are the point.",
+   "questions": [
+    {
+     "id": "who",
+     "text": "Who was it for?",
+     "why": "A named client, a kind of client, or no one in particular?"
+    },
+    {
+     "id": "what",
+     "text": "What does it actually do?",
+     "why": "In terms you could check."
+    },
+    {
+     "id": "change",
+     "text": "What changed because of it?",
+     "why": "The question case studies exist to answer."
+    },
+    {
+     "id": "know",
+     "text": "How does anyone know?",
+     "why": "A number, a comparison, a person."
+    },
+    {
+     "id": "wrong",
+     "text": "What went wrong, or was hard?",
+     "why": "Every project had a bad week."
+    },
+    {
+     "id": "look",
+     "text": "Can I look for myself?",
+     "why": "Seeing beats being told."
+    }
+   ],
+   "cases": [
+    {
+     "id": "musebase",
+     "name": "Musebase",
+     "answers": {
+      "who": {
+       "status": "partly",
+       "text": "Described by purpose, as a coordination application for people, time and information. No customer is named."
+      },
+      "what": {
+       "status": "said",
+       "text": "Scheduling, communication and records in one environment, with access scoped to each role."
+      },
+      "change": {
+       "status": "not",
+       "text": "No result is claimed."
+      },
+      "know": {
+       "status": "not",
+       "text": "No measurement, comparison or testimonial."
+      },
+      "wrong": {
+       "status": "not",
+       "text": "Not covered. The page describes the work; it is not a post-mortem."
+      },
+      "look": {
+       "status": "partly",
+       "text": "Three small experiments with the idea behind it are on the page. They are not the application."
+      }
+     }
+    },
+    {
+     "id": "yk",
+     "name": "YK Engine",
+     "answers": {
+      "who": {
+       "status": "not",
+       "text": "Not stated. The page says what the engine is, not who uses it."
+      },
+      "what": {
+       "status": "said",
+       "text": "A 2D engine with an editor, a standalone player and project export tooling."
+      },
+      "change": {
+       "status": "not",
+       "text": "No result is claimed."
+      },
+      "know": {
+       "status": "partly",
+       "text": "The page’s own frame-time graph is measured live from the demonstration in your browser, not from the engine."
+      },
+      "wrong": {
+       "status": "not",
+       "text": "Not covered."
+      },
+      "look": {
+       "status": "said",
+       "text": "A public repository, linked from the page. The editor and player on the page are illustrations."
+      }
+     }
+    },
+    {
+     "id": "customer",
+     "name": "Customer product",
+     "answers": {
+      "who": {
+       "status": "partly",
+       "text": "A customer-facing product around shopping and transactions. Unnamed by design."
+      },
+      "what": {
+       "status": "said",
+       "text": "The path from a first look to a confirmed purchase, described in five frames."
+      },
+      "change": {
+       "status": "not",
+       "text": "No result is claimed."
+      },
+      "know": {
+       "status": "not",
+       "text": "No measurement or testimonial."
+      },
+      "wrong": {
+       "status": "not",
+       "text": "Not covered."
+      },
+      "look": {
+       "status": "not",
+       "text": "Described, not displayed. The page shows abstract wireframes, not screenshots, and says so. The product is not public."
+      }
+     }
+    },
+    {
+     "id": "crm",
+     "name": "Internal CRM",
+     "answers": {
+      "who": {
+       "status": "partly",
+       "text": "An internal system, for the people who run an operation. Not a public product."
+      },
+      "what": {
+       "status": "said",
+       "text": "Designed for very large data sets. The page demonstrates the idea with synthetic rows made in your browser; no speed or size of the real system is claimed."
+      },
+      "change": {
+       "status": "not",
+       "text": "No result is claimed."
+      },
+      "know": {
+       "status": "not",
+       "text": "No measurement or testimonial."
+      },
+      "wrong": {
+       "status": "not",
+       "text": "Not covered."
+      },
+      "look": {
+       "status": "not",
+       "text": "Internal by design. It is not public."
+      }
+     }
+    }
+   ],
+   "onward": [
+    {
+     "label": "All work",
+     "to": "/work"
+    },
+    {
+     "label": "Frequently asked questions",
+     "to": "/company/faq"
+    }
+   ]
+  }
+ },
+ "lookupRace": {
+  "page": "work/internal-crm",
+  "props": {
+   "type": "closer",
+   "kind": "lookupRace",
+   "anchor": "race",
+   "scene": "data-rain",
+   "tag": "End of the internal CRM",
+   "minHeight": 720,
+   "title": "Finding one row among millions.",
+   "lede": "Three ways, with the number of steps each takes as the table grows. Then the real thing: the page builds half a million rows in your browser and times each method for you.",
+   "onward": [
+    {
+     "label": "Data interfaces",
+     "to": "/systems/data-interfaces"
+    },
+    {
+     "label": "All work",
+     "to": "/work"
+    }
+   ]
+  }
+ },
+ "channelCount": {
+  "page": "work/musebase",
+  "props": {
+   "type": "closer",
+   "kind": "channelCount",
+   "anchor": "channels",
+   "scene": "musebase-coordination",
+   "tag": "End of Musebase",
+   "minHeight": 640,
+   "title": "Why one shared picture.",
+   "lede": "Everyone telling everyone needs a channel for every pair of people, and that count grows with the square of the headcount. One shared picture needs one per person. The arithmetic, drawn.",
+   "onward": [
+    {
+     "label": "Operational management",
+     "to": "/systems/operational-management"
+    },
+    {
+     "label": "All work",
+     "to": "/work"
+    }
+   ]
+  }
+ },
+ "fixedStep": {
+  "page": "work/yk-engine",
+  "props": {
+   "type": "closer",
+   "kind": "fixedStep",
+   "anchor": "step",
+   "scene": "isometric-infra",
+   "tag": "End of YK Engine",
+   "minHeight": 660,
+   "title": "Why engines fix the step.",
+   "lede": "The same ball dropped three ways: with a tiny step, with a fixed step that catches up however slowly frames arrive, and with whatever time the last frame took. An illustration of the idea, not the engine’s own code.",
+   "onward": [
+    {
+     "label": "The stack",
+     "to": "/north/stack"
+    },
+    {
+     "label": "Animation budgets",
+     "to": "/insights/animation-budgets"
+    }
+   ]
+  }
+ },
+ "workCompare": {
+  "page": "work",
+  "props": {
+   "type": "closer",
+   "kind": "workCompare",
+   "anchor": "compare",
+   "scene": "contact-transmission",
+   "tag": "End of the work",
+   "minHeight": 700,
+   "title": "Put any two side by side.",
+   "lede": "Choose two of the four. The rows are the things the work pages say; where a row is the same for both it is marked, because what two pieces of work share is as telling as how they differ.",
+   "shows": {
+    "musebase": "Three small experiments with the idea behind it: place, compare, scope.",
+    "yk-engine": "An editor and player illustration, the pipeline, and the engine’s anatomy.",
+    "customer-product": "Five abstract wireframes along the path to a purchase.",
+    "internal-crm": "A window onto synthetic rows, up to ten million of them."
+   },
+   "onward": [
+    {
+     "label": "How to read the work",
+     "to": "/work/how-to-read"
+    },
+    {
+     "label": "Company timeline",
+     "to": "/company/timeline"
+    }
+   ]
+  }
+ }
+}

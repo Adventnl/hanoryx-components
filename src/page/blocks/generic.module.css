@@ -1,0 +1,77 @@
+/* ============================================================
+   GENERIC BLOCKS — the page blocks that are data first: a remark, a table, a
+   timeline, a set of questions, a comparison, a snippet, tabs, a quote, a
+   checklist, a fact sheet, a row of links and a row of figures. Each is built
+   from the interface kit (components/kit), sits in the same Shell as every other
+   block and reads its colours, spacing and motion from the tokens.
+   ============================================================ */
+
+.cell { display: flex; min-width: 0; }
+.cell > * { width: 100%; }
+.slim { padding-block: clamp(var(--size-2p4rem), var(--size-5vw), var(--size-4p6rem)); }
+.narrow { width: 100%; max-width: var(--size-46rem); margin-top: var(--space-6); }
+.wide { width: 100%; margin-top: var(--space-8); }
+.note { max-width: var(--size-62ch); margin: var(--space-5) 0 0; font: var(--size-0p64rem) var(--font-mono); letter-spacing: var(--size-0p05em); line-height: 1.7; color: var(--c-white-50); }
+
+/* callout */
+.calloutBody > * + * { margin-top: var(--size-0p6rem); }
+.calloutBody ul { margin: 0; padding-left: var(--size-1p2rem); list-style: disc; }
+.calloutBody li::marker { color: var(--c-red); }
+
+/* faq */
+.faq { max-width: var(--size-52rem); margin-top: var(--space-8); }
+.answer > * + * { margin-top: var(--size-0p7rem); }
+
+/* compare */
+.compare { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--size-19rem)), 1fr)); gap: var(--space-5); margin-top: var(--space-8); }
+.col ul { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--size-0p7rem); }
+.col li { position: relative; padding-left: var(--space-5); font-size: var(--fs-sm); line-height: 1.6; color: var(--c-white-80); }
+.col li::before { content: ''; position: absolute; left: 0; top: var(--size-0p62em); width: var(--size-0p7rem); height: var(--size-1px); background: var(--c-white-50); }
+.col[data-tone='yes'] li::before { background: var(--c-extracted-6fdc9a); height: var(--size-2px); }
+.col[data-tone='no'] li::before { background: var(--c-red-bright); height: var(--size-2px); }
+.verdict { max-width: var(--size-62ch); margin: var(--space-6) 0 0; font-family: var(--font-serif); font-weight: 300; font-size: var(--fs-h4); line-height: 1.4; color: var(--c-white); }
+
+/* snippet */
+.snippet { margin-top: var(--space-8); max-width: var(--size-62rem); }
+.snippetNotes { display: grid; gap: var(--space-2); max-width: var(--size-62ch); margin: var(--space-5) 0 0; padding: 0 0 0 var(--size-1p2rem); list-style: disc; font-size: var(--fs-sm); line-height: 1.65; color: var(--c-white-80); }
+.snippetNotes li::marker { color: var(--c-red); }
+
+/* tabs */
+.tabsWrap { margin-top: var(--space-8); max-width: var(--size-60rem); }
+.pane { display: grid; gap: var(--size-0p9rem); max-width: var(--size-62ch); font-size: var(--fs-body); line-height: 1.75; color: var(--c-white-80); }
+.pane p { margin: 0; }
+.pane ul { margin: 0; padding-left: var(--size-1p2rem); list-style: disc; display: grid; gap: var(--size-0p4rem); }
+.pane li::marker { color: var(--c-red); }
+
+/* quote */
+.quoteWrap { max-width: var(--size-56rem); margin-top: var(--space-8); }
+.context { max-width: var(--size-62ch); margin: var(--space-5) 0 0; padding-left: var(--space-5); font-size: var(--fs-sm); line-height: 1.7; color: var(--c-white-65); }
+
+/* checklist */
+.checks { display: grid; gap: var(--size-0p35rem); max-width: var(--size-46rem); margin: var(--space-8) 0 0; padding: 0; list-style: none; }
+.checks li { padding: var(--size-0p55rem) var(--size-0p8rem); border: var(--size-1px) solid var(--c-line); border-radius: var(--r-sm); background: var(--c-extracted-rgba-10-11-13-0p7); transition: border-color var(--dur-2) var(--ease-out), background var(--dur-2) var(--ease-out); }
+.checks li:hover, .checks li:focus-within { border-color: var(--c-line-strong); }
+.checks li[data-on] { border-color: var(--c-red-dim); background: linear-gradient(90deg, var(--c-red-faint), var(--c-extracted-rgba-10-11-13-0p7)); }
+.progress { display: flex; flex-wrap: wrap; align-items: center; gap: var(--size-0p9rem); max-width: var(--size-46rem); margin-top: var(--space-5); font: var(--size-0p64rem) var(--font-mono); letter-spacing: var(--size-0p1em); text-transform: uppercase; color: var(--c-white-65); font-variant-numeric: lining-nums tabular-nums; }
+.progress progress { flex: 1; min-width: var(--size-8rem); height: var(--size-4px); accent-color: var(--c-red); }
+.progress button { border: var(--size-1px) solid var(--c-line-strong); border-radius: var(--r-pill); background: transparent; padding: var(--size-0p35rem) var(--size-0p8rem); color: var(--c-white-80); font: inherit; letter-spacing: var(--size-0p08em); cursor: pointer; }
+.progress button:hover { border-color: var(--c-white-50); color: var(--c-white); }
+.progress button:disabled { opacity: 0.4; cursor: default; }
+
+/* facts */
+.facts { max-width: var(--size-56rem); margin-top: var(--space-8); }
+
+/* links */
+.linkGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--size-17rem)), 1fr)); gap: var(--space-5); margin-top: var(--space-8); }
+.go { display: inline-flex; align-items: center; gap: var(--size-0p4rem); font: var(--size-0p62rem) var(--font-mono); letter-spacing: var(--size-0p16em); text-transform: uppercase; color: var(--c-white); text-decoration: none; }
+.go svg { transition: transform var(--dur-2) var(--ease-out); }
+.go:hover svg, .go:focus-visible svg { transform: translate(var(--size-2px), var(--size-negative-2px)); }
+.go:hover { color: var(--c-red-bright); }
+
+/* numbers */
+.figures { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--size-15rem)), 1fr)); gap: var(--space-5); margin-top: var(--space-8); }
+.figure { display: grid; gap: var(--space-3); align-content: start; padding: var(--space-5); border: var(--size-1px) solid var(--c-line-strong); border-radius: var(--r-lg); background: linear-gradient(170deg, var(--c-extracted-rgba-14-15-18-0p9), var(--c-extracted-rgba-5-5-5-0p7)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .checks li, .go svg { transition: none; }
+}

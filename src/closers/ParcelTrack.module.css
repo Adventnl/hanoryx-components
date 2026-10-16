@@ -1,0 +1,18 @@
+.line { position: relative; display: grid; grid-template-columns: repeat(var(--n), 1fr); margin-bottom: var(--space-5); padding-top: var(--size-1p6rem); }
+.rail { position: absolute; left: calc(100% / var(--n) / 2); right: calc(100% / var(--n) / 2); top: var(--size-2p4rem); height: var(--size-2px); background: var(--c-white-12); }
+.done { position: absolute; left: 0; top: 0; bottom: 0; width: calc(var(--at) / (var(--n) - 1) * 100%); background: var(--c-red); box-shadow: var(--glow-red); transition: width var(--dur-4) var(--ease-glide); }
+.parcel { position: absolute; top: var(--size-1p7rem); left: calc(100% / var(--n) / 2 + (100% - 100% / var(--n)) * var(--at) / (var(--n) - 1)); width: var(--size-26px); height: var(--size-26px); margin-left: var(--size-negative-13px); border: var(--size-1px) solid var(--c-red); border-radius: var(--size-5px); background: var(--c-black-3); box-shadow: 0 0 0 var(--size-5px) var(--c-red-ghost); transition: left var(--dur-4) var(--ease-glide); pointer-events: none; z-index: 2; }
+.parcel::before, .parcel::after { content: ''; position: absolute; background: var(--c-red); }
+.parcel::before { left: 50%; top: 0; bottom: 0; width: var(--size-1px); }
+.parcel::after { top: 50%; left: 0; right: 0; height: var(--size-1px); }
+.station { display: flex; justify-content: center; }
+.station button { display: flex; flex-direction: column; align-items: center; gap: var(--size-1p1rem); padding: 0 var(--size-0p4rem); cursor: pointer; }
+.node { position: relative; z-index: 1; width: var(--size-12px); height: var(--size-12px); margin-top: var(--size-0p4rem); border-radius: 50%; border: var(--size-1px) solid var(--c-white-50); background: var(--c-black); transition: border-color var(--dur-3) var(--ease-out), background var(--dur-3) var(--ease-out); }
+.reached .node { border-color: var(--c-red); background: var(--c-red); }
+.name { font: var(--size-0p62rem) var(--font-mono); letter-spacing: var(--size-0p16em); text-transform: uppercase; color: var(--c-white-50); transition: color var(--dur-2) var(--ease-out); }
+.here .name, .station button:hover .name { color: var(--c-white); }
+.card { display: flex; flex-direction: column; gap: var(--space-3); max-width: var(--size-40rem); animation: card-in var(--dur-3) var(--ease-glide) both; }
+.text { font-size: var(--fs-lead); font-weight: 300; line-height: 1.55; color: var(--c-white-80); }
+@keyframes card-in { from { opacity: 0; transform: translateY(var(--size-8px)); } to { opacity: 1; transform: none; } }
+@media (max-width: 520px) { .name { font-size: var(--size-0p5rem); letter-spacing: var(--size-0p08em); } }
+@media (prefers-reduced-motion: reduce) { .done, .parcel { transition: none; } .card { animation: none; } }

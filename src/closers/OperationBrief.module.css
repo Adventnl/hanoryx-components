@@ -1,0 +1,6 @@
+.rig { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(var(--size-1p2rem), var(--size-4vw), var(--space-8)); align-items: start; }
+.form { display: grid; gap: var(--space-3); min-width: 0; }
+.out { display: grid; gap: var(--space-3); min-width: 0; position: sticky; top: calc(var(--nav-h) + var(--size-1p5rem)); }
+.out pre { margin: 0; max-height: var(--size-26rem); overflow: auto; padding: var(--space-4) var(--size-1p2rem); border: var(--size-1px) solid var(--c-line-strong); border-radius: var(--r-md); background: var(--c-extracted-rgba-3-3-4-0p92); font: var(--size-0p72rem)/1.7 var(--font-mono); color: var(--c-white-80); white-space: pre-wrap; overflow-wrap: anywhere; }
+.fine { font: var(--size-0p6rem) var(--font-mono); letter-spacing: var(--size-0p04em); line-height: 1.7; color: var(--c-white-50); }
+@media (max-width: 860px) { .rig { grid-template-columns: minmax(0, 1fr); } .out { position: static; } }

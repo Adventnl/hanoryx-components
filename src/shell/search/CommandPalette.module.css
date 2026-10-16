@@ -1,0 +1,325 @@
+/* The overlay is anchored to the TOP of the viewport and centred horizontally.
+   It is never vertically centred, so a result list growing or shrinking can't
+   make the panel jump, and it is a plain flex box — unlike <dialog>, whose
+   auto-margins the global reset (* { margin: 0 }) strips, which is what pinned
+   the old panel to the top-left corner. */
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 11000;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: clamp(var(--size-56px), var(--size-12vh), var(--size-132px)) var(--size-12px) var(--size-12px);
+}
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--c-extracted-rgba-2-2-3-0p72);
+}
+
+.panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(var(--size-720px), 100%);
+  max-height: min(var(--size-78dvh), var(--size-640px));
+  min-height: 0;
+  overflow: hidden;
+  border: var(--size-1px) solid var(--c-white-20);
+  border-radius: var(--r-md);
+  background:
+    linear-gradient(180deg, var(--c-white-05), transparent var(--size-90px)),
+    var(--c-black-2);
+  color: var(--c-white);
+  box-shadow: 0 var(--size-50px) var(--size-140px) var(--size-negative-30px) var(--c-extracted-rgba-0-0-0-0p95), 0 0 0 var(--size-1px) var(--c-extracted-rgba-255-51-51-0p04);
+}
+/* hairline of red light along the top edge */
+.panel::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: var(--size-1px);
+  background: linear-gradient(90deg, transparent, var(--c-red-dim), transparent);
+  pointer-events: none;
+}
+
+/* ---- input ---- */
+.inputRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-4) var(--space-3);
+  flex: none;
+}
+.searchIcon { flex: none; color: var(--c-red); }
+.pulsing { animation: node-pulse var(--dur-extracted-1p1s) ease-in-out infinite; }
+.field { position: relative; flex: 1; min-width: 0; }
+.input {
+  width: 100%;
+  min-width: 0;
+  padding: var(--size-0p35rem) 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--c-white);
+  font: var(--size-1p08rem) var(--font-sans);
+  font-weight: 300;
+  caret-color: var(--c-red);
+}
+/* The field's focus indicator is the row's underline (clearly visible), not the
+   browser's boxy outline around a borderless input. */
+.input:focus-visible { outline: none; }
+.inputRow {
+  position: relative;
+}
+.inputRow::after {
+  content: '';
+  position: absolute;
+  left: var(--space-4);
+  right: var(--space-4);
+  bottom: 0;
+  height: var(--size-1px);
+  background: linear-gradient(90deg, var(--c-red), var(--c-red-dim) 60%, transparent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur-3) var(--ease-out);
+}
+.inputRow:focus-within::after { transform: scaleX(1); }
+.hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--size-0p35em);
+  overflow: hidden;
+  white-space: nowrap;
+  pointer-events: none;
+  color: var(--c-white-50);
+  font: var(--size-1p08rem) var(--font-sans);
+  font-weight: 300;
+}
+.hintWord {
+  display: inline-block;
+  color: var(--c-white-50);
+  animation: hint-in var(--dur-3) var(--ease-out) both;
+}
+@keyframes hint-in {
+  from { opacity: 0; transform: translateY(var(--size-8px)); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.close {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: var(--size-34px);
+  height: var(--size-34px);
+  border: var(--size-1px) solid var(--c-white-12);
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--c-white-65);
+  cursor: pointer;
+  transition: color var(--dur-2) var(--ease-out), border-color var(--dur-2) var(--ease-out), transform var(--dur-3) var(--ease-out);
+}
+.close:hover { border-color: var(--c-red-dim); color: var(--c-red); transform: rotate(90deg); }
+.close:focus-visible { outline: var(--size-2px) solid var(--c-red); outline-offset: var(--size-2px); }
+
+/* ---- section filters ---- */
+.chips {
+  position: relative;
+  display: flex;
+  gap: var(--size-4px);
+  /* Equal room above and below the pills. The old 0 top padding left the active
+     pill touching the input's red underline while 12px sat below it. */
+  padding: var(--space-3) var(--space-4);
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex: none;
+  border-bottom: var(--border);
+}
+.chips::-webkit-scrollbar { display: none; }
+.chip {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--size-0p5em);
+  flex: none;
+  padding: var(--size-0p38rem) var(--size-0p7rem);
+  border-radius: var(--r-pill);
+  color: var(--c-white-50);
+  font: var(--fs-2xs) var(--font-mono);
+  letter-spacing: var(--size-0p1em);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color var(--dur-2) var(--ease-out);
+}
+.chip:hover { color: var(--c-white); }
+.chipOn { color: var(--c-white); }
+/* one highlight that glides to the active chip (see placeInk in the component) */
+.chipInk {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--chip-w, var(--size-0px));
+  height: var(--chip-h, var(--size-0px));
+  transform: translate(var(--chip-x, var(--size-0px)), var(--chip-y, var(--size-0px)));
+  opacity: var(--chip-on, 0);
+  border: var(--size-1px) solid var(--c-red-dim);
+  border-radius: var(--r-pill);
+  background: var(--c-red-faint);
+  pointer-events: none;
+  transition: opacity var(--dur-2) var(--ease-out);
+}
+.chips[data-ink-ready] .chipInk {
+  transition:
+    transform var(--dur-2) var(--ease-out),
+    width var(--dur-2) var(--ease-out),
+    height var(--dur-2) var(--ease-out),
+    opacity var(--dur-2) var(--ease-out);
+}
+.chipLabel, .chipCount { position: relative; }
+.chipCount { color: var(--c-white-50); font-variant-numeric: lining-nums tabular-nums; }
+.chipOn .chipCount { color: var(--c-red); }
+
+/* ---- results ---- */
+.results {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--space-2);
+}
+/* The row highlight bleeds 8px past the content edge; the row's TEXT (and the
+   group label) sit on the same 16px edge as the search icon, the chips and the
+   key hints, so the panel reads as one column. */
+.group {
+  padding: var(--space-3) var(--space-2) var(--space-1);
+  color: var(--c-white-50);
+  font: var(--size-0p6rem) var(--font-mono);
+  letter-spacing: var(--size-0p2em);
+  text-transform: uppercase;
+}
+.row {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--size-0p7rem) var(--space-2);
+  border: 0;
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--c-white);
+  text-align: left;
+  cursor: pointer;
+}
+/* the single highlight that glides between rows (see placeInk in the component) */
+.rowInk {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--ink-w, var(--size-0px));
+  height: var(--ink-h, var(--size-0px));
+  transform: translate(var(--ink-x, var(--size-0px)), var(--ink-y, var(--size-0px)));
+  opacity: var(--ink-on, 0);
+  border-radius: var(--r-sm);
+  background: linear-gradient(90deg, var(--c-red-faint), var(--c-white-03));
+  box-shadow: inset var(--size-2px) 0 0 var(--c-red);
+  pointer-events: none;
+  transition: opacity var(--dur-1) var(--ease-out);
+}
+.results[data-ink-ready] .rowInk {
+  transition:
+    transform var(--dur-2) var(--ease-out),
+    width var(--dur-2) var(--ease-out),
+    height var(--dur-2) var(--ease-out),
+    opacity var(--dur-1) var(--ease-out);
+}
+.rowBody { position: relative; display: flex; flex-direction: column; gap: var(--size-0p3rem); min-width: 0; flex: 1; }
+.rowHead { display: flex; align-items: baseline; flex-wrap: wrap; gap: var(--space-1) var(--size-0p7rem); min-width: 0; }
+.rowTitle { font-weight: 500; font-size: var(--size-0p98rem); letter-spacing: 0; }
+.rowSection {
+  color: var(--c-red);
+  font: var(--size-0p58rem) var(--font-mono);
+  letter-spacing: var(--size-0p16em);
+  text-transform: uppercase;
+}
+.rowPath { color: var(--c-white-50); font: var(--size-0p62rem) var(--font-mono); }
+.excerpt {
+  color: var(--c-white-50);
+  font-size: var(--size-0p83rem);
+  line-height: 1.5;
+  font-weight: 300;
+  overflow-wrap: anywhere;
+}
+.excerptHeading {
+  margin-right: var(--size-0p55em);
+  color: var(--c-white-50);
+  font: var(--size-0p58rem) var(--font-mono);
+  letter-spacing: var(--size-0p12em);
+  text-transform: uppercase;
+}
+.excerpt mark, .rowTitle mark {
+  padding: 0 var(--size-1px);
+  border-radius: var(--r-xs);
+  background: var(--c-extracted-rgba-255-51-51-0p22);
+  color: var(--c-white);
+}
+.rowEnter {
+  position: relative;
+  flex: none;
+  align-self: center;
+  color: var(--c-red);
+  opacity: 0;
+  transform: translateX(var(--size-negative-6px));
+  transition: opacity var(--dur-2) var(--ease-out), transform var(--dur-3) var(--ease-out);
+}
+.rowOn .rowEnter { opacity: 1; transform: none; }
+
+.empty { padding: var(--space-6) var(--space-2); color: var(--c-white-65); font-size: var(--size-0p92rem); }
+.emptyHint { margin-top: var(--space-2); color: var(--c-white-50); font-size: var(--size-0p82rem); }
+.emptyHint button { color: var(--c-red); cursor: pointer; text-decoration: underline; text-underline-offset: var(--size-3px); }
+
+/* ---- footer ---- */
+.footer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  flex: none;
+  padding: var(--space-3) var(--space-4);
+  border-top: var(--border);
+  color: var(--c-white-50);
+  font: var(--size-0p62rem) var(--font-mono);
+  letter-spacing: var(--size-0p06em);
+}
+.footer kbd {
+  display: inline-grid;
+  place-items: center;
+  min-width: var(--size-1p6em);
+  height: var(--size-1p6em);
+  margin-right: var(--size-0p3em);
+  padding: 0 var(--size-0p35em);
+  border: var(--size-1px) solid var(--c-white-20);
+  border-bottom-width: var(--size-2px);
+  border-radius: var(--r-sm);
+  background: var(--c-white-05);
+  color: var(--c-white-65);
+  font: inherit;
+}
+.count { margin-left: auto; color: var(--c-white-50); }
+
+@media (max-width: 560px) {
+  .root { padding-top: var(--size-12px); }
+  .panel { max-height: min(calc(var(--size-100dvh) - var(--size-24px)), var(--size-540px)); }
+  .rowPath { display: none; }
+  .footer span:nth-child(-n + 2) { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .inputRow::after { transition: none; }
+  .pulsing, .hintWord { animation: none; }
+  .close:hover { transform: none; }
+}

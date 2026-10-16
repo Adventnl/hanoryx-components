@@ -1,0 +1,272 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: var(--z-nav);
+  /* Pre-reveal rest state: the shell flips data-revealed as the intro lifts and
+     the bar glides down into place with the site (never a pop). */
+  opacity: 0;
+  transform: translateY(var(--size-negative-14px));
+  transition:
+    opacity var(--dur-extracted-1s) var(--ease-out),
+    transform var(--dur-extracted-1p1s) var(--ease-out);
+}
+.nav[data-revealed='true'] {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Scroll state -------------------------------------------------------
+   The old bar swapped a gradient `background` on scroll. Gradients cannot be
+   transitioned, so it snapped. The plate is its own layer and only its OPACITY
+   (a compositor property) eases, so the bar settles in as scrolling begins.
+   Near-opaque instead of blur: backdrop-filter over the full-width hero scene
+   was a per-frame GPU cost across the whole top strip. */
+.plate {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, var(--c-extracted-rgba-5-5-5-0p97), var(--c-extracted-rgba-5-5-5-0p86));
+  opacity: 0;
+  transition: opacity var(--dur-extracted-0p7s) var(--ease-out);
+}
+/* Always-on whisper of a scrim so the bar reads over the brightest hero frames. */
+.nav::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 var(--size-negative-12px) 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, var(--c-extracted-rgba-2-2-3-0p55), transparent);
+  opacity: 1;
+  transition: opacity var(--dur-extracted-0p7s) var(--ease-out);
+}
+.scrolled .plate,
+.menuActive .plate { opacity: 1; }
+.scrolled::before,
+.menuActive::before { opacity: 0; }
+
+.hairline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--size-1px);
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, var(--c-line-strong) 18%, var(--c-line-strong) 82%, transparent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--dur-4) var(--ease-out);
+}
+.scrolled .hairline,
+.menuActive .hairline { transform: scaleX(1); }
+
+.inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  max-width: var(--maxw);
+  margin-inline: auto;
+  height: var(--nav-h);
+  padding-inline: var(--gutter);
+}
+
+/* Staged entrance: logo, links, tools arrive one after another. */
+.part {
+  opacity: 0;
+  transform: translateY(var(--size-negative-8px));
+  transition: opacity var(--dur-4) var(--ease-out), transform var(--dur-extracted-1s) var(--ease-out);
+}
+.nav[data-revealed='true'] .part { opacity: 1; transform: none; }
+.nav[data-revealed='true'] .groups { transition-delay: var(--dur-extracted-0p12s); }
+.nav[data-revealed='true'] .right { transition-delay: var(--dur-extracted-0p24s); }
+
+/* Brand */
+.brand { display: inline-flex; align-items: center; gap: var(--size-0p7rem); flex: none; }
+.mark {
+  position: relative;
+  width: var(--size-30px);
+  height: var(--size-30px);
+  border-radius: var(--r-xs);
+  overflow: hidden;
+  transition: transform var(--dur-3) var(--ease-out);
+}
+.mark img { width: 100%; height: 100%; object-fit: cover; opacity: 0.92; }
+/* hover: a light pass sweeps across the mark */
+.sheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 35%, var(--c-extracted-rgba-255-255-255-0p55) 50%, transparent 65%);
+  transform: translateX(-130%);
+  pointer-events: none;
+}
+.brand:hover .sheen,
+.brand:focus-visible .sheen { animation: nav-sheen var(--dur-4) var(--ease-out) 1; }
+.brand:hover .mark { transform: scale(1.06); }
+@keyframes nav-sheen { to { transform: translateX(130%); } }
+.wordmark {
+  font-size: var(--size-0p78rem);
+  letter-spacing: var(--size-0p26em);
+  text-transform: uppercase;
+  color: var(--c-white);
+  white-space: nowrap;
+  transition: letter-spacing var(--dur-4) var(--ease-out);
+}
+.brand:hover .wordmark { letter-spacing: var(--size-0p3em); }
+/* once scrolled the identity tightens slightly (transform/letter-spacing only) */
+.scrolled .mark { transform: scale(0.92); }
+.scrolled .brand:hover .mark { transform: scale(1); }
+
+/* Groups */
+.groups { position: relative; display: flex; align-items: center; gap: var(--space-1); }
+.group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* The box reaches 0.75rem below the label (and is pulled back by the same margin, so
+     the label does not move): that is the room the hover code slides into, under the
+     ink, instead of crowding it. */
+  padding: var(--size-0p4rem) var(--size-0p9rem) var(--size-1p15rem);
+  margin-bottom: var(--size-negative-0p75rem);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  color: var(--c-white-50);
+  transition: color var(--dur-2) var(--ease-out);
+}
+.group:hover,
+.groupOpen,
+.active { color: var(--c-white); }
+
+/* the single ink indicator that springs between links */
+.ink {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: var(--size-1px);
+  background: var(--c-red);
+  box-shadow: var(--glow-red);
+  pointer-events: none;
+  transform-origin: left center;
+}
+
+.groupLabel { font-size: var(--fs-sm); }
+.groupCode {
+  position: absolute;
+  left: var(--size-0p9rem);
+  bottom: var(--size-0p15rem);
+  font-family: var(--font-mono);
+  font-size: var(--size-0p5rem);
+  line-height: 1;
+  letter-spacing: var(--size-0p18em);
+  color: var(--c-red);
+  opacity: 0;
+  transform: translateY(var(--size-0p6rem));
+  transition: transform var(--dur-2) var(--ease-out), opacity var(--dur-2) var(--ease-out);
+}
+.group:hover .groupCode, .groupOpen .groupCode { transform: none; opacity: 0.7; }
+/* a small tag for something new (the Showcase) */
+.badge {
+  position: absolute;
+  top: var(--size-0p15rem);
+  right: var(--size-0p2rem);
+  font-family: var(--font-mono);
+  font-size: var(--size-0p44rem);
+  line-height: 1;
+  letter-spacing: var(--size-0p16em);
+  text-transform: uppercase;
+  color: var(--c-red);
+  pointer-events: none;
+}
+
+/* Right cluster */
+.right { display: flex; align-items: center; gap: var(--space-4); flex: none; }
+.search { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--size-36px); padding: 0 var(--space-3); border: var(--size-1px) solid var(--c-line-strong); background: var(--c-white-03); color: var(--c-white-65); font: var(--fs-2xs) var(--font-mono); cursor: pointer; transition: color var(--dur-2) var(--ease-out), border-color var(--dur-2) var(--ease-out), background var(--dur-2) var(--ease-out); }
+.search:hover { color: var(--c-white); border-color: var(--c-red-dim); background: var(--c-white-05); }
+.search:focus-visible { outline: var(--size-2px) solid var(--c-red); outline-offset: var(--size-2px); }
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--size-0p5em);
+  font-family: var(--font-mono);
+  font-size: var(--size-0p6rem);
+  letter-spacing: var(--size-0p18em);
+  text-transform: uppercase;
+  color: var(--c-white-50);
+  white-space: nowrap;
+}
+.statusDot {
+  width: var(--size-5px);
+  height: var(--size-5px);
+  border-radius: 50%;
+  background: var(--c-red);
+  box-shadow: var(--glow-red);
+  animation: node-pulse var(--dur-extracted-2p4s) ease-in-out infinite;
+}
+
+/* Burger */
+.burger {
+  display: none;
+  position: relative;
+  width: var(--size-34px);
+  height: var(--size-34px);
+  border: var(--size-1px) solid var(--c-line);
+  border-radius: var(--r-sm);
+  background: var(--c-white-03);
+}
+.burger span {
+  position: absolute;
+  left: var(--size-9px);
+  right: var(--size-9px);
+  height: var(--size-1px);
+  background: var(--c-white);
+  transition: transform var(--dur-2) var(--ease-out);
+}
+.burger span:nth-child(1) { top: var(--size-13px); }
+.burger span:nth-child(2) { bottom: var(--size-13px); }
+.burgerOpen span:nth-child(1) { transform: translateY(var(--size-3p5px)) rotate(45deg); }
+.burgerOpen span:nth-child(2) { transform: translateY(var(--size-negative-3p5px)) rotate(-45deg); }
+
+@media (max-width: 1280px) { .status { display: none; } }
+/* five links and the controls on a narrower desktop: tighten, then shorten */
+@media (max-width: 1100px) {
+  .groups { gap: 0; }
+  .group { padding-inline: var(--size-0p7rem); }
+  .groupCode { left: var(--size-0p7rem); }
+  .wordmark { letter-spacing: var(--size-0p18em); }
+  .audio > span:last-child { display: none; } /* the visualiser stays; its name is the aria-label */
+}
+@media (max-width: 1040px) {
+  .group { padding-inline: var(--size-0p55rem); }
+  .groupCode { left: var(--size-0p55rem); }
+  .search span { display: none; }
+  .wordmark { letter-spacing: var(--size-0p12em); font-size: var(--size-0p72rem); }
+  .inner { gap: var(--space-4); }
+}
+@media (max-width: 900px) {
+  .groups { display: none; }
+  .burger { display: inline-flex; }
+}
+@media (max-width: 560px) {
+  .audio { display: none; }
+  .search span { display: none; }
+  .wordmark { letter-spacing: var(--size-0p2em); font-size: var(--fs-label); }
+}
+/* very narrow phones: the wordmark gives way before the controls overflow */
+@media (max-width: 380px) {
+  .wordmark { letter-spacing: var(--size-0p12em); font-size: var(--size-0p64rem); }
+  .right { gap: var(--space-3); }
+}
+@media (max-width: 340px) {
+  .wordmark { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .statusDot { animation: none; }
+  .nav, .part { transform: none; }
+  .brand:hover .sheen { animation: none; }
+}

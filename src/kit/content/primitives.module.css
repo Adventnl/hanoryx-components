@@ -1,0 +1,39 @@
+/* Layout and type primitives — thin, token-only wrappers over the page frame and
+   the type scale in styles/layout.css and styles/typography.css. New in this
+   library (not in hanoryx-web): they exist so a page never writes a width, a
+   padding or a font size of its own. */
+
+/* Section: the vertical rhythm between page blocks. */
+.section { position: relative; padding-block: var(--section-pad); }
+.section[data-size='sm'] { padding-block: var(--section-pad-sm); }
+.section[data-size='none'] { padding-block: 0; }
+
+/* Container: the page width. max-width includes the gutters (border-box). */
+.container { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); }
+.container[data-size='text'] { max-width: calc(var(--maxw-text) + 2 * var(--gutter)); }
+
+/* Center: a capped column, centred, for a form or a card. */
+.center { width: 100%; max-width: var(--max, var(--size-36rem)); margin-inline: auto; min-width: 0; }
+.center[data-text='center'] { text-align: center; }
+
+/* Heading: serif, light, one token per size. */
+.heading { margin: 0; font-family: var(--font-serif); font-weight: 300; color: var(--c-text-strong); text-wrap: balance; }
+.heading[data-size='display'] { font-size: var(--fs-display); line-height: var(--lh-tight); letter-spacing: var(--ls-display); }
+.heading[data-size='hero'] { font-size: var(--fs-hero); line-height: var(--lh-tight); letter-spacing: var(--ls-display); }
+.heading[data-size='h1'] { font-size: var(--fs-h1); line-height: var(--lh-snug); }
+.heading[data-size='h2'] { font-size: var(--fs-h2); line-height: var(--lh-snug); }
+.heading[data-size='h3'] { font-size: var(--fs-h3); line-height: var(--lh-snug); font-weight: 400; }
+.heading[data-size='h4'] { font-size: var(--fs-h4); line-height: var(--lh-snug); font-weight: 400; }
+
+/* Text: the three voices. */
+.text { margin: 0; }
+.text[data-variant='body'] { font-weight: 300; font-size: var(--fs-body); line-height: var(--lh-loose); }
+.text[data-variant='lead'] { font-weight: 300; font-size: var(--fs-lead); line-height: var(--lh-normal); }
+.text[data-variant='small'] { font-weight: 300; font-size: var(--fs-sm); line-height: var(--lh-normal); }
+.text[data-variant='caption'] { font-weight: 300; font-size: var(--fs-xs); line-height: var(--lh-normal); }
+.text[data-variant='label'] { font-family: var(--font-mono); font-weight: 400; font-size: var(--fs-label); letter-spacing: var(--ls-label); text-transform: uppercase; line-height: var(--lh-snug); }
+.text[data-tone='default'] { color: var(--c-white-65); }
+.text[data-tone='strong'] { color: var(--c-text-strong); }
+.text[data-tone='dim'] { color: var(--c-text-dim); }
+.text[data-tone='red'] { color: var(--c-red-bright); }
+.text[data-measure] { max-width: var(--size-62ch); }

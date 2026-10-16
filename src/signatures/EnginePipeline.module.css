@@ -1,0 +1,30 @@
+.flow { --a: 0; position: relative; margin-top: var(--space-10); padding-top: var(--size-2p4rem); }
+.line { position: absolute; left: calc(50% / var(--n)); right: calc(50% / var(--n)); top: var(--size-0p9rem); height: var(--size-1px); background: var(--c-line-strong); }
+.fill { position: absolute; inset: 0; background: linear-gradient(90deg, var(--c-white-40), var(--c-red)); transform-origin: left center; transform: scaleX(calc(var(--a) / (var(--n) - 1))); transition: transform var(--dur-4) var(--ease-glide); }
+.token { position: absolute; top: var(--size-negative-5px); left: calc(var(--a) / (var(--n) - 1) * 100%); width: var(--size-11px); height: var(--size-11px); margin-left: var(--size-negative-5p5px); border-radius: 50%; background: var(--c-red); box-shadow: var(--glow-red); transition: left var(--dur-4) var(--ease-glide); }
+
+.stages { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); list-style: none; }
+.stage { position: relative; display: flex; flex-direction: column; align-items: center; gap: var(--size-0p7rem); width: 100%; padding: var(--space-3) var(--space-2) var(--space-4); color: var(--c-white-50); cursor: pointer; transition: color var(--dur-3) var(--ease-out); }
+.stage:hover { color: var(--c-white-80); }
+.node { position: absolute; top: var(--size-negative-1p9rem); left: 50%; width: var(--size-9px); height: var(--size-9px); margin-left: var(--size-negative-4p5px); border-radius: 50%; border: var(--size-1px) solid var(--c-white-30); background: var(--c-black); transition: border-color var(--dur-3) var(--ease-out); }
+.done .node, .on .node { border-color: var(--c-red); }
+.on { color: var(--c-white); }
+.glyph { transition: color var(--dur-3) var(--ease-out), transform var(--dur-extracted-0p7s) var(--ease-glide); }
+.on .glyph { color: var(--c-red); transform: translateY(var(--size-negative-2px)) scale(1.12); }
+.label { font: var(--size-0p64rem) var(--font-mono); letter-spacing: var(--size-0p16em); text-transform: uppercase; text-align: center; }
+
+.panel { margin-top: var(--space-6); min-height: var(--size-220px); }
+.card { max-width: var(--size-760px); padding: var(--space-6); border: var(--size-1px) solid var(--c-line-strong); border-radius: var(--r-md); background: linear-gradient(180deg, var(--c-white-03), transparent 60%), var(--c-panel); }
+.step { font: var(--size-0p62rem) var(--font-mono); letter-spacing: var(--size-0p22em); color: var(--c-red-bright); }
+.cardTitle { margin: var(--size-0p6rem) 0 var(--size-0p8rem); font-family: var(--font-serif); font-size: var(--fs-h2); font-weight: 300; color: var(--c-white); }
+.cardBody { max-width: var(--size-56ch); font-size: var(--fs-body); line-height: 1.7; color: var(--c-white-65); }
+.points { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); }
+.points li { padding: var(--size-0p3rem) var(--size-0p7rem); border: var(--size-1px) solid var(--c-line-strong); border-radius: var(--r-pill); font: var(--size-0p6rem) var(--font-mono); letter-spacing: var(--size-0p12em); text-transform: uppercase; color: var(--c-white-50); }
+
+@media (max-width: 720px) {
+  .label { font-size: var(--size-0p52rem); letter-spacing: var(--size-0p08em); }
+  .glyph { width: var(--size-22px); height: var(--size-22px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fill, .token, .glyph { transition: none; }
+}

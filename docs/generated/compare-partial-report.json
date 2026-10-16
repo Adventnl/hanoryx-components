@@ -1,0 +1,27 @@
+{
+ "generatedAt": "2026-10-16T05:19:41.988Z",
+ "mode": "DOM",
+ "state": "Initial appearance: CSS and SVG animations, requestAnimationFrame and interval loops paused; fixed date and seeded random. Live interactions are verified separately.",
+ "reference": "http://127.0.0.1:5301",
+ "same": 39,
+ "diff": 3,
+ "missing": 0,
+ "families": 1,
+ "bad": [
+  {
+   "slug": "progress",
+   "id": "progress-16",
+   "why": "DOM differs"
+  },
+  {
+   "slug": "progress",
+   "id": "progress-17",
+   "why": "DOM differs"
+  },
+  {
+   "slug": "progress",
+   "id": "progress-38",
+   "why": "DOM differs"
+  }
+ ]
+}

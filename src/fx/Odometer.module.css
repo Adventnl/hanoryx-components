@@ -1,0 +1,27 @@
+.odo {
+  display: inline-flex;
+  align-items: flex-start;
+  font-variant-numeric: lining-nums tabular-nums;
+  line-height: 1.16;
+}
+.col {
+  display: inline-block;
+  height: var(--size-1p16em);
+  overflow: hidden;
+}
+.strip {
+  display: flex;
+  flex-direction: column;
+  transform: translate3d(0, calc(var(--d) * var(--size-negative-1p16em)), 0);
+  transition: transform var(--dur-extracted-1p7s) var(--ease-glide) calc(var(--i) * var(--dur-extracted-0p1s));
+}
+.digit {
+  display: block;
+  height: var(--size-1p16em);
+  line-height: var(--size-1p16em);
+}
+.sym { display: inline-block; height: var(--size-1p16em); }
+
+@media (prefers-reduced-motion: reduce) {
+  .strip { transition: none; }
+}

@@ -1,0 +1,13 @@
+.calendar { width: min(100%, var(--size-24rem)); padding: var(--space-4); border: var(--border); border-radius: var(--r-md); background: var(--c-panel); }
+.header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
+.header h3 { font-size: var(--fs-body); margin: 0; }
+.header button, .grid button { min-height: var(--space-8); width: 100%; border: 0; border-radius: var(--r-sm); background: transparent; color: var(--c-text); font: inherit; cursor: pointer; }
+.header button { width: var(--space-8); }
+.grid { width: 100%; table-layout: fixed; border-collapse: collapse; }
+.grid th { padding-block: var(--space-3); color: var(--c-text-dim); font-size: var(--fs-xs); }
+.grid abbr { text-decoration: none; }
+.grid button:hover, .header button:hover { background: var(--c-panel-2); }
+.grid button[aria-pressed='true'] { background: var(--c-red); color: var(--c-black); font-weight: 700; }
+.grid button[aria-current='date'] { box-shadow: inset 0 0 0 var(--bw) var(--c-text); }
+.grid button[data-outside] { color: var(--c-text-dim); }
+.calendar button:disabled { opacity: .35; cursor: default; }

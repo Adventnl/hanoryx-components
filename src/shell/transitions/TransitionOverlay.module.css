@@ -1,0 +1,87 @@
+/* The route current: a line that travels the viewport while the page swaps. It
+   never covers anything — a faint wash trails the line, and the page itself
+   eases out and in underneath. transform + opacity only. */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-route-transition, 600);
+  pointer-events: none;
+  overflow: hidden;
+  contain: strict;
+  --travel: var(--dur-extracted-1s);
+}
+
+/* the rider is a zero-size anchor that moves; the line, wash and label ride it */
+.rider {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 0;
+  will-change: transform;
+  animation: current-down var(--travel) var(--ease-in-out, cubic-bezier(0.65, 0, 0.35, 1)) both;
+}
+.line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: var(--size-negative-1px);
+  height: var(--size-2px);
+  background: linear-gradient(90deg, transparent, var(--c-red) 18%, var(--c-extracted-ff8a8a) 50%, var(--c-red) 82%, transparent);
+  box-shadow: 0 0 var(--size-22px) var(--c-extracted-rgba-255-51-51-0p7);
+  opacity: 0;
+  animation: current-fade var(--travel) ease both;
+}
+/* trailing wash: a tall soft band above the line (so it sits where the line has been) */
+.wash {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--size-42vh);
+  background: linear-gradient(180deg, transparent, var(--c-extracted-rgba-255-51-51-0p045) 70%, var(--c-red-ghost));
+  opacity: 0;
+  animation: current-fade var(--travel) ease both;
+}
+.label {
+  position: absolute;
+  left: var(--gutter, var(--size-2rem));
+  top: var(--size-0p55rem);
+  font: var(--size-0p6rem) var(--font-mono, monospace);
+  letter-spacing: var(--size-0p32em);
+  color: var(--c-white-65, var(--c-white-65));
+  white-space: nowrap;
+  opacity: 0;
+  animation: current-label var(--travel) ease both;
+}
+
+@keyframes current-down { from { transform: translate3d(0, var(--size-negative-6vh), 0); } to { transform: translate3d(0, var(--size-106vh), 0); } }
+@keyframes current-up { from { transform: translate3d(0, var(--size-106vh), 0); } to { transform: translate3d(0, var(--size-negative-6vh), 0); } }
+@keyframes current-fade { 0% { opacity: 0; } 14% { opacity: 1; } 78% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes current-label { 0% { opacity: 0; } 22% { opacity: 1; } 70% { opacity: 1; } 100% { opacity: 0; } }
+
+/* rising currents (home, contact): the wash flips to sit below the line */
+.home .rider, .contact .rider { animation-name: current-up; }
+.home .wash, .contact .wash { bottom: auto; top: 0; background: linear-gradient(0deg, transparent, var(--c-extracted-rgba-255-51-51-0p045) 70%, var(--c-red-ghost)); }
+.home .label, .contact .label { top: auto; bottom: var(--size-0p55rem); }
+
+/* sideways currents (systems, work): a vertical line crossing the page */
+.systems .rider, .work .rider { width: 0; height: 100%; animation-name: current-right; }
+.work .rider { animation-name: current-left; }
+.systems .line, .work .line { left: var(--size-negative-1px); right: auto; top: 0; bottom: 0; width: var(--size-2px); height: auto; background: linear-gradient(180deg, transparent, var(--c-red) 18%, var(--c-extracted-ff8a8a) 50%, var(--c-red) 82%, transparent); }
+.systems .wash, .work .wash { left: auto; right: 0; top: 0; bottom: 0; width: var(--size-42vw); height: auto; background: linear-gradient(90deg, transparent, var(--c-extracted-rgba-255-51-51-0p045) 70%, var(--c-red-ghost)); }
+.work .wash { right: auto; left: 0; background: linear-gradient(270deg, transparent, var(--c-extracted-rgba-255-51-51-0p045) 70%, var(--c-red-ghost)); }
+.systems .label, .work .label { left: var(--size-0p8rem); top: var(--nav-h, var(--size-72px)); writing-mode: vertical-rl; }
+@keyframes current-right { from { transform: translate3d(var(--size-negative-6vw), 0, 0); } to { transform: translate3d(var(--size-106vw), 0, 0); } }
+@keyframes current-left { from { transform: translate3d(var(--size-106vw), 0, 0); } to { transform: translate3d(var(--size-negative-6vw), 0, 0); } }
+
+/* company: the line opens outward from the middle of the viewport */
+.company .rider { top: 50%; height: 0; animation: none; }
+.company .wash { display: none; }
+.company .line { left: 50%; right: auto; width: var(--size-100vw); margin-left: var(--size-negative-50vw); transform-origin: center; animation: company-open var(--travel) var(--ease-in-out, cubic-bezier(0.65, 0, 0.35, 1)) both; }
+@keyframes company-open { 0% { opacity: 0; transform: scaleX(0.04); } 18% { opacity: 1; } 70% { opacity: 1; transform: scaleX(1); } 100% { opacity: 0; transform: scaleX(1); } }
+.company .label { left: 50%; top: var(--size-0p9rem); transform: translateX(-50%); }
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay { display: none; }
+}

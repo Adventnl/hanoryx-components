@@ -1,0 +1,120 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: var(--size-720px);
+}
+.center {
+  align-items: center;
+  text-align: center;
+  margin-inline: auto;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  width: 100%;
+}
+.center .top {
+  justify-content: center;
+  gap: var(--space-5);
+}
+
+.code {
+  color: var(--c-text-ghost);
+  white-space: nowrap;
+}
+
+/* eyebrow signal ping — a small live pulse before the label */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--size-0p6em);
+}
+.eyebrow::before {
+  content: '';
+  width: var(--size-5px);
+  height: var(--size-5px);
+  border-radius: 50%;
+  background: var(--c-red);
+  box-shadow: var(--glow-red);
+  flex: none;
+  animation: node-pulse var(--dur-extracted-2p4s) ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .eyebrow::before { animation: none; }
+}
+
+/* --- Staged reveal (CSS-driven, gated by .visible) --- */
+.eyebrow,
+.title,
+.intro {
+  opacity: 0;
+  transform: translateY(var(--size-22px));
+  filter: blur(var(--size-8px));
+  transition:
+    opacity var(--dur-extracted-1s) var(--ease-out),
+    transform var(--dur-extracted-1p1s) var(--ease-out),
+    filter var(--dur-extracted-1p1s) var(--ease-out);
+}
+.eyebrow { transition-delay: var(--dur-extracted-0p05s); }
+.title   { transition-delay: var(--dur-extracted-0p14s); }
+.intro   { transition-delay: var(--dur-extracted-0p26s); max-width: var(--size-56ch); }
+
+/* The reveal reset must out-specify the per-variant hidden rules below
+   (`.header[data-variant='x'] .title` = three classes). `data-variant` is
+   always present, so scoping the reset to it keeps every variant's settled
+   state at identity instead of leaving the hidden transform/clip-path stuck. */
+.header[data-variant].visible .eyebrow,
+.header[data-variant].visible .title,
+.header[data-variant].visible .intro {
+  opacity: 1;
+  transform: translateY(0);
+  filter: none;
+  clip-path: inset(0 0 0 0);
+}
+
+/* --- Per-block header entrance variants (override only the hidden state;
+   .visible resets all three to identity). So no two blocks share one reveal. --- */
+.header[data-variant='left'] .eyebrow,
+.header[data-variant='left'] .title,
+.header[data-variant='left'] .intro { transform: translateX(var(--size-negative-46px)); }
+
+.header[data-variant='right'] .eyebrow,
+.header[data-variant='right'] .title,
+.header[data-variant='right'] .intro { transform: translateX(var(--size-46px)); }
+
+.header[data-variant='depth'] { }
+.header[data-variant='depth'] .eyebrow,
+.header[data-variant='depth'] .title,
+.header[data-variant='depth'] .intro { transform: scale(0.84) translateY(var(--size-10px)); transform-origin: left center; }
+.center.header[data-variant='depth'] .eyebrow,
+.center.header[data-variant='depth'] .title,
+.center.header[data-variant='depth'] .intro { transform-origin: center; }
+
+.header[data-variant='split'] .eyebrow,
+.header[data-variant='split'] .title,
+.header[data-variant='split'] .intro { transform: scaleY(0.18); transform-origin: top; }
+
+.header[data-variant='scan'] .eyebrow,
+.header[data-variant='scan'] .title,
+.header[data-variant='scan'] .intro { transform: none; filter: none; clip-path: inset(0 100% 0 0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .header[data-variant] .eyebrow,
+  .header[data-variant] .title,
+  .header[data-variant] .intro { transform: none; filter: none; clip-path: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eyebrow,
+  .title,
+  .intro {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}

@@ -1,0 +1,36 @@
+.rig { display: grid; gap: var(--space-6); }
+.track { position: relative; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: var(--size-0p4rem); }
+.line { position: absolute; left: calc(100% / 14); right: calc(100% / 14); top: var(--size-0p55rem); height: var(--size-1px); background: var(--c-white-20); }
+.line i { display: block; height: 100%; background: var(--c-red); transform-origin: left; transition: transform var(--dur-extracted-0p7s) var(--ease-glide); }
+.stop { position: relative; display: grid; justify-items: center; gap: var(--space-2); padding: 0 var(--size-0p2rem) var(--size-0p4rem); border: 0; background: transparent; text-align: center; cursor: pointer; color: var(--c-white-65); }
+.node { width: var(--size-13px); height: var(--size-13px); border: var(--size-1px) solid var(--c-white-50); border-radius: 50%; background: var(--c-black); transition: all var(--dur-3) var(--ease-glide); }
+.stop b { font: 500 var(--size-0p64rem) var(--font-mono); letter-spacing: var(--size-0p1em); text-transform: uppercase; }
+.stop small { font: var(--size-0p56rem) var(--font-mono); letter-spacing: var(--size-0p1em); color: var(--c-white-50); }
+.past .node { border-color: var(--c-red); background: var(--c-red-dim); }
+.here .node { width: var(--size-17px); height: var(--size-17px); margin: var(--size-negative-2px) 0; border-color: var(--c-red); background: var(--c-red); box-shadow: var(--glow-red); }
+.here b { color: var(--c-white); }
+.full small { color: var(--c-red-bright); }
+.stop:hover b { color: var(--c-white); }
+.stop:focus-visible { outline: var(--size-1px) solid var(--c-red); outline-offset: var(--size-3px); border-radius: var(--r-sm); }
+.body { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(var(--size-1p2rem), var(--size-4vw), var(--space-8)); align-items: start; }
+.card { display: grid; gap: var(--space-3); padding: var(--space-5); border: var(--size-1px) solid var(--c-red-dim); border-radius: var(--r-lg); background: linear-gradient(160deg, var(--c-red-faint), var(--c-extracted-rgba-8-9-11-0) 70%), var(--c-black-2); animation: rise var(--dur-extracted-0p5s) var(--ease-glide) both; }
+.card h3 { font-family: var(--font-serif); font-weight: 300; font-size: var(--fs-h2); line-height: 1.1; color: var(--c-white); }
+.card ul { display: grid; gap: var(--size-0p4rem); }
+.row { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--size-0p8rem); align-items: center; padding: var(--size-0p7rem) var(--size-0p9rem); border: var(--size-1px) solid var(--c-line-strong); border-radius: var(--r-md); background: var(--c-extracted-rgba-10-11-13-0p82); font-size: var(--fs-sm); line-height: 1.5; color: var(--c-white-80); cursor: pointer; transition: border-color var(--dur-2) var(--ease-out), background var(--dur-2) var(--ease-out); }
+.row input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; cursor: pointer; }
+.row:focus-within { outline: var(--size-1px) solid var(--c-red); outline-offset: var(--size-2px); }
+.on { border-color: var(--c-red-dim); color: var(--c-white); }
+.box { width: var(--size-16px); height: var(--size-16px); border: var(--size-1px) solid var(--c-white-50); border-radius: var(--size-3px); position: relative; transition: all var(--dur-2) var(--ease-out); }
+.box::after { content: ''; position: absolute; left: var(--size-4px); top: 0; width: var(--size-5px); height: var(--size-9px); border: solid var(--c-white); border-width: 0 var(--size-2px) var(--size-2px) 0; transform: rotate(45deg) scale(0); transition: transform var(--dur-2) var(--ease-spring-soft); }
+.on .box { border-color: var(--c-red); background: var(--c-red); }
+.on .box::after { transform: rotate(45deg) scale(1); }
+.ring { display: grid; gap: var(--size-0p6rem); justify-items: center; }
+.big { font-family: var(--font-serif); font-size: var(--fs-h2); color: var(--c-white); font-variant-numeric: lining-nums tabular-nums; }
+.big small { font-size: var(--size-0p45em); color: var(--c-white-50); }
+@keyframes rise { from { opacity: 0; transform: translateY(var(--size-8px)); } to { opacity: 1; transform: none; } }
+@media (max-width: 760px) {
+  .track { grid-template-columns: repeat(7, minmax(var(--size-3p2rem), 1fr)); overflow-x: auto; padding-bottom: var(--space-2); }
+  .body { grid-template-columns: minmax(0, 1fr); }
+  .ring { justify-items: start; }
+}
+@media (prefers-reduced-motion: reduce) { .card { animation: none; } .line i, .node, .box, .box::after { transition: none; } }

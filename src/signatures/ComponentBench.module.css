@@ -1,0 +1,62 @@
+.bench { margin-top: var(--space-8); }
+.frame { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.3fr); gap: var(--space-6); margin-top: var(--space-4); padding: clamp(var(--size-1p1rem), var(--size-2p8vw), var(--space-6)); border: var(--size-1px) solid var(--c-line-strong); border-radius: var(--r-lg); background: linear-gradient(170deg, var(--c-extracted-rgba-14-15-18-0p86), var(--c-extracted-rgba-5-5-5-0p6)); min-height: var(--size-22rem); }
+.controls { display: flex; flex-direction: column; gap: var(--space-5); }
+.purpose { padding-bottom: var(--space-4); border-bottom: var(--size-1px) solid var(--c-white-08); font-size: var(--fs-sm); line-height: var(--lh-normal); color: var(--c-white-65); animation: fade-in var(--dur-3) var(--ease-out) both; }
+@keyframes fade-in { from { opacity: 0; transform: translate3d(0, var(--size-6px), 0); } to { opacity: 1; transform: none; } }
+
+.seg { margin: 0; padding: 0; border: 0; }
+.seg legend { padding: 0 0 var(--space-2); font: var(--size-0p56rem) var(--font-mono); letter-spacing: var(--size-0p22em); text-transform: uppercase; color: var(--c-white-50); }
+.seg > div { display: flex; flex-wrap: wrap; gap: var(--size-0p4rem); }
+.segItem { position: relative; padding: var(--size-0p45rem) var(--size-0p9rem); border: var(--size-1px) solid var(--c-line); border-radius: var(--r-pill); font: var(--size-0p62rem) var(--font-mono); letter-spacing: var(--size-0p12em); text-transform: uppercase; color: var(--c-white-50); cursor: pointer; transition: border-color var(--dur-2) var(--ease-out), background var(--dur-2) var(--ease-out), color var(--dur-2) var(--ease-out); }
+.segItem input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.segItem:hover { color: var(--c-white); border-color: var(--c-line-strong); }
+.segItem:has(input:focus-visible) { outline: var(--size-2px) solid var(--c-red); outline-offset: var(--size-2px); }
+.segOn { border-color: var(--c-red-dim); background: var(--c-red-faint); color: var(--c-white); }
+
+.toggles { display: flex; flex-wrap: wrap; gap: var(--size-0p8rem) var(--size-1p4rem); }
+.toggle { position: relative; display: inline-flex; align-items: center; gap: var(--size-0p6rem); font-size: var(--fs-sm); color: var(--c-white-65); cursor: pointer; }
+.toggle input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.box { display: grid; place-items: center; width: var(--size-1p15rem); height: var(--size-1p15rem); border: var(--size-1px) solid var(--c-white-30); border-radius: var(--size-3px); color: transparent; transition: border-color var(--dur-2) var(--ease-out), background var(--dur-2) var(--ease-out), color var(--dur-2) var(--ease-out); }
+.toggle input:checked + .box { border-color: var(--c-red); background: var(--c-red); color: var(--c-white); }
+.toggle:has(input:focus-visible) .box { outline: var(--size-2px) solid var(--c-red); outline-offset: var(--size-2px); }
+
+.stageCol { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; }
+.stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: 1;
+  min-height: var(--size-13rem);
+  border: var(--size-1px) dashed var(--c-white-20);
+  border-radius: var(--r-md);
+  background-image: radial-gradient(var(--c-white-08) var(--size-1px), transparent var(--size-1px));
+  background-size: var(--size-18px) var(--size-18px);
+  overflow: hidden;
+}
+.rule { position: absolute; background: var(--c-red-dim); opacity: 0.35; pointer-events: none; }
+.ruleX { left: 0; right: 0; top: 50%; height: var(--size-1px); }
+.ruleY { top: 0; bottom: 0; left: 50%; width: var(--size-1px); }
+.specimen { position: relative; z-index: 1; padding: var(--size-1p2rem); background: var(--c-extracted-rgba-5-5-5-0p55); border-radius: var(--r-md); }
+.hint { position: absolute; left: var(--size-0p9rem); bottom: var(--size-0p7rem); font: var(--size-0p54rem) var(--font-mono); letter-spacing: var(--size-0p16em); text-transform: uppercase; color: var(--c-white-50); }
+
+.sw { position: relative; width: var(--size-56px); height: var(--size-30px); border: var(--size-1px) solid var(--c-line-strong); border-radius: var(--r-pill); background: var(--c-white-05); cursor: pointer; transition: background var(--dur-2) var(--ease-out), border-color var(--dur-2) var(--ease-out), opacity var(--dur-2) var(--ease-out); }
+.sw i { position: absolute; top: var(--size-4px); left: var(--size-4px); width: var(--size-20px); height: var(--size-20px); border-radius: 50%; background: var(--c-white-50); transition: transform var(--dur-extracted-0p55s) var(--ease-glide), background var(--dur-2) var(--ease-out); }
+.swOn { background: var(--c-red-ghost); border-color: var(--c-red-dim); }
+.swOn i { transform: translateX(var(--size-26px)); background: var(--c-red); }
+.sw:disabled { opacity: 0.4; cursor: not-allowed; }
+.sw:focus-visible { outline: var(--size-2px) solid var(--c-red); outline-offset: var(--size-3px); }
+
+.code { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); padding: var(--size-0p7rem) var(--size-0p9rem); border: var(--size-1px) solid var(--c-line); border-radius: var(--r-md); background: var(--c-black); }
+/* the line wraps instead of scrolling sideways (a scroller would need its own keyboard access) */
+.code code { min-width: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: var(--fs-label) var(--font-mono); color: var(--c-white-80); }
+.code button { flex: none; display: inline-flex; align-items: center; gap: var(--size-0p4em); font: var(--size-0p58rem) var(--font-mono); letter-spacing: var(--size-0p14em); text-transform: uppercase; color: var(--c-white-50); cursor: pointer; transition: color var(--dur-2) var(--ease-out); }
+.code button:hover { color: var(--c-white); }
+.note { margin-top: var(--space-3); font: var(--size-0p6rem) var(--font-mono); letter-spacing: var(--size-0p06em); line-height: var(--lh-normal); color: var(--c-white-50); }
+
+@media (max-width: 860px) {
+  .frame { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .purpose { animation: none; }
+  .sw i { transition: none; }
+}

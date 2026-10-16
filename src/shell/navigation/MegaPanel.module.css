@@ -1,0 +1,362 @@
+/* ============================================================
+   MEGA PANEL — the wide menu. A full-width sheet under the bar: a rail of
+   categories on the left, the open category's pages as cards in the middle,
+   and a small orbit diagram on the right.
+
+   The drop is a sequence, not a slide (see MegaPanel.jsx):
+     beam       a red line shoots out along the bar from the pointed-at link
+     sheet      unfolds from that spot as a widening cone (clip-path)
+     sweep      a light band crosses it once
+     rail       its tinted strip wipes in, rows slide in one by one
+     stage      code line types on, title wipes on, cards cascade, each
+                scanning a red line along its top
+     aside      the orbit spins up; corner brackets snap into place
+   --ox is where the link sits along the bar, --t0 the head start the first
+   drop takes (0 when only the group or category changes, so swaps stay quick).
+   Opacity, transform and clip-path only.
+   ============================================================ */
+
+.wrap {
+  --t0: var(--dur-extracted-0s);
+  --ox: 50%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+.wrap[data-fresh='true'] { --t0: var(--dur-1); }
+
+/* the page below dims a little so the sheet reads as the one thing to look at */
+.scrim {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--size-100vh);
+  background: linear-gradient(180deg, var(--c-extracted-rgba-2-2-3-0p62), var(--c-extracted-rgba-2-2-3-0p4));
+  pointer-events: none;
+  animation: fade-in var(--dur-3) var(--ease-out) both;
+}
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+/* the sheet's shadow lives on its own layer: the cone clips the sheet, and a
+   shadow on the clipped element would be cut off and then pop in at the end */
+.shadow {
+  position: absolute;
+  inset: 0;
+  box-shadow: 0 var(--size-60px) var(--size-110px) var(--size-negative-50px) var(--c-extracted-000000);
+  pointer-events: none;
+  animation: fade-in var(--dur-extracted-0p7s) var(--ease-out) var(--dur-extracted-0p25s) both;
+}
+
+/* the beam: draws out along the bar from the link, brightest at the link */
+.beam {
+  position: absolute;
+  z-index: 3;
+  top: var(--size-negative-1px);
+  left: 0;
+  right: 0;
+  height: var(--size-2px);
+  background: radial-gradient(ellipse 46% 100% at var(--ox) 50%, var(--c-extracted-ff8a8a) 0, var(--c-red) 22%, var(--c-extracted-rgba-255-51-51-0p35) 58%, transparent 100%);
+  box-shadow: 0 0 var(--size-16px) var(--c-extracted-rgba-255-51-51-0p6);
+  transform-origin: var(--ox) 50%;
+  pointer-events: none;
+  animation: beam var(--dur-4) var(--ease-out) both;
+}
+@keyframes beam {
+  0% { transform: scaleX(0); opacity: 1; }
+  42% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1); opacity: 0; }
+}
+
+.sheet {
+  --rail: var(--size-252px);
+  --gap: var(--space-8); /* between the rail and the pages; the divider sits in the middle of it */
+  position: relative;
+  pointer-events: auto;
+  background:
+    radial-gradient(60% 130% at 0% 0%, var(--c-extracted-rgba-255-51-51-0p07), transparent 62%),
+    linear-gradient(180deg, var(--c-extracted-rgba-255-255-255-0p035), transparent 38%),
+    var(--c-extracted-rgba-7-8-10-0p995);
+  border-top: var(--size-1px) solid var(--c-line);
+  border-bottom: var(--size-1px) solid var(--c-line-strong);
+  animation: sheet-open var(--dur-extracted-0p8s) cubic-bezier(0.22, 1, 0.36, 1) var(--dur-extracted-0p04s) backwards;
+}
+/* a point under the link -> a cone as wide as the bar at its top -> the full sheet */
+@keyframes sheet-open {
+  0% {
+    clip-path: polygon(var(--ox) 0, var(--ox) 0, var(--ox) 0, var(--ox) 0);
+    transform: translateY(var(--size-negative-14px));
+  }
+  36% {
+    clip-path: polygon(0% 0, 100% 0, calc(var(--ox) + 24%) 46%, calc(var(--ox) - 24%) 46%);
+  }
+  100% {
+    clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
+    transform: none;
+  }
+}
+
+/* leaving: after the drop has landed the sheet draws back up into the bar; leave
+   it mid-drop and it just fades */
+.retract { animation: wrap-out var(--dur-extracted-0p3s) ease-in both; }
+.retract .sheet { animation: sheet-close var(--dur-extracted-0p3s) cubic-bezier(0.55, 0, 0.8, 0.4) both; pointer-events: none; }
+.fade { animation: wrap-out var(--dur-extracted-0p18s) ease-out both; }
+.fade .sheet { pointer-events: none; }
+@keyframes wrap-out { to { opacity: 0; } }
+@keyframes sheet-close {
+  from { clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%); transform: none; }
+  to { clip-path: polygon(0% 0, 100% 0, 100% 0, 0% 0); transform: translateY(var(--size-negative-8px)); }
+}
+
+/* the rail's tinted strip runs to the screen edge, as a sidebar does in a wide menu.
+   It ends in the middle of the gap, so the divider is the same distance from the rail's
+   rows as from the pages. */
+.railBg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: calc(max(var(--size-0px), (100% - var(--size-1760px)) / 2) + var(--gutter) + var(--rail) + var(--gap) / 2);
+  background: linear-gradient(90deg, var(--c-extracted-rgba-255-255-255-0p012), var(--c-white-03));
+  border-right: var(--size-1px) solid var(--c-line);
+  pointer-events: none;
+  transform-origin: left center;
+  animation: rail-sweep var(--dur-extracted-0p7s) var(--ease-out) var(--t0) backwards;
+}
+@keyframes rail-sweep { from { transform: scaleX(0); opacity: 0; } to { transform: none; opacity: 1; } }
+
+/* one light band across the sheet, once */
+.sweep {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.sweep::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 34%;
+  background: linear-gradient(100deg, transparent 0, var(--c-extracted-rgba-255-51-51-0p09) 46%, var(--c-extracted-rgba-255-255-255-0p07) 52%, transparent 100%);
+  transform: translateX(-110%);
+  animation: sweep var(--dur-extracted-1p15s) cubic-bezier(0.4, 0, 0.2, 1) calc(var(--t0) + var(--dur-extracted-0p05s)) both;
+}
+@keyframes sweep { from { transform: translateX(-110%); } to { transform: translateX(340%); } }
+
+.inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--rail) minmax(0, 1fr);
+  gap: 0 var(--gap);
+  align-items: stretch;
+  max-width: var(--size-1760px);
+  min-height: var(--size-330px);
+  max-height: calc(var(--size-100svh) - var(--nav-h) - var(--size-12px));
+  margin-inline: auto;
+  padding: var(--space-6) var(--gutter) var(--size-2p25rem);
+}
+@media (min-width: 1360px) {
+  .sheet { --rail: var(--size-280px); --gap: var(--size-3p5rem); }
+  .inner { grid-template-columns: var(--rail) minmax(0, 1fr) var(--size-180px); }
+}
+
+/* corner brackets, as on the old panel: they frame the content, so they sit on its
+   edges (not out in the margin, where they ended up beside the screen edge) and snap in */
+.corner { position: absolute; width: var(--size-14px); height: var(--size-14px); border-color: var(--c-red-dim); opacity: 0.85; pointer-events: none; animation: corner-in var(--dur-3) var(--ease-out) calc(var(--t0) + var(--dur-extracted-0p55s)) backwards; }
+.tl { top: var(--size-12px); left: var(--gutter); border-top: var(--size-1px) solid; border-left: var(--size-1px) solid; transform-origin: top left; }
+.br { bottom: var(--size-12px); right: var(--gutter); border-bottom: var(--size-1px) solid; border-right: var(--size-1px) solid; transform-origin: bottom right; }
+@keyframes corner-in {
+  0% { opacity: 0; transform: scale(0.3); }
+  55% { opacity: 1; transform: scale(1.22); }
+  100% { opacity: 0.85; transform: scale(1); }
+}
+
+@keyframes slide-in { from { opacity: 0; transform: translateX(var(--size-negative-18px)); } }
+@keyframes rise { from { opacity: 0; transform: translateY(var(--size-10px)); } }
+
+/* ---- left: lead link + rail, or the group's introduction ---- */
+.side {
+  position: relative;
+  min-width: 0;
+  padding-right: var(--space-1);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+.lead {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--size-0p7rem) var(--size-0p2rem) var(--size-0p85rem) var(--space-4);
+  margin-bottom: var(--space-2);
+  border-bottom: var(--size-1px) solid var(--c-line);
+  color: var(--c-white);
+  transition: color var(--dur-2) var(--ease-out);
+  animation: slide-in var(--dur-extracted-0p55s) var(--ease-out) calc(var(--t0) + var(--dur-extracted-0p08s)) backwards;
+}
+.leadCode { font: var(--size-0p6rem) var(--font-mono); letter-spacing: var(--size-0p14em); color: var(--c-red); min-width: var(--size-3p4rem); }
+.leadLabel { flex: 1; font-size: var(--fs-sm); }
+.leadArrow { opacity: 0.55; transition: transform var(--dur-2) var(--ease-out), opacity var(--dur-2) var(--ease-out); }
+.lead:hover .leadArrow, .lead:focus-visible .leadArrow { opacity: 1; transform: translateX(var(--size-3px)); }
+
+.rail { display: flex; flex-direction: column; gap: var(--size-2px); }
+.tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--size-0p62rem) var(--size-0p8rem) var(--size-0p62rem) var(--space-4);
+  border-radius: var(--r-sm);
+  color: var(--c-white-65);
+  text-align: left;
+  transition: color var(--dur-2) var(--ease-out), background var(--dur-2) var(--ease-out);
+  animation: slide-in var(--dur-extracted-0p55s) var(--ease-out) calc(var(--t0) + var(--dur-extracted-0p16s) + var(--i, 0) * var(--dur-extracted-60ms)) backwards;
+}
+.tab::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: var(--size-0p5rem);
+  bottom: var(--size-0p5rem);
+  width: var(--size-2px);
+  background: var(--c-red);
+  box-shadow: var(--glow-red);
+  transform: scaleY(0);
+  transition: transform var(--dur-extracted-0p35s) var(--ease-out);
+}
+.tab:hover { color: var(--c-white); }
+.tab[aria-selected='true'] { color: var(--c-white); background: var(--c-white-05); }
+.tab[aria-selected='true']::before { transform: scaleY(1); }
+/* on the first drop the selected row's bar draws itself once the row has arrived */
+.wrap[data-fresh='true'] .tab[aria-selected='true']::before { animation: bar-in var(--dur-extracted-0p5s) var(--ease-out) calc(var(--t0) + var(--dur-extracted-0p5s)) backwards; }
+@keyframes bar-in { from { transform: scaleY(0); } }
+.tabCode { font: var(--size-0p6rem) var(--font-mono); letter-spacing: var(--size-0p14em); color: var(--c-red); min-width: var(--size-1p5rem); }
+.tabLabel { flex: 1; font-size: var(--fs-sm); }
+.tabCount { font: var(--size-0p6rem) var(--font-mono); letter-spacing: var(--size-0p1em); color: var(--c-white-50); }
+.tabArrow { opacity: 0; transform: translateX(var(--size-negative-4px)); transition: transform var(--dur-2) var(--ease-out), opacity var(--dur-2) var(--ease-out); }
+.tab[aria-selected='true'] .tabArrow { opacity: 0.9; transform: none; }
+
+.intro { display: grid; gap: var(--space-3); align-content: start; }
+.introTitle { font-family: var(--font-serif); font-weight: 300; font-size: var(--fs-h3); line-height: 1.1; animation: rise var(--dur-3) var(--ease-out) calc(var(--t0) + var(--dur-extracted-0p1s)) backwards; }
+.introBlurb { font-size: var(--fs-sm); color: var(--c-white-50); text-wrap: pretty; max-width: var(--size-34ch); animation: rise var(--dur-3) var(--ease-out) calc(var(--t0) + var(--dur-1)) backwards; }
+.intro .lead { margin-top: var(--space-2); border-top: var(--size-1px) solid var(--c-line); border-bottom: 0; padding-left: 0; animation-delay: calc(var(--t0) + var(--dur-extracted-0p3s)); }
+
+/* ---- middle: the open category ---- */
+.stage {
+  min-width: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  padding-right: var(--space-2);
+  animation: stage-in var(--dur-extracted-0p28s) var(--ease-out) both;
+}
+@keyframes stage-in { from { opacity: 0; } to { opacity: 1; } }
+
+.head { display: grid; gap: var(--size-0p35rem); margin-bottom: var(--space-5); }
+/* the code line types on, the title wipes on from the left */
+.headCode { justify-self: start; font-size: var(--fs-2xs); letter-spacing: var(--size-0p2em); color: var(--c-red); animation: type-in var(--dur-3) steps(16, end) calc(var(--t0) + var(--dur-extracted-0p18s)) backwards; }
+@keyframes type-in { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+.headTitle {
+  justify-self: start;
+  padding-bottom: var(--size-0p14em); /* room for descenders while the wipe's mask is on */
+  margin-bottom: var(--size-negative-0p14em);
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: var(--fs-h2);
+  line-height: 1.05;
+  letter-spacing: var(--ls-display);
+  animation: title-in var(--dur-extracted-1s) var(--ease-out) calc(var(--t0) + var(--dur-extracted-0p24s)) backwards;
+}
+@keyframes title-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--size-14px));
+    -webkit-mask-image: linear-gradient(90deg, var(--c-extracted-000000) 0 40%, transparent 60%);
+    mask-image: linear-gradient(90deg, var(--c-extracted-000000) 0 40%, transparent 60%);
+    -webkit-mask-size: 250% 100%;
+    mask-size: 250% 100%;
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    -webkit-mask-image: linear-gradient(90deg, var(--c-extracted-000000) 0 40%, transparent 60%);
+    mask-image: linear-gradient(90deg, var(--c-extracted-000000) 0 40%, transparent 60%);
+    -webkit-mask-size: 250% 100%;
+    mask-size: 250% 100%;
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+}
+.headBlurb { font-size: var(--fs-sm); color: var(--c-white-50); max-width: var(--size-62ch); text-wrap: pretty; animation: rise var(--dur-3) var(--ease-out) calc(var(--t0) + var(--dur-2)) backwards; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--size-200px), 1fr)); gap: var(--space-1) var(--space-3); }
+.card {
+  position: relative;
+  display: grid;
+  gap: var(--size-0p3rem);
+  align-content: start;
+  height: 100%;
+  padding: var(--size-0p95rem) var(--space-4) var(--size-1p05rem);
+  border: var(--size-1px) solid transparent;
+  border-top-color: var(--c-line);
+  border-radius: var(--r-md);
+  transform-origin: top left;
+  animation: card-in var(--dur-3) var(--ease-out) calc(var(--t0) + var(--dur-extracted-0p34s) + var(--i, 0) * var(--dur-extracted-45ms)) both;
+  transition: background var(--dur-2) var(--ease-out), border-color var(--dur-2) var(--ease-out);
+}
+@keyframes card-in { from { opacity: 0; transform: translateY(var(--size-18px)) scale(0.97); } to { opacity: 1; transform: none; } }
+/* a red scan line runs along each card's top edge as it lands, then goes */
+.card::before {
+  content: '';
+  position: absolute;
+  top: var(--size-negative-1px);
+  left: 0;
+  right: 0;
+  height: var(--size-1px);
+  background: linear-gradient(90deg, var(--c-red), var(--c-extracted-rgba-255-51-51-0));
+  box-shadow: 0 0 var(--size-10px) var(--c-extracted-rgba-255-51-51-0p6);
+  transform-origin: left center;
+  pointer-events: none;
+  animation: card-scan var(--dur-extracted-0p8s) var(--ease-out) calc(var(--t0) + var(--dur-extracted-0p34s) + var(--i, 0) * var(--dur-extracted-45ms)) both;
+}
+@keyframes card-scan {
+  0% { transform: scaleX(0); opacity: 1; }
+  55% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1); opacity: 0; }
+}
+.card:hover, .card:focus-visible, .hot { background: var(--c-white-03); border-color: var(--c-line-strong); }
+.cardTop { display: flex; align-items: center; gap: var(--space-2); }
+.cardCode { flex: 1; font: var(--size-0p58rem) var(--font-mono); letter-spacing: var(--size-0p16em); color: var(--c-red); }
+.cardArrow { opacity: 0.4; transition: transform var(--dur-2) var(--ease-out), opacity var(--dur-2) var(--ease-out); }
+.card:hover .cardArrow, .card:focus-visible .cardArrow, .hot .cardArrow { opacity: 1; transform: translate(var(--size-2px), var(--size-negative-2px)); }
+.cardTitle { font-size: var(--size-1p02rem); font-weight: 400; color: var(--c-white); }
+.cardDesc { font-size: var(--fs-sm); line-height: 1.5; color: var(--c-white-50); text-wrap: pretty; }
+.live { width: var(--size-6px); height: var(--size-6px); border-radius: 50%; background: var(--c-red); box-shadow: var(--glow-red); animation: node-pulse var(--dur-extracted-2s) ease-in-out infinite; }
+.current .cardTitle { color: var(--c-white); }
+
+/* ---- right: the orbit diagram (its own rings and nodes draw in; see NodeMap) ---- */
+.aside { display: none; }
+@media (min-width: 1360px) {
+  .aside { display: grid; place-items: center; align-content: center; }
+  .aside > div { max-width: var(--size-180px); }
+}
+
+@media (max-width: 1100px) {
+  .sheet { --rail: var(--size-210px); --gap: var(--space-6); }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(var(--size-190px), 1fr)); }
+}
+@media (max-width: 900px) {
+  .wrap { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scrim, .shadow, .sheet, .railBg, .sweep::before, .corner, .lead, .tab, .tab::before, .introTitle, .introBlurb,
+  .stage, .headCode, .headTitle, .headBlurb, .card, .card::before, .live, .retract, .retract .sheet, .fade { animation: none !important; }
+  .beam { display: none; }
+}

@@ -1,0 +1,25 @@
+/* ============================================================
+   ANIMATION — shared keyframes used by the live site.
+   JS/GSAP handles scroll-linked motion.
+   ============================================================ */
+
+/* --- The signature red node pulse --- */
+/* Opacity only: every user declares its own static glow (box-shadow), which
+   fades with the element. Animating box-shadow itself repainted on the main
+   thread every frame for each of the ~30 dots on a page. */
+@keyframes node-pulse {
+  0%, 100% { opacity: 0.35; }
+  50%      { opacity: 1; }
+}
+
+/* --- Horizontal scan sweep --- */
+@keyframes scan-x {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+/* --- Caret blink --- */
+@keyframes blink {
+  0%, 49%  { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}

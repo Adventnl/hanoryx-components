@@ -1,0 +1,34 @@
+/* ============================================================
+   EFFECTS — shared glass panels and scanlines
+   Reusable surface treatments that give the "operating system" feel.
+   ============================================================ */
+
+/* --- Glass panel ---
+   NOTE: the fill is opaque (var(--c-panel)), so a backdrop-filter blurred
+   something that could never be seen through it — pure GPU cost on every panel,
+   every frame, over the animated scenes. Removed. The look is unchanged. */
+.glass {
+  position: relative;
+  background:
+    linear-gradient(180deg, var(--c-white-03), transparent 60%),
+    var(--c-panel);
+  border: var(--border);
+  border-radius: var(--r-md);
+}
+
+/* --- Scanline overlay (CRT feel) --- */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.015) 0px,
+    rgba(255, 255, 255, 0.015) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  opacity: 0.6;
+  z-index: 2;
+}

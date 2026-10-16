@@ -1,0 +1,56 @@
+{
+  "name": "hanoryx-components",
+  "version": "0.1.0",
+  "description": "The Hanoryx interface library: every component, animation, scene and specimen from the Hanoryx Systems website, organised, documented and sized for people and LLMs to build with.",
+  "private": true,
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "dev": "vite --config site/vite.config.js",
+    "build": "npm run docs:generate && vite build --config site/vite.config.js",
+    "preview": "vite preview --config site/vite.config.js",
+    "lint": "eslint .",
+    "docs:generate": "node scripts/generate-manifest.mjs",
+    "docs:sizing": "node scripts/measure-sizing.mjs",
+    "check": "node scripts/check.mjs",
+    "hx": "node bin/hanoryx.mjs"
+  },
+  "bin": {
+    "hanoryx": "./bin/hanoryx.mjs"
+  },
+  "peerDependencies": {
+    "@gsap/react": "^2.1.2",
+    "clsx": "^2.1.1",
+    "gsap": "^3.15.0",
+    "lenis": "^1.3.23",
+    "lucide-react": "^1.20.0",
+    "motion": "^12.40.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.18.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@gsap/react": "^2.1.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "clsx": "^2.1.1",
+    "eslint": "^10.3.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "gsap": "^3.15.0",
+    "lenis": "^1.3.23",
+    "lucide-react": "^1.20.0",
+    "motion": "^12.40.0",
+    "playwright-core": "^1.61.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "react-router-dom": "^7.18.0",
+    "vite": "^8.0.16"
+  }
+}

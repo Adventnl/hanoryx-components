@@ -1,0 +1,105 @@
+/* ============================================================
+   404 — SIGNAL LOST
+   Full-height cinematic stage with centered content and nearby page links.
+   ============================================================ */
+
+.stage {
+  overflow: hidden;
+  background: var(--c-void);
+  text-align: center;
+}
+
+/* System grid field sits at the very back of the stage */
+.bg {
+  z-index: var(--z-bg);
+  opacity: 0.7;
+}
+
+/* Soft radial darkening so the headline floats out of the void */
+.vignette {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-bg);
+  pointer-events: none;
+  background:
+    radial-gradient(
+      120% 90% at 50% 42%,
+      transparent 0%,
+      transparent 38%,
+      rgba(2, 2, 3, 0.85) 100%
+    );
+}
+
+.inner {
+  position: relative;
+  z-index: var(--z-content);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-12);
+  padding-block: var(--section-pad-sm);
+}
+
+.core {
+  align-items: center;
+  max-width: var(--maxw-text);
+}
+
+/* Mono error eyebrow — the single restrained touch of red */
+.eyebrow {
+  color: var(--c-red);
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+}
+
+.title {
+  color: var(--c-text-strong);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-display);
+  /* faint red bleed under the type, like a misregistered print */
+  text-shadow: 0 0 60px rgba(255, 51, 51, 0.08);
+}
+
+.intro {
+  margin-inline: auto;
+  color: var(--c-text-dim);
+}
+
+.rule {
+  width: min(100%, 280px);
+  margin-inline: auto;
+}
+
+.actions {
+  justify-content: center;
+}
+.searchButton { display: inline-flex; align-items: center; gap: 0.6em; min-height: 44px; padding-inline: var(--space-5); border: var(--border); background: var(--c-black-3); color: var(--c-white); font: 0.66rem var(--font-mono); letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: border-color var(--dur-2) var(--ease-out); }
+.searchButton:hover { border-color: var(--c-red); }
+.searchButton:focus-visible { outline: 2px solid var(--c-red); outline-offset: 2px; }
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .inner {
+    gap: var(--space-10);
+  }
+}
+
+@media (max-width: 720px) {
+  .inner {
+    gap: var(--space-8);
+  }
+}
+
+.asked { font-family: var(--font-mono); font-size: 0.85em; color: var(--c-white); letter-spacing: 0.04em; overflow-wrap: anywhere; }
+
+.near { width: min(100%, 36rem); text-align: left; }
+.nearLabel { display: block; margin-bottom: var(--space-3); font: 0.58rem var(--font-mono); letter-spacing: 0.24em; text-transform: uppercase; color: var(--c-white-50); text-align: center; }
+.near ul { list-style: none; border-top: 1px solid var(--c-line-strong); }
+.near li { border-bottom: 1px solid var(--c-line); animation: near-in 0.8s var(--ease-glide) both; animation-delay: calc(0.5s + var(--i) * 0.09s); }
+@keyframes near-in { from { opacity: 0; transform: translate3d(0, 10px, 0); } to { opacity: 1; transform: none; } }
+.nearLink { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr) auto; align-items: baseline; gap: var(--space-3); padding: 0.85rem 0.3rem; color: var(--c-white-50); transition: color var(--dur-2) var(--ease-out), padding var(--dur-3) var(--ease-glide), background var(--dur-3) var(--ease-out); }
+.nearLink:hover, .nearLink:focus-visible { color: var(--c-white); padding-left: 0.9rem; background: linear-gradient(90deg, var(--c-red-faint), transparent 70%); }
+.nearGroup { font: 0.54rem var(--font-mono); letter-spacing: 0.2em; text-transform: uppercase; color: var(--c-red-bright); }
+.nearName { font-family: var(--font-serif); font-size: var(--fs-h4); color: inherit; }
+@media (prefers-reduced-motion: reduce) { .near li { animation: none; } }

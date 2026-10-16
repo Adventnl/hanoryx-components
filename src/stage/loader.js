@@ -1,14 +1,14 @@
-/* Showcase pages load on demand: each is its own chunk (JSX + CSS), named by
-   its slug in showcase/pages.js. A page module default-exports
+/* Specimen families load on demand: each is its own chunk (JSX + CSS), named by
+   its slug in specimens/families.js. A family's index.js default-exports
    { Visual, items: [[name, Component, mode], ...] }. */
-const modules = import.meta.glob('./pages/*.jsx');
+const modules = import.meta.glob('../specimens/*/index.js');
 const cache = new Map();
 
 /** A promise for one page's module (null when there is no file for the slug).
  *  Cached, so it can be handed straight to React's `use()`. */
 export function loadShowcase(slug) {
   if (!cache.has(slug)) {
-    const load = modules[`./pages/${slug}.jsx`];
+    const load = modules[`../specimens/${slug}/index.js`];
     const request = load ? load().then((mod) => mod.default) : Promise.resolve(null);
     cache.set(slug, request.catch((error) => {
       cache.delete(slug); // allow a later navigation to retry

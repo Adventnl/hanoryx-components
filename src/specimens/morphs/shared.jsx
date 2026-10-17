@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { rng, useCycle } from '../../stage/hooks';
-import { usePrefersReducedMotion } from '../../core/hooks/usePrefersReducedMotion';
+import { usePrefersReducedMotion } from "../../core/hooks/use-prefers-reduced-motion/usePrefersReducedMotion";
 import c from './morphs.module.css';
 
 /* ---- outlines: 32 points sampled around the centre, so any two can be blended ---- */

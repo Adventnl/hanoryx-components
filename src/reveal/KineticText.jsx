@@ -2,7 +2,7 @@ import { Fragment, useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import clsx from 'clsx';
-import { usePrefersReducedMotion } from '../core/hooks/usePrefersReducedMotion';
+import { usePrefersReducedMotion } from "../core/hooks/use-prefers-reduced-motion/usePrefersReducedMotion";
 import styles from './KineticText.module.css';
 
 /**

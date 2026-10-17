@@ -4,7 +4,7 @@ Read this first. It is the one instruction file for the repository; nested `AGEN
 
 ## What this repository is
 
-The Hanoryx Systems interface, extracted from the website (`hanoryx-web`) and organised as a library: **React 19 + CSS Modules, published as source.** A site built from it needs no new components. **2,658 catalogued pieces** in twelve areas; a docs site (`npm run dev`) shows each live with its props and measured size.
+The Hanoryx Systems interface, extracted from the website (`hanoryx-web`) and organised as a library: **React 19 + CSS Modules, published as source.** A site built from it needs no new components. **2,822 catalogued pieces** in twelve areas; a docs site (`npm run dev`) shows each live with its props and measured size.
 
 `hanoryx-web` and `astryx` are reference only. Never edit them from here.
 
@@ -27,7 +27,7 @@ Read `llms.txt` (the map), `docs/sizing.md` (sizes), `docs/layout-recipes.md` (p
 src/
   styles/        tokens.css and the global sheet            -> 'hanoryx-components/styles'
   core/          hooks, providers, motion engine, utilities  -> '…/core'
-  kit/           interface kit, 7 families                   -> '…/kit'
+  kit/           interface kit, 11 categories                   -> '…/kit'
   fx/ ui/        foreground toolkit; the site's own UI       -> '…/fx' '…/ui'
   page/          hero, page blocks, page template            -> '…/page'
   shell/         navbar, footer, search, shortcuts, cursor…  -> '…/shell'
@@ -42,7 +42,7 @@ examples/        apps built only from the library
 scripts/ bin/    generators, QA, the `hanoryx` CLI
 ```
 
-A component is `Name.jsx` + `Name.module.css` (+ `Name.doc.mjs`). Specimens: one file per specimen in `src/specimens/<family>/`, with the family's `<family>.module.css`, a `shared.jsx` for helpers two or more specimens use, and an `index.js` listing them in page order.
+A component folder contains `Name.jsx` + `Name.module.css` (+ `Name.doc.mjs`). Related parts share a family folder; keep folders scannable (roughly ten files is a guide). The kit has eleven category folders with component families beneath them. Specimens live at `src/specimens/<family>/<component>/Name.jsx`; each family keeps its stylesheet and shared helpers beside authored `catalog.js` (page order and metadata), with generated `index.js` as the public entry. See `docs/organization.md`.
 
 ## Rules for changes
 

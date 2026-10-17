@@ -1,0 +1,6 @@
+.layout { display: flex; flex-wrap: wrap; min-width: 0; gap: var(--space-5); }
+.content { flex: 1; min-width: 0; }
+.header, .footer { flex-basis: 100%; }
+.panel { flex: 0 1 var(--size-16rem); min-width: 0; }
+.form { display: grid; gap: var(--space-5); }
+.scroll { overflow: auto; overscroll-behavior: contain; min-width: 0; scrollbar-gutter: stable; }

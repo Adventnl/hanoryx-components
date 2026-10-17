@@ -1,0 +1,7 @@
+import { useState } from 'react';
+import * as Kit from 'hanoryx-components/kit';
+
+export default function NavigationExamples() {
+  const [tab, setTab] = useState('overview');
+  return <Kit.Stack><Kit.TopNav><Kit.TopNavHeading to="/">Workspace</Kit.TopNavHeading><Kit.TopNavItem to="/a/kit">Kit</Kit.TopNavItem><Kit.TopNavMenu label="Resources"><Kit.TopNavItem to="/guides/getting-started">Getting started</Kit.TopNavItem></Kit.TopNavMenu><Kit.TopNavMegaMenu label="Explore"><Kit.TopNavMegaMenuItem title="Components" to="/a/kit">Reusable controls.</Kit.TopNavMegaMenuItem><Kit.TopNavMegaMenuFeaturedCard title="Build a page" to="/guides/layout-recipes" eyebrow="Featured">Compose your interface.</Kit.TopNavMegaMenuFeaturedCard></Kit.TopNavMegaMenu></Kit.TopNav><Kit.MobileNav><Kit.SideNavSection title="Projects"><Kit.SideNavItem to="/a/kit">Browse projects</Kit.SideNavItem></Kit.SideNavSection></Kit.MobileNav><Kit.TabList label="Project views" value={tab} onChange={setTab}><Kit.Tab value="overview" id="family-overview-tab" panelId="family-overview">Overview</Kit.Tab><Kit.Tab value="activity" id="family-activity-tab" panelId="family-activity">Activity</Kit.Tab></Kit.TabList><div id={`family-${tab}`} role="tabpanel" aria-labelledby={`family-${tab}-tab`} tabIndex={0}>{tab === 'overview' ? 'Project overview' : 'Recent project activity'}</div><Kit.TabMenu tabs={[{ id: 'overview', label: 'Overview' }, { id: 'activity', label: 'Activity' }]} onChange={setTab} /></Kit.Stack>;
+}

@@ -184,3 +184,11 @@
 /* recipe frames */
 .sx-frame-wrap { overflow: auto; padding: var(--space-4); background: var(--c-black); }
 .sx-frame { display: block; border: 1px solid var(--c-line-strong); background: var(--c-black); margin-inline: auto; max-width: none; }
+
+/* Expandable component families keep every named part discoverable. */
+.sx-kit-family { border-bottom: var(--size-1px) solid var(--c-line); padding: var(--space-3) 0; }
+.sx-kit-family > summary { cursor: pointer; padding: var(--space-2) 0; }
+.sx-kit-family > summary span { color: var(--c-white-65); font: var(--fs-xs) var(--font-mono); margin-inline-start: var(--space-3); }
+.sx-tree details details > summary { cursor: pointer; padding: var(--space-2); color: var(--c-white-80); }
+.sx-tree details details ul { padding-inline-start: var(--space-3); }
+.sx-tree details details a { overflow-wrap: anywhere; }

@@ -1,21 +1,10 @@
 {
- "generatedAt": "2026-10-16T05:35:18.356Z",
+ "generatedAt": "2026-10-16T23:57:08.641Z",
  "scope": {
   "areas": [
-   "kit",
-   "fx",
-   "ui",
-   "page",
-   "signatures",
-   "closers",
-   "specimens",
-   "scenes",
-   "reveal"
+   "kit"
   ],
-  "only": [
-   "kit/inputs/Calendar",
-   "kit/data/Table"
-  ],
+  "only": null,
   "limit": 0,
   "widths": [
    360,
@@ -23,8 +12,8 @@
    1200
   ]
  },
- "expected": 2,
- "checked": 2,
+ "expected": 221,
+ "checked": 221,
  "failures": [],
  "overflows": [],
  "expectedOverflows": [],

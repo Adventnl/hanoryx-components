@@ -6,7 +6,7 @@ Deep black surfaces, white type, one restrained red. The library uses React 19 +
 
 | | |
 | --- | --- |
-| **2,658** catalogued pieces | interface kit (116) · foreground toolkit (18) · site UI (6) · page (27) · shell (25) · reveal (38) · scenes (69) · signatures (90) · closers (86) · **specimens (2,091 in 50 families)** · stage (12) · core (80) |
+| **2,822** catalogued pieces | interface kit (279) · foreground toolkit (18) · site UI (6) · page (28) · shell (25) · reveal (38) · scenes (69) · signatures (90) · closers (86) · **specimens (2,091 in 50 families)** · stage (12) · core (80) |
 | **Docs site** | `npm run dev` — every piece live, with props, a width switcher, measured sizes and search |
 | **For LLMs** | [`AGENTS.md`](AGENTS.md) · [`llms.txt`](llms.txt) · [`docs/sizing.md`](docs/sizing.md) · `npm run hx -- component <Name>` |
 
@@ -41,7 +41,7 @@ import 'hanoryx-components/styles';
 src/
   styles/      tokens + the global sheet                       hanoryx-components/styles
   core/        hooks · providers · motion engine · utilities   hanoryx-components/core
-  kit/         100 visual components and 16 hooks, seven families          hanoryx-components/kit
+  kit/         279 components, parts and hooks in eleven categories          hanoryx-components/kit
   fx/          foreground toolkit: tilt, spotlight, odometer…  hanoryx-components/fx
   ui/          the site's own button, pill, panel, header      hanoryx-components/ui
   page/        hero, 20 page blocks, the page template         hanoryx-components/page
@@ -63,7 +63,7 @@ import { Rocker, GuardCover } from 'hanoryx-components/specimens/switchboard';
 import { Dials } from 'hanoryx-components/specimens';     // namespace: <Dials.JogWheel />
 ```
 
-Each family folder has one file per specimen, the family's stylesheet, a `shared.jsx` for helpers more than one specimen uses, and an `index.js` that lists them in page order (`items`) with the `Visual` that the scroll stages draw.
+Each specimen has a named folder beneath its family. The family keeps its shared stylesheet, helpers and authored `catalog.js` (page order and interaction metadata), with a generated `index.js` as the public entry. The kit uses eleven categories and small component-family folders; see [Folders and component families](docs/organization.md) for the map and focused imports.
 
 ## Sizing, ratios, padding
 

@@ -18,6 +18,7 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { analyzeModule, summarize } from './lib/analyze.mjs';
 import { specimenDocs } from './lib/specimen-docs.mjs';
+import { walk } from './lib/exports.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = path.join(ROOT, 'src');
@@ -51,8 +52,10 @@ export const AREAS = [
 ];
 
 const KIT_FAMILIES = {
-  inputs: 'Inputs', navigation: 'Navigation', feedback: 'Feedback', data: 'Data display', overlays: 'Overlays', content: 'Content & layout', chat: 'Chat',
+  action: 'Action', chat: 'Chat', container: 'Container', content: 'Content', feedback: 'Feedback & status', 'form-controls': 'Form controls', layout: 'Layout', navigation: 'Navigation', overlay: 'Overlay', 'table-list': 'Table & list', utility: 'Utility',
 };
+const legacyKitIds = readJson(path.join(ROOT, 'scripts/lib/kit-legacy-ids.json'), {});
+const modules = (dir, re) => fs.existsSync(dir) ? walk(dir, p => re.test(path.basename(p))).sort() : [];
 
 /* ---------- helpers ---------- */
 async function loadDoc(file) {
@@ -105,17 +108,19 @@ async function addModule({ area, family, file, pkg, kind }) {
     const text = c.doc ?? (isPrimary ? info.header : null);
     const publicName = file.endsWith('sceneBudget.js') && c.name === 'registerScene' ? 'registerSceneController' : c.name;
     const e = {
-      id: `${area}/${family ? family + '/' : ''}${publicName}`,
+      id: (area === 'kit' && legacyKitIds[publicName]) || `${area}/${family ? family + '/' : ''}${publicName}`,
       name: publicName,
       area,
       family: family || undefined,
+      group: area === 'kit' ? path.basename(path.dirname(file)) : undefined,
+      aliasOf: c.aliasOf,
       kind: c.kind === 'hook' ? 'hook' : c.kind === 'component' ? 'component' : 'function',
       parent: isPrimary ? undefined : primary?.name,
       import: importLine(publicName, pkg),
       origin: authored?.origin ?? doc?.origin ?? 'hanoryx-web',
-      source: rel(file),
+      source: rel(c.source ?? file),
       styles: fs.existsSync(file.replace(/\.(jsx?|mjs)$/, '.module.css')) ? rel(file.replace(/\.(jsx?|mjs)$/, '.module.css')) : undefined,
-      summary: authored?.summary ?? summarize(text),
+      summary: authored?.summary || summarize(text),
       description: authored?.description ?? (text && text.length > 260 ? text : undefined),
       keywords: authored?.keywords,
       props: c.kind === 'component' ? mergeProps(c.props, authored?.props) : undefined,
@@ -140,22 +145,21 @@ function prune(o) {
 /* ---------- kit ---------- */
 for (const fam of Object.keys(KIT_FAMILIES)) {
   const dir = path.join(SRC, 'kit', fam);
-  for (const f of list(dir, /\.jsx$|^use\w+\.js$/)) await addModule({ area: 'kit', family: fam, file: path.join(dir, f), pkg: 'kit', kind: f.endsWith('.js') ? 'core' : undefined });
+  for (const file of modules(dir, /\.jsx$|^use\w+\.js$/)) await addModule({ area: 'kit', family: fam, file, pkg: 'kit', kind: file.endsWith('.js') ? 'core' : undefined });
 }
 
 /* ---------- flat areas ---------- */
 for (const [area, pkg] of [['fx', 'fx'], ['ui', 'ui'], ['signatures', 'signatures'], ['closers', 'closers']]) {
   const dir = path.join(SRC, area);
-  for (const f of list(dir, /\.jsx$/)) await addModule({ area, file: path.join(dir, f), pkg });
+  for (const file of modules(dir, /\.jsx$/)) await addModule({ area, file, pkg });
 }
 
 /* ---------- page ---------- */
-for (const f of list(path.join(SRC, 'page'), /\.jsx$/)) await addModule({ area: 'page', family: 'template', file: path.join(SRC, 'page', f), pkg: 'page' });
-for (const f of list(path.join(SRC, 'page/blocks'), /\.jsx$/)) await addModule({ area: 'page', family: 'blocks', file: path.join(SRC, 'page/blocks', f), pkg: 'page' });
+for (const file of modules(path.join(SRC, 'page'), /\.jsx$/)) await addModule({ area: 'page', family: file.includes(`${path.sep}blocks${path.sep}`) ? 'blocks' : 'template', file, pkg: 'page' });
 
 /* ---------- shell ---------- */
 for (const fam of fs.readdirSync(path.join(SRC, 'shell')).filter((d) => fs.statSync(path.join(SRC, 'shell', d)).isDirectory()).sort()) {
-  for (const f of list(path.join(SRC, 'shell', fam), /\.jsx$/)) await addModule({ area: 'shell', family: fam, file: path.join(SRC, 'shell', fam, f), pkg: 'shell' });
+  for (const file of modules(path.join(SRC, 'shell', fam), /\.jsx$/)) await addModule({ area: 'shell', family: fam, file, pkg: 'shell' });
 }
 
 /* ---------- reveal & scenes ---------- */
@@ -163,13 +167,12 @@ for (const f of ['Reveal.jsx', 'KineticText.jsx']) await addModule({ area: 'reve
 for (const f of ['SceneCanvas.jsx', 'SectionScene.jsx']) await addModule({ area: 'scenes', family: 'host', file: path.join(SRC, 'scenes', f), pkg: 'scenes' });
 
 /* ---------- stage ---------- */
-for (const f of list(path.join(SRC, 'stage'), /\.jsx$/)) await addModule({ area: 'stage', family: 'parts', file: path.join(SRC, 'stage', f), pkg: 'stage' });
-for (const f of list(path.join(SRC, 'stage/stages'), /\.jsx$/)) await addModule({ area: 'stage', family: 'stages', file: path.join(SRC, 'stage/stages', f), pkg: 'stage' });
+for (const file of modules(path.join(SRC, 'stage'), /\.jsx$/)) await addModule({ area: 'stage', family: file.includes(`${path.sep}stages${path.sep}`) ? 'stages' : 'parts', file, pkg: 'stage' });
 
 /* ---------- core ---------- */
 for (const fam of ['hooks', 'providers', 'motion', 'performance', 'utils', 'site']) {
-  for (const f of list(path.join(SRC, 'core', fam), /\.(jsx?|js)$/).filter((x) => x !== 'index.js')) {
-    await addModule({ area: 'core', family: fam, file: path.join(SRC, 'core', fam, f), pkg: 'core', kind: 'core' });
+  for (const file of modules(path.join(SRC, 'core', fam), /\.(jsx?|js)$/).filter((x) => path.basename(x) !== 'index.js')) {
+    await addModule({ area: 'core', family: fam, file, pkg: 'core', kind: 'core' });
   }
 }
 
@@ -206,8 +209,8 @@ for (const fam of ['hooks', 'providers', 'motion', 'performance', 'utils', 'site
     for (const line of code.split('\n')) {
       const g = /export const (\w+) = \{/.exec(line);
       if (g) group = g[1];
-      const m = /^\s+(\w+): lazy\(\(\) => import\('\.\/(\w+)'\)\)/.exec(line);
-      if (m) out.push({ kind: m[1], file: m[2], group });
+      const m = /^\s+(\w+): lazy\(\(\) => import\(['"]\.\/([^'"]+)['"]\)\)/.exec(line);
+      if (m) out.push({ kind: m[1], file: path.basename(m[2]), group });
     }
     return out;
   };
@@ -229,7 +232,7 @@ const familyMod = await import(pathToFileURL(path.join(SRC, 'specimens/families.
 const specimenFamilies = [];
 for (const fam of familyMod.showcasePages) {
   const dir = path.join(SRC, 'specimens', fam.slug);
-  const idx = fs.readFileSync(path.join(dir, 'index.js'), 'utf8');
+  const idx = fs.readFileSync(path.join(dir, 'catalog.js'), 'utf8');
   const items = [...idx.matchAll(/^\s+\[("(?:[^"\\]|\\.)*"), (\w+), ("[^"]*")\],?$/gm)].map((m) => ({ label: JSON.parse(m[1]), component: m[2], mode: JSON.parse(m[3]) }));
   const doc = await loadDoc(path.join(dir, `${fam.slug}.jsx`));
   const chapter = familyMod.chapters.find((c) => c.id === fam.chapter);
@@ -241,12 +244,13 @@ for (const fam of familyMod.showcasePages) {
   };
   specimenFamilies.push(fm);
   const pkg = `specimens/${fam.slug}`;
+  const sources = new Map(modules(dir, /\.jsx$/).map(file => [path.basename(file, '.jsx'), file]));
   for (const it of items) {
     const sz = sizing[`specimens/${fam.slug}/${it.component}`];
     const detail = specimenDocs({ ...fam, number: fm.number }, it, chapter, dir);
     entries.push(prune({
       id: `specimens/${fam.slug}/${it.component}`, name: it.component, label: it.label, area: 'specimens', family: fam.slug, kind: 'specimen', mode: it.mode,
-      import: `import { ${it.component} } from 'hanoryx-components/${pkg}';`, source: `src/specimens/${fam.slug}/${it.component}.jsx`, styles: `src/specimens/${fam.slug}/${fam.slug}.module.css`,
+      import: `import { ${it.component} } from 'hanoryx-components/${pkg}';`, source: rel(sources.get(it.component)), styles: `src/specimens/${fam.slug}/${fam.slug}.module.css`,
       ...detail, sizing: { ...detail.sizing, ...sz },
     }));
   }
@@ -255,6 +259,7 @@ for (const fam of familyMod.showcasePages) {
 /* ---------- sizing for everything else ---------- */
 for (const e of entries) if (!e.sizing && sizing[e.id]) e.sizing = sizing[e.id];
 for (const e of entries) if (e.sizing && sizing[e.id] && e.area !== 'specimens') e.sizing = { ...e.sizing, measured: sizing[e.id].measured ?? sizing[e.id] };
+for (const e of entries) if (e.sizing?.scope && e.sizing.measured) e.sizing.measured = { ...e.sizing.measured, scope: e.sizing.scope };
 
 /* ---------- write ---------- */
 const byArea = Object.fromEntries(AREAS.map((a) => [a.id, entries.filter((e) => e.area === a.id)]));
@@ -288,7 +293,7 @@ for (const a of AREAS) {
   }
   lines.push('');
 }
-write(path.join(ROOT, 'llms.txt'), lines.join('\n'));
+write(path.join(ROOT, 'llms.txt'), lines.map(line => line.trimEnd()).join('\n'));
 
 /* llms-full.txt and COMPONENTS.md */
 const full = ['# hanoryx-components — full catalogue', ''];

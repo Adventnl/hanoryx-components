@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
+import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion/usePrefersReducedMotion";
 import { LenisContext } from './lenis-context';
 
 /**

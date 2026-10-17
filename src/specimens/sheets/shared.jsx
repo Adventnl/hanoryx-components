@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useLive } from '../../stage/hooks';
-import { usePrefersReducedMotion } from '../../core/hooks/usePrefersReducedMotion';
+import { usePrefersReducedMotion } from "../../core/hooks/use-prefers-reduced-motion/usePrefersReducedMotion";
 import c from './sheets.module.css';
 
 export function Stage({ label, children, className = '', onEscape }) {

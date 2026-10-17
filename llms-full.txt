@@ -2,165 +2,404 @@
 
 ## Interface kit
 
-### Calendar (kit/inputs)
-import { Calendar } from 'hanoryx-components/kit';
-A single-date calendar with roving focus, min/max bounds, month navigation and locale-aware labels.
-props: label='Choose a date', value, defaultValue='', onChange, min, max, disabled=false, locale='en', weekStartsOn=0, today=formatDate(new Date())
+### Button (kit/action)
+import { Button } from 'hanoryx-components/kit';
+The existing Hanoryx button, also exported from the action family.
+props: to, href, variant='primary', size='md', icon, magnetic=true, className, children, ...rest
 
-### Checkbox (kit/inputs)
-import { Checkbox } from 'hanoryx-components/kit';
-A checkbox with room for a hint. It is a real input — the square is drawn beside it — and it supports the indeterminate “some of them” state of a parent box.
-props: label, hint, checked, defaultChecked, onChange, indeterminate=false, disabled, className, ...rest
+### ButtonGroup (kit/action)
+import { ButtonGroup } from 'hanoryx-components/kit';
+A named group of related actions with wrapping spacing.
+props: label='Actions', children
 
-### Combobox (kit/inputs)
-import { Combobox } from 'hanoryx-components/kit';
-An editable combobox: type to filter, move through the matches with the arrow keys, choose with Enter. Focus stays in the input; the highlighted option is named with aria-activedescendant.
-props: label, hint, error, required, options=[], value, defaultValue='', onChange, onSelect, placeholder='Type to search…', emptyText="Nothing matches.", className, disabled
+### IconButton (kit/action)
+import { IconButton } from 'hanoryx-components/kit';
+An icon action with a required text label and native button semantics.
+props: label, icon, ...props
 
-### DateInput (kit/inputs)
-import { DateInput } from 'hanoryx-components/kit';
-Labelled native date input, plus local time, local date/time and paired date-range controls.
-props: label='Date', ...props
+### ToggleButton (kit/action)
+import { ToggleButton } from 'hanoryx-components/kit';
+A controlled or uncontrolled pressed-state button.
+props: pressed, defaultPressed=false, onChange, children, ...props
 
-### TimeInput (kit/inputs)
-import { TimeInput } from 'hanoryx-components/kit';
-Local civil time, with no timezone conversion. onChange receives the native event.
-props: label='Time', ...props
+### ToggleButtonGroup (kit/action)
+import { ToggleButtonGroup } from 'hanoryx-components/kit';
+Independent pressed choices represented by an array of selected values.
+props: options=[], value, defaultValue=[], onChange, label='Options'
 
-### DateTimeInput (kit/inputs)
-import { DateTimeInput } from 'hanoryx-components/kit';
-Local date and time. The host owns timezone selection and conversion.
-props: label='Date and time', ...props
+### ContextMenu (kit/action)
+import { ContextMenu } from 'hanoryx-components/kit';
+Context actions available through right-click, Shift+F10 and a visible menu button.
+props: children, label='Context actions', items, menu
 
-### DateRangeInput (kit/inputs)
-import { DateRangeInput } from 'hanoryx-components/kit';
-A labelled pair. No partial selection is discarded; a reversed range is explained.
-props: label='Date range', value={ start: '', end: '' }, onChange, min, max, disabled=false, required=false
+### ContextMenuItem (kit/action)
+import { ContextMenuItem } from 'hanoryx-components/kit';
+An action within ContextMenu, sharing dropdown selection and focus behavior.
+props: children, label, onSelect, disabled=false, danger=false, role='menuitem', checked, keepOpen=false
 
-### Field (kit/inputs)
-import { Field } from 'hanoryx-components/kit';
-The label, hint and error that every field shares, wired up so a screen reader hears them. The control you put inside it receives its id, aria-describedby and aria-invalid.
-props: label, hint, error, required=false, id, className, labelExtra, children
+### DropdownMenu (kit/action)
+import { DropdownMenu } from 'hanoryx-components/kit';
+A button that opens a menu of actions — not a navigation; use links for that. The ARIA menu-button pattern, with typeahead.
+props: label='Actions', items=[], children, align="start", className, submenu=false
 
-### FileDrop (kit/inputs)
-import { FileDrop } from 'hanoryx-components/kit';
-A drop zone that is also a file button: drag files onto it, or press it and choose. It lists what was picked and uploads nothing itself.
-props: label='Choose files', hint='or drop them here', accept, multiple=true, onFiles, className
+### DropdownMenuGroup (kit/action)
+import { DropdownMenuGroup } from 'hanoryx-components/kit';
+A named group of menu actions.
+props: label, children
 
-### NumberField (kit/inputs)
-import { NumberField } from 'hanoryx-components/kit';
-A number with a minus and a plus either side. The value is clamped to its range when you leave the field, never while you are typing.
-props: label, hint, error, required, value, defaultValue=null, onChange, min=-Infinity, max=Infinity, step=1, suffix, className, disabled
+### DropdownMenuRadioGroup (kit/action)
+import { DropdownMenuRadioGroup } from 'hanoryx-components/kit';
+The controlled value and change handler for exclusive menu choices.
+props: value, onChange, label, children
 
-### PasswordField (kit/inputs)
-import { PasswordField } from 'hanoryx-components/kit';
-A password field with a show/hide toggle and a rough strength meter. Everything happens in the page; nothing is sent anywhere.
-props: label="Password", hint, error, required, value, defaultValue='', onChange, meter=true, className, disabled
+### DropdownMenuSubmenu (kit/action)
+import { DropdownMenuSubmenu } from 'hanoryx-components/kit';
+A nested menu opened by its trigger or ArrowRight and closed by ArrowLeft or Escape.
+props: label, children
 
-### RadioGroup (kit/inputs)
-import { RadioGroup } from 'hanoryx-components/kit';
-A group of real radio buttons under a legend: the arrow keys move and choose, Tab leaves the group, and a screen reader says “2 of 4”.
-props: legend, options=[], value, defaultValue, onChange, name, row=false, className, disabled
+### DropdownMenuItem (kit/action)
+import { DropdownMenuItem } from 'hanoryx-components/kit';
+A named menu action; disabled items are skipped during keyboard navigation.
+props: children, label, onSelect, disabled=false, danger=false, role='menuitem', checked, keepOpen=false
 
-### RangeField (kit/inputs)
-import { RangeField } from 'hanoryx-components/kit';
-A slider: the native range input, with its value written beside the label and a text version (“240 ms”) for assistive technology.
-props: label, hint, value, defaultValue=0, onChange, min=0, max=100, step=1, format=String, marks, className, disabled
+### DropdownMenuCheckboxItem (kit/action)
+import { DropdownMenuCheckboxItem } from 'hanoryx-components/kit';
+A checked menu choice that calls onChange with a boolean and keeps the menu open.
+props: checked=false, onChange, ...props
 
-### RichTextEditor (kit/inputs)
-import { RichTextEditor } from 'hanoryx-components/kit';
-A compact editor for bold, italic, underline and code, with sanitized HTML values and plain-text paste.
-props: label='Rich text', value, defaultValue='', onChange, disabled=false, hint='Select text, then choose bold, italic, underline or code.', error, rows=6
+### DropdownMenuRadioItem (kit/action)
+import { DropdownMenuRadioItem } from 'hanoryx-components/kit';
+An exclusive menu choice that reads value and onChange from its radio group.
+props: value, ...props
 
-### SearchField (kit/inputs)
-import { SearchField } from 'hanoryx-components/kit';
-A search box with a clear button and, when you give it a count, a result count that is read out as it changes.
-props: label='Search', hint, value, defaultValue='', onChange, count, noun="results", placeholder="Search…", className, disabled
+### DropdownMenuDivider (kit/action)
+import { DropdownMenuDivider } from 'hanoryx-components/kit';
+A semantic separator between menu sections.
 
-### Segmented (kit/inputs)
+### Link (kit/action)
+import { Link } from 'hanoryx-components/kit';
+Internal navigation uses the router; href handles external URLs.
+props: to, href, children, ...props
+
+### MoreMenu (kit/action)
+import { MoreMenu } from 'hanoryx-components/kit';
+An end-aligned overflow menu with a visible, accessible action label.
+props: label='More actions', ...props
+
+### Segmented (kit/action)
 import { Segmented } from 'hanoryx-components/kit';
 A short row of exclusive choices drawn as one control, with an ink that glides to the chosen one. Radio buttons underneath.
 props: label, options=[], value, defaultValue, onChange, name, className
 
-### SelectField (kit/inputs)
-import { SelectField } from 'hanoryx-components/kit';
-A native select, styled. Native on purpose: the platform’s own keyboard handling, its picker on a phone and its screen-reader behaviour come for free.
-props: label, hint, error, required, options=[], value, defaultValue='', onChange, placeholder, className, disabled
+### SegmentedControl (kit/action)
+import { SegmentedControl } from 'hanoryx-components/kit';
+A named group of exclusive radio choices, with options or composable children.
+props: label='Choose view', children, options, value, defaultValue, onChange
 
-### Switch (kit/inputs)
-import { Switch } from 'hanoryx-components/kit';
-An on/off switch for a setting that takes effect at once. A button with role switch, so Space and Enter flip it and a screen reader says “on” or “off”.
-props: label, checked, defaultChecked=false, onChange, disabled, showState=true, className, ...rest
+### SegmentedControlItem (kit/action)
+import { SegmentedControlItem } from 'hanoryx-components/kit';
+A radio choice inside SegmentedControl.
+props: value, children, disabled=false
 
-### TagInput (kit/inputs)
-import { TagInput } from 'hanoryx-components/kit';
-Type a word, press Enter or a comma and it becomes a tag. Each tag has its own remove button, and adding or removing is announced.
-props: label, hint, value, defaultValue=[], onChange, max=8, placeholder="Add a tag…", className, disabled
-
-### TextArea (kit/inputs)
-import { TextArea } from 'hanoryx-components/kit';
-A multi-line field that counts. Going over the limit turns the count red and marks the field invalid; it never cuts off what you typed.
-props: label, hint, error, required, maxLength, value, defaultValue='', onChange, rows=4, className, disabled, ...rest
-
-### TextField (kit/inputs)
-import { TextField } from 'hanoryx-components/kit';
-A single-line text field with a label, hint and error, and an optional prefix and suffix inside the border for a currency, a unit or an @.
-props: label, hint, error, required, prefix, suffix, className, disabled, type="text", ...input
-
-### Breadcrumbs (kit/navigation)
-import { Breadcrumbs } from 'hanoryx-components/kit';
-Where you are, as a trail back up. The last item is the current page and is not a link.
-props: items=[], label="Breadcrumb", className
-
-### DropdownMenu (kit/navigation)
-import { DropdownMenu } from 'hanoryx-components/kit';
-A button that opens a menu of actions — not a navigation; use links for that. The ARIA menu-button pattern, with typeahead.
-props: label, items=[], align="start", className
-
-### OnThisPage (kit/navigation)
-import { OnThisPage } from 'hanoryx-components/kit';
-An “on this page” list that follows the reader: the entry for the section nearest the top is marked, and pressing one scrolls there and moves focus to it.
-props: items=[], label="On this page", className
-
-### Pagination (kit/navigation)
-import { Pagination } from 'hanoryx-components/kit';
-Page buttons with the first, the last and the neighbours of the current one, “…” for what is skipped, and previous and next that stop at the ends.
-props: page, defaultPage=1, pages=1, onChange, siblings=1, label='Pagination', className
-
-### SideNav (kit/navigation)
-import { SideNav } from 'hanoryx-components/kit';
-A vertical navigation in groups that fold. A folded group is out of the tab order and the reading order, not only out of sight.
-props: groups=[], current, label="Section navigation", className
-
-### Stepper (kit/navigation)
-import { Stepper } from 'hanoryx-components/kit';
-The steps of something with an order, and which one you are on. Done steps show a tick, the current one is aria-current, and each state is written out for a screen reader.
-props: steps=[], current=0, label='Progress', className
-
-### Tabs (kit/navigation)
-import { Tabs } from 'hanoryx-components/kit';
-Tabs that change a panel of content, as the ARIA pattern asks: one tab stop for the list, arrow keys move between tabs and show the panel at once.
-props: tabs=[], value, defaultValue, onChange, label, className
-
-### Toolbar (kit/navigation)
+### Toolbar (kit/action)
 import { Toolbar } from 'hanoryx-components/kit';
 A row of tool buttons that is one tab stop; the arrow keys move between the tools. A tool can be a toggle, with aria-pressed.
 props: label, items=[], className
+
+### Chat (kit/chat)
+import { Chat } from 'hanoryx-components/kit';
+Composable conversation regions, transcript items and a message composer with asynchronous send handling.
+props: label='Conversation', children
+
+### ChatLayout (kit/chat)
+import { ChatLayout } from 'hanoryx-components/kit';
+A bounded conversation viewport with a separate composer slot.
+props: children, composer, label='Conversation', maxHeight='32rem'
+
+### ChatLayoutScrollButton (kit/chat)
+import { ChatLayoutScrollButton } from 'hanoryx-components/kit';
+Scroll the supplied message-list ref to its latest message without moving focus.
+props: targetRef, children='Latest message'
+
+### ChatComposer (kit/chat)
+import { ChatComposer } from 'hanoryx-components/kit';
+A controlled or uncontrolled composer. Sending calls the host; no request is made here.
+props: children, value, defaultValue='', onChange, onSend, disabled=false, label='Message composer', clearOnSend=true
+
+### ChatComposerInput (kit/chat)
+import { ChatComposerInput } from 'hanoryx-components/kit';
+A labelled textarea connected to its ChatComposer draft, pending state and error description.
+props: label='Message', placeholder='Write a message…', rows=3
+
+### ChatSendButton (kit/chat)
+import { ChatSendButton } from 'hanoryx-components/kit';
+The composer submit button; disabled while sending or when the draft is empty.
+props: children='Send'
+
+### ChatComposerDrawer (kit/chat)
+import { ChatComposerDrawer } from 'hanoryx-components/kit';
+A native disclosure for composer attachments and tools.
+props: title='Attachments and tools', children
+
+### ChatMessageList (kit/chat)
+import { ChatMessageList } from 'hanoryx-components/kit';
+An ordered transcript. Announcements are opt-in to avoid rereading history.
+props: children, label='Messages', announce=false, ref
+
+### ChatMessage (kit/chat)
+import { ChatMessage } from 'hanoryx-components/kit';
+One transcript item; author names are visible, and role is never only a colour.
+props: author, children, metadata, role='assistant'
+
+### ChatMessageBubble (kit/chat)
+import { ChatMessageBubble } from 'hanoryx-components/kit';
+The content surface inside a transcript message.
+props: children
+
+### ChatMessageMetadata (kit/chat)
+import { ChatMessageMetadata } from 'hanoryx-components/kit';
+A message footer, optionally using a semantic time element.
+props: children, dateTime
+
+### ChatSystemMessage (kit/chat)
+import { ChatSystemMessage } from 'hanoryx-components/kit';
+A transcript item whose system role is written out visibly.
+props: children
+
+### ChatToolCalls (kit/chat)
+import { ChatToolCalls } from 'hanoryx-components/kit';
+Tool calls stay inspectable as native disclosures; arguments are rendered as text.
+props: calls=[]
+
+### ChatComposerTokenElement (kit/chat)
+import { ChatComposerTokenElement } from 'hanoryx-components/kit';
+An attachment or context token with an optional named remove action.
+props: children, onRemove, label
+
+### ChatDictationButton (kit/chat)
+import { ChatDictationButton } from 'hanoryx-components/kit';
+Dictation is supplied by the host so browser support and consent remain explicit.
+props: active=false, onToggle, disabled=false
+
+### ChatTokenizedText (kit/chat)
+import { ChatTokenizedText } from 'hanoryx-components/kit';
+Render tokenized text safely as React text; tokens can carry a visible label.
+props: tokens=[]
+
+### Card (kit/container)
+import { Card } from 'hanoryx-components/kit';
+A surface that groups related content, in four variants. The title is a heading whose level you choose, so the card fits the outline of the page it is on.
+props: eyebrow, title, as="h3", children, footer, variant="raised", interactive=false, className
+
+### ClickableCard (kit/container)
+import { ClickableCard } from 'hanoryx-components/kit';
+A whole-card button or routed link. Its children must not contain interactive descendants.
+props: title, children, to, href, onClick, disabled=false
+
+### SelectableCard (kit/container)
+import { SelectableCard } from 'hanoryx-components/kit';
+A whole-card checkbox with controlled or uncontrolled selection.
+props: title, children, checked, defaultChecked=false, onChange, disabled=false, name, value
+
+### Carousel (kit/container)
+import { Carousel } from 'hanoryx-components/kit';
+A manual sequence of slides with named previous and next controls and a position status.
+props: children, label='Slides', value, defaultValue=0, onChange
+
+### Collapsible (kit/container)
+import { Collapsible } from 'hanoryx-components/kit';
+Collapsible is the discoverable family name for Disclosure; both names share the same implementation and props.
+props: title, children, open, defaultOpen=false, onChange, as='h3', className
+
+### CollapsibleGroup (kit/container)
+import { CollapsibleGroup } from 'hanoryx-components/kit';
+A named collection of independent collapsible sections.
+props: children, label='Expandable sections'
+
+### Disclosure (kit/container)
+import { Disclosure } from 'hanoryx-components/kit';
+One section that opens and closes — a question and its answer, a “more detail”. The closed body is out of the tab order and the reading order, not only out of sight.
+props: title, children, open, defaultOpen=false, onChange, as="h3", className
+
+### useCollapsible (kit/container)
+import { useCollapsible } from 'hanoryx-components/kit';
+Open state plus triggerProps and contentProps wired to one generated content id.
+returns: Open state plus triggerProps and contentProps wired to one generated content id.
+
+### Avatar (kit/content)
+import { Avatar } from 'hanoryx-components/kit';
+A person, a team or a system as its initials in a circle or square. No photographs, on purpose: initials need no consent, load instantly and cannot be the wrong face.
+props: name, size="2.4rem", shape='circle', tone, className, names, max (group)
+
+### AvatarGroup (kit/content)
+import { AvatarGroup } from 'hanoryx-components/kit';
+Avatars stacked as one group, with a "+N" for the ones that do not fit.
+props: names=[], max=4, size, className
+
+### AvatarGroupOverflow (kit/content)
+import { AvatarGroupOverflow } from 'hanoryx-components/kit';
+A labelled count of people omitted from an avatar group.
+props: count=0
+
+### AvatarStatusDot (kit/content)
+import { AvatarStatusDot } from 'hanoryx-components/kit';
+A textual availability status paired with a status dot.
+props: label='Available', state='ok'
+
+### Callout (kit/content)
+import { Callout } from 'hanoryx-components/kit';
+A remark set apart from the text around it: a note, a tip, a warning. The kind is written out as a word as well as shown by colour and icon.
+props: tone="note", title=tone word, children, className
+
+### Chart (kit/content)
+import { Chart } from 'hanoryx-components/kit';
+A responsive SVG plotting surface with a title, description, caption and optional legend.
+props: title, description, children, legend, width=600, height=300
+
+### ChartAxis (kit/content)
+import { ChartAxis } from 'hanoryx-components/kit';
+An SVG axis with explicitly positioned, labelled ticks.
+props: orientation='horizontal', x=0, y=0, length=100, ticks=[]
+
+### ChartGrid (kit/content)
+import { ChartGrid } from 'hanoryx-components/kit';
+Decorative SVG grid lines using supplied horizontal and vertical positions.
+props: x=0, y=0, width=100, height=100, horizontal=[], vertical=[]
+
+### ChartLegend (kit/content)
+import { ChartLegend } from 'hanoryx-components/kit';
+A textual series legend paired with decorative swatches.
+props: items=[]
+
+### ChartSwatch (kit/content)
+import { ChartSwatch } from 'hanoryx-components/kit';
+A token-coloured series marker. Supply a label if used without adjacent text.
+props: tone='accent', label
+
+### ChartTooltip (kit/content)
+import { ChartTooltip } from 'hanoryx-components/kit';
+A textual chart-value output. The host owns the active datum.
+props: children, label='Chart value'
+
+### Chip (kit/content)
+import { Chip } from 'hanoryx-components/kit';
+A compact pill that can be plain information, a toggle (give it onClick; selected says whether it is on) and/or removable (give it onRemove).
+props: children, selected, onClick, onRemove, className
+
+### CodeBlock (kit/content)
+import { CodeBlock } from 'hanoryx-components/kit';
+A block of code with an optional file name, light colouring and a copy button. The colour is a nicety: every token is also plain text, so copying gives exactly what you see.
+props: code, language="js", filename, lines=false, className
+
+### EmptyState (kit/content)
+import { EmptyState } from 'hanoryx-components/kit';
+What a list or a page says when there is nothing in it: why it is empty, and the one thing to do next. An empty state with no way forward is a dead end.
+props: icon=Inbox, title, children, action, className
+
+### Figure (kit/content)
+import { Figure } from 'hanoryx-components/kit';
+Something visual with a caption. The caption belongs to the figure, so a screen reader reads the two together.
+props: children, caption, className
+
+### Heading (kit/content)
+import { Heading } from 'hanoryx-components/kit';
+A heading in the serif voice. `level` is the HTML element (for the outline); `size` is how it looks, from the type scale — display, hero, h1–h4. New in this library.
+props: level=2, size, as, className, children, ...rest
+
+### Indicator (kit/content)
+import { Indicator } from 'hanoryx-components/kit';
+A named status with a decorative dot.
+props: label, children
+
+### Item (kit/content)
+import { Item } from 'hanoryx-components/kit';
+A content row with a title, description and optional leading and trailing slots.
+props: title, description, leading, trailing, children
+
+### Code (kit/content)
+import { Code } from 'hanoryx-components/kit';
+Inline code in the monospace voice.
+props: children
+
+### Kbd (kit/content)
+import { Kbd } from 'hanoryx-components/kit';
+A keyboard key or shortcut using the semantic kbd element.
+props: children
+
+### Citation (kit/content)
+import { Citation } from 'hanoryx-components/kit';
+An attribution that can link to its source.
+props: children, to, href, label
+
+### Token (kit/content)
+import { Token } from 'hanoryx-components/kit';
+A compact labelled token with an optional named remove button.
+props: children, onRemove, label
+
+### Icon (kit/content)
+import { Icon } from 'hanoryx-components/kit';
+A supplied SVG component, decorative unless an accessible label is provided.
+props: icon, label, size='1em'
+
+### Thumbnail (kit/content)
+import { Thumbnail } from 'hanoryx-components/kit';
+A reserved image ratio using an app-supplied image or a visible placeholder.
+props: src, alt='', ratio='1 / 1', fallback='No image'
+
+### Markdown (kit/content)
+import { Markdown } from 'hanoryx-components/kit';
+Markdown rendered as React nodes, with raw HTML displayed as text and executable links rejected.
+props: children='', source
+
+### Prose (kit/content)
+import { Prose } from 'hanoryx-components/kit';
+A reading column. Wrap plain HTML — headings, paragraphs, lists, links, code, quotes — and it is typeset for reading: about 68 characters wide, generous leading, serif headings.
+props: children, as="div", className
+
+### Blockquote (kit/content)
+import { Blockquote } from 'hanoryx-components/kit';
+Blockquote is the discoverable family name for Quote; both names share the same implementation and props.
+props: children, cite, className
+
+### Quote (kit/content)
+import { Quote } from 'hanoryx-components/kit';
+A pull quote with its source: a real blockquote inside a figure, the attribution as the caption. Only put words here that someone really said.
+props: children, cite, className
+
+### Text (kit/content)
+import { Text } from 'hanoryx-components/kit';
+Text in one of the three voices: body, lead, small, caption, or the mono uppercase label. Tone is an opacity of white (strong, default, dim) or red. New in this library.
+props: variant='body', tone='default', measure=false, as, className, children, ...rest
+
+### Timestamp (kit/content)
+import { Timestamp } from 'hanoryx-components/kit';
+An ISO timestamp formatted using an explicit locale and optional Intl date options.
+props: dateTime, locale='en', options, children
+
+### Timer (kit/content)
+import { Timer } from 'hanoryx-components/kit';
+Elapsed minutes and seconds, optionally ticking while visible; it does not announce every tick.
+props: seconds=0, running=false, label='Elapsed time'
+
+### VegaChart (kit/content)
+import { VegaChart } from 'hanoryx-components/kit';
+An adapter for a host-supplied Vega renderer, with cleanup and visible asynchronous errors.
+props: spec, render, label='Vega chart'
 
 ### Alert (kit/feedback)
 import { Alert } from 'hanoryx-components/kit';
 A message in the flow of the page. Information and success speak politely; warnings and errors interrupt. The tone is never carried by colour alone.
 props: tone="info", title, children, onDismiss, className
 
+### Badge (kit/feedback)
+import { Badge } from 'hanoryx-components/kit';
+A short label for the state or kind of a thing: New, Beta, Deprecated. The word carries the meaning; the tone only reinforces it.
+props: children, tone="neutral", dot=false, className
+
 ### Banner (kit/feedback)
 import { Banner } from 'hanoryx-components/kit';
 A notice that runs the width of its container, for something about the whole page or site rather than one field. It may carry one action and may be dismissed.
 props: title, children, action, dismissible=true, className
-
-### EmptyState (kit/feedback)
-import { EmptyState } from 'hanoryx-components/kit';
-What a list or a page says when there is nothing in it: why it is empty, and the one thing to do next. An empty state with no way forward is a dead end.
-props: icon=Inbox, title, children, action, className
 
 ### Meter (kit/feedback)
 import { Meter } from 'hanoryx-components/kit';
@@ -187,400 +426,975 @@ import { StatusDot } from 'hanoryx-components/kit';
 A coloured dot with its state spelled out beside it, so the colour is never the only signal. A live one can breathe.
 props: state="idle", label=state word, pulse=false, className
 
-### ToastProvider (kit/feedback)
-import { ToastProvider } from 'hanoryx-components/kit';
-Brief messages in a corner that leave by themselves. Announced politely, never take focus, pause while the pointer or keyboard is on them, and can always be dismissed.
-props: children, max=4, title, body, tone="info", duration=5000, max (provider)=4
+### Calendar (kit/form-controls)
+import { Calendar } from 'hanoryx-components/kit';
+A single-date calendar with roving focus, min/max bounds, month navigation and locale-aware labels.
+props: label='Choose a date', value, defaultValue='', onChange, min, max, disabled=false, locale='en', weekStartsOn=0, today=formatDate(new Date())
 
-### Avatar (kit/data)
-import { Avatar } from 'hanoryx-components/kit';
-A person, a team or a system as its initials in a circle or square. No photographs, on purpose: initials need no consent, load instantly and cannot be the wrong face.
-props: name, size="2.4rem", shape='circle', tone, className, names, max (group)
+### Checkbox (kit/form-controls)
+import { Checkbox } from 'hanoryx-components/kit';
+A checkbox with room for a hint. It is a real input — the square is drawn beside it — and it supports the indeterminate “some of them” state of a parent box.
+props: label, hint, checked, defaultChecked, onChange, indeterminate=false, disabled, className, ...rest
 
-### AvatarGroup (kit/data)
-import { AvatarGroup } from 'hanoryx-components/kit';
-Avatars stacked as one group, with a "+N" for the ones that do not fit.
-props: names=[], max=4, size, className
+### CheckboxInput (kit/form-controls)
+import { CheckboxInput } from 'hanoryx-components/kit';
+CheckboxInput is the discoverable family name for Checkbox; both names share the same implementation and props.
+props: label, hint, checked, defaultChecked, onChange, indeterminate=false, disabled, className, ...rest
 
-### Badge (kit/data)
-import { Badge } from 'hanoryx-components/kit';
-A short label for the state or kind of a thing: New, Beta, Deprecated. The word carries the meaning; the tone only reinforces it.
-props: children, tone="neutral", dot=false, className
+### CheckboxList (kit/form-controls)
+import { CheckboxList } from 'hanoryx-components/kit';
+A fieldset and legend for related checkboxes.
+props: label, children
 
-### BarList (kit/data)
-import { BarList } from 'hanoryx-components/kit';
-Bars you can read as a list: each row has its label, a bar and the figure, so the values are text first and a picture second. The largest is picked out in red.
-props: items=[], max=largest value, unit="", label, className
+### CheckboxListItem (kit/form-controls)
+import { CheckboxListItem } from 'hanoryx-components/kit';
+A labelled checkbox with an optional hint; onChange receives a boolean.
+props: label, hint, checked, defaultChecked, onChange, disabled, name, value
 
-### Chip (kit/data)
-import { Chip } from 'hanoryx-components/kit';
-A compact pill that can be plain information, a toggle (give it onClick; selected says whether it is on) and/or removable (give it onRemove).
-props: children, selected, onClick, onRemove, className
+### RadioListItem (kit/form-controls)
+import { RadioListItem } from 'hanoryx-components/kit';
+A native radio choice; use the same name for related choices inside a fieldset.
+props: label, checked, defaultChecked, onChange, disabled, name, value
 
-### CodeBlock (kit/data)
-import { CodeBlock } from 'hanoryx-components/kit';
-A block of code with an optional file name, light colouring and a copy button. The colour is a nicety: every token is also plain text, so copying gives exactly what you see.
-props: code, language="js", filename, lines=false, className
+### BaseTypeahead (kit/form-controls)
+import { BaseTypeahead } from 'hanoryx-components/kit';
+BaseTypeahead is the discoverable family name for Combobox; both names share the same implementation and props.
+props: label, hint, error, required, options=[], value, defaultValue='', onChange, onSelect, placeholder='Type to search…', emptyText='Nothing matches.', className, disabled, renderOption
 
-### DataTable (kit/data)
-import { DataTable } from 'hanoryx-components/kit';
-A table you can sort and select from. A sortable column’s header is a button and the th carries aria-sort. It scrolls sideways inside a focusable region on a narrow screen.
-props: caption, columns=[], rows=[], rowKey='id', selectable=false, onSelect, maxHeight, emptyText='No rows.', className
+### Combobox (kit/form-controls)
+import { Combobox } from 'hanoryx-components/kit';
+An editable combobox: type to filter, move through the matches with the arrow keys, choose with Enter. Focus stays in the input; the highlighted option is named with aria-activedescendant.
+props: label, hint, error, required, options=[], value, defaultValue='', onChange, onSelect, placeholder='Type to search…', emptyText="Nothing matches.", className, disabled, renderOption
 
-### DescriptionList (kit/data)
-import { DescriptionList } from 'hanoryx-components/kit';
-Terms and what they mean, or labels and their values — the right element for a fact sheet. A real dl, so a screen reader pairs each term with its detail.
-props: items=[], stacked=false, className
+### Typeahead (kit/form-controls)
+import { Typeahead } from 'hanoryx-components/kit';
+Typeahead is the discoverable family name for Combobox; both names share the same implementation and props.
+props: label, hint, error, required, options=[], value, defaultValue='', onChange, onSelect, placeholder='Type to search…', emptyText='Nothing matches.', className, disabled, renderOption
 
-### Sparkline (kit/data)
-import { Sparkline } from 'hanoryx-components/kit';
-A tiny line chart with no axes, for “which way is it going”. It is an image with a text description — range, first and last value — so the shape is never the only way to learn it.
-props: data=[], label, width=180, height=44, unit='', className
+### useCombobox (kit/form-controls)
+import { useCombobox } from 'hanoryx-components/kit';
+Headless combobox bindings, filtered options, active descendant and selection state.
+returns: Headless combobox bindings, filtered options, active descendant and selection state.
 
-### Stat (kit/data)
-import { Stat } from 'hanoryx-components/kit';
-One number, large, with its label above and, if you have it, how it moved. The change is written as words for a screen reader; the arrow and colour are decoration.
-props: label, value, unit, change, changeLabel, note, className
+### useTypeahead (kit/form-controls)
+import { useTypeahead } from 'hanoryx-components/kit';
+The headless combobox hook under its typeahead family name.
+returns: The headless combobox hook under its typeahead family name.
 
-### Table (kit/data)
-import { Table } from 'hanoryx-components/kit';
-Semantic table parts with optional sortable headers and a selected-row action group.
-props: caption='Table', children, label
+### DateInput (kit/form-controls)
+import { DateInput } from 'hanoryx-components/kit';
+Labelled native date input, plus local time, local date/time and paired date-range controls.
+props: label='Date', ...props
 
-### TableHeader (kit/data)
-import { TableHeader } from 'hanoryx-components/kit';
+### TimeInput (kit/form-controls)
+import { TimeInput } from 'hanoryx-components/kit';
+Local civil time, with no timezone conversion. onChange receives the native event.
+props: label='Time', ...props
 
-props: children
+### DateTimeInput (kit/form-controls)
+import { DateTimeInput } from 'hanoryx-components/kit';
+Local date and time. The host owns timezone selection and conversion.
+props: label='Date and time', ...props
 
-### TableBody (kit/data)
-import { TableBody } from 'hanoryx-components/kit';
+### DateRangeInput (kit/form-controls)
+import { DateRangeInput } from 'hanoryx-components/kit';
+A labelled pair. No partial selection is discarded; a reversed range is explained.
+props: label='Date range', value={ start: '', end: '' }, onChange, min, max, disabled=false, required=false
 
-props: children
+### Field (kit/form-controls)
+import { Field } from 'hanoryx-components/kit';
+The label, hint and error that every field shares, wired up so a screen reader hears them. The control you put inside it receives its id, aria-describedby and aria-invalid.
+props: label, hint, error, required=false, id, className, labelExtra, children
 
-### TableFooter (kit/data)
-import { TableFooter } from 'hanoryx-components/kit';
+### FieldLabel (kit/form-controls)
+import { FieldLabel } from 'hanoryx-components/kit';
+A label associated with a control through htmlFor, with an optional required indicator.
+props: htmlFor, children, required=false
 
-props: children
+### FieldStatus (kit/form-controls)
+import { FieldStatus } from 'hanoryx-components/kit';
+A field hint or announced error. Reference its id from aria-describedby.
+props: id, children, error=false
 
-### TableRow (kit/data)
-import { TableRow } from 'hanoryx-components/kit';
+### InputGroup (kit/form-controls)
+import { InputGroup } from 'hanoryx-components/kit';
+A shared control border for input adornments.
+props: children, invalid=false
 
-props: children, selected, ...props
+### InputGroupText (kit/form-controls)
+import { InputGroupText } from 'hanoryx-components/kit';
+A textual adornment; associate its id with the input when it adds meaning.
+props: children, id
 
-### TableCell (kit/data)
-import { TableCell } from 'hanoryx-components/kit';
+### FileDrop (kit/form-controls)
+import { FileDrop } from 'hanoryx-components/kit';
+A drop zone that is also a file button: drag files onto it, or press it and choose. It lists what was picked and uploads nothing itself.
+props: label='Choose files', hint='or drop them here', accept, multiple=true, onFiles, className
 
-props: children, align, ...props
+### FileInput (kit/form-controls)
+import { FileInput } from 'hanoryx-components/kit';
+FileInput is the discoverable family name for FileDrop; both names share the same implementation and props.
+props: label='Choose files', hint='or drop them here', accept, multiple=true, onFiles, className
 
-### TableHeaderCell (kit/data)
-import { TableHeaderCell } from 'hanoryx-components/kit';
+### NumberField (kit/form-controls)
+import { NumberField } from 'hanoryx-components/kit';
+A number with a minus and a plus either side. The value is clamped to its range when you leave the field, never while you are typing.
+props: label, hint, error, required, value, defaultValue=null, onChange, min=-Infinity, max=Infinity, step=1, suffix, className, disabled
 
-props: children, sortDirection='none', onSort, scope='col', ...props
+### NumberInput (kit/form-controls)
+import { NumberInput } from 'hanoryx-components/kit';
+NumberInput is the discoverable family name for NumberField; both names share the same implementation and props.
+props: label, hint, error, required, value, defaultValue=null, onChange, min=-Infinity, max=Infinity, step=1, suffix, className, disabled
 
-### TableSelectionToolbar (kit/data)
-import { TableSelectionToolbar } from 'hanoryx-components/kit';
+### PasswordField (kit/form-controls)
+import { PasswordField } from 'hanoryx-components/kit';
+A password field with a show/hide toggle and a rough strength meter. Everything happens in the page; nothing is sent anywhere.
+props: label="Password", hint, error, required, value, defaultValue='', onChange, meter=true, className, disabled
 
-props: count=0, onClear, children
+### PowerSearch (kit/form-controls)
+import { PowerSearch } from 'hanoryx-components/kit';
+Search text plus structured select filters, submitted to the host as query and filters.
+props: label='Search', filters=[], onSearch, defaultQuery=''
 
-### Timeline (kit/data)
-import { Timeline } from 'hanoryx-components/kit';
-Things in the order they happen, down a line. It is an ordered list, so the order is announced. This site’s own timeline is told in undated phases — pass words, not dates, unless you have them.
-props: items=[], className
+### RadioGroup (kit/form-controls)
+import { RadioGroup } from 'hanoryx-components/kit';
+A group of real radio buttons under a legend: the arrow keys move and choose, Tab leaves the group, and a screen reader says “2 of 4”.
+props: legend, options=[], value, defaultValue, onChange, name, row=false, className, disabled
 
-### Tree (kit/data)
-import { Tree } from 'hanoryx-components/kit';
-An expandable tree — files, categories, an outline — following the ARIA tree-view pattern: one tab stop, arrow keys through what is visible.
-props: nodes=[], label, onSelect, defaultOpen=[], className
+### RadioList (kit/form-controls)
+import { RadioList } from 'hanoryx-components/kit';
+RadioList is the discoverable family name for RadioGroup; both names share the same implementation and props.
+props: legend, options=[], value, defaultValue, onChange, name, row=false, className, disabled
 
-### useTableSortable (kit/data)
-import { useTableSortable } from 'hanoryx-components/kit';
-{ rows, sort, setSort, toggleSort(key) }.
-returns: { rows, sort, setSort, toggleSort(key) }. sort = {key, direction}, with none / ascending / descending directions.
+### RangeField (kit/form-controls)
+import { RangeField } from 'hanoryx-components/kit';
+A slider: the native range input, with its value written beside the label and a text version (“240 ms”) for assistive technology.
+props: label, hint, value, defaultValue=0, onChange, min=0, max=100, step=1, format=String, marks, className, disabled
 
-### useTableFilterState (kit/data)
-import { useTableFilterState } from 'hanoryx-components/kit';
-{ filter, setFilter, setQuery, setColumnFilter, clearFilters }.
-returns: { filter, setFilter, setQuery, setColumnFilter, clearFilters }. filter = {query, filters}.
+### Slider (kit/form-controls)
+import { Slider } from 'hanoryx-components/kit';
+Slider is the discoverable family name for RangeField; both names share the same implementation and props.
+props: label, hint, value, defaultValue=0, onChange, min=0, max=100, step=1, format=(n) => String(n), marks, className, disabled
 
-### useTableFiltering (kit/data)
-import { useTableFiltering } from 'hanoryx-components/kit';
-The filtered row array.
-returns: The filtered row array. Text matching is case-insensitive. Array filter values match exact cell values.
+### RichTextEditor (kit/form-controls)
+import { RichTextEditor } from 'hanoryx-components/kit';
+A compact editor for bold, italic, underline and code, with sanitized HTML values and plain-text paste.
+props: label='Rich text', value, defaultValue='', onChange, disabled=false, hint='Select text, then choose bold, italic, underline or code.', error, rows=6
 
-### useTablePagination (kit/data)
-import { useTablePagination } from 'hanoryx-components/kit';
-{ rows, page, pageCount, pageSize, total, setPage, nextPage, previousPage }.
-returns: { rows, page, pageCount, pageSize, total, setPage, nextPage, previousPage }. page is zero-based and clamps as data shrinks.
+### SearchField (kit/form-controls)
+import { SearchField } from 'hanoryx-components/kit';
+A search box with a clear button and, when you give it a count, a result count that is read out as it changes.
+props: label='Search', hint, value, defaultValue='', onChange, count, noun="results", placeholder="Search…", className, disabled
 
-### useTableSelectionState (kit/data)
-import { useTableSelectionState } from 'hanoryx-components/kit';
-{ selectedKeys, setSelectedKeys, isSelected, toggle(key, selected?), clear }.
-returns: { selectedKeys, setSelectedKeys, isSelected, toggle(key, selected?), clear }. Keys are stable row ids.
+### SelectField (kit/form-controls)
+import { SelectField } from 'hanoryx-components/kit';
+A native select, styled. Native on purpose: the platform’s own keyboard handling, its picker on a phone and its screen-reader behaviour come for free.
+props: label, hint, error, required, options=[], value, defaultValue='', onChange, placeholder, className, disabled
 
-### useTableSelection (kit/data)
-import { useTableSelection } from 'hanoryx-components/kit';
-Selection state plus allSelected, someSelected, toggleAll and getRowProps.
-returns: Selection state plus allSelected, someSelected, toggleAll and getRowProps. Bulk operations affect only the supplied rows.
+### Selector (kit/form-controls)
+import { Selector } from 'hanoryx-components/kit';
+Selector is the discoverable family name for SelectField; both names share the same implementation and props.
+props: label, hint, error, required, options=[], value, defaultValue='', onChange, placeholder, className, disabled
 
-### useTableRowExpansion (kit/data)
-import { useTableRowExpansion } from 'hanoryx-components/kit';
-{ expandedKeys, setExpandedKeys, isExpanded, toggleExpanded, collapseAll }.
-returns: { expandedKeys, setExpandedKeys, isExpanded, toggleExpanded, collapseAll }. No rows are expanded by default.
+### MultiSelector (kit/form-controls)
+import { MultiSelector } from 'hanoryx-components/kit';
+A native multi-select with controlled or uncontrolled selected values.
+props: label='Choose options', options=[], value, defaultValue=[], onChange, disabled=false, name, size=5
 
-### useTableGroupedRows (kit/data)
-import { useTableGroupedRows } from 'hanoryx-components/kit';
-Array of { key, rows }, in first-seen group order.
-returns: Array of { key, rows }, in first-seen group order. groupBy is a property key or function.
+### ComplexSelector (kit/form-controls)
+import { ComplexSelector } from 'hanoryx-components/kit';
+A searchable combobox that supports descriptions or a custom option renderer.
+props: renderOption, ...props
 
-### useTableRowIndex (kit/data)
-import { useTableRowIndex } from 'hanoryx-components/kit';
-A function getIndex(key) returning the zero-based index, or -1 for missing keys.
-returns: A function getIndex(key) returning the zero-based index, or -1 for missing keys.
+### SelectorOption (kit/form-controls)
+import { SelectorOption } from 'hanoryx-components/kit';
+A native option for a select owned by the host.
+props: children, value, disabled
 
-### useTableRowStatus (kit/data)
-import { useTableRowStatus } from 'hanoryx-components/kit';
-A function getStatus(row) reading a status record or callback; unknown keys return undefined.
-returns: A function getStatus(row) reading a status record or callback; unknown keys return undefined.
+### TypeaheadItem (kit/form-controls)
+import { TypeaheadItem } from 'hanoryx-components/kit';
+A listbox option primitive; the host owns active-descendant navigation and selection.
+props: id, selected=false, children, onSelect, onHighlight
 
-### useTableTreeState (kit/data)
-import { useTableTreeState } from 'hanoryx-components/kit';
-Expansion state using the same contract as useTableRowExpansion.
-returns: Expansion state using the same contract as useTableRowExpansion.
+### useMultiCombobox (kit/form-controls)
+import { useMultiCombobox } from 'hanoryx-components/kit';
+Combobox bindings with independent selected values and a remove action.
+returns: Combobox bindings with independent selected values and a remove action.
 
-### useTableTreeData (kit/data)
-import { useTableTreeData } from 'hanoryx-components/kit';
-Visible flattened entries: {row, id, depth, parentId, position, setSize, hasChildren, expanded}.
-returns: Visible flattened entries: {row, id, depth, parentId, position, setSize, hasChildren, expanded}. Depth starts at 1. Keys must be unique.
+### Switch (kit/form-controls)
+import { Switch } from 'hanoryx-components/kit';
+An on/off switch for a setting that takes effect at once. A button with role switch, so Space and Enter flip it and a screen reader says “on” or “off”.
+props: label, checked, defaultChecked=false, onChange, disabled, showState=true, className, ...rest
 
-### useTableColumnResize (kit/data)
-import { useTableColumnResize } from 'hanoryx-components/kit';
-{ widths, widthOf, setWidth, getResizeHandleProps }.
-returns: { widths, widthOf, setWidth, getResizeHandleProps }. Widths are pixels. Apply matching widths to table cells.
+### TagInput (kit/form-controls)
+import { TagInput } from 'hanoryx-components/kit';
+Type a word, press Enter or a comma and it becomes a tag. Each tag has its own remove button, and adding or removing is announced.
+props: label, hint, value, defaultValue=[], onChange, max=8, placeholder="Add a tag…", className, disabled
 
-### useTableColumnSettings (kit/data)
-import { useTableColumnSettings } from 'hanoryx-components/kit';
-{ columns, hidden, order, setOrder, toggleColumn, resetColumns }.
-returns: { columns, hidden, order, setOrder, toggleColumn, resetColumns }. Removed keys are ignored; new columns append.
+### Tokenizer (kit/form-controls)
+import { Tokenizer } from 'hanoryx-components/kit';
+Tokenizer is the discoverable family name for TagInput; both names share the same implementation and props.
+props: label, hint, value, defaultValue=[], onChange, max=8, placeholder='Add a tag…', className, disabled
 
-### useTableStickyColumns (kit/data)
-import { useTableStickyColumns } from 'hanoryx-components/kit';
-A function getStyle(key) returning a logical sticky offset for pinned start columns.
-returns: A function getStyle(key) returning a logical sticky offset for pinned start columns. Width defaults to column.width or 160.
+### TextArea (kit/form-controls)
+import { TextArea } from 'hanoryx-components/kit';
+A multi-line field that counts. Going over the limit turns the count red and marks the field invalid; it never cuts off what you typed.
+props: label, hint, error, required, maxLength, value, defaultValue='', onChange, rows=4, className, disabled, ...rest
 
-### ConfirmDialog (kit/overlays)
-import { ConfirmDialog } from 'hanoryx-components/kit';
-“Are you sure?” done properly: the title says what will happen, the buttons say what they do, and for something that cannot be undone the safe choice has focus.
-props: open, title, children, confirmLabel='Confirm', cancelLabel='Cancel', danger=false, onConfirm, onCancel
+### TextField (kit/form-controls)
+import { TextField } from 'hanoryx-components/kit';
+A single-line text field with a label, hint and error, and an optional prefix and suffix inside the border for a currency, a unit or an @.
+props: label, hint, error, required, prefix, suffix, className, disabled, type="text", ...input
 
-### Dialog (kit/overlays)
-import { Dialog } from 'hanoryx-components/kit';
-A modal dialog: it takes over the screen until it is dealt with. Focus moves in and is trapped, Escape and the backdrop close it, the page behind stops scrolling and focus returns to what opened it.
-props: open, onClose, title, children, footer, width="32rem", side, dismissible=true, className
+### TextInput (kit/form-controls)
+import { TextInput } from 'hanoryx-components/kit';
+TextInput is the discoverable family name for TextField; both names share the same implementation and props.
+props: label, hint, error, required, prefix, suffix, className, disabled, type='text', ...input
 
-### Drawer (kit/overlays)
-import { Drawer } from 'hanoryx-components/kit';
-A dialog that slides in from an edge and runs the full height — for a filter panel or a record’s detail, where the page behind still gives context.
-props: side="right", width="26rem", ...props, ...dialog
+### AppShell (kit/layout)
+import { AppShell } from 'hanoryx-components/kit';
+Application header, navigation, content and footer slots in a responsive frame.
+props: header, navigation, children, footer, label='Application'
 
-### HoverCard (kit/overlays)
-import { HoverCard } from 'hanoryx-components/kit';
-A preview card for a link: hover or focus the link and a little more about where it goes appears, and stays while the pointer is on it. It must only ever add.
-props: title, body, children, delay=280, className
+### useAppShellMobile (kit/layout)
+import { useAppShellMobile } from 'hanoryx-components/kit';
+True when the viewport matches the app shell mobile breakpoint.
+returns: True when the viewport matches the app shell mobile breakpoint.
 
-### Popover (kit/overlays)
-import { Popover } from 'hanoryx-components/kit';
-A panel that opens under a button and holds anything — text, a small form, a few links. It is not modal: focus stays where it is and Tab moves on into the panel.
-props: label, title, children, align='start', placement='bottom', className
-
-### Tooltip (kit/overlays)
-import { Tooltip } from 'hanoryx-components/kit';
-A short description that appears beside a control on hover or keyboard focus, after a beat so it does not flicker. It adds detail; it never replaces a label.
-props: text, children, placement="top", delay=350, className
-
-### AspectRatio (kit/content)
+### AspectRatio (kit/layout)
 import { AspectRatio } from 'hanoryx-components/kit';
 Reserves a box of a fixed shape and fills it with its child, so an image, a video or a chart has its room before it loads and nothing below it jumps.
 props: ratio="16 / 9", children, className
 
-### Callout (kit/content)
-import { Callout } from 'hanoryx-components/kit';
-A remark set apart from the text around it: a note, a tip, a warning. The kind is written out as a word as well as shown by colour and icon.
-props: tone="note", title=tone word, children, className
-
-### Card (kit/content)
-import { Card } from 'hanoryx-components/kit';
-A surface that groups related content, in four variants. The title is a heading whose level you choose, so the card fits the outline of the page it is on.
-props: eyebrow, title, as="h3", children, footer, variant="raised", interactive=false, className
-
-### Center (kit/content)
+### Center (kit/layout)
 import { Center } from 'hanoryx-components/kit';
 A capped column, centred in its parent — for a form, a card or a short passage. Fills the parent on a phone, stops at `max` on a desktop. New in this library.
 props: as='div', max='36rem', align, className, children, style, ...rest
 
-### Cluster (kit/content)
+### Cluster (kit/layout)
 import { Cluster } from 'hanoryx-components/kit';
 Children in a row that wraps when it runs out of room — buttons, tags, links.
 props: children, gap=3, align='center', justify='flex-start', as='div', className
 
-### Container (kit/content)
+### Container (kit/layout)
 import { Container } from 'hanoryx-components/kit';
 The page width: centred, 1360 px max (gutters included), with a fluid 20–80 px gutter. size="text" narrows it to a 760 px reading column. New in this library — the same as the global `.container` class.
 props: as='div', size='default', className, children, ...rest
 
-### Disclosure (kit/content)
-import { Disclosure } from 'hanoryx-components/kit';
-One section that opens and closes — a question and its answer, a “more detail”. The closed body is out of the tab order and the reading order, not only out of sight.
-props: title, children, open, defaultOpen=false, onChange, as="h3", className
-
-### Divider (kit/content)
+### Divider (kit/layout)
 import { Divider } from 'hanoryx-components/kit';
 A line between things. Without a label it is a plain thematic break; with one it reads as a section break (“or”, “Later”) and is a separator, not a heading.
 props: children, className
 
-### Figure (kit/content)
-import { Figure } from 'hanoryx-components/kit';
-Something visual with a caption. The caption belongs to the figure, so a screen reader reads the two together.
-props: children, caption, className
-
-### Grid (kit/content)
+### Grid (kit/layout)
 import { Grid } from 'hanoryx-components/kit';
 Children in as many equal columns as fit, none narrower than a minimum. There is no breakpoint to maintain: on a phone the minimum is wider than the screen, so you get one column.
 props: children, min="15rem", gap=4, as='div', className
 
-### Heading (kit/content)
-import { Heading } from 'hanoryx-components/kit';
-A heading in the serif voice. `level` is the HTML element (for the outline); `size` is how it looks, from the type scale — display, hero, h1–h4. New in this library.
-props: level=2, size, as, className, children, ...rest
+### Layout (kit/layout)
+import { Layout } from 'hanoryx-components/kit';
+A wrapping layout frame for full-width headers and footers, content and side panels.
+props: children
 
-### Prose (kit/content)
-import { Prose } from 'hanoryx-components/kit';
-A reading column. Wrap plain HTML — headings, paragraphs, lists, links, code, quotes — and it is typeset for reading: about 68 characters wide, generous leading, serif headings.
-props: children, as="div", className
+### LayoutHeader (kit/layout)
+import { LayoutHeader } from 'hanoryx-components/kit';
+A full-width layout header.
+props: children
 
-### Quote (kit/content)
-import { Quote } from 'hanoryx-components/kit';
-A pull quote with its source: a real blockquote inside a figure, the attribution as the caption. Only put words here that someone really said.
-props: children, cite, className
+### LayoutContent (kit/layout)
+import { LayoutContent } from 'hanoryx-components/kit';
+The flexible content region in a layout.
+props: children
 
-### Resizable (kit/content)
+### LayoutFooter (kit/layout)
+import { LayoutFooter } from 'hanoryx-components/kit';
+A full-width layout footer.
+props: children
+
+### LayoutPanel (kit/layout)
+import { LayoutPanel } from 'hanoryx-components/kit';
+A named, bounded side panel.
+props: children, label='Panel'
+
+### FormLayout (kit/layout)
+import { FormLayout } from 'hanoryx-components/kit';
+A semantic form with consistent vertical field spacing.
+props: children, onSubmit, label='Form'
+
+### GridSpan (kit/layout)
+import { GridSpan } from 'hanoryx-components/kit';
+A grid cell spanning a positive number of parent columns.
+props: children, span=1
+
+### ScrollableArea (kit/layout)
+import { ScrollableArea } from 'hanoryx-components/kit';
+A named, keyboard-focusable overflow region with an optional height cap.
+props: children, label='Scrollable content', maxHeight='24rem'
+
+### Resizable (kit/layout)
 import { Resizable } from 'hanoryx-components/kit';
 Two resizable panels with a pointer- and keyboard-operated separator.
 props: children, orientation='horizontal', value, defaultValue=50, onChange, min=10, max=90, label='Resizable panels'
 
-### ResizablePanel (kit/content)
+### ResizablePanel (kit/layout)
 import { ResizablePanel } from 'hanoryx-components/kit';
-
+One of the two named panels inside Resizable.
 props: children, label, side='start'
 
-### ResizeHandle (kit/content)
+### ResizeHandle (kit/layout)
 import { ResizeHandle } from 'hanoryx-components/kit';
-
+The focusable separator for pointer and keyboard panel resizing.
 props: label='Resize panels'
 
-### Section (kit/content)
-import { Section } from 'hanoryx-components/kit';
-A page block's outer shell: the vertical rhythm between blocks (80–176 px, or 48–96 px with size="sm"). New in this library — the same as the global `.section` class.
-props: as='section', size='md', className, children, ...rest
-
-### Stack (kit/content)
-import { Stack } from 'hanoryx-components/kit';
-Children in a column with an even gap taken from the spacing tokens.
-props: children, gap=4, as="div", className
-
-### Text (kit/content)
-import { Text } from 'hanoryx-components/kit';
-Text in one of the three voices: body, lead, small, caption, or the mono uppercase label. Tone is an opacity of white (strong, default, dim) or red. New in this library.
-props: variant='body', tone='default', measure=false, as, className, children, ...rest
-
-### VisuallyHidden (kit/content)
-import { VisuallyHidden } from 'hanoryx-components/kit';
-Text for assistive technology that is not drawn: the “Close” on an icon-only button, the “(current page)” after a link. It stays in the reading order and out of the layout.
-props: children, as="span"
-
-### useResizable (kit/content)
+### useResizable (kit/layout)
 import { useResizable } from 'hanoryx-components/kit';
 Percentage split state and separator bindings for pointer and keyboard resizing.
 returns: { size, setSize(next), handleProps }. size is a clamped percentage. handleProps contains separator ARIA, pointer capture and keyboard handlers.
 
-### Chat (kit/chat)
-import { Chat } from 'hanoryx-components/kit';
-Composable conversation regions, transcript items and a message composer with asynchronous send handling.
-props: label='Conversation', children
+### Section (kit/layout)
+import { Section } from 'hanoryx-components/kit';
+A page block's outer shell: the vertical rhythm between blocks (80–176 px, or 48–96 px with size="sm"). New in this library — the same as the global `.section` class.
+props: as='section', size='md', className, children, ...rest
 
-### ChatLayout (kit/chat)
-import { ChatLayout } from 'hanoryx-components/kit';
-A bounded conversation viewport with a separate composer slot.
-props: children, composer, label='Conversation', maxHeight='32rem'
+### Stack (kit/layout)
+import { Stack } from 'hanoryx-components/kit';
+Children in a column with an even gap taken from the spacing tokens.
+props: children, gap=4, as="div", className
 
-### ChatLayoutScrollButton (kit/chat)
-import { ChatLayoutScrollButton } from 'hanoryx-components/kit';
-Scroll the supplied message-list ref to its latest message without moving focus.
-props: targetRef, children='Latest message'
+### BreadcrumbItem (kit/navigation)
+import { BreadcrumbItem } from 'hanoryx-components/kit';
+A routed breadcrumb item or the current page label.
+props: children, to, current=false
 
-### ChatMessageList (kit/chat)
-import { ChatMessageList } from 'hanoryx-components/kit';
-An ordered transcript. Announcements are opt-in to avoid rereading history.
-props: children, label='Messages', announce=false, ref
+### Breadcrumbs (kit/navigation)
+import { Breadcrumbs } from 'hanoryx-components/kit';
+Where you are, as a trail back up. The last item is the current page and is not a link.
+props: items=[], label="Breadcrumb", className
 
-### ChatMessage (kit/chat)
-import { ChatMessage } from 'hanoryx-components/kit';
-One transcript item; author names are visible, and role is never only a colour.
-props: author, children, metadata, role='assistant'
+### OnThisPage (kit/navigation)
+import { OnThisPage } from 'hanoryx-components/kit';
+An “on this page” list that follows the reader: the entry for the section nearest the top is marked, and pressing one scrolls there and moves focus to it.
+props: items=[], label="On this page", className
 
-### ChatMessageBubble (kit/chat)
-import { ChatMessageBubble } from 'hanoryx-components/kit';
+### Outline (kit/navigation)
+import { Outline } from 'hanoryx-components/kit';
+Outline is the discoverable family name for OnThisPage; both names share the same implementation and props.
+props: items=[], label='On this page', className
 
+### Pagination (kit/navigation)
+import { Pagination } from 'hanoryx-components/kit';
+Page buttons with the first, the last and the neighbours of the current one, “…” for what is skipped, and previous and next that stop at the ends.
+props: page, defaultPage=1, pages=1, onChange, siblings=1, label='Pagination', className
+
+### SideNav (kit/navigation)
+import { SideNav } from 'hanoryx-components/kit';
+A vertical navigation in groups that fold. A folded group is out of the tab order and the reading order, not only out of sight.
+props: groups=[], current, label="Section navigation", className
+
+### SideNavSection (kit/navigation)
+import { SideNavSection } from 'hanoryx-components/kit';
+A natively collapsible navigation section containing list items.
+props: title, children, defaultOpen=true
+
+### SideNavHeading (kit/navigation)
+import { SideNavHeading } from 'hanoryx-components/kit';
+A level-three section heading for side navigation.
 props: children
 
-### ChatMessageMetadata (kit/chat)
-import { ChatMessageMetadata } from 'hanoryx-components/kit';
+### SideNavItem (kit/navigation)
+import { SideNavItem } from 'hanoryx-components/kit';
+A routed navigation list item with optional current-page state.
+props: to, children, current=false
 
-props: children, dateTime
+### SideNavCollapseButton (kit/navigation)
+import { SideNavCollapseButton } from 'hanoryx-components/kit';
+A named navigation visibility toggle with aria-expanded and aria-controls.
+props: expanded, onToggle, controls, label='Navigation'
 
-### ChatSystemMessage (kit/chat)
-import { ChatSystemMessage } from 'hanoryx-components/kit';
+### MobileNav (kit/navigation)
+import { MobileNav } from 'hanoryx-components/kit';
+A native disclosure that exposes a named navigation region.
+props: label='Navigation', children
 
+### NavIcon (kit/navigation)
+import { NavIcon } from 'hanoryx-components/kit';
+Decorative content beside a navigation label.
 props: children
 
-### ChatToolCalls (kit/chat)
-import { ChatToolCalls } from 'hanoryx-components/kit';
-Tool calls stay inspectable as native disclosures; arguments are rendered as text.
-props: calls=[]
+### NavHeadingMenu (kit/navigation)
+import { NavHeadingMenu } from 'hanoryx-components/kit';
+A navigation heading that opens native disclosure content.
+props: label, children
 
-### ChatComposer (kit/chat)
-import { ChatComposer } from 'hanoryx-components/kit';
-A controlled or uncontrolled composer. Sending calls the host; no request is made here.
-props: children, value, defaultValue='', onChange, onSend, disabled=false, label='Message composer', clearOnSend=true
+### Step (kit/navigation)
+import { Step } from 'hanoryx-components/kit';
+A sequence item with its completed, current or upcoming state written as text.
+props: children, current=false, complete=false
 
-### ChatComposerInput (kit/chat)
-import { ChatComposerInput } from 'hanoryx-components/kit';
+### Stepper (kit/navigation)
+import { Stepper } from 'hanoryx-components/kit';
+The steps of something with an order, and which one you are on. Done steps show a tick, the current one is aria-current, and each state is written out for a screen reader.
+props: steps=[], current=0, label='Progress', className
 
-props: label='Message', placeholder='Write a message…', rows=3
+### TabList (kit/navigation)
+import { TabList } from 'hanoryx-components/kit';
+A roving-focus tab strip. Supply tabs for automatic panels or children for host-managed panels.
+props: children, tabs, value, defaultValue, onChange, label='Views'
 
-### ChatSendButton (kit/chat)
-import { ChatSendButton } from 'hanoryx-components/kit';
+### Tab (kit/navigation)
+import { Tab } from 'hanoryx-components/kit';
+A tab choice in TabList; panelId and id link it to a panel owned by the host.
+props: value, id, panelId, disabled=false, children
 
-props: children='Send'
+### TabMenu (kit/navigation)
+import { TabMenu } from 'hanoryx-components/kit';
+An overflow list of tab destinations using the dropdown keyboard model.
+props: label='More tabs', tabs=[], onChange
 
-### ChatComposerDrawer (kit/chat)
-import { ChatComposerDrawer } from 'hanoryx-components/kit';
+### Tabs (kit/navigation)
+import { Tabs } from 'hanoryx-components/kit';
+Tabs that change a panel of content, as the ARIA pattern asks: one tab stop for the list, arrow keys move between tabs and show the panel at once.
+props: tabs=[], value, defaultValue, onChange, label, className
 
-props: title='Attachments and tools', children
+### TopNav (kit/navigation)
+import { TopNav } from 'hanoryx-components/kit';
+A named, wrapping primary navigation region.
+props: label='Primary navigation', children
 
-### ChatComposerTokenElement (kit/chat)
-import { ChatComposerTokenElement } from 'hanoryx-components/kit';
+### TopNavHeading (kit/navigation)
+import { TopNavHeading } from 'hanoryx-components/kit';
+A navigation brand or heading, optionally routed.
+props: children, to
 
-props: children, onRemove, label
+### TopNavItem (kit/navigation)
+import { TopNavItem } from 'hanoryx-components/kit';
+A navigation link with optional current-page state.
+props: to, href, current=false, children
 
-### ChatDictationButton (kit/chat)
-import { ChatDictationButton } from 'hanoryx-components/kit';
-Dictation is supplied by the host so browser support and consent remain explicit.
-props: active=false, onToggle, disabled=false
+### TopNavMenu (kit/navigation)
+import { TopNavMenu } from 'hanoryx-components/kit';
+A keyboard-operable native disclosure for top navigation links.
+props: label, children
 
-### ChatTokenizedText (kit/chat)
-import { ChatTokenizedText } from 'hanoryx-components/kit';
-Render tokenized text safely as React text; tokens can carry a visible label.
-props: tokens=[]
+### TopNavMegaMenu (kit/navigation)
+import { TopNavMegaMenu } from 'hanoryx-components/kit';
+A native disclosure with a responsive multi-column navigation panel.
+props: label, children
+
+### TopNavMegaMenuItem (kit/navigation)
+import { TopNavMegaMenuItem } from 'hanoryx-components/kit';
+A routed menu destination with a title and supporting content.
+props: title, children, to
+
+### TopNavMegaMenuFeaturedCard (kit/navigation)
+import { TopNavMegaMenuFeaturedCard } from 'hanoryx-components/kit';
+A featured navigation destination with an optional eyebrow and description.
+props: title, children, to, eyebrow
+
+### BottomSheet (kit/overlay)
+import { BottomSheet } from 'hanoryx-components/kit';
+A modal dialog anchored to the bottom edge, retaining focus trapping and restoration.
+props: title='Sheet', ...props
+
+### BottomSheetSwitcher (kit/overlay)
+import { BottomSheetSwitcher } from 'hanoryx-components/kit';
+A bottom sheet containing tabbed panels supplied as sheets.
+props: sheets=[], value, defaultValue, onChange, ...props
+
+### CommandPalette (kit/overlay)
+import { CommandPalette } from 'hanoryx-components/kit';
+A searchable modal command picker with disabled actions, keyboard traversal and empty results.
+props: open, onClose, title='Commands', items=[], children, onSelect
+
+### CommandPaletteInput (kit/overlay)
+import { CommandPaletteInput } from 'hanoryx-components/kit';
+The labelled search input inside CommandPalette.
+props: label='Search commands', placeholder='Type a command…'
+
+### CommandPaletteList (kit/overlay)
+import { CommandPaletteList } from 'hanoryx-components/kit';
+The command region with ArrowUp, ArrowDown, Home and End focus handling.
+props: children
+
+### CommandPaletteItem (kit/overlay)
+import { CommandPaletteItem } from 'hanoryx-components/kit';
+A filtered command button that delegates selection to its palette.
+props: children, item, textValue, onSelect, disabled=false
+
+### CommandPaletteGroup (kit/overlay)
+import { CommandPaletteGroup } from 'hanoryx-components/kit';
+A named command group.
+props: label, children
+
+### CommandPaletteFooter (kit/overlay)
+import { CommandPaletteFooter } from 'hanoryx-components/kit';
+Supporting instructions or shortcuts for a command palette.
+props: children
+
+### CommandPaletteEmpty (kit/overlay)
+import { CommandPaletteEmpty } from 'hanoryx-components/kit';
+A polite empty-results message; custom compositions can provide when explicitly.
+props: children='No commands match.', when
+
+### AlertDialog (kit/overlay)
+import { AlertDialog } from 'hanoryx-components/kit';
+AlertDialog is the discoverable family name for ConfirmDialog; both names share the same implementation and props.
+props: open, title, children, confirmLabel='Confirm', cancelLabel='Cancel', danger=false, onConfirm, onCancel
+
+### ConfirmDialog (kit/overlay)
+import { ConfirmDialog } from 'hanoryx-components/kit';
+“Are you sure?” done properly: the title says what will happen, the buttons say what they do, and for something that cannot be undone the safe choice has focus.
+props: open, title, children, confirmLabel='Confirm', cancelLabel='Cancel', danger=false, onConfirm, onCancel
+
+### Dialog (kit/overlay)
+import { Dialog } from 'hanoryx-components/kit';
+A modal dialog: it takes over the screen until it is dealt with. Focus moves in and is trapped, Escape and the backdrop close it, the page behind stops scrolling and focus returns to what opened it.
+props: open, onClose, title, children, footer, width="32rem", side, dismissible=true, className
+
+### useImperativeDialog (kit/overlay)
+import { useImperativeDialog } from 'hanoryx-components/kit';
+State and dialogProps for showing a dialog from an event handler.
+returns: State and dialogProps for showing a dialog from an event handler.
+
+### useImperativeAlertDialog (kit/overlay)
+import { useImperativeAlertDialog } from 'hanoryx-components/kit';
+The imperative dialog state hook, for use with AlertDialog.
+returns: The imperative dialog state hook, for use with AlertDialog.
+
+### Drawer (kit/overlay)
+import { Drawer } from 'hanoryx-components/kit';
+A dialog that slides in from an edge and runs the full height — for a filter panel or a record’s detail, where the page behind still gives context.
+props: side="right", width="26rem", ...props, ...dialog
+
+### HoverCard (kit/overlay)
+import { HoverCard } from 'hanoryx-components/kit';
+A preview card for a link: hover or focus the link and a little more about where it goes appears, and stays while the pointer is on it. It must only ever add.
+props: title, body, children, delay=280, className
+
+### useHoverCard (kit/overlay)
+import { useHoverCard } from 'hanoryx-components/kit';
+Hover and focus preview bindings with a grace period when moving into the card.
+returns: Hover and focus preview bindings with a grace period when moving into the card.
+
+### Lightbox (kit/overlay)
+import { Lightbox } from 'hanoryx-components/kit';
+A modal app-supplied image viewer with captions and previous and next controls.
+props: images=[], value, defaultValue=0, onChange, open, onClose, title='Image viewer'
+
+### Overlay (kit/overlay)
+import { Overlay } from 'hanoryx-components/kit';
+The standard focus-managed dialog under a general overlay family name.
+props: title='Overlay', ...props
+
+### DialogHeader (kit/overlay)
+import { DialogHeader } from 'hanoryx-components/kit';
+A semantic content header for a custom dialog body.
+props: children
+
+### Popover (kit/overlay)
+import { Popover } from 'hanoryx-components/kit';
+A panel that opens under a button and holds anything — text, a small form, a few links. It is not modal: focus stays where it is and Tab moves on into the panel.
+props: label, title, children, align='start', placement='bottom', className
+
+### usePopover (kit/overlay)
+import { usePopover } from 'hanoryx-components/kit';
+Headless popover open state with connected trigger and content bindings.
+returns: Headless popover open state with connected trigger and content bindings.
+
+### Toast (kit/overlay)
+import { Toast } from 'hanoryx-components/kit';
+A persistent inline notification with an optional named dismiss action.
+props: title, children, onDismiss, tone='info'
+
+### ToastProvider (kit/overlay)
+import { ToastProvider } from 'hanoryx-components/kit';
+Brief messages in a corner that leave by themselves. Announced politely, never take focus, pause while the pointer or keyboard is on them, and can always be dismissed.
+props: children, max=4, title, body, tone="info", duration=5000, max (provider)=4
+
+### useToast (kit/overlay)
+import { useToast } from 'hanoryx-components/kit';
+The ToastProvider push function for timed notifications.
+returns: The ToastProvider push function for timed notifications.
+
+### Tooltip (kit/overlay)
+import { Tooltip } from 'hanoryx-components/kit';
+A short description that appears beside a control on hover or keyboard focus, after a beat so it does not flicker. It adds detail; it never replaces a label.
+props: text, children, placement="top", delay=350, className
+
+### useTooltip (kit/overlay)
+import { useTooltip } from 'hanoryx-components/kit';
+Delayed hover and focus tooltip bindings with Escape dismissal and timer cleanup.
+returns: Delayed hover and focus tooltip bindings with Escape dismissal and timer cleanup.
+
+### BarList (kit/table-list)
+import { BarList } from 'hanoryx-components/kit';
+Bars you can read as a list: each row has its label, a bar and the figure, so the values are text first and a picture second. The largest is picked out in red.
+props: items=[], max=largest value, unit="", label, className
+
+### DataTable (kit/table-list)
+import { DataTable } from 'hanoryx-components/kit';
+A table you can sort and select from. A sortable column’s header is a button and the th carries aria-sort. It scrolls sideways inside a focusable region on a narrow screen.
+props: caption, columns=[], rows=[], rowKey='id', selectable=false, onSelect, maxHeight, emptyText='No rows.', className
+
+### DescriptionList (kit/table-list)
+import { DescriptionList } from 'hanoryx-components/kit';
+Terms and what they mean, or labels and their values — the right element for a fact sheet. A real dl, so a screen reader pairs each term with its detail.
+props: items=[], stacked=false, className
+
+### MetadataList (kit/table-list)
+import { MetadataList } from 'hanoryx-components/kit';
+MetadataList is the discoverable family name for DescriptionList; both names share the same implementation and props.
+props: items=[], stacked=false, className
+
+### List (kit/table-list)
+import { List } from 'hanoryx-components/kit';
+A semantic ordered or unordered list with consistent item spacing.
+props: children, ordered=false, label
+
+### ListItem (kit/table-list)
+import { ListItem } from 'hanoryx-components/kit';
+An item in List.
+props: children
+
+### MetadataListItem (kit/table-list)
+import { MetadataListItem } from 'hanoryx-components/kit';
+A term and detail pair for a description list.
+props: term, children
+
+### OverflowList (kit/table-list)
+import { OverflowList } from 'hanoryx-components/kit';
+A list whose excess items remain reachable through a native disclosure.
+props: children, max=3, label='More items'
+
+### Sparkline (kit/table-list)
+import { Sparkline } from 'hanoryx-components/kit';
+A tiny line chart with no axes, for “which way is it going”. It is an image with a text description — range, first and last value — so the shape is never the only way to learn it.
+props: data=[], label, width=180, height=44, unit='', className
+
+### Stat (kit/table-list)
+import { Stat } from 'hanoryx-components/kit';
+One number, large, with its label above and, if you have it, how it moved. The change is written as words for a screen reader; the arrow and colour are decoration.
+props: label, value, unit, change, changeLabel, note, className
+
+### Table (kit/table-list)
+import { Table } from 'hanoryx-components/kit';
+Semantic table parts with optional sortable headers and a selected-row action group.
+props: caption='Table', children, label
+
+### TableHeader (kit/table-list)
+import { TableHeader } from 'hanoryx-components/kit';
+The semantic table head containing header rows.
+props: children
+
+### TableBody (kit/table-list)
+import { TableBody } from 'hanoryx-components/kit';
+The semantic table body containing data rows.
+props: children
+
+### TableFooter (kit/table-list)
+import { TableFooter } from 'hanoryx-components/kit';
+The semantic table footer containing summary rows.
+props: children
+
+### TableRow (kit/table-list)
+import { TableRow } from 'hanoryx-components/kit';
+A table row with optional selected-state styling.
+props: children, selected, ...props
+
+### TableCell (kit/table-list)
+import { TableCell } from 'hanoryx-components/kit';
+A semantic data cell with optional text alignment.
+props: children, align, ...props
+
+### TableHeaderCell (kit/table-list)
+import { TableHeaderCell } from 'hanoryx-components/kit';
+A scoped table header with an optional sortable action and aria-sort.
+props: children, sortDirection='none', onSort, scope='col', ...props
+
+### TableSelectionToolbar (kit/table-list)
+import { TableSelectionToolbar } from 'hanoryx-components/kit';
+A selected-row count and action group with a clear-selection button.
+props: count=0, onClear, children
+
+### useTableSortable (kit/table-list)
+import { useTableSortable } from 'hanoryx-components/kit';
+{ rows, sort, setSort, toggleSort(key) }.
+returns: { rows, sort, setSort, toggleSort(key) }. sort = {key, direction}, with none / ascending / descending directions.
+
+### useTableFilterState (kit/table-list)
+import { useTableFilterState } from 'hanoryx-components/kit';
+{ filter, setFilter, setQuery, setColumnFilter, clearFilters }.
+returns: { filter, setFilter, setQuery, setColumnFilter, clearFilters }. filter = {query, filters}.
+
+### useTableFiltering (kit/table-list)
+import { useTableFiltering } from 'hanoryx-components/kit';
+The filtered row array.
+returns: The filtered row array. Text matching is case-insensitive. Array filter values match exact cell values.
+
+### useTablePagination (kit/table-list)
+import { useTablePagination } from 'hanoryx-components/kit';
+{ rows, page, pageCount, pageSize, total, setPage, nextPage, previousPage }.
+returns: { rows, page, pageCount, pageSize, total, setPage, nextPage, previousPage }. page is zero-based and clamps as data shrinks.
+
+### useTableSelectionState (kit/table-list)
+import { useTableSelectionState } from 'hanoryx-components/kit';
+{ selectedKeys, setSelectedKeys, isSelected, toggle(key, selected?), clear }.
+returns: { selectedKeys, setSelectedKeys, isSelected, toggle(key, selected?), clear }. Keys are stable row ids.
+
+### useTableSelection (kit/table-list)
+import { useTableSelection } from 'hanoryx-components/kit';
+Selection state plus allSelected, someSelected, toggleAll and getRowProps.
+returns: Selection state plus allSelected, someSelected, toggleAll and getRowProps. Bulk operations affect only the supplied rows.
+
+### useTableRowExpansion (kit/table-list)
+import { useTableRowExpansion } from 'hanoryx-components/kit';
+{ expandedKeys, setExpandedKeys, isExpanded, toggleExpanded, collapseAll }.
+returns: { expandedKeys, setExpandedKeys, isExpanded, toggleExpanded, collapseAll }. No rows are expanded by default.
+
+### useTableGroupedRows (kit/table-list)
+import { useTableGroupedRows } from 'hanoryx-components/kit';
+Array of { key, rows }, in first-seen group order.
+returns: Array of { key, rows }, in first-seen group order. groupBy is a property key or function.
+
+### useTableRowIndex (kit/table-list)
+import { useTableRowIndex } from 'hanoryx-components/kit';
+A function getIndex(key) returning the zero-based index, or -1 for missing keys.
+returns: A function getIndex(key) returning the zero-based index, or -1 for missing keys.
+
+### useTableRowStatus (kit/table-list)
+import { useTableRowStatus } from 'hanoryx-components/kit';
+A function getStatus(row) reading a status record or callback; unknown keys return undefined.
+returns: A function getStatus(row) reading a status record or callback; unknown keys return undefined.
+
+### useTableTreeState (kit/table-list)
+import { useTableTreeState } from 'hanoryx-components/kit';
+Expansion state using the same contract as useTableRowExpansion.
+returns: Expansion state using the same contract as useTableRowExpansion.
+
+### useTableTreeData (kit/table-list)
+import { useTableTreeData } from 'hanoryx-components/kit';
+Visible flattened entries: {row, id, depth, parentId, position, setSize, hasChildren, expanded}.
+returns: Visible flattened entries: {row, id, depth, parentId, position, setSize, hasChildren, expanded}. Depth starts at 1. Keys must be unique.
+
+### useTableColumnResize (kit/table-list)
+import { useTableColumnResize } from 'hanoryx-components/kit';
+{ widths, widthOf, setWidth, getResizeHandleProps }.
+returns: { widths, widthOf, setWidth, getResizeHandleProps }. Widths are pixels. Apply matching widths to table cells.
+
+### useTableColumnSettings (kit/table-list)
+import { useTableColumnSettings } from 'hanoryx-components/kit';
+{ columns, hidden, order, setOrder, toggleColumn, resetColumns }.
+returns: { columns, hidden, order, setOrder, toggleColumn, resetColumns }. Removed keys are ignored; new columns append.
+
+### useTableStickyColumns (kit/table-list)
+import { useTableStickyColumns } from 'hanoryx-components/kit';
+A function getStyle(key) returning a logical sticky offset for pinned start columns.
+returns: A function getStyle(key) returning a logical sticky offset for pinned start columns. Width defaults to column.width or 160.
+
+### Timeline (kit/table-list)
+import { Timeline } from 'hanoryx-components/kit';
+Things in the order they happen, down a line. It is an ordered list, so the order is announced. This site’s own timeline is told in undated phases — pass words, not dates, unless you have them.
+props: items=[], className
+
+### Tree (kit/table-list)
+import { Tree } from 'hanoryx-components/kit';
+An expandable tree — files, categories, an outline — following the ARIA tree-view pattern: one tab stop, arrow keys through what is visible.
+props: nodes=[], label, onSelect, defaultOpen=[], className
+
+### TreeList (kit/table-list)
+import { TreeList } from 'hanoryx-components/kit';
+TreeList is the discoverable family name for Tree; both names share the same implementation and props.
+props: nodes=[], label, onSelect, defaultOpen=[], className
+
+### useFocusTrap (kit/utility)
+import { useFocusTrap } from 'hanoryx-components/kit';
+A root ref that traps Tab within enabled, visible descendants and restores prior focus on cleanup.
+returns: A root ref that traps Tab within enabled, visible descendants and restores prior focus on cleanup.
+
+### useListFocus (kit/utility)
+import { useListFocus } from 'hanoryx-components/kit';
+Ref and keydown bindings that move through visible, enabled list items.
+returns: Ref and keydown bindings that move through visible, enabled list items.
+
+### useGridFocus (kit/utility)
+import { useGridFocus } from 'hanoryx-components/kit';
+List focus with two-dimensional movement using the supplied column count.
+returns: List focus with two-dimensional movement using the supplied column count.
+
+### useTreeFocus (kit/utility)
+import { useTreeFocus } from 'hanoryx-components/kit';
+Vertical tree navigation plus expansion, collapse and parent/child focus movement.
+returns: Vertical tree navigation plus expansion, collapse and parent/child focus movement.
+
+### useAnnounce (kit/utility)
+import { useAnnounce } from 'hanoryx-components/kit';
+Message state, announce and polite live-region props; render the message in that region.
+returns: Message state, announce and polite live-region props; render the message in that region.
+
+### useDevWarning (kit/utility)
+import { useDevWarning } from 'hanoryx-components/kit';
+Emits a development warning only when the condition and enabled flag are true.
+returns: void
+
+### useClipboard (kit/utility)
+import { useClipboard } from 'hanoryx-components/kit';
+An asynchronous clipboard copy action with idle, copied and error states.
+returns: An asynchronous clipboard copy action with idle, copied and error states.
+
+### useMergedRefs (kit/utility)
+import { useMergedRefs } from 'hanoryx-components/kit';
+A callback ref that assigns the same DOM node to supplied function and object refs.
+returns: A callback ref that assigns the same DOM node to supplied function and object refs.
+
+### useHotkeys (kit/utility)
+import { useHotkeys } from 'hanoryx-components/kit';
+Window shortcut bindings with modifier matching and editable-field exclusion by default.
+returns: void
+
+### useLongPress (kit/utility)
+import { useLongPress } from 'hanoryx-components/kit';
+Pointer and keyboard hold bindings with cancellation and unmount cleanup.
+returns: Pointer and keyboard hold bindings with cancellation and unmount cleanup.
+
+### usePressFeedback (kit/utility)
+import { usePressFeedback } from 'hanoryx-components/kit';
+Pressed state and pointer/keyboard bindings for visual feedback.
+returns: Pressed state and pointer/keyboard bindings for visual feedback.
+
+### useClickableContainer (kit/utility)
+import { useClickableContainer } from 'hanoryx-components/kit';
+Button-role keyboard and pointer activation that avoids nested native controls.
+returns: Button-role keyboard and pointer activation that avoids nested native controls.
+
+### useInteractiveRole (kit/utility)
+import { useInteractiveRole } from 'hanoryx-components/kit';
+Role, tab stop and disabled semantics for a host-rendered custom control.
+returns: Role, tab stop and disabled semantics for a host-rendered custom control.
+
+### useMenuPress (kit/utility)
+import { useMenuPress } from 'hanoryx-components/kit';
+Click and ArrowDown bindings for a host-owned menu trigger.
+returns: Click and ArrowDown bindings for a host-owned menu trigger.
+
+### useKeyboardHint (kit/utility)
+import { useKeyboardHint } from 'hanoryx-components/kit';
+Whether a fine, hover-capable pointer is available for showing desktop keyboard hints.
+returns: Whether a fine, hover-capable pointer is available for showing desktop keyboard hints.
+
+### useIndicatorFocusRing (kit/utility)
+import { useIndicatorFocusRing } from 'hanoryx-components/kit';
+Focus state and focus/blur bindings for a host-rendered indicator.
+returns: Focus state and focus/blur bindings for a host-rendered indicator.
+
+### useInputContainer (kit/utility)
+import { useInputContainer } from 'hanoryx-components/kit';
+Invalid and disabled data attributes for a styled input group.
+returns: Invalid and disabled data attributes for a styled input group.
+
+### useInputStatusIcon (kit/utility)
+import { useInputStatusIcon } from 'hanoryx-components/kit';
+A textual input-status descriptor for error, success or idle state.
+returns: A textual input-status descriptor for error, success or idle state.
+
+### useImageMode (kit/utility)
+import { useImageMode } from 'hanoryx-components/kit';
+Image or fallback mode derived from the presence of a source.
+returns: Image or fallback mode derived from the presence of a source.
+
+### InternationalizationProvider (kit/utility)
+import { InternationalizationProvider } from 'hanoryx-components/kit';
+Locale and message dictionary context with a scoped language attribute.
+props: locale='en', messages={}, children
+
+### useLocale (kit/utility)
+import { useLocale } from 'hanoryx-components/kit';
+The current internationalization locale.
+returns: The current internationalization locale.
+
+### useTranslator (kit/utility)
+import { useTranslator } from 'hanoryx-components/kit';
+A dictionary translator with named placeholders and a key fallback.
+returns: A dictionary translator with named placeholders and a key fallback.
+
+### useCollator (kit/utility)
+import { useCollator } from 'hanoryx-components/kit';
+A locale-aware Intl.Collator memoized for the supplied options.
+returns: A locale-aware Intl.Collator memoized for the supplied options.
+
+### LinkProvider (kit/utility)
+import { LinkProvider } from 'hanoryx-components/kit';
+An optional application link component for internal kit navigation.
+props: component, children
+
+### useContainerReveal (kit/utility)
+import { useContainerReveal } from 'hanoryx-components/kit';
+The shared visibility observer under its container-reveal family name; returns ref and visible.
+returns: The shared visibility observer under its container-reveal family name; returns ref and visible.
+
+### useEntryAnimation (kit/utility)
+import { useEntryAnimation } from 'hanoryx-components/kit';
+A visibility ref and transform/opacity entry styles, settled for reduced motion.
+returns: A visibility ref and transform/opacity entry styles, settled for reduced motion.
+
+### useStreamingText (kit/utility)
+import { useStreamingText } from 'hanoryx-components/kit';
+A progressively revealed string that pauses off screen, stops when complete and settles for reduced motion.
+returns: A progressively revealed string that pauses off screen, stops when complete and settles for reduced motion.
+
+### useOverflow (kit/utility)
+import { useOverflow } from 'hanoryx-components/kit';
+A root ref and horizontal, vertical, start and end overflow state observed across size/content changes.
+returns: A root ref and horizontal, vertical, start and end overflow state observed across size/content changes.
+
+### useScrollOverflow (kit/utility)
+import { useScrollOverflow } from 'hanoryx-components/kit';
+The overflow observation hook under its scrolling family name.
+returns: The overflow observation hook under its scrolling family name.
+
+### useScrollableArea (kit/utility)
+import { useScrollableArea } from 'hanoryx-components/kit';
+Overflow observation plus scrollToStart and scrollToEnd actions.
+returns: Overflow observation plus scrollToStart and scrollToEnd actions.
+
+### useScrollLock (kit/utility)
+import { useScrollLock } from 'hanoryx-components/kit';
+Locks document scrolling while active using the shared, nested-safe scroll lock.
+returns: void
+
+### Theme (kit/utility)
+import { Theme } from 'hanoryx-components/kit';
+A scoped theme attribute and context; host token overrides define its appearance.
+props: value='dark', children
+
+### MediaTheme (kit/utility)
+import { MediaTheme } from 'hanoryx-components/kit';
+Selects light or dark theme context from the system colour preference.
+props: children
+
+### SyntaxTheme (kit/utility)
+import { SyntaxTheme } from 'hanoryx-components/kit';
+A scope for host-authored syntax token overrides.
+props: value='default', children
+
+### Layer (kit/utility)
+import { Layer } from 'hanoryx-components/kit';
+A relative stacking layer whose index is derived from its parent layer.
+props: children, offset=1
+
+### useTheme (kit/utility)
+import { useTheme } from 'hanoryx-components/kit';
+The current theme name.
+returns: The current theme name.
+
+### useLayer (kit/utility)
+import { useLayer } from 'hanoryx-components/kit';
+The nearest relative layer index.
+returns: The nearest relative layer index.
+
+### VisuallyHidden (kit/utility)
+import { VisuallyHidden } from 'hanoryx-components/kit';
+Text for assistive technology that is not drawn: the “Close” on an icon-only button, the “(current page)” after a link. It stays in the reading order and out of the layout.
+props: children, as="span"
 
 ## Foreground toolkit
 
@@ -708,35 +1522,6 @@ props: eyebrow, title, intro, code, as='h2', size='h2', align='left', variant='u
 
 ## Page
 
-### PageHero (page/template)
-import { PageHero } from 'hanoryx-components/page';
-The scene-backed full-screen hero: a pointer-reactive headline, an intro, actions and — when `hero.aside` names a signature — an interactive object in the right half.
-props: hero, accent
-
-### HeroTitle (page/template)
-import { HeroTitle } from 'hanoryx-components/page';
-The hero headline: each word rises out of a clipped line (staggered), then the words react to the pointer.
-props: text, as='h1', className, delay=0.1, ...rest
-
-### NotFound (page/template)
-import { NotFound } from 'hanoryx-components/page';
-"Signal lost": the 404 echoes the address that was asked for and lists the real pages nearest to it, ranked by spelling from the navigation directory.
-
-### PageBlock (page/template)
-import { PageBlock } from 'hanoryx-components/page';
-The block dispatcher: draws one block from `{ type, … }`. Built-in types render directly; the data-first kinds are lazy chunks.
-props: block, accent
-
-### PageTemplate (page/template)
-import { PageTemplate } from 'hanoryx-components/page';
-Renders a whole page from a data object: a scene-backed hero, then each block in order, plus a scroll rail for blocks that declare `anchor` + `railLabel`. Sets the document title and wraps the page in a transition.
-props: data
-
-### TemplatePage (page/template)
-import { TemplatePage } from 'hanoryx-components/page';
-A route element for a data-driven page: loads the page by key through the registered `loadPage` source (its own code-split chunk), suspends on the route fallback, and shows the 404 when there is no data.
-props: routeKey
-
 ### CalloutBlock (page/blocks)
 import { CalloutBlock } from 'hanoryx-components/page';
 One remark set apart from the text: a note, a tip, a warning.
@@ -841,6 +1626,40 @@ props: block, accent
 import { TimelineBlock } from 'hanoryx-components/page';
 Things in the order they happen, down a line.
 props: block, accent
+
+### HeroTitle (page/template)
+import { HeroTitle } from 'hanoryx-components/page';
+The hero headline: each word rises out of a clipped line (staggered), then the words react to the pointer.
+props: text, as='h1', className, delay=0.1, ...rest
+
+### PageHero (page/template)
+import { PageHero } from 'hanoryx-components/page';
+The scene-backed full-screen hero: a pointer-reactive headline, an intro, actions and — when `hero.aside` names a signature — an interactive object in the right half.
+props: hero, accent
+
+### NotFound (page/template)
+import { NotFound } from 'hanoryx-components/page';
+"Signal lost": the 404 echoes the address that was asked for and lists the real pages nearest to it, ranked by spelling from the navigation directory.
+
+### PageBlock (page/template)
+import { PageBlock } from 'hanoryx-components/page';
+The block dispatcher: draws one block from `{ type, … }`. Built-in types render directly; the data-first kinds are lazy chunks.
+props: block, accent
+
+### PageHeroBlock (page/template)
+import { PageHeroBlock } from 'hanoryx-components/page';
+Hero: scene-backed full-screen stage with the pointer-reactive headline and, when the page declares `hero.aside`, a signature object in the right half (an orbit navigator, a plate stack, a miniature editor…).
+props: hero, accent
+
+### PageTemplate (page/template)
+import { PageTemplate } from 'hanoryx-components/page';
+Renders a whole page from a data object: a scene-backed hero, then each block in order, plus a scroll rail for blocks that declare `anchor` + `railLabel`. Sets the document title and wraps the page in a transition.
+props: data
+
+### TemplatePage (page/template)
+import { TemplatePage } from 'hanoryx-components/page';
+A route element for a data-driven page: loads the page by key through the registered `loadPage` source (its own code-split chunk), suspends on the route fallback, and shows the 404 when there is no data.
+props: routeKey
 
 ## Shell
 
@@ -1131,271 +1950,271 @@ import { SectionScene } from 'hanoryx-components/scenes';
 Wraps a section with its own animated scene behind the content. This is how the site avoids one global background: every block declares its own `scene` + `intensity`. The canvas paints behind; content sits above with a stacking context.
 props: scene, sceneData, intensity='medium', accent='#ff3333', density=1, fade=true, as='section', className, contentClassName, children, ...rest
 
-### architectural-grid (scenes/base)
+### architectural-grid (scenes/architectural-grid)
 <SceneCanvas scene="architectural-grid" />
 Technical blueprint surface: major + minor grid, measuring ticks, corner crosshair marks and dimension dashes, with a slow vertical drift and a single red crosshair node tracing the grid like a CAD cursor.
 
-### blackout-silhouette (scenes/base)
+### blackout-silhouette (scenes/blackout-silhouette)
 <SceneCanvas scene="blackout-silhouette" />
 A hidden silhouette under redaction. Faint hatched black regions conceal an abstract geometric form; a vertical scan line sweeps across and briefly reveals the red edge contours where it passes, then re-conceals.
 
-### circuit-trace (scenes/base)
+### circuit-trace (scenes/circuit-trace)
 <SceneCanvas scene="circuit-trace" />
 PCB-like traces with pulses travelling along right-angle paths.
 
-### command-terminal (scenes/base)
+### command-terminal (scenes/command-terminal)
 <SceneCanvas scene="command-terminal" />
 A terminal readout — monospace log lines scan in sequence, a caret blinks on the active line, and a faint highlight bar sweeps down the column. One red WARN line. Static strings, low-alpha white; mysterious technical mood.
 
-### concentric-gate (scenes/base)
+### concentric-gate (scenes/concentric-gate)
 <SceneCanvas scene="concentric-gate" />
 Concentric gate rings that draw open in staggered arcs — portal / hero core.
 
-### data-rain (scenes/base)
+### data-rain (scenes/data-rain)
 <SceneCanvas scene="data-rain" />
 Restrained vertical data columns — measured, not a Matrix spam wall.
 
-### flow-field (scenes/base)
+### flow-field (scenes/flow-field)
 <SceneCanvas scene="flow-field" />
 Optimized particle flow field with pointer displacement. Trails via a low alpha fill over the (near-black) section. Density scales with quality.
 
-### glass-prism (scenes/base)
+### glass-prism (scenes/glass-prism)
 <SceneCanvas scene="glass-prism" />
 Angular translucent glass panels — rotated quads with faint white gradient fills and crisp edges, drifting and parallaxing as layered glass.
 
-### glyph-field (scenes/base)
+### glyph-field (scenes/glyph-field)
 <SceneCanvas scene="glyph-field" />
 A sparse grid of abstract glyphs — small geometric marks (+, circles, brackets, short bars) that breathe in and out and occasionally swap form, like an unknown symbol language slowly writing itself.
 
-### heatmap-grid (scenes/base)
+### heatmap-grid (scenes/heatmap-grid)
 <SceneCanvas scene="heatmap-grid" />
 Operational heatmap: a grid of cells whose intensity pulses as a sum of slow sine waves over position + time. Bright cells take a faint red tint, dim cells stay barely-there white.
 
-### hex-lattice (scenes/base)
+### hex-lattice (scenes/hex-lattice)
 <SceneCanvas scene="hex-lattice" />
 Hexagon lattice with a travelling scan that lights nodes as it passes.
 
-### isometric-module (scenes/base)
+### isometric-module (scenes/isometric-module)
 <SceneCanvas scene="isometric-module" />
 Isometric cubes drifting through depth — faint white volumes that bob and parallax. One cube is edge-lit in the accent red. 2:1 iso projection.
 
-### liquid-metal (scenes/base)
+### liquid-metal (scenes/liquid-metal)
 <SceneCanvas scene="liquid-metal" />
 Soft elliptical blobs drifting and breathing — a calm metallic sheen. Large radial-gradient ellipses overlap with very low alpha; no hard edges.
 
-### magnetic-particles (scenes/base)
+### magnetic-particles (scenes/magnetic-particles)
 <SceneCanvas scene="magnetic-particles" />
 Particles drifting in a slow ambient field, magnetically drawn toward the pointer when active — pulled in, brightened, then easing back when released.
 
-### network-constellation (scenes/base)
+### network-constellation (scenes/network-constellation)
 <SceneCanvas scene="network-constellation" />
 Connected graph with light physics drift — a constellation / service map. Connections use a spatial cap (nearest by distance) to stay cheap.
 
-### orbital-node (scenes/base)
+### orbital-node (scenes/orbital-node)
 <SceneCanvas scene="orbital-node" />
 Concentric orbits of nodes circling a core — multi-role / system map feel.
 
-### polar-radar (scenes/base)
+### polar-radar (scenes/polar-radar)
 <SceneCanvas scene="polar-radar" />
 Rotating radar sweep with concentric rings and bearing ticks.
 
-### architecture-layer (scenes/presets)
+### architecture-layer (scenes/architecture-layer-scene)
 <SceneCanvas scene="architecture-layer" />
 ARCHITECTURE LAYER — a system blueprint of 4-5 stacked slab layers drawn in a slight isometric skew, joined by vertical connectors; a red data pulse rises through the stack, briefly lighting each layer it passes.
 
-### audio-signal-wall (scenes/presets)
+### audio-signal-wall (scenes/audio-signal-wall-scene)
 <SceneCanvas scene="audio-signal-wall" />
 AUDIO SIGNAL WALL — full-width spectrum visualizer. Reacts to live audio via the shared audio bridge; falls back to a procedural idle signal when nothing is playing. A faint baseline grid + a mirrored reflection give it depth.
 
-### build-pipeline (scenes/presets)
+### build-pipeline (scenes/build-pipeline-scene)
 <SceneCanvas scene="build-pipeline" />
 BUILD PIPELINE — 5 stage gates chained left to right; a build token advances gate by gate, each cleared stage fills with a check-tick pulse, and an occasional parallel branch forks below. A CI/build shape language.
 
-### client-portal-gate (scenes/presets)
+### client-portal-gate (scenes/client-portal-gate-scene)
 <SceneCanvas scene="client-portal-gate" />
 CLIENT PORTAL GATE — two concentric iris rings of arc blades that rhythmically open (gaps widen) then re-seal like an aperture, a rotating radial scan beam sweeps the field, and a locked diamond core glyph blinks red on each seal.
 
-### commerce-pipeline (scenes/presets)
+### commerce-pipeline (scenes/commerce-pipeline-scene)
 <SceneCanvas scene="commerce-pipeline" />
 COMMERCE PIPELINE — horizontal lanes carry small order tokens left to right through vertical stage gates; a soft scan band sweeps across, and the rare flagged order glows red. A logistics/order-flow shape language, no grid.
 
-### compass-vector (scenes/presets)
+### compass-vector (scenes/compass-vector-field-scene)
 <SceneCanvas scene="compass-vector" />
 Canvas scene "compass-vector".
 
-### contact-transmission (scenes/presets)
+### contact-transmission (scenes/contact-transmission-scene)
 <SceneCanvas scene="contact-transmission" />
 CONTACT TRANSMISSION — concentric ping rings emit outward from a source point at timed intervals over faint carrier waves, with a few drifting signal motes.
 
-### dashboard-tiles (scenes/presets)
+### dashboard-tiles (scenes/dashboard-tiles-scene)
 <SceneCanvas scene="dashboard-tiles" />
 DASHBOARD TILES — a bento grid of varied-size panels, each running a tiny live widget (sparkline, mini bars, blinking dot, gauge arc, ticker), while a single red focus highlight glides from tile to tile like a roving control cursor.
 
-### data-interface-wave (scenes/presets)
+### data-interface-wave (scenes/data-interface-wave-scene)
 <SceneCanvas scene="data-interface-wave" />
 Canvas scene "data-interface-wave".
 
-### data-stream-ribbons (scenes/presets)
+### data-stream-ribbons (scenes/data-stream-ribbons-scene)
 <SceneCanvas scene="data-stream-ribbons" />
 DATA STREAM RIBBONS — several bright thin straight diagonal ribbons of flowing dashes carrying data in transit; bright packet glints ride each stream over a faint baseline grid. Straight diagonal dash flow, not braided curves.
 
-### dependency-graph (scenes/presets)
+### dependency-graph (scenes/dependency-graph-scene)
 <SceneCanvas scene="dependency-graph" />
 DEPENDENCY GRAPH — modules in left-to-right layers wired by directed edges (a build DAG); a build wave sweeps left to right, compiling each layer: edges fill and node cores ignite in order.
 
-### error-signal-lost (scenes/presets)
+### error-signal-lost (scenes/error-signal-lost-scene)
 <SceneCanvas scene="error-signal-lost" />
 ERROR / SIGNAL LOST (404) — a near-flat heartbeat trace that twitches, glitches and drops out into a dead flatline, intermittent horizontal static bands tear across the screen, and a faint radar sweep hunts the void but finds nothing.
 
-### glyph-compiler (scenes/presets)
+### glyph-compiler (scenes/glyph-compiler-scene)
 <SceneCanvas scene="glyph-compiler" />
 GLYPH COMPILER — scattered mono glyphs drift in space, then snap into neat left-aligned rows (compiling), hold as clean labels, then dissolve back to scatter. A red caret/scan rides the row that is currently resolving.
 
-### heatmap-control (scenes/presets)
+### heatmap-control (scenes/heatmap-control-scene)
 <SceneCanvas scene="heatmap-control" />
 HEATMAP CONTROL — a dashboard heatmap: a tight grid of cells lit by several smooth gaussian "activity" blobs drifting across the field; warmth fades cell to cell, and only the hottest cells latch a sparse red accent outline.
 
-### hex-tunnel (scenes/presets)
+### hex-tunnel (scenes/hex-tunnel-scene)
 <SceneCanvas scene="hex-tunnel" />
 HEX TUNNEL — concentric hexagons surge outward from a vanishing point toward the viewer, each ring slightly counter-rotated and fading with depth; one pulsing red ring rides the loop. Built ring-by-ring (not a flat lattice).
 
-### home-core (scenes/presets)
+### home-core (scenes/home-core-scene)
 <SceneCanvas scene="home-core" />
 HOME CORE — the cinematic hero composite: a faint scrolling grid, a central arc/gate system that breathes, and a sparse particle field drifting over it. Pointer nudges the core. The most layered scene in the library.
 
-### interface-lab-shape (scenes/presets)
+### interface-lab-shape (scenes/interface-lab-shape-scene)
 <SceneCanvas scene="interface-lab-shape" />
 INTERFACE LAB SHAPE — abstract UI "component" specimens (toolbars, cards, toggles) as rounded-rect outlines with corner brackets that snap to a grid and periodically resize / rearrange between layout takes.
 
-### isometric-infra (scenes/presets)
+### isometric-infra (scenes/isometric-infra-scene)
 <SceneCanvas scene="isometric-infra" />
 ISOMETRIC INFRA — a blueprint isometric module field where lit modules sweep across in travelling diagonal clusters; a few of the brightest modules extrude tall vertical "data columns" that pulse upward. Faint base lattice, sparse red.
 
-### liquid-glass-operational (scenes/presets)
+### liquid-glass-operational (scenes/liquid-glass-operational-scene)
 <SceneCanvas scene="liquid-glass-operational" />
 LIQUID GLASS OPERATIONAL — large rounded translucent glass capsules drifting and overlapping, with soft white rim highlights, a faint inner sheen and thin refraction lines bending through each body. Calm, premium, operational.
 
-### magnetic-vector (scenes/presets)
+### magnetic-vector (scenes/magnetic-vector-scene)
 <SceneCanvas scene="magnetic-vector" />
 Canvas scene "magnetic-vector".
 
-### motion-curve-field (scenes/presets)
+### motion-curve-field (scenes/motion-curve-field-scene)
 <SceneCanvas scene="motion-curve-field" />
 Canvas scene "motion-curve-field".
 
-### musebase-coordination (scenes/presets)
+### musebase-coordination (scenes/musebase-coordination-scene)
 <SceneCanvas scene="musebase-coordination" />
 MUSEBASE COORDINATION — a central core with four module clusters (scheduling, communication, records, payment) orbiting on a wide ring;
 
-### node-compression (scenes/presets)
+### node-compression (scenes/node-compression-scene)
 <SceneCanvas scene="node-compression" />
 NODE COMPRESSION — scattered nodes breathe inward to a centred ordered ring lattice then disperse; connector lines thicken and brighten at peak compression, red core.
 
-### orbital-command (scenes/presets)
+### orbital-command (scenes/orbital-command-scene)
 <SceneCanvas scene="orbital-command" />
 ORBITAL COMMAND — a single command ring of evenly spaced route nodes with short packets routing along inter-node chords and a pulsing accent core.
 
-### permission-orbit (scenes/presets)
+### permission-orbit (scenes/permission-orbit-scene)
 <SceneCanvas scene="permission-orbit" />
 PERMISSION ORBIT — role/permission nodes orbit a central lock core on three concentric rings, each rotating at its own rate; a thin radial connector to a node blinks red as the node sweeps past the vertical "grant" axis.
 
-### polar-status (scenes/presets)
+### polar-status (scenes/polar-status-scene)
 <SceneCanvas scene="polar-status" />
 POLAR STATUS — a single instrument dial: a radial tick gauge with a red arc that fills to a slowly drifting setpoint, satellite readout dots on an outer ring, and a thin sweeping indicator needle. Pointer nudges the setpoint.
 
-### privacy-quiet-grid (scenes/presets)
+### privacy-quiet-grid (scenes/privacy-quiet-grid-scene)
 <SceneCanvas scene="privacy-quiet-grid" />
 PRIVACY QUIET GRID — a calm legal-page grid: a slow faint line grid, an occasional soft scan band drifting through long pauses, and a few slow-drifting tick marks that tick faintly red at their dwell points.
 
-### radar-cutaway (scenes/presets)
+### radar-cutaway (scenes/radar-cutaway-scene)
 <SceneCanvas scene="radar-cutaway" />
 RADAR CUTAWAY — a quarter radar anchored to the bottom-left corner: range rings and bearing spokes clipped to a 90deg wedge, a sweeping arm that paints contacts red as it crosses them, with blips that bloom then fade behind the sweep.
 
-### radial-audio-core (scenes/presets)
+### radial-audio-core (scenes/radial-audio-core-scene)
 <SceneCanvas scene="radial-audio-core" />
 RADIAL AUDIO CORE — a centred radial spectrum. drawRadialBars fans out from a white core ring, driven by live audio.bands (idle procedural when silent). Loud beats spawn outward-expanding pulse rings;
 
-### redacted-timeline-branch (scenes/presets)
+### redacted-timeline-branch (scenes/redacted-timeline-branch-scene)
 <SceneCanvas scene="redacted-timeline-branch" />
 REDACTED TIMELINE BRANCH — a horizontal timeline spine with ticking time markers;
 
-### research-blackout (scenes/presets)
+### research-blackout (scenes/research-blackout-scene)
 <SceneCanvas scene="research-blackout" />
 RESEARCH BLACKOUT — rows of redacted/blacked-out bars over a dark field; a slow horizontal scan band sweeps across, momentarily exposing bars it passes, while rare cells flicker a partial red reveal. Mostly dark and ominous.
 
-### scheduling-grid (scenes/presets)
+### scheduling-grid (scenes/scheduling-grid-scene)
 <SceneCanvas scene="scheduling-grid" />
 SCHEDULING GRID — an abstract week planner: vertical lanes split by horizontal time rows, booking blocks of varying length fade in and out across the lanes, and a vertical "now" line sweeps left->right lighting blocks it crosses;
 
-### secure-boundary (scenes/presets)
+### secure-boundary (scenes/secure-boundary-scene)
 <SceneCanvas scene="secure-boundary" />
 SECURE BOUNDARY — a central protected zone ringed by a slowly rotating dashed perimeter with a single accent gate aperture; access nodes drift in from outside and either thread the gate into the core or deflect off the wall.
 
-### signal-spectrum-field (scenes/presets)
+### signal-spectrum-field (scenes/signal-spectrum-field-scene)
 <SceneCanvas scene="signal-spectrum-field" />
 Canvas scene "signal-spectrum-field".
 
-### split-prism (scenes/presets)
+### split-prism (scenes/split-prism-scene)
 <SceneCanvas scene="split-prism" />
 SPLIT PRISM — the field sliced by several parallel diagonal seams whose offsets drift; each pane carries a faint distinct texture (fine lines / dot lattice / blank), and a bright edge highlight runs along the seams.
 
-### status-pulse-grid (scenes/presets)
+### status-pulse-grid (scenes/status-pulse-grid-scene)
 <SceneCanvas scene="status-pulse-grid" />
 STATUS PULSE GRID — a system monitor matrix of square status tiles; diagonal activation waves sweep across, lighting tiles as they pass; most tiles sit dim, a sparse few latch to a red "alert" state. Pointer drags a local hot zone.
 
-### tooling-console (scenes/presets)
+### tooling-console (scenes/tooling-console-scene)
 <SceneCanvas scene="tooling-console" />
 TOOLING CONSOLE — a faint terminal: a prompt with a blinking caret, left-aligned mono glyph lines that type in char-by-char, and a command-palette box that slides in from the right then retracts, its top entry highlighted red.
 
-### topology-pulse (scenes/presets)
+### topology-pulse (scenes/topology-pulse-scene)
 <SceneCanvas scene="topology-pulse" />
 TOPOLOGY PULSE — horizontal topographic contour lines crossed by a bright radial pulse ring that expands from a slowly drifting emitter, lifting nearby contours.
 
-### transaction-wave (scenes/presets)
+### transaction-wave (scenes/transaction-wave-scene)
 <SceneCanvas scene="transaction-wave" />
 TRANSACTION WAVE — a commerce throughput ticker: transaction spikes erupt upward from a baseline at varying heights, a slow cumulative line climbs across, faint value gridlines behind. Markets/throughput shape language, no full grid.
 
-### trigger-action-pulse (scenes/presets)
+### trigger-action-pulse (scenes/trigger-action-pulse-scene)
 <SceneCanvas scene="trigger-action-pulse" />
 TRIGGER ACTION PULSE — trigger nodes on the left fire pulses along rule-lines (some branching) to action nodes on the right, which flash red on arrival; a cause-and-effect automation rhythm.
 
-### unknown-silhouette (scenes/presets)
+### unknown-silhouette (scenes/unknown-silhouette-scene)
 <SceneCanvas scene="unknown-silhouette" />
 UNKNOWN SILHOUETTE — a large blacked-out irregular polygon mass sits centre, breathing slowly with a faint rim and rare red edge leaks; a sparse corner-bracket scanning frame and a column of redacted readout ticks surround it.
 
-### workflow-river (scenes/presets)
+### workflow-river (scenes/workflow-river-scene)
 <SceneCanvas scene="workflow-river" />
 WORKFLOW RIVER — many near-parallel curved streamlines drifting left-to-right like a braided river, with directional flow particles riding the exact curves at varying per-lane speed; sparse red marks the leading current.
 
-### redaction-matrix (scenes/base)
+### redaction-matrix (scenes/redaction-matrix)
 <SceneCanvas scene="redaction-matrix" />
 A field of black metadata bars with a scan line that briefly "decrypts" the bars it passes over — classified / redacted mood.
 
-### signal-wave (scenes/base)
+### signal-wave (scenes/signal-wave)
 <SceneCanvas scene="signal-wave" />
 Oscilloscope signal — a centered horizontal waveform of summed sines that scrolls continuously over a faint grid, flanked by two fainter secondary waves, with a red leading dot tracing the main trace.
 
-### spline-ribbon (scenes/base)
+### spline-ribbon (scenes/spline-ribbon)
 <SceneCanvas scene="spline-ribbon" />
 Flowing bezier ribbons drifting across the field — a data stream.
 
-### timeline-pulse (scenes/base)
+### timeline-pulse (scenes/timeline-pulse)
 <SceneCanvas scene="timeline-pulse" />
 A horizontal baseline through evenly spaced nodes. A bright red pulse sweeps left-to-right repeatedly, igniting each node as it passes. Faint vertical ticks drop beneath every node; the line itself is faint white.
 
-### topographic-lines (scenes/base)
+### topographic-lines (scenes/topographic-lines)
 <SceneCanvas scene="topographic-lines" />
 Flowing contour / topology lines that breathe like terrain.
 
-### vector-compass (scenes/base)
+### vector-compass (scenes/vector-compass)
 <SceneCanvas scene="vector-compass" />
 Vector direction field: a fixed grid of short arrow segments whose angles track flowAngle(x,y,t) and rotate smoothly, like compasses leaning into an invisible current. Faint white, sparse red. Cells are static;
 
-### voronoi-cell (scenes/base)
+### voronoi-cell (scenes/voronoi-cell)
 <SceneCanvas scene="voronoi-cell" />
 Computational cell field — jittered sites drift and connect to their 2–3 nearest neighbours, approximating Voronoi cell walls without the cost of a full diagram. A few accent sites pulse red.
 
-### wave-interference (scenes/base)
+### wave-interference (scenes/wave-interference)
 <SceneCanvas scene="wave-interference" />
 Layered sine-wave interference field — calm, signal-like horizontal bands.
 
@@ -1416,15 +2235,15 @@ import { AreasExplorer } from 'hanoryx-components/signatures';
 Areas of work as a row of strips. The strip you point at (or focus, or tap) opens while its neighbours fold to a vertical label; on a phone the same set becomes a stack that opens downward.
 props: eyebrow, title, intro, areas, note
 
-### ArticleArt
-import { ArticleArt } from 'hanoryx-components/signatures';
-The hero object of a guide: its drawing, large. It draws itself in once, and again whenever you point at it.
-props: art, caption
-
 ### ArticleArtShape
 import { ArticleArtShape } from 'hanoryx-components/signatures';
 ArticleArtShape is an extracted page composition.
 props: art, className
+
+### ArticleArt
+import { ArticleArt } from 'hanoryx-components/signatures';
+The hero object of a guide: its drawing, large. It draws itself in once, and again whenever you point at it.
+props: art, caption
 
 ### AuditLog
 import { AuditLog } from 'hanoryx-components/signatures';
@@ -2484,6 +3303,11 @@ CentredOpening (click), TextAndShape (still), HalfAndHalf (still), FullBleed (st
 
 ## Stage
 
+### Ico (stage/parts)
+import { Ico } from 'hanoryx-components/stage';
+
+props: n, className=''
+
 ### Schematic (stage/parts)
 import { Schematic } from 'hanoryx-components/stage';
 
@@ -2516,11 +3340,6 @@ props: label, setup, tick, mode
 import { Specimen } from 'hanoryx-components/stage';
 A specimen: one component on show. The frame (its look is the page's `frame`, set on the stage as data-frame) carries a code, the name and how to use it (click, drag, hover, type, auto…).
 props: no, i, name, mode, slug, inert=false, children
-
-### Ico (stage/parts)
-import { Ico } from 'hanoryx-components/stage';
-
-props: n, className=''
 
 ### CanvasStage (stage/stages)
 import { CanvasStage } from 'hanoryx-components/stage';

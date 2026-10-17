@@ -46,6 +46,7 @@ function sizingLines(e) {
   const s = e.sizing?.measured ?? e.sizing;
   if (!s) return [];
   const out = [];
+  if (s.scope) out.push(`measurement scope: ${s.scope}`);
   if (s.behavior) out.push(`behavior: ${s.behavior}${{ fill: ' — takes its parent\'s width', capped: ' — follows the parent up to a maximum', intrinsic: ' — sizes to content, ignores the parent', fluid: ' — width varies with the parent' }[s.behavior] ? { fill: ' — takes its parent\'s width', capped: ' — follows the parent up to a maximum', intrinsic: ' — sizes to content, ignores the parent', fluid: ' — width varies with the parent' }[s.behavior] : ''}`);
   if (s.at) out.push('size by parent width: ' + Object.entries(s.at).map(([p, v]) => `${p}→${v.w}×${v.h}`).join('  '));
   if (s.at) { const last = Object.values(s.at).pop(); if (last?.h) out.push(`ratio at widest: ${(last.w / last.h).toFixed(2)}`); }

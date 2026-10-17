@@ -4,84 +4,166 @@
 
 Read first: AGENTS.md (rules), docs/sizing.md (sizes, ratios, padding), docs/layout-recipes.md (page skeletons). Then look components up with `npm run hx -- component <Name>` or in docs/generated/manifest.json.
 
-## Interface kit — import from 'hanoryx-components/kit' (116)
+## Interface kit — import from 'hanoryx-components/kit' (279)
 
 Accessible inputs, navigation, feedback, data, overlays, layout and chat, with composable parts and utility hooks.
 
-- Calendar [inputs] — A single-date calendar with roving focus, min/max bounds, month navigation and locale-aware labels.
-- Checkbox [inputs] — A checkbox with room for a hint. It is a real input — the square is drawn beside it — and it supports the indeterminate “some of them” state of a parent box.
-- Combobox [inputs] — An editable combobox: type to filter, move through the matches with the arrow keys, choose with Enter. Focus stays in the input; the highlighted option is named with aria-activedescendant.
-- DateInput [inputs] — Labelled native date input, plus local time, local date/time and paired date-range controls.
-- Field [inputs] — The label, hint and error that every field shares, wired up so a screen reader hears them. The control you put inside it receives its id, aria-describedby and aria-invalid.
-- FileDrop [inputs] — A drop zone that is also a file button: drag files onto it, or press it and choose. It lists what was picked and uploads nothing itself.
-- NumberField [inputs] — A number with a minus and a plus either side. The value is clamped to its range when you leave the field, never while you are typing.
-- PasswordField [inputs] — A password field with a show/hide toggle and a rough strength meter. Everything happens in the page; nothing is sent anywhere.
-- RadioGroup [inputs] — A group of real radio buttons under a legend: the arrow keys move and choose, Tab leaves the group, and a screen reader says “2 of 4”.
-- RangeField [inputs] — A slider: the native range input, with its value written beside the label and a text version (“240 ms”) for assistive technology.
-- RichTextEditor [inputs] — A compact editor for bold, italic, underline and code, with sanitized HTML values and plain-text paste.
-- SearchField [inputs] — A search box with a clear button and, when you give it a count, a result count that is read out as it changes.
-- Segmented [inputs] — A short row of exclusive choices drawn as one control, with an ink that glides to the chosen one. Radio buttons underneath.
-- SelectField [inputs] — A native select, styled. Native on purpose: the platform’s own keyboard handling, its picker on a phone and its screen-reader behaviour come for free.
-- Switch [inputs] — An on/off switch for a setting that takes effect at once. A button with role switch, so Space and Enter flip it and a screen reader says “on” or “off”.
-- TagInput [inputs] — Type a word, press Enter or a comma and it becomes a tag. Each tag has its own remove button, and adding or removing is announced.
-- TextArea [inputs] — A multi-line field that counts. Going over the limit turns the count red and marks the field invalid; it never cuts off what you typed.
-- TextField [inputs] — A single-line text field with a label, hint and error, and an optional prefix and suffix inside the border for a currency, a unit or an @.
-- Breadcrumbs [navigation] — Where you are, as a trail back up. The last item is the current page and is not a link.
-- DropdownMenu [navigation] — A button that opens a menu of actions — not a navigation; use links for that. The ARIA menu-button pattern, with typeahead.
-- OnThisPage [navigation] — An “on this page” list that follows the reader: the entry for the section nearest the top is marked, and pressing one scrolls there and moves focus to it.
-- Pagination [navigation] — Page buttons with the first, the last and the neighbours of the current one, “…” for what is skipped, and previous and next that stop at the ends.
-- SideNav [navigation] — A vertical navigation in groups that fold. A folded group is out of the tab order and the reading order, not only out of sight.
-- Stepper [navigation] — The steps of something with an order, and which one you are on. Done steps show a tick, the current one is aria-current, and each state is written out for a screen reader.
-- Tabs [navigation] — Tabs that change a panel of content, as the ARIA pattern asks: one tab stop for the list, arrow keys move between tabs and show the panel at once.
-- Toolbar [navigation] — A row of tool buttons that is one tab stop; the arrow keys move between the tools. A tool can be a toggle, with aria-pressed.
+- Button [action] — The existing Hanoryx button, also exported from the action family.
+- ButtonGroup [action] — A named group of related actions with wrapping spacing.
+- ContextMenu [action] — Context actions available through right-click, Shift+F10 and a visible menu button.
+- ContextMenuItem [action] — An action within ContextMenu, sharing dropdown selection and focus behavior.
+- DropdownMenu [action] — A button that opens a menu of actions — not a navigation; use links for that. The ARIA menu-button pattern, with typeahead.
+- DropdownMenuGroup [action] — A named group of menu actions.
+- DropdownMenuItem [action] — A named menu action; disabled items are skipped during keyboard navigation.
+- Link [action] — Internal navigation uses the router; href handles external URLs.
+- MoreMenu [action] — An end-aligned overflow menu with a visible, accessible action label.
+- Segmented [action] — A short row of exclusive choices drawn as one control, with an ink that glides to the chosen one. Radio buttons underneath.
+- SegmentedControlItem [action] — A radio choice inside SegmentedControl.
+- Toolbar [action] — A row of tool buttons that is one tab stop; the arrow keys move between the tools. A tool can be a toggle, with aria-pressed.
+- Chat [chat] — Composable conversation regions, transcript items and a message composer with asynchronous send handling.
+- ChatComposer [chat] — A controlled or uncontrolled composer. Sending calls the host; no request is made here.
+- ChatMessage [chat] — One transcript item; author names are visible, and role is never only a colour.
+- ChatComposerTokenElement [chat] — An attachment or context token with an optional named remove action.
+- Card [container] — A surface that groups related content, in four variants. The title is a heading whose level you choose, so the card fits the outline of the page it is on.
+- ClickableCard [container] — A whole-card button or routed link. Its children must not contain interactive descendants.
+- Carousel [container] — A manual sequence of slides with named previous and next controls and a position status.
+- Collapsible [container] — Collapsible is the discoverable family name for Disclosure; both names share the same implementation and props.
+- CollapsibleGroup [container] — A named collection of independent collapsible sections.
+- Disclosure [container] — One section that opens and closes — a question and its answer, a “more detail”. The closed body is out of the tab order and the reading order, not only out of sight.
+- useCollapsible [container] — Open state plus triggerProps and contentProps wired to one generated content id.
+- Avatar [content] — A person, a team or a system as its initials in a circle or square. No photographs, on purpose: initials need no consent, load instantly and cannot be the wrong face.
+- AvatarGroupOverflow [content] — A labelled count of people omitted from an avatar group.
+- Callout [content] — A remark set apart from the text around it: a note, a tip, a warning. The kind is written out as a word as well as shown by colour and icon.
+- Chart [content] — A responsive SVG plotting surface with a title, description, caption and optional legend.
+- Chip [content] — A compact pill that can be plain information, a toggle (give it onClick; selected says whether it is on) and/or removable (give it onRemove).
+- CodeBlock [content] — A block of code with an optional file name, light colouring and a copy button. The colour is a nicety: every token is also plain text, so copying gives exactly what you see.
+- EmptyState [content] — What a list or a page says when there is nothing in it: why it is empty, and the one thing to do next. An empty state with no way forward is a dead end.
+- Figure [content] — Something visual with a caption. The caption belongs to the figure, so a screen reader reads the two together.
+- Heading [content] — A heading in the serif voice. `level` is the HTML element (for the outline); `size` is how it looks, from the type scale — display, hero, h1–h4. New in this library.
+- Indicator [content] — A named status with a decorative dot.
+- Code [content] — Inline code in the monospace voice.
+- Markdown [content] — Markdown rendered as React nodes, with raw HTML displayed as text and executable links rejected.
+- Prose [content] — A reading column. Wrap plain HTML — headings, paragraphs, lists, links, code, quotes — and it is typeset for reading: about 68 characters wide, generous leading, serif headings.
+- Blockquote [content] — Blockquote is the discoverable family name for Quote; both names share the same implementation and props.
+- Quote [content] — A pull quote with its source: a real blockquote inside a figure, the attribution as the caption. Only put words here that someone really said.
+- Text [content] — Text in one of the three voices: body, lead, small, caption, or the mono uppercase label. Tone is an opacity of white (strong, default, dim) or red. New in this library.
+- Timestamp [content] — An ISO timestamp formatted using an explicit locale and optional Intl date options.
+- VegaChart [content] — An adapter for a host-supplied Vega renderer, with cleanup and visible asynchronous errors.
 - Alert [feedback] — A message in the flow of the page. Information and success speak politely; warnings and errors interrupt. The tone is never carried by colour alone.
+- Badge [feedback] — A short label for the state or kind of a thing: New, Beta, Deprecated. The word carries the meaning; the tone only reinforces it.
 - Banner [feedback] — A notice that runs the width of its container, for something about the whole page or site rather than one field. It may carry one action and may be dismissed.
-- EmptyState [feedback] — What a list or a page says when there is nothing in it: why it is empty, and the one thing to do next. An empty state with no way forward is a dead end.
 - Meter [feedback] — A gauge for a quantity inside a known range. The colour changes in the low and high zones and the zone is also written out for anyone who cannot see the colour.
 - ProgressBar [feedback] — How far along something is. With a value it announces its percentage; without one it is indeterminate and says it is working.
 - Skeleton [feedback] — The shape of content that has not arrived yet, holding its space so nothing jumps when it does. Decorative: hidden from assistive technology.
 - Spinner [feedback] — A small “working on it” ring. It is a status message first — the label is announced — and a picture second. It stops turning for visitors who ask for less motion.
 - StatusDot [feedback] — A coloured dot with its state spelled out beside it, so the colour is never the only signal. A live one can breathe.
-- ToastProvider [feedback] — Brief messages in a corner that leave by themselves. Announced politely, never take focus, pause while the pointer or keyboard is on them, and can always be dismissed.
-- Avatar [data] — A person, a team or a system as its initials in a circle or square. No photographs, on purpose: initials need no consent, load instantly and cannot be the wrong face.
-- Badge [data] — A short label for the state or kind of a thing: New, Beta, Deprecated. The word carries the meaning; the tone only reinforces it.
-- BarList [data] — Bars you can read as a list: each row has its label, a bar and the figure, so the values are text first and a picture second. The largest is picked out in red.
-- Chip [data] — A compact pill that can be plain information, a toggle (give it onClick; selected says whether it is on) and/or removable (give it onRemove).
-- CodeBlock [data] — A block of code with an optional file name, light colouring and a copy button. The colour is a nicety: every token is also plain text, so copying gives exactly what you see.
-- DataTable [data] — A table you can sort and select from. A sortable column’s header is a button and the th carries aria-sort. It scrolls sideways inside a focusable region on a narrow screen.
-- DescriptionList [data] — Terms and what they mean, or labels and their values — the right element for a fact sheet. A real dl, so a screen reader pairs each term with its detail.
-- Sparkline [data] — A tiny line chart with no axes, for “which way is it going”. It is an image with a text description — range, first and last value — so the shape is never the only way to learn it.
-- Stat [data] — One number, large, with its label above and, if you have it, how it moved. The change is written as words for a screen reader; the arrow and colour are decoration.
-- Table [data] — Semantic table parts with optional sortable headers and a selected-row action group.
-- Timeline [data] — Things in the order they happen, down a line. It is an ordered list, so the order is announced. This site’s own timeline is told in undated phases — pass words, not dates, unless you have them.
-- Tree [data] — An expandable tree — files, categories, an outline — following the ARIA tree-view pattern: one tab stop, arrow keys through what is visible.
-- useTableSortable [data] — { rows, sort, setSort, toggleSort(key) }.
-- ConfirmDialog [overlays] — “Are you sure?” done properly: the title says what will happen, the buttons say what they do, and for something that cannot be undone the safe choice has focus.
-- Dialog [overlays] — A modal dialog: it takes over the screen until it is dealt with. Focus moves in and is trapped, Escape and the backdrop close it, the page behind stops scrolling and focus returns to what opened it.
-- Drawer [overlays] — A dialog that slides in from an edge and runs the full height — for a filter panel or a record’s detail, where the page behind still gives context.
-- HoverCard [overlays] — A preview card for a link: hover or focus the link and a little more about where it goes appears, and stays while the pointer is on it. It must only ever add.
-- Popover [overlays] — A panel that opens under a button and holds anything — text, a small form, a few links. It is not modal: focus stays where it is and Tab moves on into the panel.
-- Tooltip [overlays] — A short description that appears beside a control on hover or keyboard focus, after a beat so it does not flicker. It adds detail; it never replaces a label.
-- AspectRatio [content] — Reserves a box of a fixed shape and fills it with its child, so an image, a video or a chart has its room before it loads and nothing below it jumps.
-- Callout [content] — A remark set apart from the text around it: a note, a tip, a warning. The kind is written out as a word as well as shown by colour and icon.
-- Card [content] — A surface that groups related content, in four variants. The title is a heading whose level you choose, so the card fits the outline of the page it is on.
-- Center [content] — A capped column, centred in its parent — for a form, a card or a short passage. Fills the parent on a phone, stops at `max` on a desktop. New in this library.
-- Cluster [content] — Children in a row that wraps when it runs out of room — buttons, tags, links.
-- Container [content] — The page width: centred, 1360 px max (gutters included), with a fluid 20–80 px gutter. size="text" narrows it to a 760 px reading column. New in this library — the same as the global `.container` class.
-- Disclosure [content] — One section that opens and closes — a question and its answer, a “more detail”. The closed body is out of the tab order and the reading order, not only out of sight.
-- Divider [content] — A line between things. Without a label it is a plain thematic break; with one it reads as a section break (“or”, “Later”) and is a separator, not a heading.
-- Figure [content] — Something visual with a caption. The caption belongs to the figure, so a screen reader reads the two together.
-- Grid [content] — Children in as many equal columns as fit, none narrower than a minimum. There is no breakpoint to maintain: on a phone the minimum is wider than the screen, so you get one column.
-- Heading [content] — A heading in the serif voice. `level` is the HTML element (for the outline); `size` is how it looks, from the type scale — display, hero, h1–h4. New in this library.
-- Prose [content] — A reading column. Wrap plain HTML — headings, paragraphs, lists, links, code, quotes — and it is typeset for reading: about 68 characters wide, generous leading, serif headings.
-- Quote [content] — A pull quote with its source: a real blockquote inside a figure, the attribution as the caption. Only put words here that someone really said.
-- Resizable [content] — Two resizable panels with a pointer- and keyboard-operated separator.
-- Section [content] — A page block's outer shell: the vertical rhythm between blocks (80–176 px, or 48–96 px with size="sm"). New in this library — the same as the global `.section` class.
-- Stack [content] — Children in a column with an even gap taken from the spacing tokens.
-- Text [content] — Text in one of the three voices: body, lead, small, caption, or the mono uppercase label. Tone is an opacity of white (strong, default, dim) or red. New in this library.
-- VisuallyHidden [content] — Text for assistive technology that is not drawn: the “Close” on an icon-only button, the “(current page)” after a link. It stays in the reading order and out of the layout.
-- useResizable [content] — Percentage split state and separator bindings for pointer and keyboard resizing.
-- Chat [chat] — Composable conversation regions, transcript items and a message composer with asynchronous send handling.
+- Calendar [form-controls] — A single-date calendar with roving focus, min/max bounds, month navigation and locale-aware labels.
+- Checkbox [form-controls] — A checkbox with room for a hint. It is a real input — the square is drawn beside it — and it supports the indeterminate “some of them” state of a parent box.
+- CheckboxInput [form-controls] — CheckboxInput is the discoverable family name for Checkbox; both names share the same implementation and props.
+- CheckboxList [form-controls] — A fieldset and legend for related checkboxes.
+- BaseTypeahead [form-controls] — BaseTypeahead is the discoverable family name for Combobox; both names share the same implementation and props.
+- Combobox [form-controls] — An editable combobox: type to filter, move through the matches with the arrow keys, choose with Enter. Focus stays in the input; the highlighted option is named with aria-activedescendant.
+- Typeahead [form-controls] — Typeahead is the discoverable family name for Combobox; both names share the same implementation and props.
+- useCombobox [form-controls] — Headless combobox bindings, filtered options, active descendant and selection state.
+- useTypeahead [form-controls] — The headless combobox hook under its typeahead family name.
+- DateInput [form-controls] — Labelled native date input, plus local time, local date/time and paired date-range controls.
+- Field [form-controls] — The label, hint and error that every field shares, wired up so a screen reader hears them. The control you put inside it receives its id, aria-describedby and aria-invalid.
+- FieldLabel [form-controls] — A label associated with a control through htmlFor, with an optional required indicator.
+- FileDrop [form-controls] — A drop zone that is also a file button: drag files onto it, or press it and choose. It lists what was picked and uploads nothing itself.
+- FileInput [form-controls] — FileInput is the discoverable family name for FileDrop; both names share the same implementation and props.
+- NumberField [form-controls] — A number with a minus and a plus either side. The value is clamped to its range when you leave the field, never while you are typing.
+- NumberInput [form-controls] — NumberInput is the discoverable family name for NumberField; both names share the same implementation and props.
+- PasswordField [form-controls] — A password field with a show/hide toggle and a rough strength meter. Everything happens in the page; nothing is sent anywhere.
+- PowerSearch [form-controls] — Search text plus structured select filters, submitted to the host as query and filters.
+- RadioGroup [form-controls] — A group of real radio buttons under a legend: the arrow keys move and choose, Tab leaves the group, and a screen reader says “2 of 4”.
+- RadioList [form-controls] — RadioList is the discoverable family name for RadioGroup; both names share the same implementation and props.
+- RangeField [form-controls] — A slider: the native range input, with its value written beside the label and a text version (“240 ms”) for assistive technology.
+- Slider [form-controls] — Slider is the discoverable family name for RangeField; both names share the same implementation and props.
+- RichTextEditor [form-controls] — A compact editor for bold, italic, underline and code, with sanitized HTML values and plain-text paste.
+- SearchField [form-controls] — A search box with a clear button and, when you give it a count, a result count that is read out as it changes.
+- SelectField [form-controls] — A native select, styled. Native on purpose: the platform’s own keyboard handling, its picker on a phone and its screen-reader behaviour come for free.
+- Selector [form-controls] — Selector is the discoverable family name for SelectField; both names share the same implementation and props.
+- MultiSelector [form-controls] — A native multi-select with controlled or uncontrolled selected values.
+- useMultiCombobox [form-controls] — Combobox bindings with independent selected values and a remove action.
+- Switch [form-controls] — An on/off switch for a setting that takes effect at once. A button with role switch, so Space and Enter flip it and a screen reader says “on” or “off”.
+- TagInput [form-controls] — Type a word, press Enter or a comma and it becomes a tag. Each tag has its own remove button, and adding or removing is announced.
+- Tokenizer [form-controls] — Tokenizer is the discoverable family name for TagInput; both names share the same implementation and props.
+- TextArea [form-controls] — A multi-line field that counts. Going over the limit turns the count red and marks the field invalid; it never cuts off what you typed.
+- TextField [form-controls] — A single-line text field with a label, hint and error, and an optional prefix and suffix inside the border for a currency, a unit or an @.
+- TextInput [form-controls] — TextInput is the discoverable family name for TextField; both names share the same implementation and props.
+- AppShell [layout] — Application header, navigation, content and footer slots in a responsive frame.
+- useAppShellMobile [layout] — True when the viewport matches the app shell mobile breakpoint.
+- AspectRatio [layout] — Reserves a box of a fixed shape and fills it with its child, so an image, a video or a chart has its room before it loads and nothing below it jumps.
+- Center [layout] — A capped column, centred in its parent — for a form, a card or a short passage. Fills the parent on a phone, stops at `max` on a desktop. New in this library.
+- Cluster [layout] — Children in a row that wraps when it runs out of room — buttons, tags, links.
+- Container [layout] — The page width: centred, 1360 px max (gutters included), with a fluid 20–80 px gutter. size="text" narrows it to a 760 px reading column. New in this library — the same as the global `.container` class.
+- Divider [layout] — A line between things. Without a label it is a plain thematic break; with one it reads as a section break (“or”, “Later”) and is a separator, not a heading.
+- Grid [layout] — Children in as many equal columns as fit, none narrower than a minimum. There is no breakpoint to maintain: on a phone the minimum is wider than the screen, so you get one column.
+- Layout [layout] — A wrapping layout frame for full-width headers and footers, content and side panels.
+- Resizable [layout] — Two resizable panels with a pointer- and keyboard-operated separator.
+- useResizable [layout] — Percentage split state and separator bindings for pointer and keyboard resizing.
+- Section [layout] — A page block's outer shell: the vertical rhythm between blocks (80–176 px, or 48–96 px with size="sm"). New in this library — the same as the global `.section` class.
+- Stack [layout] — Children in a column with an even gap taken from the spacing tokens.
+- BreadcrumbItem [navigation] — A routed breadcrumb item or the current page label.
+- Breadcrumbs [navigation] — Where you are, as a trail back up. The last item is the current page and is not a link.
+- OnThisPage [navigation] — An “on this page” list that follows the reader: the entry for the section nearest the top is marked, and pressing one scrolls there and moves focus to it.
+- Outline [navigation] — Outline is the discoverable family name for OnThisPage; both names share the same implementation and props.
+- Pagination [navigation] — Page buttons with the first, the last and the neighbours of the current one, “…” for what is skipped, and previous and next that stop at the ends.
+- SideNav [navigation] — A vertical navigation in groups that fold. A folded group is out of the tab order and the reading order, not only out of sight.
+- SideNavSection [navigation] — A natively collapsible navigation section containing list items.
+- Step [navigation] — A sequence item with its completed, current or upcoming state written as text.
+- Stepper [navigation] — The steps of something with an order, and which one you are on. Done steps show a tick, the current one is aria-current, and each state is written out for a screen reader.
+- TabList [navigation] — A roving-focus tab strip. Supply tabs for automatic panels or children for host-managed panels.
+- Tabs [navigation] — Tabs that change a panel of content, as the ARIA pattern asks: one tab stop for the list, arrow keys move between tabs and show the panel at once.
+- TopNav [navigation] — A named, wrapping primary navigation region.
+- BottomSheet [overlay] — A modal dialog anchored to the bottom edge, retaining focus trapping and restoration.
+- CommandPalette [overlay] — A searchable modal command picker with disabled actions, keyboard traversal and empty results.
+- CommandPaletteInput [overlay] — The labelled search input inside CommandPalette.
+- AlertDialog [overlay] — AlertDialog is the discoverable family name for ConfirmDialog; both names share the same implementation and props.
+- ConfirmDialog [overlay] — “Are you sure?” done properly: the title says what will happen, the buttons say what they do, and for something that cannot be undone the safe choice has focus.
+- Dialog [overlay] — A modal dialog: it takes over the screen until it is dealt with. Focus moves in and is trapped, Escape and the backdrop close it, the page behind stops scrolling and focus returns to what opened it.
+- useImperativeDialog [overlay] — State and dialogProps for showing a dialog from an event handler.
+- Drawer [overlay] — A dialog that slides in from an edge and runs the full height — for a filter panel or a record’s detail, where the page behind still gives context.
+- HoverCard [overlay] — A preview card for a link: hover or focus the link and a little more about where it goes appears, and stays while the pointer is on it. It must only ever add.
+- useHoverCard [overlay] — Hover and focus preview bindings with a grace period when moving into the card.
+- Lightbox [overlay] — A modal app-supplied image viewer with captions and previous and next controls.
+- Overlay [overlay] — The standard focus-managed dialog under a general overlay family name.
+- Popover [overlay] — A panel that opens under a button and holds anything — text, a small form, a few links. It is not modal: focus stays where it is and Tab moves on into the panel.
+- usePopover [overlay] — Headless popover open state with connected trigger and content bindings.
+- Toast [overlay] — A persistent inline notification with an optional named dismiss action.
+- ToastProvider [overlay] — Brief messages in a corner that leave by themselves. Announced politely, never take focus, pause while the pointer or keyboard is on them, and can always be dismissed.
+- useToast [overlay] — The ToastProvider push function for timed notifications.
+- Tooltip [overlay] — A short description that appears beside a control on hover or keyboard focus, after a beat so it does not flicker. It adds detail; it never replaces a label.
+- useTooltip [overlay] — Delayed hover and focus tooltip bindings with Escape dismissal and timer cleanup.
+- BarList [table-list] — Bars you can read as a list: each row has its label, a bar and the figure, so the values are text first and a picture second. The largest is picked out in red.
+- DataTable [table-list] — A table you can sort and select from. A sortable column’s header is a button and the th carries aria-sort. It scrolls sideways inside a focusable region on a narrow screen.
+- DescriptionList [table-list] — Terms and what they mean, or labels and their values — the right element for a fact sheet. A real dl, so a screen reader pairs each term with its detail.
+- MetadataList [table-list] — MetadataList is the discoverable family name for DescriptionList; both names share the same implementation and props.
+- List [table-list] — A semantic ordered or unordered list with consistent item spacing.
+- Sparkline [table-list] — A tiny line chart with no axes, for “which way is it going”. It is an image with a text description — range, first and last value — so the shape is never the only way to learn it.
+- Stat [table-list] — One number, large, with its label above and, if you have it, how it moved. The change is written as words for a screen reader; the arrow and colour are decoration.
+- Table [table-list] — Semantic table parts with optional sortable headers and a selected-row action group.
+- useTableSortable [table-list] — { rows, sort, setSort, toggleSort(key) }.
+- Timeline [table-list] — Things in the order they happen, down a line. It is an ordered list, so the order is announced. This site’s own timeline is told in undated phases — pass words, not dates, unless you have them.
+- Tree [table-list] — An expandable tree — files, categories, an outline — following the ARIA tree-view pattern: one tab stop, arrow keys through what is visible.
+- TreeList [table-list] — TreeList is the discoverable family name for Tree; both names share the same implementation and props.
+- useFocusTrap [utility] — A root ref that traps Tab within enabled, visible descendants and restores prior focus on cleanup.
+- useListFocus [utility] — Ref and keydown bindings that move through visible, enabled list items.
+- useAnnounce [utility] — Message state, announce and polite live-region props; render the message in that region.
+- useClipboard [utility] — An asynchronous clipboard copy action with idle, copied and error states.
+- useMergedRefs [utility] — A callback ref that assigns the same DOM node to supplied function and object refs.
+- useKeyboardHint [utility] — Whether a fine, hover-capable pointer is available for showing desktop keyboard hints.
+- InternationalizationProvider [utility] — Locale and message dictionary context with a scoped language attribute.
+- useLocale [utility] — The current internationalization locale.
+- LinkProvider [utility] — An optional application link component for internal kit navigation.
+- useContainerReveal [utility] — The shared visibility observer under its container-reveal family name; returns ref and visible.
+- useEntryAnimation [utility] — A visibility ref and transform/opacity entry styles, settled for reduced motion.
+- useStreamingText [utility] — A progressively revealed string that pauses off screen, stops when complete and settles for reduced motion.
+- useOverflow [utility] — A root ref and horizontal, vertical, start and end overflow state observed across size/content changes.
+- useScrollLock [utility] — Locks document scrolling while active using the shared, nested-safe scroll lock.
+- Theme [utility] — A scoped theme attribute and context; host token overrides define its appearance.
+- useTheme [utility] — The current theme name.
+- VisuallyHidden [utility] — Text for assistive technology that is not drawn: the “Close” on an icon-only button, the “(current page)” after a link. It stays in the reading order and out of the layout.
 
 ## Foreground toolkit — import from 'hanoryx-components/fx' (18)
 
@@ -117,16 +199,10 @@ The site's own button, pill, section header and data panel.
 - Pill — A small mono tag or status chip. `dot` adds a live indicator; `icon` a leading icon.
 - SectionHeader — Eyebrow + serif title + optional intro, with a staged reveal. The head of nearly every block.
 
-## Page — import from 'hanoryx-components/page' (27)
+## Page — import from 'hanoryx-components/page' (28)
 
 The data-driven page: hero, twenty block types and the template that renders them.
 
-- PageHero [template] — The scene-backed full-screen hero: a pointer-reactive headline, an intro, actions and — when `hero.aside` names a signature — an interactive object in the right half.
-- HeroTitle [template] — The hero headline: each word rises out of a clipped line (staggered), then the words react to the pointer.
-- NotFound [template] — "Signal lost": the 404 echoes the address that was asked for and lists the real pages nearest to it, ranked by spelling from the navigation directory.
-- PageBlock [template] — The block dispatcher: draws one block from `{ type, … }`. Built-in types render directly; the data-first kinds are lazy chunks.
-- PageTemplate [template] — Renders a whole page from a data object: a scene-backed hero, then each block in order, plus a scroll rail for blocks that declare `anchor` + `railLabel`. Sets the document title and wraps the page in a transition.
-- TemplatePage [template] — A route element for a data-driven page: loads the page by key through the registered `loadPage` source (its own code-split chunk), suspends on the route fallback, and shows the 404 when there is no data.
 - CalloutBlock [blocks] — One remark set apart from the text: a note, a tip, a warning.
 - CardsBlock [blocks] — A grid, rail or bento of cards, each with a glyph that redraws, linking to a page.
 - ChecklistBlock [blocks] — A list to tick through, held in the page only.
@@ -148,6 +224,12 @@ The data-driven page: hero, twenty block types and the template that renders the
 - TableBlock [blocks] — Records in rows and columns, sortable if you ask.
 - TabsBlock [blocks] — Several short views of one subject, one at a time.
 - TimelineBlock [blocks] — Things in the order they happen, down a line.
+- HeroTitle [template] — The hero headline: each word rises out of a clipped line (staggered), then the words react to the pointer.
+- PageHero [template] — The scene-backed full-screen hero: a pointer-reactive headline, an intro, actions and — when `hero.aside` names a signature — an interactive object in the right half.
+- NotFound [template] — "Signal lost": the 404 echoes the address that was asked for and lists the real pages nearest to it, ranked by spelling from the navigation directory.
+- PageBlock [template] — The block dispatcher: draws one block from `{ type, … }`. Built-in types render directly; the data-first kinds are lazy chunks.
+- PageTemplate [template] — Renders a whole page from a data object: a scene-backed hero, then each block in order, plus a scroll rail for blocks that declare `anchor` + `railLabel`. Sets the document title and wraps the page in a transition.
+- TemplatePage [template] — A route element for a data-driven page: loads the page by key through the registered `loadPage` source (its own code-split chunk), suspends on the route fallback, and shows the 404 when there is no data.
 
 ## Shell — import from 'hanoryx-components/shell' (25)
 
@@ -231,7 +313,7 @@ SceneCanvas, SectionScene, architectural-grid, blackout-silhouette, circuit-trac
 
 Page-specific interactive compositions: explorers, builders, matrices, maps, tools.
 
-AccordionList, ArchitectureExplorer, AreasExplorer, ArticleArt, ArticleArtShape, AuditLog, BasketAside, BoundaryMembrane, BoundaryReview, BrandBoard, BugCatcher, CapabilityMatrix, CaseDeck, ChronologyScrubber, ChronologyStrip, ClaimsLedger, ClauseFinder, ComponentBench, ComponentGallery, ConsoleComposer, ContactStudio, ContractDiff, ContrastChecker, CoordinationLab, CronExplainer, DataJourney, DataSlab, DecisionRecord, DocumentReader, DotField, DownloadShelf, EasingStudio, EngineAnatomy, EngineAside, EngineEditor, EnginePipeline, ExperienceStoryboard, FaqDesk, FrameBudget, GateWalk, GlossaryBrowser, HandoverPack, HiringPath, IdempotencyDemo, IdentityCard, InsightLibrary, IntegrationAtlas, KeyboardMap, KitIndex, LayerStack, LegalCentre, LicenceTable, LifecycleLine, LiveBudget, LiveStatus, LogoPlate, MiniEngine, NeedsFinder, NorthCompass, OpsFlow, OrbitNav, OrderPath, PageOutline, PermissionMatrix, PressKit, PrincipleStack, ProjectRhythm, ReadinessCheck, ReleaseNotes, ResearchBench, ResourceDesk, RuleChain, RunbookWalk, SceneLab, ServiceMap, SiteDirectory, SplitFlap, StackMap, StorageInspector, SurfaceCompare, SystemIndex, SystemMap, TensionDials, TokenInspector, ToolBench, ToolchainMap, TriggerCompare, TypeScaleTool, ViewShift, WorkPortals
+AccordionList, ArchitectureExplorer, AreasExplorer, ArticleArtShape, ArticleArt, AuditLog, BasketAside, BoundaryMembrane, BoundaryReview, BrandBoard, BugCatcher, CapabilityMatrix, CaseDeck, ChronologyScrubber, ChronologyStrip, ClaimsLedger, ClauseFinder, ComponentBench, ComponentGallery, ConsoleComposer, ContactStudio, ContractDiff, ContrastChecker, CoordinationLab, CronExplainer, DataJourney, DataSlab, DecisionRecord, DocumentReader, DotField, DownloadShelf, EasingStudio, EngineAnatomy, EngineAside, EngineEditor, EnginePipeline, ExperienceStoryboard, FaqDesk, FrameBudget, GateWalk, GlossaryBrowser, HandoverPack, HiringPath, IdempotencyDemo, IdentityCard, InsightLibrary, IntegrationAtlas, KeyboardMap, KitIndex, LayerStack, LegalCentre, LicenceTable, LifecycleLine, LiveBudget, LiveStatus, LogoPlate, MiniEngine, NeedsFinder, NorthCompass, OpsFlow, OrbitNav, OrderPath, PageOutline, PermissionMatrix, PressKit, PrincipleStack, ProjectRhythm, ReadinessCheck, ReleaseNotes, ResearchBench, ResourceDesk, RuleChain, RunbookWalk, SceneLab, ServiceMap, SiteDirectory, SplitFlap, StackMap, StorageInspector, SurfaceCompare, SystemIndex, SystemMap, TensionDials, TokenInspector, ToolBench, ToolchainMap, TriggerCompare, TypeScaleTool, ViewShift, WorkPortals
 
 ## Closers — import from 'hanoryx-components/closers' (86)
 
@@ -298,14 +380,14 @@ AltTextLab, AskDeck, AskTheSite, AutomationMath, BlockPicker, Bottleneck, Bundle
 
 The scroll-driven stages that present specimens, and the parts they share.
 
-- Schematic [parts] — 
+- Ico [parts] —
+- Schematic [parts] —
 - ShowcaseEnding [parts] — The page's last screen: the specimens filed by name (each one takes you back to it) and the two pages either side of this one in the showcase.
 - ShowcaseIndex [parts] — /showcase — the index of the showcase. An opening screen with a mosaic of every page; then the pages by chapter beside a pinned dial that turns to the chapter being read; then every stage, each with the pages that use it.
 - ShowcaseIntro [parts] — The opening screen of a showcase page: a Canvas scene behind the page's name, what it holds (how many specimens, how it moves, how they are framed), a small diagram of the stage, and a way to see every specimen at once.
-- ShowcasePage [parts] — 
+- ShowcasePage [parts] —
 - Sim [parts] — ---- the engine ---------------------------------------------------------------- Sim owns a canvas and a loop. `setup(S)` builds the state once (it is kept in S.st); `tick(S, dt)` advances and draws one frame.
 - Specimen [parts] — A specimen: one component on show. The frame (its look is the page's `frame`, set on the stage as data-frame) carries a code, the name and how to use it (click, drag, hover, type, auto…).
-- Ico [parts] — 
 - CanvasStage [stages] — CANVAS STAGES — the page is a sheet, not a column. The specimens sit on a big flat plane and the scroll flies a camera between them (camera.js): it rests on one, pulls back until the way to the next is in view, swings across — left, right,…
 - Stage [stages] — Picks the engine for a page: its own, unless the screen or the visitor asks for the plain one (or the sheet was asked for).
 - Hud [stages] — The readout that sits under the pinned visual: where you are in the page.

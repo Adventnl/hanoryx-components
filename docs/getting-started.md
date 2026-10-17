@@ -1,6 +1,6 @@
 # Getting started
 
-`hanoryx-components` is the Hanoryx Systems interface, taken out of the website and organised so any site can be built from it without writing a new component: **2,658 catalogued pieces** — the interface kit, the foreground toolkit, page blocks, the site shell, 67 canvas scenes, 176 compositions and 2,091 stand-alone specimens.
+`hanoryx-components` is the Hanoryx Systems interface, taken out of the website and organised so any site can be built from it without writing a new component: **2,822 catalogued pieces** — the interface kit, the foreground toolkit, page blocks, the site shell, 67 canvas scenes, 176 compositions and 2,091 stand-alone specimens.
 
 It is a **source library**: React 19 + CSS Modules, published as source, built by *your* bundler (Vite). Nothing is pre-compiled.
 

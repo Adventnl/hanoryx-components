@@ -1,0 +1,4 @@
+.shell { display: grid; gap: var(--space-5); min-width: 0; }
+.body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 4fr); gap: var(--space-5); }
+.content { min-width: 0; }
+@media (max-width: 48rem) { .body { grid-template-columns: minmax(0, 1fr); } }

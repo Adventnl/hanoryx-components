@@ -13,7 +13,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs/generated/manifest.json'), 'utf8'));
 const sizing = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs/generated/sizing.json'), 'utf8'));
 
-const m = (e) => sizing[e.id]?.measured;
+const m = (e) => e.sizing?.measured ?? sizing[e.id]?.measured;
 const cell = (e, w) => { const v = m(e)?.at?.[w]; return v ? `${Math.round(v.w)}×${Math.round(v.h)}` : '—'; };
 const ratio = (e) => { const at = m(e)?.at; if (!at) return '—'; const v = at[1200] ?? Object.values(at).pop(); return v?.h ? (v.w / v.h).toFixed(2) : '—'; };
 const esc = (s) => { const t = String(s ?? ''); return !t || /^0(px)?( 0(px)?)*$/.test(t) ? '—' : t.replace(/\|/g, '\\|'); };
@@ -27,10 +27,10 @@ const out = ['# Measured sizes', '',
 function table(title, entries, { minTouch = true } = {}) {
   const rows = entries.filter((e) => m(e));
   if (!rows.length) return;
-  out.push(`## ${title}`, '', `| Name | Behaviour | @360 | @768 | @1200 | Ratio | Padding | Radius | Smallest control | Overflow |`, '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |');
+  out.push(`## ${title}`, '', `| Name | Behaviour | @360 | @768 | @1200 | Ratio | Padding | Radius | Smallest control | Overflow | Scope |`, '| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |');
   for (const e of rows) {
     const s = m(e);
-    out.push(`| \`${e.name}\` | ${s.behavior ?? '—'} | ${cell(e, 360)} | ${cell(e, 768)} | ${cell(e, 1200)} | ${ratio(e)} | ${esc(s.padding)} | ${esc(s.radius)} | ${esc(s.minTouch) || '—'} | ${s.overflowsAt360 ? '**yes**' : ''} |`);
+    out.push(`| \`${e.name}\` | ${s.behavior ?? '—'} | ${cell(e, 360)} | ${cell(e, 768)} | ${cell(e, 1200)} | ${ratio(e)} | ${esc(s.padding)} | ${esc(s.radius)} | ${esc(s.minTouch) || '—'} | ${s.overflowsAt360 ? '**yes**' : ''} | ${esc(s.scope)} |`);
   }
   out.push('');
 }

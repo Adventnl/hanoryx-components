@@ -121,7 +121,7 @@ async function worker() {
         at: Object.fromEntries(widths.map((w) => [w, { w: at[w].w, h: at[w].h }])),
         padding: natural.padding, gap: natural.gap, radius: natural.radius, fontSize: natural.fontSize, minTouch: natural.smallest,
         overflowsAt360: widths.includes(360) ? Boolean(at[360].overflowX) : undefined,
-        scope: e.parent ? `Contextual example including ${e.parent}` : 'Standalone preview',
+        scope: e.sizing?.scope ?? (e.parent ? `Contextual example including ${e.parent}` : 'Standalone preview'),
       };
       sizing[e.id] = { measured: Object.fromEntries(Object.entries(entry).filter(([, v]) => v !== undefined)) };
     }

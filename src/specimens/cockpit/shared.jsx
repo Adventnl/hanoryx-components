@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDrag, useLive } from '../../stage/hooks';
-import { usePrefersReducedMotion } from '../../core/hooks/usePrefersReducedMotion';
+import { usePrefersReducedMotion } from "../../core/hooks/use-prefers-reduced-motion/usePrefersReducedMotion";
 import { arc, polar } from '../../stage/chartKit';
 import c from './cockpit.module.css';
 

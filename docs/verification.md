@@ -4,6 +4,14 @@
 
 `npm test` covers civil-date boundaries, stable sorting, filtering, tree metadata and immutable selection. With the docs server running, `npm run qa:interactions` checks the calendar keyboard model, range errors, chat sending and retry, resizing, rich-text sanitization/formatting and the table hooks composed together. Its fixture is not a product route.
 
+The catalog tests also require all 102 requested overview names, their documented
+categories, the nested parts inventory and preservation of existing kit IDs.
+`npm run qa:families` checks the added menu, command, selector, card, tab and docs
+navigation interactions. `npm run qa:hooks` checks headless selectors, focus
+trapping, merged-ref stability, hotkeys and asynchronous renderer cleanup/errors.
+The kit's three-width render run covers 221 visual entries. Parts shown in a
+family composition report that scope; those measurements describe the example.
+
 ## Complete render and sizing run
 
 Start `npm run dev`, then run `npm run docs:sizing`. The render script checks every previewable entry in parents of 360, 768 and 1200 pixels. Its browser viewport stays constant: these are parent-width measurements, not three viewport screenshots. The clone smoke check below separately tests actual mobile and desktop viewports.

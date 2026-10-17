@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLive } from '../../stage/hooks';
-import { usePrefersReducedMotion } from '../../core/hooks/usePrefersReducedMotion';
+import { usePrefersReducedMotion } from "../../core/hooks/use-prefers-reduced-motion/usePrefersReducedMotion";
 import c from './popovers.module.css';
 
 export function useOpen(init = false) {

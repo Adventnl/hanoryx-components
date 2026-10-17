@@ -1,0 +1,2 @@
+.group { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
+.group [aria-pressed='true'] { outline: var(--size-2px) solid var(--c-red); outline-offset: var(--size-2px); }

@@ -4,6 +4,7 @@ import { areaHref, hrefOf } from '../data';
 import { loadFamily } from '../preview/Preview';
 import { Inline } from '../Inline';
 import { Specimen } from 'hanoryx-components/stage';
+import KitCatalog from '../navigation/KitCatalog';
 
 function Sheet({ fam, data }) {
   const [loaded, setLoaded] = useState({ slug: null, mod: null });
@@ -82,7 +83,7 @@ export default function AreaPage({ data }) {
         <p className="sx-lede">{a.blurb}</p>
         <p className="sx-meta-line">Import from <code>hanoryx-components/{a.pkg}</code></p>
       </header>
-      {[...groups.entries()].map(([fam, list]) => (
+      {area === 'kit' ? <KitCatalog data={data} category={family} /> : [...groups.entries()].map(([fam, list]) => (
         <section key={fam} aria-label={fam || a.title}>
           {!single && fam && <h2 className="sx-h2"><Link to={areaHref(area, fam)}>{data.kitFamilies?.[fam] ?? fam}</Link><small>{list.length}</small></h2>}
           <ul className={list.length > 40 ? 'sx-pills' : 'sx-list'}>

@@ -1,0 +1,5 @@
+.card { display: grid; gap: var(--space-3); padding: var(--space-5); border: var(--size-1px) solid var(--c-line-strong); border-radius: var(--r-lg); background: var(--c-panel); color: var(--c-white-80); font: inherit; text-align: start; text-decoration: none; cursor: pointer; }
+.card strong { color: var(--c-white); font-size: var(--fs-h4); }
+.card:hover, .card[data-selected='true'] { border-color: var(--c-red); }
+.card:focus-within { outline: var(--size-2px) solid var(--c-white); outline-offset: var(--size-2px); }
+.card:disabled { opacity: .5; cursor: default; }

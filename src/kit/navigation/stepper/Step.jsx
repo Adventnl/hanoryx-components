@@ -1,0 +1,1 @@
+export function Step({ children, current = false, complete = false }) { return <li aria-current={current ? 'step' : undefined}>{children}<span>{complete ? ' — Complete' : current ? ' — Current' : ' — Upcoming'}</span></li>; }

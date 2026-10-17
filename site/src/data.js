@@ -1,6 +1,7 @@
 /* The catalogue the site shows: docs/generated/manifest.json, fetched once and indexed. */
 import { useEffect, useState } from 'react';
 import manifestUrl from '../../docs/generated/manifest.json?url';
+import { groupKit } from './navigation/catalog-groups';
 
 let request = null;
 
@@ -45,7 +46,7 @@ function buildIndex(m) {
   const haystack = m.entries.map((e) => ({ e, name: e.name.toLowerCase(), label: (e.label || '').toLowerCase(), text: [e.summary, e.family, e.area, e.kind, e.mode, ...(e.keywords || [])].join(' ').toLowerCase() }));
   return {
     ...m,
-    byId, byArea, byFamily, byName,
+    byId, byArea, byFamily, byName, kitGroups: groupKit(byArea.get('kit') ?? []),
     search(q, limit = 40) {
       const ts = tokens(q);
       if (!ts.length) return [];

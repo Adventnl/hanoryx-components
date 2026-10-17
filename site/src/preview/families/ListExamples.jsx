@@ -1,0 +1,2 @@
+import * as Kit from 'hanoryx-components/kit';
+export default function ListExamples() { return <Kit.Stack><Kit.List label="Projects"><Kit.ListItem>Project Alpha</Kit.ListItem><Kit.ListItem>Project Beta</Kit.ListItem></Kit.List><dl><Kit.MetadataListItem term="Status">Ready</Kit.MetadataListItem></dl><Kit.OverflowList max={2}>{['Alpha', 'Beta', 'Gamma', 'Delta'].map(name => <Kit.ListItem key={name}>{name}</Kit.ListItem>)}</Kit.OverflowList></Kit.Stack>; }

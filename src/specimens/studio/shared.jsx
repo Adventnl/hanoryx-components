@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { clamp, rng, useLive } from '../../stage/hooks';
-import { usePrefersReducedMotion } from '../../core/hooks/usePrefersReducedMotion';
+import { usePrefersReducedMotion } from "../../core/hooks/use-prefers-reduced-motion/usePrefersReducedMotion";
 
 /* gentle fake levels that move while the specimen is on screen */
 export function useLevels(n, ms = 140) {

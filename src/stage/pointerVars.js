@@ -10,7 +10,7 @@
    ============================================================ */
 import { useCallback, useEffect, useId, useRef } from 'react';
 import { clamp, useLive } from './hooks';
-import { usePrefersReducedMotion } from '../core/hooks/usePrefersReducedMotion';
+import { usePrefersReducedMotion } from "../core/hooks/use-prefers-reduced-motion/usePrefersReducedMotion";
 
 /** Returns [ref, bind]: put `ref` on the area and spread `bind` on it. */
 export function usePointer(auto = true) {

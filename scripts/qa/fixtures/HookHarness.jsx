@@ -1,9 +1,9 @@
 /* eslint-disable react-refresh/only-export-components -- Browser integration fixture, not an application route. */
 import { useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BatteryCell } from '../../../src/specimens/gauges/BatteryCell';
-import { TankLevel } from '../../../src/specimens/gauges/TankLevel';
-import { SpringGraph } from '../../../src/specimens/graphs/SpringGraph';
+import { BatteryCell } from "../../../src/specimens/gauges/battery-cell/BatteryCell";
+import { TankLevel } from "../../../src/specimens/gauges/tank-level/TankLevel";
+import { SpringGraph } from "../../../src/specimens/graphs/spring-graph/SpringGraph";
 import { SpecContext } from '../../../src/stage/hooks';
 import {
   Calendar,

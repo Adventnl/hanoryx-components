@@ -1,7 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { walk } from './exports.mjs';
 
 const cache = new Map();
+const sourceFiles = new Map();
 const visualBleed = {
   'figures/NumberLine': 'The end ticks and draggable point extend beyond the number-line track. Use the Specimen frame, which reserves a bed around the object.',
   'kinetic/ScatterWords': 'Scattered words deliberately translate beyond their button box. Use the Specimen frame and leave the measured visual overflow clear.',
@@ -11,7 +13,8 @@ const visualBleed = {
 
 /** Document observable source facts rather than inventing a prop API for self-contained demos. */
 export function specimenDocs(family, item, chapter, directory) {
-  const file = path.join(directory, `${item.component}.jsx`);
+  if (!sourceFiles.has(directory)) sourceFiles.set(directory, new Map(walk(directory, file => file.endsWith('.jsx')).map(file => [path.basename(file, '.jsx'), file])));
+  const file = sourceFiles.get(directory).get(item.component);
   if (cache.has(file)) return cache.get(file);
   const source = fs.readFileSync(file, 'utf8');
   const hooks = [...new Set([...source.matchAll(/\b(use[A-Z]\w*)\(/g)].map((m) => m[1]))];

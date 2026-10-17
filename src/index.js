@@ -4,7 +4,7 @@
    area (`hanoryx-components/kit`) to keep the module graph small:
 
      core         hooks, providers, motion engine, utilities, site sources
-     kit          100 visual components and 16 hooks in seven families
+     kit          application components, parts and hooks in eleven categories
      fx           the foreground toolkit (tilt, spotlight, odometer, …)
      ui           the site's own buttons, pills and panels
      reveal       entrance profiles and kinetic text
@@ -26,6 +26,8 @@ export * from './reveal';
 export * from './scenes';
 export * from './page';
 export * from './shell';
+// Preserve the site's existing root export; the kit's disclosure nav is available from /kit.
+export { MobileNav, CommandPalette } from './shell';
 export * as Signatures from './signatures';
 export * as Closers from './closers';
 export * as Specimens from './specimens';

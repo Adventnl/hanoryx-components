@@ -6,7 +6,7 @@ import { ExperienceContext } from './experience-context';
 
 // The overlay (and its heavy canvas) is only fetched when the user presses Play.
 const SystemSynthesisOverlay = lazy(() =>
-  import('../../shell/experience/SystemSynthesisOverlay')
+  import("../../shell/experience/system-synthesis-overlay/SystemSynthesisOverlay")
 );
 
 /**

@@ -1,0 +1,5 @@
+.indicator { display: inline-flex; align-items: center; gap: var(--space-2); font: var(--fs-xs) var(--font-mono); }
+.indicator > span { color: var(--c-red-bright); }
+.item { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3); border-bottom: var(--size-1px) solid var(--c-line); }
+.item > div { flex: 1; min-width: 0; }
+.item p { margin: var(--space-1) 0 0; color: var(--c-white-65); font-size: var(--fs-sm); }

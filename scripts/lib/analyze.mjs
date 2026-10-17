@@ -1,6 +1,7 @@
 // Static analysis of a component module: its exports, props and the comments
 // that describe them. Nothing is executed, so it is safe on any source file.
 import fs from 'node:fs';
+import path from 'node:path';
 import { parse } from '@babel/parser';
 
 const isComponentName = (n) => /^[A-Z][A-Za-z0-9]*$/.test(n);
@@ -85,6 +86,16 @@ export function analyzeModule(file) {
   };
   for (const n of body) {
     if (n.type === 'ExportNamedDeclaration') {
+      if (n.source?.value.startsWith('.')) {
+        const base = path.resolve(path.dirname(file), n.source.value);
+        const target = [base, base + '.jsx', base + '.js', path.join(base, 'index.js')].find(p => fs.existsSync(p) && fs.statSync(p).isFile());
+        if (!target) throw new Error(`Cannot resolve ${n.source.value} from ${file}`);
+        const nested = analyzeModule(target);
+        for (const specifier of n.specifiers) {
+          const original = specifier.local.name === 'default' ? nested.exports.find(e => e.isDefault) : nested.exports.find(e => e.name === specifier.local.name);
+          if (original) exports.push({ ...original, name: specifier.exported.name, isDefault: false, source: original.source ?? target, aliasOf: original.name });
+        }
+      }
       if (n.declaration) {
         const d = n.declaration;
         if (d.id) add(d.id.name, false);

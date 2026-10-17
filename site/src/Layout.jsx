@@ -1,52 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { areaHref, hrefOf } from './data';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { hrefOf } from './data';
+import CatalogTree from './navigation/CatalogTree';
 
-import { GUIDES, RECIPES } from './nav';
 
-function Tree({ data }) {
-  const { pathname } = useLocation();
-  return (
-    <nav className="sx-tree" aria-label="Components">
-      <div className="sx-group">
-        <h2>Guides</h2>
-        <ul>
-          <li><NavLink to="/" end>Overview</NavLink></li>
-          {GUIDES.map(([slug, label]) => <li key={slug}><NavLink to={`/guides/${slug}`}>{label}</NavLink></li>)}
-          <li><NavLink to="/preview/shell">Shell preview</NavLink></li>
-        </ul>
-      </div>
-      <div className="sx-group">
-        <h2>Recipes</h2>
-        <ul>{RECIPES.map(([slug, label]) => <li key={slug}><NavLink to={`/recipes/${slug}`}>{label}</NavLink></li>)}</ul>
-      </div>
-      <div className="sx-group">
-        <h2>Library</h2>
-        {data.areas.map((a) => {
-          const open = pathname.startsWith(`/a/${a.id}`) || pathname.startsWith(`/c/${a.id}/`);
-          const fams = a.id === 'specimens'
-            ? data.chapters.map((c) => ({ id: c.id, title: `${c.code} ${c.title}`, families: data.families.filter((f) => f.chapter === c.id) }))
-            : [...new Set(data.byArea.get(a.id).map((e) => e.family).filter(Boolean))].map((f) => ({ id: f, title: data.kitFamilies?.[f] ?? f, link: areaHref(a.id, f) }));
-          return (
-            <details key={a.id} open={open} className="sx-area">
-              <summary><span>{a.title}</span><i>{data.counts[a.id]}</i></summary>
-              <ul>
-                <li><NavLink to={areaHref(a.id)} end>All {a.title.toLowerCase()}</NavLink></li>
-                {a.id === 'specimens'
-                  ? fams.map((c) => (
-                    <li key={c.id} className="sx-chapter"><span>{c.title}</span>
-                      <ul>{c.families.map((f) => <li key={f.slug}><NavLink to={areaHref('specimens', f.slug)}>{f.title}<i>{f.count}</i></NavLink></li>)}</ul>
-                    </li>
-                  ))
-                  : fams.length > 1 || (fams.length === 1 && fams[0].id !== a.id) ? fams.map((f) => <li key={f.id}><NavLink to={f.link}>{f.title}</NavLink></li>) : null}
-              </ul>
-            </details>
-          );
-        })}
-      </div>
-    </nav>
-  );
-}
 
 function SearchBox({ data }) {
   const [q, setQ] = useState('');
@@ -78,7 +35,7 @@ function SearchBox({ data }) {
   return (
     <div className="sx-search" role="search">
       <label className="sx-vh" htmlFor="sx-q">Search components</label>
-      <input id="sx-q" ref={ref} type="search" autoComplete="off" spellCheck="false" placeholder="Search 2,600 components…  ( / )" value={q}
+      <input id="sx-q" ref={ref} type="search" autoComplete="off" spellCheck="false" placeholder={`Search ${data.entries.length.toLocaleString()} entries…  ( / )`} value={q}
         onChange={(e) => { setQ(e.target.value); setOpen(true); setActive(0); }} onFocus={() => setOpen(true)} onBlur={() => setTimeout(() => setOpen(false), 120)} onKeyDown={onKey}
         role="combobox" aria-expanded={open && results.length > 0} aria-controls="sx-results" aria-autocomplete="list" />
       {open && q.trim() && (
@@ -113,7 +70,7 @@ export default function Layout({ data, children }) {
         <Link to="/" className="sx-brand"><b>HANORYX</b><span>Components</span></Link>
         <SearchBox data={data} />
       </header>
-      <aside id="sx-side" className="sx-side"><Tree data={data} /></aside>
+      <aside id="sx-side" className="sx-side"><CatalogTree data={data} /></aside>
       <main id="sx-main" className="sx-main" tabIndex={-1}>{children}</main>
     </div>
   );

@@ -1,0 +1,10 @@
+.chart { margin: 0; display: grid; gap: var(--space-3); min-width: 0; }
+.chart > svg { width: 100%; height: auto; overflow: visible; }
+.axis { stroke: var(--c-white-65); }
+.axis text { fill: var(--c-white-80); stroke: none; font: var(--fs-xs) var(--font-mono); }
+.grid { stroke: var(--c-line); }
+.legend { display: flex; flex-wrap: wrap; gap: var(--space-4); list-style: none; margin: 0; padding: 0; }
+.legend li { display: inline-flex; align-items: center; gap: var(--space-2); }
+.swatch { display: inline-block; width: var(--space-3); height: var(--space-3); background: var(--c-red); }
+.swatch[data-tone='neutral'] { background: var(--c-white-65); }
+.tooltip { display: block; padding: var(--space-2); border: var(--size-1px) solid var(--c-line); background: var(--c-panel); font: var(--fs-xs) var(--font-mono); }

@@ -4,7 +4,7 @@ import { Suspense, useEffect, useMemo, useState } from 'react';
 import { PageBlock, PageHero, PageTemplate, TemplatePage, HeroTitle, NotFound, SceneCanvas, SectionScene, Reveal, RevealGroup, KineticText } from 'hanoryx-components';
 import { MiniEngine, ArticleArtShape } from 'hanoryx-components/signatures';
 import { CheckSheet, CloserFrame } from 'hanoryx-components/closers';
-import { Shell } from '../../../src/page/blocks/Shell';
+import { Shell } from "../../../src/page/blocks/shell/Shell";
 import { extensionDemos, extensionProbes } from './extensions';
 import { sampleHero, samplePage } from './sample-page';
 import { Specimen, SpecContext } from 'hanoryx-components/stage';
@@ -12,6 +12,7 @@ import { kit as kitCatalogue } from 'hanoryx-components/content/kit';
 import { demoRegistry } from 'hanoryx-components/kit/demos/registry';
 import { demos } from './demos';
 import { probes } from './probes';
+import { familyDemos } from './families/registry';
 import signatureExamples from '../../../docs/examples/signatures.json';
 import closerExamples from '../../../docs/examples/closers.json';
 import asideExamples from '../../../docs/examples/asides.json';
@@ -48,9 +49,12 @@ function SpecimenPreview({ entry, data, bare }) {
 
 /* ---- kit ---- */
 function KitPreview({ entry }) {
+  if (entry.kind !== 'component') return null;
+  const Family = familyDemos[entry.group];
+  if (Family) return <Family />;
   const Extension = extensionDemos[entry.name];
   if (Extension) return <Extension />;
-  const demo = kitDemoByName.get(entry.parent ?? entry.name);
+  const demo = kitDemoByName.get(entry.aliasOf ?? entry.parent ?? entry.name);
   const Demo = demo ? demoRegistry[demo] : null;
   if (!Demo) { const P = probes[entry.name]; return P ? <div style={{ width: '100%', maxWidth: 720 }}><P /></div> : null; }
   return <Suspense fallback={<Fallback />}><div style={{ width: '100%', maxWidth: 720 }}><Demo /></div></Suspense>;

@@ -1,0 +1,2 @@
+.search { display: grid; gap: var(--space-3); }
+.search button { justify-self: start; padding: var(--space-2) var(--space-4); border: var(--size-1px) solid var(--c-line-strong); border-radius: var(--r-sm); background: var(--c-panel); color: var(--c-white); font: inherit; cursor: pointer; }

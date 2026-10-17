@@ -1,0 +1,8 @@
+.seg { border: 0; padding: 0; margin: 0; min-width: 0; }
+.seg legend { font: var(--fs-xs) var(--font-mono); margin-bottom: var(--space-2); }
+.segTrack { display: flex; flex-wrap: wrap; gap: var(--space-1); padding: var(--space-1); border: var(--size-1px) solid var(--c-line-strong); border-radius: var(--r-md); }
+.segItem { position: relative; padding: var(--space-2) var(--space-3); border-radius: var(--r-sm); cursor: pointer; }
+.segItem input { position: absolute; opacity: 0; inset: 0; }
+.segItem:has(:checked) { background: var(--c-red-ghost); outline: var(--size-1px) solid var(--c-red-dim); }
+.segItem:has(:focus-visible) { outline: var(--size-2px) solid var(--c-white); }
+.segItem:has(:disabled) { opacity: .5; cursor: default; }

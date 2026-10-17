@@ -26,7 +26,8 @@
     "./content/*": "./src/content/*.js",
     "./shell/*": "./src/shell/*.js",
     "./manifest": "./docs/generated/manifest.json",
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./kit/*": "./src/kit/*/index.js"
   },
   "files": [
     "src",
@@ -53,10 +54,12 @@
     "barrels": "node scripts/generate-barrels.mjs",
     "qa:compare": "node scripts/qa/compare-specimens.mjs",
     "qa:render": "node scripts/qa/render-all.mjs",
-    "test": "node --test scripts/qa/models.test.mjs",
+    "test": "node --test scripts/qa/*.test.mjs",
     "qa:interactions": "node scripts/qa/interactions.mjs",
     "tokens:migrate": "node scripts/migrate-css-tokens.mjs",
-    "check:tokens": "node scripts/check-css-tokens.mjs"
+    "check:tokens": "node scripts/check-css-tokens.mjs",
+    "qa:families": "node scripts/qa/families.mjs",
+    "qa:hooks": "node scripts/qa/hooks.mjs"
   },
   "peerDependencies": {
     "@gsap/react": "^2.1.2",
@@ -67,7 +70,8 @@
     "motion": "^12.40.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-router-dom": "^7.18.0"
+    "react-router-dom": "^7.18.0",
+    "marked": "^18.1.1"
   },
   "devDependencies": {
     "@babel/parser": "^8.0.7",

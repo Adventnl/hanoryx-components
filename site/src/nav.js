@@ -7,6 +7,7 @@ export const GUIDES = [
   ['sizes', 'Measured sizes'],
   ['layout-recipes', 'Layout recipes'],
   ['extended-kit', 'Application families'],
+  ['organization', 'Folders & component families'],
   ['for-llms', 'Building with an LLM'],
   ['porting-map', 'Where things came from'],
   ['verification', 'Verification'],

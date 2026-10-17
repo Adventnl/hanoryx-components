@@ -1,7 +1,7 @@
 import { Children, createElement, isValidElement, useMemo } from 'react';
 import { motion } from 'motion/react';
 import { revealProfiles, staggerContainer, withDelay } from './revealProfiles';
-import { usePrefersReducedMotion } from '../core/hooks/usePrefersReducedMotion';
+import { usePrefersReducedMotion } from "../core/hooks/use-prefers-reduced-motion/usePrefersReducedMotion";
 
 /**
  * Reveal — animate a single element into view with a named profile.

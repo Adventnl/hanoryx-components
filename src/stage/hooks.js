@@ -16,7 +16,7 @@
    screen and never under reduced motion; useLive / useTick do that gating.
    ============================================================ */
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
-import { usePrefersReducedMotion } from '../core/hooks/usePrefersReducedMotion';
+import { usePrefersReducedMotion } from "../core/hooks/use-prefers-reduced-motion/usePrefersReducedMotion";
 import { useLenis } from '../core/providers/lenis-context';
 
 export const clamp = (v, lo = 0, hi = 1) => Math.min(hi, Math.max(lo, v));

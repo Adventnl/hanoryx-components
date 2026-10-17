@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLive } from '../../stage/hooks';
-import { usePrefersReducedMotion } from '../../core/hooks/usePrefersReducedMotion';
+import { usePrefersReducedMotion } from "../../core/hooks/use-prefers-reduced-motion/usePrefersReducedMotion";
 import c from './wipes.module.css';
 
 /* a toggle that flips itself while on screen until it has been pressed */

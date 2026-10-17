@@ -1,0 +1,2 @@
+.group { margin: 0; padding: 0; list-style: none; }
+.label { display: block; padding: var(--space-2) var(--space-3); color: var(--c-white-65); font: var(--fs-xs) var(--font-mono); }

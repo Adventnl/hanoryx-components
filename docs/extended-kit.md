@@ -2,6 +2,11 @@
 
 The original kit is supplemented by new Hanoryx implementations. Import them from `hanoryx-components/kit`. Companion docs and the manifest identify them with `origin: 'new'`.
 
+The kit now contains 279 components, parts, aliases and hooks across eleven
+categories, covering all 102 requested overview names. See
+[Folders and component families](organization.md) for browsing and scoped imports;
+the expandable docs sidebar lists each family's nested parts.
+
 ## Chat
 
 `Chat` names a conversation region. `ChatLayout` provides a scrolling transcript and separate composer slot. Put `ChatMessage` and `ChatSystemMessage` inside `ChatMessageList`; use `ChatMessageBubble` and `ChatMessageMetadata` inside messages. `ChatToolCalls` uses native disclosures. `ChatTokenizedText` renders escaped text and labelled tokens.
